@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Cart Error Template -->
+    <template id="cart_min_qty_error" name="Cart Minimum Quantity Error">
+        <t t-call="website.layout">
+            <div class="container mt32 mb32">
+                <div class="alert alert-warning" role="alert">
+                    <h4>Minimum Quantity Required</h4>
+                    <p t-if="error_message" t-esc="error_message"/>
+                    <a href="/shop/cart" class="btn btn-primary mt16">Return to Cart</a>
+                </div>
+            </div>
+        </t>
+    </template>
+
+    <!-- Product Detail Template Enhancement -->
+    <template id="product_min_qty_info" name="Product Minimum Quantity Info" inherit_id="website_sale.product">
+        <xpath expr="//div[@class='oe_website_sale']" position="inside">
+            <div class="min-qty-info" style="display: none;">
+                <div class="alert alert-info">
+                    <strong>Note:</strong> Minimum quantity for this product is <span class="min-qty-value">1</span> items.
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <!-- Cart Template Enhancement -->
+    <template id="cart_min_qty_info" name="Cart Minimum Quantity Info" inherit_id="website_sale.cart">
+        <xpath expr="//div[@class='oe_website_sale']" position="inside">
+            <div class="min-qty-info" style="display: none;">
+                <div class="alert alert-info">
+                    <strong>Note:</strong> Some products have minimum quantity requirements.
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

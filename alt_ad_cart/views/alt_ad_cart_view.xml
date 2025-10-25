@@ -1,0 +1,48 @@
+<!-- alt_ad_card/views/alt_ad_card_views.xml -->
+<odoo>
+  <record id="view_alt_ad_card_list" model="ir.ui.view">
+    <field name="name">alt.ad.card.list</field>
+    <field name="model">alt.ad.card</field>
+    <field name="arch" type="xml">
+      <list>
+        <field name="name"/>
+        <field name="alt_website"/>
+        <field name="alt_device_type"/>
+        <field name="alt_position_type"/>
+        <field name="alt_display_every"/>
+        <field name="alt_priority"/>
+        <field name="alt_active"/>
+      </list>
+    </field>
+  </record>
+
+  <record id="view_alt_ad_card_form" model="ir.ui.view">
+    <field name="name">alt.ad.card.form</field>
+    <field name="model">alt.ad.card</field>
+    <field name="arch" type="xml">
+      <form>
+        <sheet>
+          <group>
+            <field name="name"/>
+            <field name="alt_active"/>
+            <field name="alt_website"/>
+            <field name="alt_device_type"/>
+            <field name="alt_position_type"/>
+            <!-- <label for="alt_display_every" string="Display Every X Products (Inline Card)" invisible=" alt_position_type == 'strip' "/>
+            <label for="alt_display_every" string="Display Every X Row (Full-width Strip)" invisible=" alt_position_type == 'inline_card' "/> -->
+            <field name="alt_display_every" string="Display Every X Row (Full-width Strip)" invisible=" alt_position_type == 'inline_card' "/>
+            <field name="alt_display_every" string="Display Every X Products (Inline Card)" invisible=" alt_position_type == 'strip' "/>
+            <field name="alt_priority"/>
+          </group>
+          <group>
+            <field name="alt_content_html" widget="html" options="{'sanitize': false}"/>
+          </group>
+          <group>
+            <field name="alt_category_ids" widget="many2many_tags"/>
+            <field name="alt_tag_ids" widget="many2many_tags"/>
+          </group>
+        </sheet>
+      </form>
+    </field>
+  </record>
+</odoo>

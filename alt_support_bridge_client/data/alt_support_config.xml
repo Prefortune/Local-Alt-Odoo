@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Default Alt Support Configuration -->
+        <record id="alt_support_config_default" model="alt.support.config">
+            <field name="server_url">https://transparo.io</field>
+            <field name="api_token">your-api-token-here</field>
+            <field name="server_token"></field>
+        </record>
+    </data>
+</odoo> 

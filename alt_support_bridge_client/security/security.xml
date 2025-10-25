@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- User can only read their own support channel access -->
+        <record id="rule_alt_support_user" model="ir.rule">
+            <field name="name">Alt Support: Users can only read their own access</field>
+            <field name="model_id" ref="base.model_res_users"/>
+            <field name="domain_force">[('id', '=', user.id)]</field>
+            <field name="groups" eval="[(4, ref('base.group_user'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="False"/>
+            <field name="perm_create" eval="False"/>
+            <field name="perm_unlink" eval="False"/>
+        </record>
+
+        <!-- System administrators can manage all support channel access -->
+        <record id="rule_alt_support_manager" model="ir.rule">
+            <field name="name">Alt Support: Managers can manage all access</field>
+            <field name="model_id" ref="base.model_res_users"/>
+            <field name="domain_force">[(1, '=', 1)]</field>
+            <field name="groups" eval="[(4, ref('base.group_system'))]"/>
+            <field name="perm_read" eval="True"/>
+            <field name="perm_write" eval="True"/>
+            <field name="perm_create" eval="True"/>
+            <field name="perm_unlink" eval="True"/>
+        </record>
+    </data>
+</odoo> 

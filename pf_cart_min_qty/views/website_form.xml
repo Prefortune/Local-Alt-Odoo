@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_website_form_cart_min_qty" model="ir.ui.view">
+        <field name="name">website.form.cart.min.qty</field>
+        <field name="model">website</field>
+        <field name="inherit_id" ref="website.view_website_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='language_ids']" position="after">
+                <field name="pf_cart_min_qty_enabled"/>
+                <field name="pf_cart_qty_method" widget="radio" invisible="not pf_cart_min_qty_enabled"/>
+                <field name="pf_cart_min_qty_value" invisible="not pf_cart_min_qty_enabled or pf_cart_qty_method == 'product'"/>
+                <field name="pf_select_product_type" widget="radio" invisible="not pf_cart_min_qty_enabled or pf_cart_qty_method == 'global'"/>
+
+            </xpath>
+        </field>
+    </record>
+</odoo>

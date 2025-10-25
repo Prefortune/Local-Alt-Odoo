@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Main Menu -->
+        <menuitem id="menu_alt_support_root"
+                  name="Alt Support"
+                  sequence="100"/>
+
+        <!-- API Tokens Menu -->
+        <menuitem id="menu_alt_support_tokens"
+                  name="API Tokens"
+                  parent="menu_alt_support_root"
+                  action="action_alt_support_token"
+                  sequence="10"/>
+
+        <!-- Settings Menu -->
+        <menuitem id="menu_alt_support_settings"
+                  name="Settings"
+                  parent="menu_alt_support_root"
+                  sequence="30"/>
+    </data>
+</odoo> 

@@ -1,0 +1,38 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * pf_cart_min_qty
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-18 12:00+0000\n"
+"PO-Revision-Date: 2025-07-18 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Hebrew\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n==2) ? 1 : 2;\n"
+
+#. module: pf_cart_min_qty
+#: model_terms:ir.ui.view,arch_db:pf_cart_min_qty.cart_min_qty_warning
+msgid "Minimum Quantity Not Met"
+msgstr "הכמות המינימלית לרכישה באתר העסקים שלנו לא הושגה"
+
+
+#. module: pf_cart_min_qty
+#: model_terms:ir.ui.view,arch_db:pf_cart_min_qty.cart_min_qty_warning
+msgid "You must purchase at least"
+msgstr "עליך לרכוש לפחות "
+
+#. module: pf_cart_min_qty
+#: model_terms:ir.ui.view,arch_db:pf_cart_min_qty.cart_min_qty_warning
+msgid "items in total to proceed to checkout. Your current cart total is"
+msgstr "פריטים בסך הכל כדי להמשיך לתשלום. סך כל הפריטים בעגלתך הוא"
+
+#. module: pf_cart_min_qty
+#: model_terms:ir.ui.view,arch_db:pf_cart_min_qty.cart_min_qty_warning
+msgid "Return to Cart"
+msgstr "חזור לעגלה"

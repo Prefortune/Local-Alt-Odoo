@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Product Template Form View -->
+    <record id="product_template_form_view_min_qty" model="ir.ui.view">
+        <field name="name">product.template.form.min.qty</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='website_meta_title']" position="after">
+                <div class="oe_title">
+                    <h2>Website Minimum Quantity Settings</h2>
+                </div>
+                <group>
+                    <field name="website_min_qty_enabled"/>
+                    <field name="website_min_qty" attrs="{'invisible': [('website_min_qty_enabled', '=', False)]}"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Product Template Tree View -->
+    <record id="product_template_tree_view_min_qty" model="ir.ui.view">
+        <field name="name">product.template.tree.min.qty</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_tree_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='list_price']" position="after">
+                <field name="website_min_qty_enabled" optional="hide"/>
+                <field name="website_min_qty" optional="hide"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

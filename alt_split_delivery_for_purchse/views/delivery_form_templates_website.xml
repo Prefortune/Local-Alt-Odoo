@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="delivery_method_inherit_alt_split_delivery" inherit_id="website_sale.delivery_method">
+        <xpath expr="//input[@name='o_delivery_radio']" position="replace">
+                <input
+                        t-attf-id="o_delivery_{{dm.id}}"
+                        name="o_delivery_radio"
+                        type="radio"
+                        t-att-checked="is_selected"
+                        disabled="true"
+                        class="form-check-input position-absolute"
+                        t-att-data-dm-id="dm.id"
+                        t-att-data-delivery-type="dm.delivery_type"
+                        t-att-data-is-pickup-location-required="is_pickup_needed"
+                        t-att-data-is-supports-split="dm.supports_split_delivery"
+                        t-att-data-is-supports-pickup="dm.supports_self_pickup"
+
+                    />
+        </xpath>
+    </template>
+
+</odoo>

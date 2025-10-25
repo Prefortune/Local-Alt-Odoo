@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Sale Order Form View Extension -->
+    <record id="view_order_form_inherit_alt_split_delivery" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.alt.split.delivery</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Split Deliveries" name="alt_split_deliveries">
+                    <group>
+                        <group>
+                            <!-- <field name="has_alt_split_deliveries"/> -->
+                            <field name="alt_split_delivery_count"/>
+                            <field name="alt_split_delivery_total_price"/>
+                            <!-- <field name="alt_split_delivery_url" widget="url"/> -->
+                            <field name="alt_split_delivery_url" widget="url" invisible="alt_split_delivery_count &lt;= 1 or not state == 'sale'"/>
+
+                        </group>
+                    </group>
+                    <field name="picking_ids">
+                        <list>
+                            <field name="name"/>
+                            <field name="scheduled_date"/>
+                            <field name="state"/>
+                        </list>
+                    </field>
+                    <group>
+                        <field name="alt_split_delivery_note" readonly="1"/>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="customer_delivery_date" />
+                <field name="greeting_card" />
+                <field name="delivery_note" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

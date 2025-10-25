@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Sale Order Form View Extension -->
+    <record id="view_order_form_batch_split" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.batch.split</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <!-- <xpath expr="//notebook" position="inside">
+                <page string="Batch Split" name="batch_split_book" invisible="state != 'sale'">
+                    <group>
+                        <button name="%(alt_batch_split.batch_create_wizard_actions)d" type="action" string="Batch Delivery" class="btn-primary"/>
+                    </group>
+                </page>
+            </xpath> -->
+            <xpath expr="//button[@name='action_cancel']" position="after">
+                <button name="%(alt_batch_split.batch_create_wizard_actions)d" invisible="state != 'sale'" type="action" string="Batch Delivery" class="btn-primary"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_sale_order_batch_form" model="ir.ui.view">
+    <field name="name">sale.order.batch.form</field>
+    <field name="model">sale.order.batch</field>
+    <field name="arch" type="xml">
+        <form string="Sale Order Batch">
+            <!-- <header>
+                <field name="delivery_stage" widget="statusbar" ></field>
+            </header> -->
+            <sheet>
+                <group>
+                    <field name="name" />
+                    <field name="sale_order_id" readonly="1"/>
+                    <field name="partner_id" />
+                    <field name="deadline_date" />
+                    <field name="note" />    
+                </group>
+                <field name="line_ids">
+                    <list editable="bottom" create="false">
+                        <field name="product_id"/>
+                        <field name="quantity"/>
+                    </list>
+                </field>
+            </sheet>
+        </form>
+    </field>
+</record>
+
+</odoo>

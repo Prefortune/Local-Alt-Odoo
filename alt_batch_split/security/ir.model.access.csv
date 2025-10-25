@@ -1,0 +1,5 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+alt_batch_split.access_sale_order_batch,access_sale_order_batch,alt_batch_split.model_sale_order_batch,base.group_user,1,1,1,1
+alt_batch_split.access_sale_order_batch_line,access_sale_order_batch_line,alt_batch_split.model_sale_order_batch_line,base.group_user,1,1,1,1
+alt_batch_split.access_batch_create_wizard,access_batch_create_wizard,alt_batch_split.model_batch_create_wizard,base.group_user,1,1,1,1
+alt_batch_split.access_batch_create_wizard_line,access_batch_create_wizard_line,alt_batch_split.model_batch_create_wizard_line,base.group_user,1,1,1,1

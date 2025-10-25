@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_alt_support_token,alt.support.token,alt_support_bridge_server.model_alt_support_token,base.group_system,1,1,1,1
+access_mail_message,mail.message,mail.model_mail_message,base.group_system,1,1,1,1
+access_mail_message_user,mail.message.user,mail.model_mail_message,base.group_user,1,1,1,0
+alt_support_bridge_server.access_project_task_create_wizard,access_project_task_create_wizard,alt_support_bridge_server.model_project_task_create_wizard,base.group_user,1,1,1,1
+alt_support_bridge_server.access_change_request_task,access_change_request_task,alt_support_bridge_server.model_change_request_task,base.group_user,1,1,1,1

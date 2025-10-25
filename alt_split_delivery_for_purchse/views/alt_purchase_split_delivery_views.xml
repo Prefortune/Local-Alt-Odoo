@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Alt Purchase Split Delivery Tree View -->
+    <record id="view_alt_purchase_split_delivery_tree" model="ir.ui.view">
+        <field name="name">alt.purchase.split.delivery.tree</field>
+        <field name="model">alt.purchase.split.delivery</field>
+        <field name="arch" type="xml">
+            <list string="מנות משלוח">
+                <field name="alt_delivery_index"/>
+                <field name="purchase_order_id"/>
+                <field name="picking_id"/>
+                <field name="alt_scheduled_date"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Alt Purchase Split Delivery Form View -->
+    <record id="view_alt_purchase_split_delivery_form" model="ir.ui.view">
+        <field name="name">alt.purchase.split.delivery.form</field>
+        <field name="model">alt.purchase.split.delivery</field>
+        <field name="arch" type="xml">
+            <form string="מנה משלוח">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="purchase_order_id"/>
+                            <field name="alt_delivery_index"/>
+                            <field name="picking_id"/>
+                        </group>
+                        <group>
+                            <field name="alt_scheduled_date"/>
+                            <field name="alt_delivery_notes"/>
+                        </group>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Alt Purchase Split Delivery Search View -->
+    <record id="view_alt_purchase_split_delivery_search" model="ir.ui.view">
+        <field name="name">alt.purchase.split.delivery.search</field>
+        <field name="model">alt.purchase.split.delivery</field>
+        <field name="arch" type="xml">
+            <search string="חיפוש מנות משלוח">
+                <field name="alt_delivery_index"/>
+                <field name="purchase_order_id"/>
+                <field name="picking_id"/>
+                <group expand="0" string="קבוצה לפי">
+                    <filter string="הזמנת רכש" name="group_order" context="{'group_by': 'purchase_order_id'}"/>
+                    <filter string="מספר מנה" name="group_index" context="{'group_by': 'alt_delivery_index'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Alt Purchase Split Delivery Action -->
+    <record id="action_alt_purchase_split_delivery" model="ir.actions.act_window">
+        <field name="name">מנות משלוח רכש</field>
+        <field name="res_model">alt.purchase.split.delivery</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'list', 'view_id': ref('view_alt_purchase_split_delivery_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_alt_purchase_split_delivery_form')})]"/>
+        <field name="search_view_id" ref="view_alt_purchase_split_delivery_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                צור מנת משלוח ראשונה
+            </p>
+            <p>
+                מנות משלוח מאפשרות לך לפצל הזמנת רכש אחת למספר כתובות משלוח.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_alt_purchase_split_delivery"
+              name="מנות משלוח רכש"
+              parent="purchase.menu_purchase_config"
+              action="action_alt_purchase_split_delivery"
+              sequence="50"/>
+</odoo>

@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Product Form View Extension -->
+    <record id="view_product_form_inherit_alt_split_delivery" model="ir.ui.view">
+        <field name="name">product.form.inherit.alt.split.delivery</field>
+        <field name="model">product.product</field>
+        <field name="inherit_id" ref="product.product_normal_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='sale_ok']" position="after">
+                <field name="alt_supports_split_delivery"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

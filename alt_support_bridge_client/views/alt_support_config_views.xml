@@ -1,0 +1,40 @@
+<odoo>
+    <data>
+        <!-- Tree View for Alt Support Config -->
+        <record id="view_alt_support_config_tree" model="ir.ui.view">
+            <field name="name">alt.support.config.tree</field>
+            <field name="model">alt.support.config</field>
+            <field name="arch" type="xml">
+                <list string="Alt Support Configurations">
+                    <field name="server_url"/>
+                    <field name="api_token"/>
+                    <field name="server_token"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Form View for Alt Support Config -->
+        <record id="view_alt_support_config_form" model="ir.ui.view">
+            <field name="name">alt.support.config.form</field>
+            <field name="model">alt.support.config</field>
+            <field name="arch" type="xml">
+                <form string="Alt Support Settings">
+                    <sheet>
+                        <group>
+                            <field name="server_url" placeholder="https://support.example.com"/>
+                            <field name="api_token" placeholder="your-api-token-here"/>
+                            <field name="server_token" placeholder="Paste server token here"/>
+                        </group>
+                        <div class="alert alert-info" role="alert">
+                            <strong>עזרה:</strong><br/>
+                            <strong>Support Server URL:</strong> יש להשתמש בשם דומיין בלבד ללא / בסוף הדומיין<br/>
+                            <strong>דוגמה:</strong> https://transparo.io<br/>
+                            <strong>API Token:</strong> טוקן זה משמש את הלקוח לאימות מול השרת<br/>
+                            <strong>Server Token:</strong> טוקן זה משמש את השרת לאימות מול הלקוח. יש להעתיק אותו מהשרת ולהדביק כאן.
+                        </div>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo> 
