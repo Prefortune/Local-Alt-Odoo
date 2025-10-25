@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Payment Provider -->
+    <record id="payment_provider_cardcom_pos" model="payment.provider">
+        <field name="code">cardcom_pos</field>
+        <field name="name">CardCom POS</field>
+        <field name="redirect_form_view_id" ref="cardcom_pos_redirect_form"/>
+        <field name="payment_method_ids" eval="[Command.set([ref('payment_method_cardcom_pos')])]"/>
+    </record>
+
+</odoo>

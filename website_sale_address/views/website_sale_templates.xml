@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+  <template id="address" name="Configure eCommerce Address Fields" inherit_id="website_sale.address">
+
+    <!-- =================== PHONE =================== -->
+    <xpath expr="//div[@id='div_phone']" position="before">
+      <t t-set="show_phone_field"
+         t-value="address_type == 'billing' and website.use_billing_address_phone or
+                  address_type == 'delivery' and website.use_shipping_address_phone or
+                  partner_id == website_sale_order.partner_shipping_id.id == website_sale_order.partner_invoice_id.id
+                  and website.use_shipping_address_phone"/>
+    </xpath>
+    <xpath expr="//div[@id='div_phone']" position="attributes">
+      <attribute name="t-attf-style">#{ not show_phone_field and 'display: none;' }</attribute>
+      <attribute name="t-att-disabled">'true' if not show_phone_field else None</attribute>
+    </xpath>
+
+    <!-- =================== STREET =================== -->
+    <xpath expr="//div[contains(@t-attf-class,'div_street')]" position="before">
+      <t t-set="show_street_field"
+         t-value="address_type == 'billing' and website.use_billing_address_street or
+                  address_type == 'delivery' and website.use_shipping_address_street or
+                  partner_id == website_sale_order.partner_shipping_id.id == website_sale_order.partner_invoice_id.id
+                  and website.use_shipping_address_street"/>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class,'div_street')]" position="attributes">
+      <attribute name="t-attf-style">#{ not show_street_field and 'display: none;' }</attribute>
+      <attribute name="t-att-disabled">'true' if not show_street_field else None</attribute>
+    </xpath>
+
+    <!-- =================== STREET2 =================== -->
+    <xpath expr="//div[contains(@t-attf-class,'div_street2')]" position="before">
+      <t t-set="show_street2_field"
+         t-value="address_type == 'billing' and website.use_billing_address_street2 or
+                  address_type == 'delivery' and website.use_shipping_address_street2 or
+                  partner_id == website_sale_order.partner_shipping_id.id == website_sale_order.partner_invoice_id.id
+                  and website.use_shipping_address_street2"/>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class,'div_street2')]" position="attributes">
+      <attribute name="t-attf-style">#{ not show_street2_field and 'display: none;' }</attribute>
+      <attribute name="t-att-disabled">'true' if not show_street2_field else None</attribute>
+    </xpath>
+
+    <!-- =================== CITY =================== -->
+    <xpath expr="//div[contains(@t-attf-class,'div_city')]" position="before">
+      <t t-set="show_city_field"
+         t-value="address_type == 'billing' and website.use_billing_address_city or
+                  address_type == 'delivery' and website.use_shipping_address_city or
+                  partner_id == website_sale_order.partner_shipping_id.id == website_sale_order.partner_invoice_id.id
+                  and website.use_shipping_address_city"/>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class,'div_city')]" position="attributes">
+      <attribute name="t-attf-style">#{ not show_city_field and 'display: none;' }</attribute>
+      <attribute name="t-att-disabled">'true' if not show_city_field else None</attribute>
+    </xpath>
+
+    <!-- =================== STATE =================== -->
+    <xpath expr="//div[contains(@t-attf-class,'div_state')]" position="before">
+      <t t-set="show_state_field"
+         t-value="address_type == 'billing' and website.use_billing_address_state or
+                  address_type == 'delivery' and website.use_shipping_address_state or
+                  partner_id == website_sale_order.partner_shipping_id.id == website_sale_order.partner_invoice_id.id
+                  and website.use_shipping_address_state"/>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class,'div_state')]" position="attributes">
+      <attribute name="t-attf-style">#{ not show_state_field and 'display: none;' }</attribute>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class,'div_state')]/select" position="attributes">
+      <attribute name="t-att-disabled">'true' if not show_state_field else None</attribute>
+    </xpath>
+
+    <!-- =================== ZIP =================== -->
+    <!-- <xpath expr="//t[@t-if='zip_before_city']" position="before">
+      <t t-set="show_zip_field"
+         t-value="address_type == 'billing' and website.use_billing_address_zip or
+                  address_type == 'delivery' and website.use_shipping_address_zip or
+                  partner_id == website_sale_order.partner_shipping_id.id == website_sale_order.partner_invoice_id.id
+                  and website.use_shipping_address_zip"/>
+    </xpath>
+    <xpath expr="//t[@t-if='zip_before_city']/div" position="attributes">
+      <attribute name="t-attf-style">#{ not show_zip_field and 'display: none;' }</attribute>
+    </xpath>
+    <xpath expr="//t[@t-if='zip_before_city']/div/input" position="attributes">
+      <attribute name="t-att-disabled">'true' if not show_zip_field else None</attribute>
+    </xpath>
+    <xpath expr="//t[@t-if='not zip_before_city']/div" position="attributes">
+      <attribute name="t-attf-style">#{ not show_zip_field and 'display: none;' }</attribute>
+    </xpath>
+    <xpath expr="//t[@t-if='not zip_before_city']/div/input" position="attributes">
+      <attribute name="t-att-disabled">'true' if not show_zip_field else None</attribute>
+    </xpath> -->
+
+    <!-- =================== COUNTRY =================== -->
+    <xpath expr="//div[contains(@t-attf-class,'div_country')]" position="before">
+      <t t-set="hide_country_field"
+         t-value="address_type == 'billing' and not website.use_billing_address_country or
+                  address_type == 'delivery' and not website.use_shipping_address_country"/>
+      <t t-set="is_country_unchangeable"
+         t-value="address_type == 'billing' and website.default_billing_country_id and website.default_billing_country_only
+                  or address_type == 'delivery' and website.default_shipping_country_id and website.default_shipping_country_only"/>
+      <t t-set="is_country_select_disabled"
+         t-value="is_country_unchangeable and not hide_country_field"/>
+      <t t-if="is_country_select_disabled">
+        <input type="hidden" name="country_id" t-att-value="country.id"/>
+      </t>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class,'div_country')]/select" position="attributes">
+      <attribute name="t-att-disabled">'true' if is_country_select_disabled else None</attribute>
+      <attribute name="t-att-name">'country_id' if not is_country_select_disabled else None</attribute>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class,'div_country')]" position="attributes">
+      <attribute name="t-attf-style">#{ hide_country_field and 'display: none;' }</attribute>
+    </xpath>
+    <xpath expr="//div[contains(@t-attf-class,'div_country')]/select/option" position="attributes">
+      <attribute name="t-att-disabled">
+        'true' if address_type == 'billing' and website.default_billing_country_id and website.default_billing_country_only and c.id != website.default_billing_country_id.id
+        or address_type == 'delivery' and website.default_shipping_country_id and website.default_shipping_country_only and c.id != website.default_shipping_country_id.id
+        else None
+      </attribute>
+    </xpath>
+
+    <!-- =================== REQUIRED FIELDS =================== -->
+    <xpath expr="//input[@name='required_fields']" position="attributes">
+      <attribute name="t-att-value">
+        'phone,name' \
+        if address_type == 'billing' and website.use_billing_address_phone and website.billing_address_phone_required \
+        or address_type == 'delivery' and website.use_shipping_address_phone and website.shipping_address_phone_required \
+        else 'name'
+      </attribute>
+    </xpath>
+
+  </template>
+
+</odoo>

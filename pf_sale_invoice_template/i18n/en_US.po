@@ -1,0 +1,276 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Language: en_US\n"
+"Language-Team: English\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+
+msgid "Order Number"
+msgstr "Order Number:"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "Invoice Number"
+msgstr ":Invoice Number"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "Confirmation Number"
+msgstr ":Confirmation Number"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "Date"
+msgstr ":Date"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "Valid Until"
+msgstr ":Valid Until"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "Company ID"
+msgstr ":Company ID"
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "phone"
+msgstr ":Phone"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "Email:"
+msgstr "Email:"
+
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "Site"
+msgstr "Site"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid ":Site"
+msgstr ":Site"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+
+msgid ":Email"
+msgstr ":Email"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "Website:"
+msgstr "Website:"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_picking
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+msgid "To"
+msgstr "To:"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_picking
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+
+msgid "VAT/ID"
+msgstr "VAT/ID:"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_delivery_document
+msgid "ID/Tax No"
+msgstr "ID/Tax No:"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+msgid "Item"
+msgstr "Item"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_picking
+msgid "Quantity"
+msgstr "Quantity"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+
+msgid "Unit Price"
+msgstr "Unit Price"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+msgid "Discount"
+msgstr "Discount %"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+
+msgid "Total"
+msgstr "Total"
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+msgid "Total:"
+msgstr "Total:"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+
+msgid "Total before VAT"
+msgstr "Total Before VAT:"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+
+
+msgid "Total including VAT"
+msgstr "Total including VAT:"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_picking
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+
+msgid "Note"
+msgstr "Note:"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_picking
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+msgid "Company"
+msgstr "Company Signature:"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "Page"
+msgstr "Page"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "from"
+msgstr "from"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_delivery_document
+msgid "Delivery Number"
+msgstr "Delivery Number:"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_picking
+msgid "Product"
+msgstr "Product"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_delivery_document
+msgid "Ordered"
+msgstr "Ordered"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_delivery_document
+msgid "Delivered"
+msgstr "Delivered"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_delivery_document
+msgid "units"
+msgstr "units"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_delivery_document
+msgid "Remaining quantities not yet delivered:"
+msgstr "Remaining quantities not yet delivered:"
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_delivery_document
+msgid "From"
+msgstr "From"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_picking
+msgid "Lot"
+msgstr "Lot/Serial Number"
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_picking
+msgid "Product Barcode"
+msgstr "Product Barcode"
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+msgid "Description"
+msgstr "Description"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+msgid "Amount"
+msgstr "Amount"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+msgid "Taxes"
+msgstr "Taxes"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+msgid "Discounts"
+msgstr "Discount"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+msgid "Qty"
+msgstr "Qty"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+msgid "Date Req"
+msgstr "Date Req."
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "Vendor bill"
+msgstr "Vendor bill:"

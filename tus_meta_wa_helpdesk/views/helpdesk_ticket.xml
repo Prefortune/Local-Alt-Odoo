@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="view_order_form_inherit_wa_helpdesk" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.wa.helpdesk.inherit</field>
+        <field name="model">sh.helpdesk.ticket</field>
+        <field name="inherit_id" ref="sh_all_in_one_helpdesk.sh_helpdesk_ticket_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_closed']" position="after">
+                <button
+                    name="%(tus_meta_whatsapp_base.action_wa_compose_message_wizard)d"
+                    type="action"
+                    string="Send by WhatsApp"
+                    groups="tus_meta_wa_helpdesk.whatsapp_group_helpdesk_user"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

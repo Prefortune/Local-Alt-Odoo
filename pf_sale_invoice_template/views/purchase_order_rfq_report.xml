@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<template id="report_purchasequotation" inherit_id="purchase.report_purchasequotation">
+    <xpath expr="//t[@t-call='purchase.report_purchasequotation_document']" position="replace">
+        <t t-call="pf_sale_invoice_template.report_purchaseorder_document" t-lang="o.partner_id.lang">
+        </t>
+    </xpath>
+</template>
+</odoo>

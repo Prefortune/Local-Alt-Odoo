@@ -1,0 +1,16 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="view_automation_form_inherit_wa_helpdesk_stage" model="ir.ui.view">
+        <field name="name">helpdesk.ticket.wa.helpdesk.stage.automation.inherit</field>
+        <field name="model">helpdesk.stages</field>
+        <field name="inherit_id" ref="sh_all_in_one_helpdesk.helpdesk_stages_form_view" />
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='mail_template_ids']" position="after">
+                <field
+                    name="wa_template_id"
+                    domain="[('model_id.model','=','sh.helpdesk.ticket')]"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

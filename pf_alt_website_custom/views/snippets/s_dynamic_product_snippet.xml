@@ -1,0 +1,73 @@
+    <!-- <template id="dynamic_aq_snippet" name="product dynamic snippet">
+        <div class="dynamic-product-snippet">
+            <h3>Products Starting with 'Aq'</h3>
+            <ul class="product-list">
+            </ul>
+        </div>
+    </template>
+     -->
+    
+
+        <!-- <template id="website_snippet_dynamic_aq" name="Dynamic AQ Snippet">
+            <div class="o_website_snippet" data-snippet="dynamic_aq_snippet">
+                <t t-snippet="dynamic_aq_snippet"/>
+            </div>
+        </template> -->
+
+        <!-- <record id="pf_dynamic_snippet_product_js" model="ir.asset">
+            <field name="name">Dynamic AQ Product Snippet</field>
+            <field name="bundle">web.assets_frontend</field>
+            <field name="path">pf_alt_website_custom/static/src/snippets/s_dynamic_product_snippet/000.js</field>
+        </record> -->
+
+        <!-- <template id="external_snippets" inherit_id="website.snippets" priority="8">
+            <xpath expr="//div[@id='snippet_content']//t[@t-snippet][last()]" position="after">
+                <t t-snippet="pf_alt_website_custom.dynamic_aq_snippet"/>
+          </xpath>
+        </template> 
+
+        <template id="product_list" name="product test snipeet">
+        <section class="container dynamic_snippet">
+            <h3 class="text-center">Product List</h3>
+            <div class="row">
+                <t t-foreach="data" t-as="product">
+                    <div class="p-3 col-md-3">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title text-center"
+                                    t-esc="product['product']"/>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item text-center"
+                                    t-esc="product['price']"/>
+                            </ul>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </section>
+    </template>-->
+   
+<odoo>
+ <template id="product_list" name="product test snipeet">
+        <section class="container dynamic_snippet">
+            <h3 class="text-center">Product List</h3>
+            <div class="row">
+                <t t-foreach="data" t-as="product">
+                    <div class="p-3 col-md-3">
+                        <div class="card" style="width: 18rem;">
+                            <div class="card-body">
+                                <h5 class="card-title text-center"
+                                    t-esc="product['product']"/>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item text-center"
+                                    t-esc="product['price']"/>
+                            </ul>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </section>
+    </template>-
+</odoo>

@@ -1,0 +1,18 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="crm_lead_view_form_inherit_wa_sale" model="ir.ui.view">
+        <field name="name">crm.lead.form.wa.crm.inherit</field>
+        <field name="model">crm.lead</field>
+        <field name="inherit_id" ref="crm.crm_lead_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_set_won_rainbowman']" position="before">
+                <button
+                    name="%(tus_meta_whatsapp_base.action_wa_compose_message_wizard)d"
+                    type="action"
+                    string="Send Message by WhatsApp"
+                    groups="tus_meta_wa_crm.whatsapp_group_crm_user"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

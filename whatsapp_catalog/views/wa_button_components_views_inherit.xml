@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<odoo>
+    <record id="wa_buttons_form_view_inherit" model="ir.ui.view">
+        <field name="name">wa.buttons.form.view.inherit</field>
+        <field name="model">wa.button.component</field>
+        <field name="inherit_id" ref="tus_meta_whatsapp_base.wa_button_component_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr='//field[@name="phone_number"]' position='after'>
+                <field name="product_retailer_id" readonly="button_type != 'CATALOG'"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="wa_buttons_tree_view_inherit" model="ir.ui.view">
+        <field name="name">wa.buttons.tree.view.inherit</field>
+        <field name="model">wa.button.component</field>
+        <field name="inherit_id" ref="tus_meta_whatsapp_base.wa_button_component_view_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr='//field[@name="phone_number"]' position='after'>
+                <field name="product_retailer_id" readonly="button_type != 'CATALOG'"/>
+            </xpath>
+        </field>
+    </record>
+    <record id="wa_template_components_form_view_inherit" model="ir.ui.view">
+        <field name="name">wa.components.form.form</field>
+        <field name="model">components</field>
+        <field name="inherit_id" ref="tus_meta_whatsapp_base.components_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr='//field[@name="wa_button_ids"]//field[@name="phone_number"]' position='after'>
+                <field name="product_retailer_id" readonly="button_type != 'CATALOG'" />
+            </xpath>
+        </field>
+    </record>
+</odoo>

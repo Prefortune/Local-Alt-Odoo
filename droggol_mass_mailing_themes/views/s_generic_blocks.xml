@@ -1,0 +1,264 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="dr_social_links">
+
+        <t t-set="social_links" t-value="company_id._get_social_media_links()"/>
+
+        <a t-att-href="social_links.get('social_facebook')" aria-label="Facebook" title="Facebook">
+            <span class="fa fa-facebook"></span>
+        </a>&amp;nbsp;&amp;nbsp;
+        <a t-att-href="social_links.get('social_linkedin')" style="margin-left:10px" aria-label="LinkedIn" title="LinkedIn">
+            <span class="fa fa-linkedin"></span>
+        </a>&amp;nbsp;&amp;nbsp;
+        <a t-att-href="social_links.get('social_twitter')" style="margin-left:10px" aria-label="Twitter" title="Twitter">
+            <span class="fa fa-twitter"></span>
+        </a>&amp;nbsp;&amp;nbsp;
+        <a t-att-href="social_links.get('social_instagram')" style="margin-left:10px" aria-label="Instagram" title="Instagram">
+            <span class="fa fa-instagram"></span>
+        </a>
+    </template>
+
+    <template id="droggol_logo_template" name="Mail logo">
+        <a t-att-href="(company_id.website) or '#'" style="text-decoration:none;float:none;">
+            <img class="img img-fluid" border="0" t-att-src="_logo_url" style="height:auto;width:120px;" alt="Your Logo" />
+        </a>
+    </template>
+
+    <template id="d_mail_general_header">
+        <div t-attf-class="#{_parent_classes} o_mail_snippet_general d_bg_color">
+            <div class="o_mail_table_styles container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8 pt16 pb16">
+                        <t t-call="droggol_mass_mailing_themes.droggol_logo_template"/>
+                    </div>
+                    <div class="col-lg-4 text-end pt16 pb16 o_mail_no_resize">
+                        <t t-call="droggol_mass_mailing_themes.dr_social_links">
+                            <t t-set="_classes" t-value="''"/>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_center_header">
+        <div t-attf-class="#{_parent_classes} o_mail_snippet_general d_bg_color">
+            <div class="o_mail_table_styles container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 pt16 pb16">
+                        <span><span t-attf-class="#{_text_color} font-weight-bold">CALL US: </span> 1111-111-111</span>
+                    </div>
+                    <div class="col-lg-4 pt16 pb16">
+                        <t t-call="droggol_mass_mailing_themes.droggol_logo_template"/>
+                    </div>
+                    <div class="col-lg-4 text-end pt16 pb16 o_mail_no_resize">
+                        <span class="pr-3"><a href="#" t-attf-class="#{_text_color} font-weight-bold">ABOUT US</a></span>
+                        <span class=""><a href="#" t-attf-class="#{_text_color} font-weight-bold">PRODUCTS</a></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_jumbo_header">
+        <div t-attf-class="#{_parent_classes} o_mail_snippet_general d_bg_color">
+            <div class="o_mail_table_styles container">
+                <div t-attf-class="row #{_pre_bg_color} d_bg_color align-items-center">
+                    <div class="col-lg-12 text-end pt8 pb8">
+                        <span class="pr-3"><a href="/" t-attf-class="#{_pre_text_color} font-weight-bold">MEN</a></span>
+                        <span class="pr-3"><a href="/" t-attf-class="#{_pre_text_color} font-weight-bold">WOMEN</a></span>
+                        <span><a href="/" t-attf-class="#{_pre_text_color} font-weight-bold">KIDS</a></span>
+                    </div>
+                </div>
+                <div t-attf-class="row align-items-center d_bg_color #{_bg_color}">
+                    <div class="col-lg-4 text-center pt16 pb16">
+                        <t t-call="droggol_mass_mailing_themes.droggol_logo_template"/>
+                    </div>
+                    <div class="col-lg-8 text-end pt16 pb16">
+                        <h4 t-attf-class="#{_text_color2} font-weight-bold" style="margin:0px;">HELLO SMILES!</h4>
+                        <h4 t-attf-class="#{_text_color2} font-weight-bold" style="margin:0px;">YOU'RE A <span t-attf-class="#{_text_color} text-primary">STAR</span>!
+                        </h4>
+                        <small>Shop and earn rewards</small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_pre_header">
+        <div t-attf-class="#{_parent_classes} o_mail_snippet_general">
+            <div class="o_mail_table_styles container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 pt8 pb8">
+                        <span><span t-attf-class="#{_text_color} font-weight-bold">CALL US: </span> 1111-111-111</span>
+                    </div>
+                    <div class="col-lg-8 text-end pt8 pb8 o_mail_no_resize">
+                        <span class="pr-3">
+                            <a href="#" t-attf-class="#{_text_color} font-weight-bold">ABOUT US</a>
+                        </span>
+                        <span class="">
+                            <a href="#" t-attf-class="#{_text_color} font-weight-bold">PRODUCTS</a>
+                        </span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_footer_grid">
+        <div t-attf-class="#{_parent_classes} d_border_option">
+            <div class="container p-3">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <div class="p-3">
+                            <a t-att-href="(company_id.website) or '#'" style="text-decoration:none;display:block;float:none;">
+                                <img class="img img-fluid" border="0" t-att-src="_logo_url" style="height:auto;width:120px;" alt="Your Logo" />
+                            </a>
+                            <h5 t-attf-class="#{_content} font-weight-bold my-5">With live updates and regular emails, you'll always be the first to know about our latest arrivals and fashion tips.</h5>
+                            <small t-attf-class="#{_content}">
+                                You have received this mail because you have subscribed for a newsletter at our website.
+                            </small>
+                            <div class="mb-4 o_mail_footer_links">
+                                <a role="button" href="/unsubscribe_from_list" t-attf-class="#{_text_color} p-0 btn d_font_small btn-sm btn-link">Unsubscribe</a> | <a role="button" href="/contactus" t-attf-class="#{_text_color} p-0 btn d_font_small btn-sm btn-link" contenteditable="true">Contact</a>
+                            </div>
+                            <small t-attf-class="#{_text_color} d-block mb-1">Your company name here with some details</small>
+                            <small t-attf-class="#{_text_color} d-block mb-1">27 S smallecos Ranch Loop, Chandler,az, 85248  United States</small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_smooth_footer">
+        <div t-attf-class="#{_parent_classes} d_border_option">
+            <div class="container p-3">
+                <div class="row align-items-center">
+                    <div class="col-lg-12 text-center">
+                        <div class="p-5">
+                            <h5 t-attf-class="#{_content} font-weight-bold mb-3">FOLLOW US ON</h5>
+                            <t t-call="droggol_mass_mailing_themes.dr_social_links">
+                                <t t-set="_classes" t-value="_icon +' fa-2x'"/>
+                            </t>
+                            <div class="p-2">
+                                <p t-attf-class="#{_content} mb-0" style="font-size:11px;">Sent with <i t-attf-class="fa fa-heart #{_text_color}"/> from My shop.</p>
+                            </div>
+                            <div class="p-1">
+                                <p t-attf-class="#{_content} mb-0" style="font-size:10px;">
+                                    You have received this mail because you have subscribed for a newsletter at our website.
+                                    You can always unsubscribe from our mailing list, by clicking on Unsubscribe You can also reply to this message,
+                                    including unsubscribe in the topic.
+                                </p>
+                            </div>
+                            <div class="o_mail_footer_links">
+                                <a role="button" href="/unsubscribe_from_list" t-attf-class="#{_text_color} btn d_font_small btn-link">Unsubscribe</a> | <a role="button" href="/contactus" t-attf-class="#{_text_color} btn d_font_small btn-link" contenteditable="true">Contact</a>
+                            </div>
+                            <div>
+                                <p t-attf-class="#{_content} o_mail_footer_copy" style="font-size:10px;"><span class="fa fa-copyright" role="img" aria-label="Copyright" title="Copyright"></span> 2019 All Rights Reserved</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_footer_logo">
+        <div t-attf-class="#{_parent_classes} d_border_option">
+            <div class="container p-3">
+                <div class="row align-items-center">
+                    <div class="col-lg-12 text-center pt-2 mb-4">
+                        <a t-att-href="(company_id.website) or '#'" style="text-decoration:none;display:block;float:none;">
+                            <img class="img img-fluid" border="0" t-att-src="_logo" style="height:auto;width:120px;" alt="Your Logo" />
+                        </a>
+                    </div>
+                    <div class="col-lg-12 text-center pt-4 mb-4">
+                        <span class="pr-3">
+                            <a href="#" t-attf-class="#{_text_color}">ABOUT US</a>
+                        </span>
+                        <span class="pr-3">
+                            <a href="#" t-attf-class="#{_text_color}">PRODUCTS</a>
+                        </span>
+                        <span class="pr-3">
+                            <a href="#" t-attf-class="#{_text_color}">CONTACT US</a>
+                        </span>
+                        <span class="pr-3">
+                            <a href="#" t-attf-class="#{_text_color}">SERVICES</a>
+                        </span>
+                    </div>
+                    <div class="col-lg-12 text-center pt-4 mb-4">
+                        <t t-call="droggol_mass_mailing_themes.dr_social_links">
+                            <t t-set="_classes" t-value="_icon"/>
+                        </t>
+                    </div>
+                    <div class="col-lg-12 text-center pt-4 mb-4">
+                        <small t-attf-class="#{_text_color} d-block text-center mb-1">27 S smallecos Ranch Loop, Chandler,az, 85248  United States</small>
+                        <small t-attf-class="#{_text_color} d-block text-center mb-1">Never want to hear from us? Break our hearts and <a role="button" href="/unsubscribe_from_list" t-attf-class="#{_icon} px-1 text-primary">Unsubscribe</a></small>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_footer_mini">
+        <div t-attf-class="#{_parent_classes} d_border_option">
+            <div class="container p-3">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <small class="o_mail_footer_copy" style="font-size:10px;">
+                            <span class="fa fa-copyright" role="img" aria-label="Copyright" title="Copyright"></span> 2019 All Rights Reserved</small>
+                        <a role="button" href="/unsubscribe_from_list" t-attf-class="#{_icon} px-1 d_font_small text-primary">Unsubscribe</a> | <a role="button" href="/contactus" t-attf-class="#{_icon} d_font_small px-1 text-primary" contenteditable="true">Contact</a>
+                    </div>
+                    <div class="col-lg-4">
+                        <div class="m-2 text-center">
+                            <t t-call="droggol_mass_mailing_themes.dr_social_links">
+                                <t t-set="_classes" t-value="_icon"/>
+                            </t>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_social">
+        <div t-attf-class="#{_parent_classes} #{_border_class} d_mail_social d_border_option">
+            <div class="container p-3">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <t t-call="droggol_mass_mailing_themes.dr_social_links">
+                            <t t-set="_classes" t-value="_text_color"/>
+                        </t>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="dr_rating_widget_stars_static">
+        <t t-set="rating_avg" t-value="round(rating_avg * 100) / 100"/>
+        <t t-set="val_decimal" t-value="round(rating_avg % 1, 1)"/>
+        <t t-set="val_integer" t-value="int(rating_avg)"/>
+        <t t-set="empty_star" t-value="5 - (val_integer+1) if val_decimal else 5 - val_integer"/>
+
+        <div t-if="rating_avg" class="o_website_rating_static" t-att-style="inline_mode and 'display:inline'" t-att-title="rating_avg">
+            <t t-foreach="range(0, val_integer)" t-as="num">
+                <i class="fa fa-star" role="img"></i>
+            </t>
+            <t t-if="val_decimal">
+                <i class="fa fa-star-half-o" role="img"></i>
+            </t>
+            <t t-foreach="range(0, empty_star)" t-as="num">
+                <i class="fa fa-star text-black-25" role="img"></i>
+            </t>
+            <span class="ml-1 text-body" t-if="rating_count">
+                <span class="ml-1">(<t t-out="rating_count"/>)</span>
+            </span>
+        </div>
+        <t t-else="">
+            <br/>
+        </t>
+    </template>
+
+</odoo>

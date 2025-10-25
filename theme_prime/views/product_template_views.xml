@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="product_template_only_form_view_inherit_theme_prime" model="ir.ui.view">
+        <field name="name">product.template.product.form.inherit.theme_prime</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <page name="theme_prime" position="inside">
+                <group string="Product Description">
+                    <field name="product_description_content"/>
+                </group>
+                <group string="Recommend Use">
+                    <field name="recommend_use_content"/>
+                </group>
+                <group string="Statement">
+                    <field name="statement_content"/>
+                </group>
+                <group string="Components">
+                    <field name="components_content"/>
+                </group>
+                <group string="Read More">
+                    <field name="read_more_content"/>
+                </group>
+                <group string="Shipping Policy">
+                    <field name="shipping_policy_content"/>
+                </group>
+                <group string="The Labels">
+                    <field name="the_labels_content"/>
+                </group>
+            </page>
+        </field>
+    </record>
+</odoo>

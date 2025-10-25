@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="tus_meta_wa_pos.WaComposerPopup">
+        <div class="popup popup-confirm">
+            <header class="title drag-handle">
+                <p class="title">
+                    WA Composer
+                </p>
+            </header>
+            <main class="modal-body">
+                <div class="o_main">
+                    <div class="row" style="margin-bottom: 13px;">
+                        <span class='label'>Provider</span>
+                        <select class='provider' name='provider' t-on-change="onChangeProvider">
+                            <option></option>
+                            <t t-foreach='state.providers' t-as='provider' t-key='provider.id'>
+                                <option t-att-value='provider.id'>
+                                    <t t-esc='provider.name'/>
+                                </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="row" style="margin-bottom: 13px;">
+                        <span class='label'>Template</span>
+                        <select class='wa_template' name='template' t-on-change="onChangeTemplate">
+                            <option></option>
+                            <t t-foreach='state.templates' t-as='template' t-key='template.id'>
+                                    <option t-att-value='template.id'>
+                                        <t t-esc='template.name'/>
+                                    </option>
+                            </t>
+                        </select>
+                    </div>
+                    <div class="row" style="margin-bottom: 13px;"><span class="label"> Phone </span>
+                        <input class="provider" type='text' style="pointer-events: none;" name="phone" id="phone" t-model="state.mobile" readonly="readonly"><t t-esc='state.mobile'/></input>
+                    </div>
+                    <div class="row" style="margin-bottom: 13px;padding: 0 10px;">
+                        <textarea name="message" readonly="readonly" style="pointer-events: none;" id="message" placeholder="Message...." rows="6" cols="100"></textarea>
+                    </div>
+                </div>
+            </main>
+            <footer class="footer cash-move modal-footer">
+                <div class="button cancel sendMessage" t-on-click="onClick">
+                                    Send Message
+                </div>
+                <div class="button cancel wa_cancel" t-on-click="cancel">
+                                    Cancel
+                </div>
+            </footer>
+        </div>
+    </t>
+</templates>
+
+
+

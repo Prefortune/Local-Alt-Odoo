@@ -1,0 +1,17 @@
+<odoo>
+    <data>
+
+        <!-- Inherit Form View to Modify it -->
+        <record id="inherit_sale_view_order_form" model="ir.ui.view">
+            <field name="name">sale.order.view.form.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook//page//field[@name='tag_ids']" position="after">
+                    <field name="wa_payment_id" string="WA Payment Id"/>
+                </xpath>
+
+            </field>
+        </record>
+    </data>
+</odoo>

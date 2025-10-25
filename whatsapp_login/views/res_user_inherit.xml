@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record model="ir.ui.view" id="res_users_wa_view_search_inherit">
+        <field name="name">res.users.view.search.inherit.wa.totp</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_search" />
+        <field name="arch" type="xml">
+            <xpath expr="//search" position="inside">
+                <separator/>
+                <filter name="totp_whatsapp_enabled" string="Two-factor authentication Enabled" domain="[('totp_whatsapp_enabled','!=',False)]"/>
+                <filter name="totp_whatsapp_disabled" string="Two-factor authentication Disabled" domain="[('totp_whatsapp_enabled','=',False)]"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record model="ir.ui.view" id="view_whatsapp_totp_form">
+        <field name="name">user form: add whatsapp totp status</field>
+        <field name="model">res.users</field>
+        <field name="inherit_id" ref="base.view_users_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='security']" position="inside">
+                <field name="totp_whatsapp_enabled" invisible="1"/>
+                    <!-- For own user, allow to activate the two-factor Authentication -->
+                    <div>
+                        <div class="o_horizontal_separator d-flex align-items-center mt-2 mb-4 text-uppercase fw-bolder small">Two-factor Authentication using WhatsApp
+                                <div invisible="totp_whatsapp_enabled">
+                                    <button invisible="id == uid" name="action_totp_whatsapp_enable_wizard"
+                                            disabled="1" type="object" class="fa fa-toggle-off o_auth_2fa_btn disabled" aria-label="Enable 2FA"></button>
+                                            <button invisible="id != uid" name="action_totp_whatsapp_enable_wizard"
+                                            type="object" class="fa fa-toggle-off o_auth_2fa_btn disabled pe-auto" aria-label="Enable 2FA"></button>
+                                </div>
+                                <button invisible="not totp_whatsapp_enabled" name="action_whatsapp_totp_disable" type="object"
+                                class="fa fa-toggle-on o_auth_2fa_btn text-primary enabled" aria-label="Disable 2FA"></button>
+                            </div>
+                            <span invisible="totp_whatsapp_enabled" class="text-muted">
+                                Two-factor Authentication ("2FA") with WhatsApp
+                                The first one is done with your password or login with otp and the second one with a code you on whatsapp number provided in user partner.
+                                </span>
+                                <span invisible="not totp_whatsapp_enabled" class="text-muted">This account is protected!</span>
+                        </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

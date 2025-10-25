@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="dr_color_palette_field" owl="1">
+        <div class="color_container" t-ref="dr-color-container">
+            <h5>
+                Brand colors
+                <button type="button" class="btn btn-link p-0 d_mail_tooltip_1" data-toggle="tooltip" data-placement="top">
+                    <i class="fa fa-question-circle"></i>
+                </button>
+            </h5>
+            <t t-set="color_list" t-value="['primary', 'secondary']"/>
+            <t t-call="drgl_mail_theme.color_palette_pills"/>
+            <t t-set="color_list" t-value="['info', 'warning', 'danger']"/>
+            <h5 class="mt-3">
+                Alternative colors
+                <button type="button" class="btn btn-link p-0 d_mail_tooltip_2" data-toggle="tooltip" data-placement="top">
+                    <i class="fa fa-question-circle"></i>
+                </button>
+            </h5>
+            <t t-call="drgl_mail_theme.color_palette_pills"/>
+
+            <h5 class="mt-3">
+                Text color
+                <button type="button" class="btn btn-link p-0 d_mail_tooltip_3" data-toggle="tooltip" data-placement="top">
+                    <i class="fa fa-question-circle"></i>
+                </button>
+            </h5>
+            <t t-set="color_list" t-value="['header', 'content']"/>
+            <t t-call="drgl_mail_theme.color_palette_pills"/>
+
+            <div class="mt-4">
+                <small class="text-muted">
+                    Have a question for mass mailling theme?
+                    <div>
+                        <a target="_blank" href="https://www.droggol.com/contactus">
+                            <b>Get free support </b>
+                            <i class="fa fa-arrow-right"></i>
+                        </a>
+                    </div>
+                </small>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="drgl_mail_theme.color_palette_pills" owl="1">
+        <t t-foreach="color_list" t-as="color" t-key="color_index">
+            <button title="Click to edit" class="btn btn-dafault btn-sm d-flex align-items-center w-100 mt-2 justify-content-between d_theme_customize_color">
+                <span class="text-capitalize text-600 d-palette-color-name" t-esc="color"/>
+                <div class="o_field_color d-flex d-palette-color-preview" t-attf-style="background: #{colors[color] or 'url(/web/static/img/transparent.png)'}">
+                    <input t-on-click.stop="" class="w-100 h-100 opacity-0" type="color" t-att-value="colors[color]" t-on-change="(ev) => this._onColorChange(color, ev.target.value)" />
+                </div>
+            </button>
+        </t>
+    </t>
+</templates>

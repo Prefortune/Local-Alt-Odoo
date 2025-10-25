@@ -1,0 +1,8 @@
+<odoo>
+    <template id="checkout_address_custom" inherit_id="website_sale.address" name="Checkout Address Custom Country">
+        <xpath expr="//div[contains(@t-attf-class, 'div_country')]" position="replace">
+            <!-- Hide the country field -->
+            <input type="hidden" name="country_id" t-att-value="checkout.get('country_id')"/>
+        </xpath>
+    </template>
+</odoo>

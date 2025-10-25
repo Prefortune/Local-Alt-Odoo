@@ -1,0 +1,17 @@
+
+<odoo>
+    <menuitem id="menu_product_image_import" name="Product Image Import" parent="stock.menu_stock_config_settings"/>
+
+    <!-- Corrected Action Definition -->
+    <record model="ir.actions.act_window" id="action_import_image_wizard">
+        <field name="name">Import Image Wizard</field>
+        <field name="res_model">import.image.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="tus_product_image_bulk_import.view_import_image_wizard_form"/>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_import_images" name="Import Images"
+              parent="tus_product_image_bulk_import.menu_product_image_import"
+              action="action_import_image_wizard"/>
+</odoo>

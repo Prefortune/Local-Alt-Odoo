@@ -1,0 +1,28 @@
+<?xml version="1.0" ?>
+<odoo>
+    <record id="view_picking_form_inherit_wa_picking" model="ir.ui.view">
+        <field name="name">stock.picking.form.inherit.wa.picking</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_cancel']" position="before">
+                <button
+                    name="%(tus_meta_whatsapp_base.action_wa_compose_message_wizard)d"
+                    type="action"
+                    string="Send by WhatsApp"
+                    context="{'report': 'stock.action_report_picking'}"
+                    groups="tus_meta_wa_stock_picking.whatsapp_group_stock_user"
+                    invisible="state in ['done']"
+                />
+                <button
+                    name="%(tus_meta_whatsapp_base.action_wa_compose_message_wizard)d"
+                    type="action"
+                    string="Send by WhatsApp"
+                    context="{'report': 'stock.action_report_delivery'}"
+                    groups="tus_meta_wa_stock_picking.whatsapp_group_stock_user"
+                    invisible="state in ['draft','confirmed','assigned']"
+                />
+            </xpath>
+        </field>
+    </record>
+</odoo>

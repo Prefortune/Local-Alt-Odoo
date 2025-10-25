@@ -1,0 +1,291 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_picking" inherit_id="stock.report_picking">
+        <xpath expr="//t[@t-call='web.external_layout']" position="replace">
+            <t t-set="o" t-value="o.with_context(lang=lang)"/>
+            <t t-foreach="docs" t-as="o">
+                <t t-call="pf_sale_invoice_template.custom_standard_external_layout">
+                    <t t-set="company" t-value="company_id or request.env.user.company_id"/>
+                    <t t-set="lang" t-value="o.partner_id.lang or 'en_US'"/>
+                    <t t-set="direction" t-value="'rtl' if lang.startswith('he') or lang.startswith('ar') or lang.startswith('fa') else 'ltr'"/>
+                    <br></br><br></br>
+                    <t t-if="direction == 'rtl'">
+                        <div class="customer-info" style="margin-top: 40px; padding: 10px; background-color: #fff; border: 1px solid #ddd; border-radius: 3px; direction: rtl; text-align: right;">
+                            <!-- <div><strong t-translation="on">To:</strong> <span t-field="o.partner_id.name"/></div> -->
+                            <div><strong t-translation="on">אֶל:</strong> <span t-field="o.partner_id.name"/></div>
+                            <!-- <div t-if="o.partner_id.vat"><strong t-translation="on">ID/Tax No:</strong> <span t-field="o.partner_id.vat"/></div>    -->
+                            <div t-if="o.partner_id.vat"><strong t-translation="on">ת.ז/.ע.מ:</strong> <span t-field="o.partner_id.vat"/></div>   
+
+                        </div>
+                        <br></br>
+
+                        <div class="row">
+                            <div class="col-4 offset-8" name="right_box" style="text-align: right;">
+                                <div t-field="o.name" t-options="{'widget': 'barcode', 'width': 600, 'height': 100, 'img_style': 'width:300px;height:50px;'}">
+                                    <div class="bg-light border-1 rounded d-flex flex-column align-items-center justify-content-center p-3 opacity-75 text-muted text-center">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="page" style="margin-top: 20px;">
+                            <table class="table table-sm" t-if="o.move_line_ids and o.move_ids_without_package" style="width: 100%;text-align:right; border-collapse: collapse;"> 
+                                <t t-set="has_barcode" t-value="any(move_line.product_id and move_line.product_id.sudo().barcode or move_line.package_id for move_line in o.move_line_ids)"/>
+                                <t t-set="has_serial_number" t-value="any(move_line.lot_id or move_line.lot_name for move_line in o.move_line_ids)" groups="stock.group_production_lot"/>
+                                <thead  style="background-color: #f0f0f0;">
+                                    <tr>
+                                        <th name="th_barcode" class="text-center" t-if="has_barcode" style="text-align:right">
+                                            <!-- <strong t-translation="on">Product Barcode</strong> -->
+                                            <strong>ברקוד מוצר</strong>
+
+                                        </th>
+                                        <th name="th_serial_number" class="text-center" t-if="has_serial_number" style="text-align:right">
+                                            <!-- <strong t-translation="on">Lots</strong> -->
+                                             <strong>מגרש/מספר סידורי</strong>
+                                        </th>
+
+                                        <th name="th_to" t-if="o.picking_type_id.code != 'outgoing'" groups="stock.group_stock_multi_locations" style="text-align:right">
+                                            <!-- <strong t-translation="on">To</strong> -->
+                                             <strong>אֶל</strong>
+                                        </th>
+
+                                        <th name="th_from" t-if="o.picking_type_id.code != 'incoming'" align="right" groups="stock.group_stock_multi_locations">
+                                            <!-- <strong t-translation="on">From</strong> -->
+                                            <strong>מִן</strong>
+                                        </th>
+
+                                        <th style="text-align:right">
+                                            <!-- <strong t-translation="on">Quantity</strong> -->
+                                             <storng>כַּמוּת</storng>
+
+                                        </th>
+                                        <th name="th_product" style="text-align:right">
+                                            <!-- <strong t-translation="on">Product</strong> -->
+                                             <strong>מוּצָר</strong>
+                                        </th>
+                                
+                                    </tr>
+                                </thead>
+                                <t t-set="row_index" t-value="0"/>
+                                <tbody>
+                                    <!-- product barcode -->
+                                    <t t-set="product_barcode" t-value="None"/> 
+                                    <t t-foreach="o.move_line_ids_without_package.sorted(lambda ml: (ml.location_id.complete_name, ml.location_dest_id.complete_name))" t-as="ml">
+                                        <!-- alternate between #f9f9f9 (even) and #f0f0f0 (odd) -->
+                                        <tr t-att-style="'background-color: ' + ('#f9f9f9' if row_index % 2 == 0 else '#f0f0f0') + ';'">
+                                            <!-- Barcode -->
+                                            <td class="text-center" t-if="has_barcode" style="padding:4px; text-align:right;">
+                                                <t t-if="product_barcode != ml.product_id.barcode">
+                                                    <span t-if="ml.product_id and ml.product_id.barcode">
+                                                        <div t-field="ml.product_id.barcode" t-options="{'widget': 'barcode', 'symbology': 'auto', 'width': 400, 'height': 100, 'quiet': 0, 'img_style': 'height:35px;'}">
+                                                            <div class="bg-light border-1 rounded d-flex flex-column align-items-center justify-content-center px-1 py-2 opacity-75 text-muted text-center">
+                                                            </div>
+                                                        </div>
+                                                    </span>
+                                                    <t t-set="product_barcode" t-value="ml.product_id.barcode"/>
+                                                </t>
+                                            </td>
+                                            
+                                            <!-- Lot/Serial Number -->
+                                            <td class="text-center h6" t-if="has_serial_number">
+                                                <span t-if="has_serial_number and (ml.lot_id or ml.lot_name)" t-esc="ml.lot_id.name or ml.lot_name" t-options="{'widget': 'barcode', 'humanreadable': 1, 'width': 400, 'height': 100, 'img_style': 'width:100%;height:35px;'}">
+                                                    <div class="bg-light border-1 rounded d-flex flex-column align-items-center justify-content-center px-1 py-2 opacity-75 text-muted text-center">
+                                                    
+                                                    </div>
+                                                </span>
+                                            </td>
+
+                                                <!-- To -->
+                                                <td t-if="o.picking_type_id.code != 'outgoing'" groups="stock.group_stock_multi_locations" style="padding:4px; text-align:right;">
+                                                <span t-field="ml.location_dest_id"/>
+                                                <t t-if="ml.result_package_id">
+                                                (<span t-field="ml.result_package_id"/>)
+                                                </t>
+                                            </td>
+
+                                                <!-- From -->
+                                                <td t-if="o.picking_type_id.code != 'incoming'" groups="stock.group_stock_multi_locations" style="padding:4px; text-align:right;">
+                                                <span t-esc="ml.location_id.display_name"/>
+                                                <t t-if="ml.package_id">
+                                                (<span t-field="ml.package_id"/>)
+                                                </t>
+                                            </td>
+                            
+                                            <!-- Quantity -->
+                                            <td style="padding:4px; text-align:right;">
+                                                <span t-field="ml.quantity"/>
+                                                <span t-field="ml.product_uom_id" groups="uom.group_uom"/>
+                                                <t t-if="ml.move_id.product_packaging_id">
+                                                (<span t-field="ml.product_packaging_qty" t-options='{"widget": "integer"}'/> 
+                                                <span t-field="ml.move_id.product_packaging_id.name"/>)
+                                                </t>
+                                            </td>
+                            
+                                            <!-- Product -->
+                                            <td style="padding:4px; text-align:right;">
+                                                <span t-field="ml.product_id.display_name"/>
+                                                <br/>
+                                                <span t-if="ml.product_id.description_picking" t-field="ml.product_id.description_picking"/>
+                                            </td>
+                                                                            
+                                        </tr>
+                                        <!-- increment -->
+                                        <t t-set="row_index" t-value="row_index + 1"/>
+                                    </t>
+                                </tbody>
+                            </table>
+                            <br></br>
+                                
+                            <div class="notes-block" style="margin-top: 10px; padding: 15px; border: 1px solid #eee;height:120px; border-radius: 3px;
+                                background-color: #fafafa; font-size: 12px; text-align:right; overflow: hidden;">
+                                <!-- <div style="float: right; font-weight: bold; font-size: 14px; margin-right: 0;" t-translation="on">Notes</div> -->
+                                <div style="float: right; font-weight: bold; font-size: 14px; margin-right: 0;">:הערות</div>
+
+                                <div style="float: right; font-weight: normal;font-size:12px; margin-right: 10px;width:90%;">
+                                    <span t-out="o.note or ''" />
+                                </div>
+                            </div>
+                        </div> 
+        
+                        <section t-if="company.pf_signature" id="signature" name="Signature" style="margin-top: 20px;">
+                            <div class="row justify-content-end" style="margin-left:50px" name="signature">
+                                <div class="col-auto text-end">
+                                    <img t-att-src="image_data_uri(company.pf_signature)" 
+                                        style="max-height: 6rem; max-width: 100%; display: block;"/>
+                                    <!-- <h5 style="text-align: left;" t-translation="on">Company Signature</h5> -->
+                                        <h5 style="text-align: left;" t-translation="on">:חתימת החברה</h5>
+                                </div>
+                            </div>
+                        </section>
+                    </t>
+                        
+                    <t t-else="">
+                        <div class="customer-info" style="margin-top: 40px; padding: 10px; background-color: #fff; border: 1px solid #ddd; border-radius: 3px; text-align: left;">
+                            <div>
+                                <strong><span t-translation="on">To</span></strong>
+                                <span t-field="o.partner_id.name"/>
+                            </div>
+                            <div t-if="o.partner_id.vat">
+                                <strong><span t-translation="on">VAT/ID:</span></strong>
+                                <span t-field="o.partner_id.vat"/>
+                            </div>   
+                        </div>
+                        <br></br>
+
+                        <div class="row">
+                            <div class="col-4" name="left_box" style="text-align: left;">
+                                <div t-field="o.name" t-options="{'widget': 'barcode', 'width': 600, 'height': 100, 'img_style': 'width:300px;height:50px;'}">
+                                    <div class="bg-light border-1 rounded d-flex flex-column align-items-center justify-content-center p-3 opacity-75 text-muted text-center">
+                                        (document barcode)
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="page" style="margin-top: 20px;">
+                            <table class="table table-sm" t-if="o.move_line_ids and o.move_ids_without_package" style="width: 100%;text-align:right; border-collapse: collapse;"> 
+                                <t t-set="has_barcode" t-value="any(move_line.product_id and move_line.product_id.sudo().barcode or move_line.package_id for move_line in o.move_line_ids)"/>
+                                <t t-set="has_serial_number" t-value="any(move_line.lot_id or move_line.lot_name for move_line in o.move_line_ids)" groups="stock.group_production_lot"/>
+                                <thead  style="background-color: #f0f0f0;">
+                                    <tr>
+                                        <th name="th_product" style="text-align:left">
+                                            <strong t-translation="on">Product</strong>
+                                        </th>
+                                        <th style="text-align:left">
+                                            <strong t-translation="on">Quantity</strong>
+                                        </th>
+                                        <th name="th_from" t-if="o.picking_type_id.code != 'incoming'"  style="text-align:left" groups="stock.group_stock_multi_locations">
+                                            <strong t-translation="on">From</strong>
+                                        </th>
+                                        <th name="th_to" t-if="o.picking_type_id.code != 'outgoing'" groups="stock.group_stock_multi_locations" style="text-align:left">
+                                            <strong t-translation="on">To</strong>
+                                        </th>
+                                        <th name="th_serial_number" class="text-center" t-if="has_serial_number" style="text-align:left">
+                                           <strong t-translation="on">Lot</strong>
+                                        </th>
+                                        <th name="th_barcode" class="text-center" t-if="has_barcode" style="text-align:left">
+                                            <strong t-translation="on">Product Barcode</strong>
+                                        </th>
+                                    </tr>
+                                </thead>
+                                 <t t-set="row_index" t-value="0"/>
+                                    <tbody>
+                                        <t t-set="product_barcode" t-value="None"/> 
+                                        <t t-foreach="o.move_line_ids_without_package.sorted(lambda ml: (ml.location_id.complete_name, ml.location_dest_id.complete_name))" t-as="ml">
+                                            <tr t-att-style="'background-color: ' + ('#f9f9f9' if row_index % 2 == 0 else '#f0f0f0') + ';'">
+                                            <td style="padding:4px; text-align:left;">
+                                                <span t-field="ml.product_id.display_name"/>
+                                                <br/>
+                                                <span t-if="ml.product_id.description_picking" t-field="ml.product_id.description_picking"/>
+                                            </td>
+                                            <td style="padding:4px; text-align:left;">
+                                                <span t-field="ml.quantity"/>
+                                                <span t-field="ml.product_uom_id" groups="uom.group_uom"/>
+                                                <t t-if="ml.move_id.product_packaging_id">
+                                                (<span t-field="ml.product_packaging_qty" t-options='{"widget": "integer"}'/> 
+                                                <span t-field="ml.move_id.product_packaging_id.name"/>)
+                                                </t>
+                                            </td>
+                                            <td t-if="o.picking_type_id.code != 'incoming'" groups="stock.group_stock_multi_locations" style="padding:4px; text-align:left;">
+                                                <span t-esc="ml.location_id.display_name"/>
+                                                <t t-if="ml.package_id">
+                                                (<span t-field="ml.package_id"/>)
+                                                </t>
+                                            </td>
+                                            <td t-if="o.picking_type_id.code != 'outgoing'" groups="stock.group_stock_multi_locations" style="padding:4px; text-align:left;">
+                                                <span t-field="ml.location_dest_id"/>
+                                                <t t-if="ml.result_package_id">
+                                                (<span t-field="ml.result_package_id"/>)
+                                                </t>
+                                            </td>
+                                            <td class=" text-center h6" t-if="has_serial_number">
+                                                <span t-if="has_serial_number and (ml.lot_id or ml.lot_name)" t-esc="ml.lot_id.name or ml.lot_name" t-options="{'widget': 'barcode', 'humanreadable': 1, 'width': 400, 'height': 100, 'img_style': 'width:100%;height:35px;'}">
+                                                    <div class="bg-light border-1 rounded d-flex flex-column align-items-center justify-content-center px-1 py-2 opacity-75 text-muted text-center">
+                                                        (serial barcode)
+                                                    </div>
+                                                </span>
+                                            </td>
+                                
+                                            <td class="text-center" t-if="has_barcode" style="padding:4px; text-align:left;">
+                                                <t t-if="product_barcode != ml.product_id.barcode">
+                                                    <span t-if="ml.product_id and ml.product_id.barcode">
+                                                        <div t-field="ml.product_id.barcode" t-options="{'widget': 'barcode', 'symbology': 'auto', 'width': 400, 'height': 100, 'quiet': 0, 'img_style': 'height:35px;'}">
+                                                            <div class="bg-light border-1 rounded d-flex flex-column align-items-center justify-content-center px-1 py-2 opacity-75 text-muted text-center">
+                                                            </div>
+                                                        </div>
+                                                    </span>
+                                                    <t t-set="product_barcode" t-value="ml.product_id.barcode"/>
+                                                </t>
+                                            </td>
+                                            </tr>
+                                            <t t-set="row_index" t-value="row_index + 1"/>
+                                        </t>
+                                    </tbody>
+                            </table>
+
+                            <div class="notes-block" style="margin-top: 10px; padding: 15px; border: 1px solid #eee; height:120px; border-radius: 3px;background-color: #fafafa; font-size: 12px; text-align: left; overflow: hidden;">
+                                <div style="float: left; font-weight: bold; font-size: 14px; margin-left: 0;">
+                                    <span t-translation="on">Note</span>
+                                </div>
+                            <div style="float: left; font-weight: normal; font-size: 12px; margin-left: 10px; width: 90%;">
+                                <span t-out="o.note or ''" />
+                            </div>
+                            </div>
+                        </div>
+
+                        <section t-if="company.pf_signature" id="signature" name="Signature" style="margin-top:20px;">
+                            <div class="row justify-content-end" name="signature">
+                                <div class="col-auto text-end" style="text-align: right;">
+                                    <img t-att-src="image_data_uri(company.pf_signature)" 
+                                        style="max-height: 6rem; max-width: 5cm; display: block; margin-right: 2px; margin-left: auto;" />
+                                    <h5 style="text-align: right;margin-right:2px"> <span t-translation="on">Company</span></h5>
+                                </div>
+                            </div>
+                        </section>
+                    </t>
+                </t>
+            </t>
+            </xpath>
+    </template>
+    
+    </odoo>

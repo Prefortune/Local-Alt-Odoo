@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="whatsapp_auth_totp_view_form" model="ir.ui.view">
+            <field name="name">whatsapp_auth_totp_view_form</field>
+            <field name="model">whatsapp.auth.totp</field>
+            <field name="arch" type="xml">
+                <form string="WhatsApp Auth TOTP">
+                    <sheet>
+                        <div class="o_auth_totp_enable_2FA container">
+                            <div class="mb-3 w-100">
+                                <h3 class="fw-bold">Enter your six-digit code below</h3>
+                                <div class="mt-2">
+                                    <label for="verify_otp" class="px-0">Verification Code</label>
+                                    <div class="d-flex align-items-center">
+                                        <field required="True" name="verify_otp" autocomplete="off" class="o_field_highlight px-0 me-2" placeholder="e.g. 123456"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </sheet>
+                    <footer>
+                        <button name="activate_whatsapp_auth_totp" string="Activate" type="object" class="oe_highlight"/>
+                        <button string="Cancel" special="cancel" />
+                    </footer>
+                </form>
+            </field>
+        </record>
+    </data>
+</odoo>

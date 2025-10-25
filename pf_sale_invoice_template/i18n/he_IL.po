@@ -1,0 +1,226 @@
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0\n"
+"Language: he_IL\n"
+"Language-Team: Hebrew\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+msgid "To"
+msgstr "לכבוד:"
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+msgid "ID/Tax No:"
+msgstr "ת.ז/.ע.מ:"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+msgid "Total"
+msgstr "סה\"כ"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+msgid "Discounts"
+msgstr "הנחות"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+msgid "Unit Price"
+msgstr "מחיר ליחידה"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_picking
+msgid "Quantity"
+msgstr "כמות"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+msgid "Item"
+msgstr "פריט"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+msgid "Total before Tax"
+msgstr "סה\"כ לפני מע\"מ:"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+msgid "Total with VAT"
+msgstr "סה\"כ כולל מע\"מ:"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+
+msgid "Notes"
+msgstr ":הערות"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_saleorder_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_invoice_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_delivery_document
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+msgid "Company Signature"
+msgstr ":חתימת החברה"
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_delivery_document
+msgid "Products"
+msgstr "מוצר"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_delivery_document
+msgid "Ordered"
+msgstr "הוזמן"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_delivery_document
+msgid "Shipped"
+msgstr "נשלח"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_delivery_document
+msgid "Remaining quantities not delivered:"
+msgstr "שאר הכמויות שטרם נמסרו:"
+
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "Company Registration No:"
+msgstr "ח.פ:"
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "Phone:"
+msgstr "טלפון:"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "Email:"
+msgstr "דוא\"ל:"
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "Website:"
+msgstr "אתר:"
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "Order Numbers"
+msgstr "מספר הזמנה:"
+
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "Delivery Numbers"
+msgstr "מספר משלוח:"
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "Confirmation Numbers"
+msgstr "מספר אישור:"
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "Date:"
+msgstr "תאריך:"
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "Valid Until:"
+msgstr "בתוקף עד:"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "Invoice Numbers"
+msgstr "מספר חשבונית:"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_picking
+msgid "Product"
+msgstr "מוּצָר"
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_picking
+msgid "From"
+msgstr "מִן"
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_picking
+msgid "Lots"
+msgstr "מגרש/מספר סידורי"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_picking
+msgid "Product Barcode"
+msgstr "ברקוד מוצר"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+msgid "Description"
+msgstr "תֵאוּר"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+msgid "Date Req."
+msgstr "תאריך דרישה"
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+msgid "Taxes"
+msgstr "מיסים"
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+msgid "Amount"
+msgstr "סְכוּם"
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.report_purchaseorder_document
+msgid "Qty"
+msgstr "כמות"
+
+
+#. module: pf_sale_invoice_template
+#: model_terms:ir.ui.view,arch_db:pf_sale_invoice_template.custom_standard_external_layout
+msgid "Vendor bill"
+msgstr "חשבון ספק:"
