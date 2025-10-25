@@ -1,0 +1,10 @@
+<odoo>
+    <template id="my_error_template" name="Stripe Error Page">
+        <t t-call="website.layout">
+            <div class="container mt-5">
+                <h2 class="text-danger">Oops! Something went wrong.</h2>
+                <p><t t-esc="error_message"/></p>
+            </div>
+        </t>
+    </template>
+</odoo>

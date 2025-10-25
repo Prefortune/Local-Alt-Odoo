@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<record id="email_template_sponsorship_payment_succesfully_sponsor" model="mail.template">
+    <field name="name">Sponsorship Payment Successful</field>
+    <field name="model_id" ref="pf_event_sponsorship.model_sponsorship_payment_session"/>
+    <field name="subject">Your Sponsorship Payment Was Successful</field>
+    
+    <field name="auto_delete" eval="False"/>
+    <field name="description">Sent manually when a sponsorship payment has been successfully processed.</field>
+    <field name="body_html" type="html">
+        
+        <p>Dear Sponsor,</p>
+
+        <p>We are pleased to inform you that your payment for the sponsorship has been successfully processed.</p>
+
+        <p><strong>Sponsorship Type:</strong> <t t-out="object.sponsorship_id.get_sponsorship_type_display() or ''"/></p>
+        <p><strong>Event Name:</strong> <t t-out="object.event_id.name or ''"/></p>
+        <p><strong>Sponsorship Name:</strong> <t t-out="object.name or ''"/></p>
+        <p><strong>Payment ID:</strong> <t t-out="object.session_id or ''"/></p>
+        <p><strong>Amount:</strong> <t t-out="str(object.amount_total or 0) + ' ' + (object.currency or '')"/></p>
+        <p><strong>Status:</strong> <t t-out="object.payment_status or ''"/></p>
+
+        <p>We will contact you shortly with further details regarding the sponsorship process.</p>
+
+        <p>Thank you for supporting our event!</p>
+
+        <p>Best regards,<br/>
+        The Events Team</p>
+        
+    </field>
+</record>
+</odoo>

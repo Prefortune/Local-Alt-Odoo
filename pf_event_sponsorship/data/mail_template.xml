@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+<record id="email_template_sponsorship_payment_succesfully" model="mail.template">
+    <field name="name">Sponsorship Payment Successfully paid</field>
+    <field name="model_id" ref="pf_event_sponsorship.model_sponsorship_payment_session"/>
+    <field name="subject">Payment Successful for Sponsorship</field>
+    <!-- <field name="email_from">{{object.customer_email or 'info@yourcompany.com'}}</field> -->
+    <!-- <field name="email_to">{{object.event_id.user_id.email}}</field> -->
+
+    <field name="auto_delete" eval="False"/>
+    <field name="description">Sent manually in presence module when an employee wasn't working despite not being off</field>
+    <field name="body_html" type="html">
+        <p>Hello,</p>
+        <h3>The payment for the sponsorship with ID: <strong><t t-out="object.sponsorship_id.get_sponsorship_type_display() or ''"></t></strong></h3>
+        <p>We are pleased to inform you that the payment has been successfully processed.</p>
+        <p>Details of the payment are as follows:</p>
+        <p>Event Name: <b><t t-out="object.event_id.name or ''"></t></b></p>
+        <p>Sponsorship Name: <b><t t-out="object.name or ''"></t></b></p>
+        <p>Payment ID: <b><t t-out="object.session_id or ''"></t></b></p>
+        <p>Payment Amount: <b><t t-out="str(object.amount_total or 0) + ' ' + (object.currency or '') or ''"></t></b></p>
+        <p>Payment Status: <b><t t-out="object.payment_status or ''"></t></b></p>
+        <p>Please proceed with the next steps for the event.</p>
+        <p>Thank you!</p>
+            
+            
+    </field>
+</record>
+</odoo>

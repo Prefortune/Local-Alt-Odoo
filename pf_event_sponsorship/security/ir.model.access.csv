@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+pf_event_sponsorship.access_event_sponsorship,access_event_sponsorship,pf_event_sponsorship.model_event_sponsorship,base.group_user,1,1,1,1,
+pf_event_sponsorship.access_sponsorship_payment_session,access_sponsorship_payment_session,pf_event_sponsorship.model_sponsorship_payment_session,base.group_user,1,1,1,1,
