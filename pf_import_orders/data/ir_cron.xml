@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <record id="ir_cron_pf_sync_orders" model="ir.cron">
+            <field name="name">Csv Sync Orders Cron</field>
+            <field name="model_id" ref="pf_import_orders.model_import_orders"/>
+            <field name="state">code</field>
+            <field name="code">model.action_import_csv()</field>
+            <field name="interval_number">4</field>
+            <field name="interval_type">minutes</field>
+            <field name="numbercall">-1</field>
+            <field name="active">True</field>
+        </record>
+    </data>  
+</odoo>
+

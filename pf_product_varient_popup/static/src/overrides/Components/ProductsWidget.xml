@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-extend="ProductsWidget" t-inherit="point_of_sale.ProductsWidget" t-inherit-mode="extension">
+        <xpath expr='//ProductCard' position="attributes">
+            <attribute name="name">product.product_variant_count &gt; 1 ? product.name : product.display_name</attribute>
+            <attribute name="price"> (product.product_variant_count &gt; 1 ) ? product.product_variant_count + ' variants' : product.getFormattedUnitPrice()</attribute>
+            <attribute name="onClick"> (product.product_variant_count &gt; 1 ) ? () => this.clickVariant(product.product_tmpl_id) :  () =&gt; this.pos.addProductToCurrentOrder(product)</attribute>
+        </xpath>
+    </t>
+</templates>

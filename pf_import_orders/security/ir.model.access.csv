@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+pf_import_orders.access_import_orders,access_import_orders,pf_import_orders.model_import_orders,base.group_user,1,1,1,1
+pf_import_orders.access_cron_list,access_cron_list,pf_import_orders.model_cron_list,base.group_user,1,1,1,1

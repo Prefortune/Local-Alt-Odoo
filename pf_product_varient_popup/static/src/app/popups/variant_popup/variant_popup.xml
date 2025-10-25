@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="pf_product_varient_popup.VariantPopup">
+        <div class="popup popup-confirm pf_product_varient_popup_popup" >
+            <header class="title drag-handle modal-header">
+                <div>
+                    <span class="modal-title h4">
+                        <t t-esc="props.title"></t>
+                    </span>
+                </div>
+                <div class="pf_header_right_searchbox">
+                    <input class="pf_header_search form-control" placeholder="Search variant" t-on-keyup="updateSearch" />
+                </div>
+
+            </header>
+            <main class="modal-body pf_product_varient_popup_popup_body bg-300" style="max-height: 50vh">                
+                <div class="product-list d-grid gap-1" style="flex: 1 1 auto;position: relative;overflow: auto;max-height: 45vh; display:none;min-height: 35vh">
+                    <t t-if="product_varaints">
+                        <t t-foreach="VariantProductToDisplay" t-as="product" t-key="product.id">
+                            <VariantProductItem class="pf_product_varient_popups" name="product.display_name" productId="product.id" price="product.getFormattedUnitPrice()" imageUrl="product.getImageUrl()" onClick="() => this.clickProduct(product)" />
+                        </t>
+                    </t>                    
+                </div>               
+            </main>
+            <footer class="footer modal-footer">
+                <div class="button cancel btn btn-lg btn-primary" t-on-click="cancel">
+                        Close
+                </div>
+            </footer>
+        </div>
+    </t>
+
+</templates>

@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="shopify_view_partner_form_inherit" model="ir.ui.view">
+            <field name="name">shopify.res.partner.form.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='vat']" position="before">
+                    <field name="shopify_customer_id"></field>        
+                </xpath>
+                 <xpath expr="//field[@name='shopify_customer_id']" position="after">
+                    <field name="shopify_address_id"></field>
+                    <field name="shopify_store"></field>         
+                </xpath>
+            </field>
+        </record>
+
+        <!-- OWL View Inherit -->
+        <record id="owl_res_partner_list_view_inherit" model="ir.ui.view">
+            <field name="name">owl.res.partner.list.view.inherit</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_partner_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//tree" position="attributes">
+                    <attribute name="js_class">res_partner_list_view</attribute>
+                </xpath>
+            </field>
+        </record>
+
+        <record id="is_shopify_customer_search" model="ir.ui.view">
+            <field name="name">res.partner.select</field>
+            <field name="model">res.partner</field>
+            <field name="inherit_id" ref="base.view_res_partner_filter"/>
+            <field name="arch" type="xml">
+              <xpath expr="//filter[@name='type_person']" position="after">
+                <separator>
+                  <filter name="filter_is_shopify_customer" string="Shopify Customer" domain="[('is_shopify_customer', '=', True)]"/>
+                </separator>
+              </xpath>
+            </field>
+        </record>
+
+        <record id="shopify_customer_action" model="ir.actions.act_window">
+            <field name="name">Shopify Customer</field>
+            <field name="res_model">res.partner</field>
+            <field name="view_mode">kanban,tree,form,activity</field>
+            <field name="domain">[('is_shopify_customer', '=', True)]</field>
+            <field name="context">{'search_default_filter_is_shopify_customer': 1}</field>
+            <!-- <field name="context">{"search_default_filter_to_sell":1}</field> -->
+          </record>
+
+        <menuitem
+          id="customer_menu"
+          name="Shopify Customer"
+          action="shopify_customer_action"
+          parent="shopify_odoo_root_menu"
+          sequence="30"/>
+
+    </data>
+</odoo>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="template_id" name="template_name" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//t[@t-call='web.external_layout']" position="replace">
+            <t t-call="pf_chika_reports.custom_standard_external_layout">
+                <span>
+                    <t t-set="doc" t-value="doc.with_context(report_name='SALE')"/>
+                </span>
+                <!-- <xpath expr="//t[@t-call='web.external_layout']" position="replace"> -->
+                <t t-set="doc" t-value="doc.with_context(lang=lang)" />
+                <t t-set="company" t-value="company_id or request.env.user.company_id"/>
+                <t t-set="lang" t-value="doc.partner_id.lang or 'en_US'"/>
+                <div class="page" style="border: 2px solid #000;">
+                    <div class="row mt-4 pad_5">
+                        <div class="col-6">
+                            <strong t-esc="doc.company_id.name"/>
+                            <br/>
+                            <span t-esc="doc.company_id.street"/>
+                            <br/>
+                            <span t-if="doc.company_id.street2" t-esc="doc.company_id.street2"/>
+                            <br/>
+                            <span t-esc="doc.company_id.city"/>
+                            <span t-esc="doc.company_id.zip"/>
+                            <br/>
+                            <span t-esc="doc.company_id.country_id.name"/>
+                        </div>
+                        <div class="col-6 text-end">
+                            <img t-if="doc.company_id.logo" t-att-src="image_data_uri(doc.company_id.logo)" style="max-height: 45px;" alt="Logo"/>
+                        </div>
+                    </div>
+                    <div class="text-center" style="border-top: 2px solid black; border-bottom: 2px solid black;">
+                        <span t-if="env.context.get('proforma', False) or is_pro_forma">Pro-Forma Invoice # </span>
+                    </div>
+                    <div class="row mb-3 pad_5">
+                        <div class="col-6">
+                            <strong>Bill To:</strong>
+                            <br/>
+                            <span t-esc="doc.partner_id.name"/>
+                            <br/>
+                            <span t-esc="doc.partner_id.street"/>
+                            <br/>
+                            <span t-if="doc.partner_id.street2" t-esc="doc.partner_id.street2"/>
+                            <br/>
+                            <span t-esc="doc.partner_id.city"/>
+                            <span t-esc="doc.partner_id.zip"/>
+                            <br/>
+                            <span t-esc="doc.partner_id.country_id.name"/>
+                            <br/>
+                            <t t-if="doc.partner_id.vat">
+                            Customer TRN:
+                                <span t-esc="doc.partner_id.vat"/>
+                            </t>
+                        </div>
+                        <div class="col-6 text-end">
+                            Invoice No.:
+                            <span t-esc="doc.name"/>
+                            <br/>
+                            Date:
+                            <span t-field="doc.date_order"/>
+                            <br/>
+                            Our TRN:
+                            <span t-esc="doc.company_id.vat or ''"/>
+                            <br/>
+                            Location:
+                            <span t-esc="doc.company_id.city"/>
+                        </div>
+                    </div>
+                    <!-- PRODUCT TABLE -->
+                    <table class="table">
+                        <thead >
+                            <tr>
+                                <th>#</th>
+                                <th class="text-left">Item &amp; Description</th>
+                                <th class="text-center">Qty</th>
+                                <th class="text-center">VAT%</th>
+                                <th class="text-center">Rate</th>
+                                <th class="text-center">Tax</th>
+                                <th class="text-center">Amount</th>
+                            </tr>
+                        </thead>
+                        <tbody class="custom_color">
+                            <t t-set="count" t-value="0"/>
+                            <tr t-foreach="doc.order_line" t-as="line" t-foreach-index="i">
+                                <t t-set="count" t-value="count + 1"/>
+                                <td class="text-center">
+                                    <span><t t-esc="count"/></span>
+                                </td>
+                                <td>
+                                    <span t-esc="line.name"/>
+                                </td>
+                                <td class="text-center">
+                                    <span t-out="int(line.product_uom_qty)"/>
+                                </td>
+                                <td class="text-center">
+                                    <span t-field="line.tax_id"/>
+                                </td>
+                                <td class="text-end">
+                                    <t t-if="line.price_unit">
+                                        <span t-out="doc.currency_id.name + ' ' + '%.2f' % line.price_unit"/>
+                                    </t>
+                                    <t t-else="">
+                                        <span>-</span>
+                                    </t>
+                                    <!-- <div class="row">
+                                        <div class="col-6 text-start">
+                                            <span t-esc="doc.currency_id.name"/>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <t t-if="tax_amt">
+                                                <span t-esc="line.price_unit"/>
+                                            </t>
+                                            <t t-else="">
+                                                <span>-</span>
+                                            </t>
+                                        </div>
+                                    </div> -->
+                                </td>
+                                <td class="text-end">
+                                    <t t-set="tax_amt" t-value="line.price_total - line.price_subtotal"/>
+                                    <t t-if="tax_amt">
+                                        <span t-out="doc.currency_id.name + ' ' + '%.2f' % tax_amt"/>
+                                    </t>
+                                    <t t-else="">
+                                        <span>-</span>
+                                    </t>
+                                    <!-- <t t-set="tax_amt" t-value="line.price_total - line.price_subtotal"/>
+                                    <div class="row">
+                                        <div class="col-6 text-start">
+                                            <span t-esc="doc.currency_id.name"/>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <t t-if="tax_amt is not None">
+                                                <span t-out="'%.2f' % tax_amt"/>
+                                            </t>
+                                            <t t-else="">
+                                                <span>-</span>
+                                            </t>
+                                        </div>
+                                    </div> -->
+                                </td>
+                                <td class="text-end">
+                                    <t t-set="amt" t-value="line.price_total"/>
+                                    <span t-out="doc.currency_id.name + ' ' + '%.2f' % amt"/>
+                                    <!-- <t t-set="amt" t-value="line.price_total"/>
+                                    <div class="row">
+                                        <div class="col-6 text-start">
+                                            <span t-esc="doc.currency_id.name"/>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <span t-esc="amt"/>
+                                        </div>
+                                    </div> -->
+                                </td>
+                            </tr>
+                        </tbody>
+                        <tbody class="body_end">
+                            <tr>
+                            <td colspan="4" class="text-start">
+                               <span>TOTAL:</span>
+                            </td>
+                            <td class="text-end">
+                                    <span t-out="doc.currency_id.name + ' ' + '%.2f' % doc.amount_untaxed"/>
+                                    <!-- <div class="row">
+                                        <div class="col-6 text-start">
+                                            <span t-esc="doc.currency_id.name"/>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <span t-esc="doc.amount_untaxed"/>
+                                        </div>
+                                    </div> -->
+                            </td>
+                            <td class="text-end">
+                                    <t t-set="tax_total" t-value="doc.amount_total - doc.amount_untaxed"/>
+                                    <t t-if="tax_total is not None">
+                                        <span t-out="doc.currency_id.name + ' ' + '%.2f' % tax_total"/>
+                                    </t>
+                                    <t t-else="">
+                                        <span>-</span>
+                                    </t>
+                                    <!-- <div class="row">
+                                        <div class="col-6 text-start">
+                                            <span t-esc="doc.currency_id.name"/>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <t t-set="tax_total" t-value="doc.amount_total - doc.amount_untaxed"/>
+                                            <t t-if="tax_total is not None">
+                                                <span t-out="'%.2f' % tax_total"/>
+                                            </t>
+                                            <t t-else="">
+                                                <span>-</span>
+                                            </t>
+                                        </div>
+                                    </div> -->
+                            </td>
+                            <td class="text-end">
+                                    <span t-out="doc.currency_id.name + ' ' + '%.2f' % doc.amount_total"/>
+                                    <!-- <div class="row">
+                                        <div class="col-6 text-start">
+                                            <span t-esc="doc.currency_id.name"/>
+                                        </div>
+                                        <div class="col-6 text-end">
+                                            <span t-esc="doc.amount_total"/>
+                                        </div>
+                                    </div> -->
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                    <div>
+                        <div class="text_border">
+                            <t t-set="tax_amount" t-value="doc.amount_tax"/>
+                            <t t-set="tax_amount_words" t-value="doc.currency_id.amount_to_text(tax_amount)"/>
+                            <span>VAT Payable <span t-esc="doc.currency_id.name"/>: <span t-esc="tax_amount_words"/></span>
+                        </div>
+                        <div class="text_border">
+                            <t t-set="total_in_words" t-value="doc.currency_id.amount_to_text(doc.amount_total)"/>
+                            <span>TOTAL <span t-esc="doc.currency_id.name"/>: <span t-esc="total_in_words"/></span>
+                        </div>
+                        <div class="spacing"></div>
+                        <div class="condtions">
+                            <span>Make all checks payable to "AL GHAFF ARTEFACTS TRADING LLC" or remit the amount into the below mentioned account.</span>
+                        </div>
+                        <div class="pad_5">
+                            <div>
+                                <span>Beneficiary: AL GHAFF ARTEFACTS TRADING LLC</span>
+                            </div>
+                            <div>
+                                <span>Beneficiary Address: PO Box 393380 Dubai UAE</span>
+                            </div>
+                            <div>
+                                <span>AED Account Number: 1014984790101</span>
+                            </div>
+                            <div>
+                                <span>IBAN: AE290260001014984790101</span>
+                            </div>
+                            <div>
+                                <span>Swift Code: EBILAEAD</span>
+                            </div>
+                            <div>
+                                <span>Bank: Emirates NBD Bank</span>
+                            </div>
+                            <div>
+                                <span>Branch: Jumeirah Branch</span>
+                            </div>
+                            <div>
+                                <span>Bank Address: PO Box 777 Dubai UAE</span>
+                            </div>
+                        </div>
+                        <t t-if="doc.note">
+                            <div class="spacing"></div>
+                            <div class="text_narration">
+                                <t t-esc="doc.note"/>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>

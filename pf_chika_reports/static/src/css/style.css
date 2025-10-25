@@ -1,0 +1,83 @@
+/* Global font settings */
+body, span, div, p, td {
+    font-family: serif;
+    font-weight: bold;
+    font-size: calc(var(--total-scale-factor, 1) * 5.75px);
+    transform: scaleX(0.851971);
+}
+
+/* Table layout */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+/* Table header styling */
+table thead {
+    background-color: black;
+}
+
+table thead th {
+    color: white;
+    font-size: calc(var(--total-scale-factor, 1) * 5.75px);
+    border: 1px solid white; /* ADD THIS */
+
+}
+
+/* Table body styling */
+table tbody {
+    background-color: white;
+}
+
+table tbody td {
+    padding: 0px !important;
+    margin: 0px !important;
+    padding-left: 3px !important;
+    padding-right: 3px !important;
+    font-size: calc(var(--total-scale-factor, 1) * 5.75px);
+    border: 1px solid black; /* ADD THIS */
+
+}
+.body_end{
+    background-color: #dddddd;
+    color: black;
+    padding-left: 3px !important;
+    padding-right: 3px !important;
+    padding-top: 3px !important;
+    padding-bottom: 3px !important;
+}
+
+/* Custom color class */
+.custom_color {
+    color: black;
+}
+
+.spacing{
+    height: 35px; /* Adjust the height as needed */
+    width: 100%;
+    
+}
+.condtions{
+        background-color: #dddddd;
+        border-top: 1px  solid black;
+        border-bottom: 1px  solid black;
+        padding: 5px !important;
+
+}
+.text_border{
+    /* border-top: 1px solid black; */
+    border-bottom: 1px solid black;
+    padding: 3px !important;
+}
+.text_narration{
+    border-top: 1px solid black;
+    padding: 3px !important;
+}
+
+.pad_5{
+    padding: 5px !important;
+}
+
+.nowrap {
+        white-space: nowrap;
+    }

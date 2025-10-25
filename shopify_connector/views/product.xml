@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Product Temp -->
+        <record id="view_shopify_product_template_form_inherit" model="ir.ui.view">
+            <field name="name">shopify.product.template.inherit</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_only_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='detailed_type']" position="after">       
+                    <field name="is_shopify_product"></field>   
+                </xpath>
+                <xpath expr="//field[@name='is_shopify_product']" position="after">       
+                    <!-- <field name="shopify_store" attrs="{'invisible': [('is_shopify_product', '=', False)]}"/> -->
+                    <field name="shopify_store" invisible="is_shopify_product != True"/>
+
+                </xpath>
+                <xpath expr="//field[@name='shopify_store']" position="after">       
+                    <!-- <field name="shopify_product_id" attrs="{'invisible': [('is_shopify_product', '=', False)]}"/> -->
+                    <field name="shopify_product_id" invisible="is_shopify_product != True"/>
+
+                </xpath>           
+            </field>
+        </record>
+        <!-- product product -->
+        <record id="view_shopify_product_product_image_inherit" model="ir.ui.view">
+            <field name="name">shopify.product.product.inherit</field>
+            <field name="model">product.product</field>
+            <field name="inherit_id" ref="product.product_normal_form_view"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='invoice_policy']" position="after">       
+                    <field name="shopify_product_id"></field>
+                    <field name="shopify_variant_id"></field> 
+                    <field name="shopify_store"></field>
+                </xpath>              
+            </field>
+        </record>
+
+        <!-- product Search !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  -->
+        <record id="is_shopify_prod_search" model="ir.ui.view">
+            <field name="name">product.template.search</field>
+            <field name="model">product.template</field>
+            <field name="inherit_id" ref="product.product_template_search_view"/>
+            <field name="arch" type="xml">
+              <xpath expr="//filter[@name='consumable']" position="after">
+                <separator>
+                  <filter name="filter_is_shopify_product" string="Shopify Products" domain="[('is_shopify_product', '=', True)]"/>
+                </separator>
+              </xpath>
+            </field>
+        </record>
+
+        <!-- product Action !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  -->
+        <record id="shopify_prod_action" model="ir.actions.act_window">
+            <field name="name">Shopify Products</field>
+            <field name="res_model">product.template</field>
+            <field name="view_mode">kanban,tree,form,activity</field>
+            <field name="domain">[('is_shopify_product', '=', True)]</field>
+            <field name="context">{'search_default_filter_is_shopify_product': 1}</field>
+            <!-- <field name="context">{"search_default_filter_to_sell":1}</field> -->
+          </record>
+
+        <!-- Coupon Search !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  -->
+          <record id="is_shopify_coupon_search" model="ir.ui.view">
+            <field name="name">loyalty.program.view.search</field>
+            <field name="model">loyalty.program</field>
+            <field name="inherit_id" ref="loyalty.loyalty_program_view_search"/>
+            <field name="arch" type="xml">
+              <xpath expr="//filter[@name='inactive']" position="after">
+                <separator>
+                  <filter name="filter_is_shopify_coupon" string="Shopify Coupon" domain="[('is_shopify_coupon', '=', True)]"/>
+                </separator>
+              </xpath>
+            </field>
+        </record>
+
+        <!-- Coupon Action !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!  -->
+        <record id="shopify_coupon_action" model="ir.actions.act_window">
+            <field name="name">Shopify Coupon</field>
+            <field name="res_model">loyalty.program</field>
+            <field name="view_mode">tree,kanban</field>
+            <field name="domain">[('is_shopify_coupon', '=', True)]</field>
+            <field name="context">{'search_default_filter_is_shopify_coupon': 1}</field>
+            <!-- <field name="inherit_id" ref="loyalty.loyalty_program_discount_loyalty_action"/> -->
+            <!-- <field name="context">{"search_default_filter_to_sell":1}</field> -->
+        </record>
+
+        <menuitem
+          id="shopify_loyalty"
+          name="Shopity coupon and loyalty"
+          parent = "shopify_odoo_root_menu"
+          action = "shopify_coupon_action"
+          sequence="1"/>
+
+        <menuitem
+          id="prod_menu"
+          name="Shopify Products"
+          action="shopify_prod_action"
+          parent="shopify_odoo_root_menu"
+          sequence="30"/>
+
+    </data>
+</odoo>

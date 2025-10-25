@@ -1,0 +1,18 @@
+<odoo>
+    <record id="pf_order_tag_tree" model="ir.ui.view">
+        <field name="name">pf.order.tag.tree</field>
+        <field name="model">pf.order.tag</field>        
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="name"></field>
+            </tree>            
+        </field>
+    </record>
+    <record id="action_pf_order_tag" model="ir.actions.act_window">
+        <field name="name">Tags</field>
+        <field name="res_model">pf.order.tag</field>
+        <field name="view_mode">tree</field>       
+    </record>
+    <menuitem action="action_pf_order_tag" id="menu_action_pf_order_tag" parent="base.menu_users" groups="base.group_no_one" sequence="4" name="Tags"/>
+
+</odoo>

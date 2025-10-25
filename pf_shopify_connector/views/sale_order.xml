@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <record id="view_sale_form_inherit" model="ir.ui.view">
+            <field name="name">shopify.sale.order.inherit</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='payment_term_id']" position="after">       
+                    <field name="is_shopify_order"></field>
+                    <field name="shopify_order_id"></field>
+                    <field name="shopify_store"></field>  
+                </xpath> 
+                <xpath expr="//form/sheet/notebook/page[@name='order_lines']/field/tree/field[@name='discount']" position="attributes">
+                    <attribute name="groups">product.group_discount_per_so_line</attribute>
+                    <attribute name="optional">show</attribute>
+                    <attribute name="widget">product_discount</attribute>
+                    <attribute name="options">{'digits': (16, 2)}</attribute>
+                </xpath>    
+                <xpath expr="//form/sheet/notebook/page[@name='order_lines']/field/tree/field[@name='discount']" position="after">
+                    <field name="discount_amount"></field>
+                </xpath>         
+            </field>
+        </record>
+
+        <!-- Coupon Program Inherit -->
+        <record id="shopify_view_coupon_program_form_inherit" model="ir.ui.view">
+            <field name="name">shopify.loyalty.program.inherit</field>
+            <field name="model">loyalty.program</field>
+            <field name="inherit_id" ref="loyalty.loyalty_program_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="shopify Details" name="shopify_data">
+                        <group>
+                            <field name="is_shopify_coupon"/>
+                            <field name="shopify_coupon_id"/>
+                            <field name="shopify_store"/>
+                        </group>
+                  </page>
+                </xpath>
+            </field>
+        </record>
+
+    <record id="view_sale_order_form_inherit_manufacturing" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.manufacturing</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='action_view_invoice']" position="before">
+                <field name="generate_manufacture_order" invisible="1" />
+                <button name="action_open_manufacturing_orders"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-cogs"
+                        invisible="generate_manufacture_order == False">
+                    <div class="o_stat_info">
+                        <span class="o_stat_text">MO Order</span>  <!-- Static Label -->
+                        <span class="o_stat_value">MF</span>  <!-- Static Value -->
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+
+
+    </data>
+</odoo>

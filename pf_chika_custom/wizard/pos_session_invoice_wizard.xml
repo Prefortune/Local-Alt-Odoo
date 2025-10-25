@@ -1,0 +1,25 @@
+<odoo>
+    <record id="view_pos_session_invoice_wizard_form" model="ir.ui.view">
+        <field name="name">pos.session.invoice.wizard.form</field>
+        <field name="model">pos.session.invoice.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Create Invoice for POS Session">
+                <group>
+                    <field name="session_id" readonly="1"/>
+                    <field name="partner_id" string="Select agent"/>
+                    <field name="agent_commission" string="Agent commision (fixed)"/>
+                    <field name="analytic_account_id"/>
+                </group>
+                <footer>
+                    <button string="Create Invoice" type="object" name="action_create_invoice" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+    <act_window id="action_pos_session_invoice_wizard"
+        name="Create Invoice for POS Session"
+        res_model="pos.session.invoice.wizard"
+        view_mode="form"
+        target="new"/>
+</odoo>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="custom_standard_external_layout" inherit_id="web.external_layout_standard">
+        
+        <!-- ❌ Hide HEADER for account.move and sale.order -->
+        <xpath expr="//div[contains(@t-attf-class, 'header')]" position="attributes">
+            <attribute name="t-if">
+                not (
+                    (o and o._name in ('account.move', 'sale.order','purchase.order')) or 
+                    (doc and doc._name in ('account.move', 'sale.order','purchase.order'))
+                )
+            </attribute>
+        </xpath>
+
+        <!-- ❌ Hide FOOTER for account.move and sale.order -->
+        <xpath expr="//div[contains(@t-attf-class, 'footer')]" position="attributes">
+            <attribute name="t-if">
+                not (
+                    (o and o._name in ('account.move', 'sale.order', 'purchase.order')) or 
+                    (doc and doc._name in ('account.move', 'sale.order', 'purchase.order')) 
+                )
+            </attribute>
+        </xpath>
+
+    </template>
+</odoo>

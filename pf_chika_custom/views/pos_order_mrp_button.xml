@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_pos_order_form_inherit_mrp_button" model="ir.ui.view">
+        <field name="name">pos.order.form.inherit.mrp.button</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@class='oe_button_box']" position="inside">
+                <button name="action_view_mrp_productions"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-industry"
+                        invisible="not mrp_production_count"
+                        context="{'default_origin': name}">
+                    <div>
+                        <field name="mrp_production_count" widget="statinfo" string="Manufacture Order"/>
+                    </div>
+                </button>
+            </xpath>
+        </field>
+    </record>
+</odoo>

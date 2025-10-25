@@ -1,0 +1,25 @@
+<odoo>
+    <record id="view_pos_session_form_inherit_invoice_button" model="ir.ui.view">
+        <field name="name">pos.session.form.inherit.invoice.button</field>
+        <field name="model">pos.session</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_session_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button name="action_open_invoice_wizard" invisible="state != 'closed' or invoice_id" type="object" string="Create Invoice" class="btn-primary"/>
+            </xpath>
+            
+            <xpath expr="//div[@class='oe_button_box']" position="inside">
+                <button name="action_view_session_invoice"
+                        type="object"
+                        class="oe_stat_button"
+                        icon="fa-shopping-basket"
+                        invisible="not invoice_id">
+                    <div class="o_stat_info">
+                        <span class="o_stat_text">Agent invoice</span>
+                    </div>
+                </button>
+                <field name="invoice_id" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

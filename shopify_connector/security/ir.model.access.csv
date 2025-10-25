@@ -1,0 +1,6 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access.shopify.connector.master,access_shopify_connector_master,shopify_connector.model_shopify_connector,base.group_user,1,1,1,1
+access.shopify.product.master,access_shopify_product_master,shopify_connector.model_shopify_product,base.group_user,1,1,1,1
+access.shopify.customer.master,access_shopify_customer_master,shopify_connector.model_shopify_customer,base.group_user,1,1,1,1
+access.shopify.order.master,access_shopify_order_master,shopify_connector.model_shopify_order,base.group_user,1,1,1,1
+access.shopify.coupon.master,access_shopify_coupon_master,shopify_connector.model_shopify_coupon,base.group_user,1,1,1,1

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<menuitem
+    id="shopify_odoo_root_menu"
+    name="Shopify Connector"
+    sequence="0"/>
+
+<menuitem
+    id="store_management"
+    name="Configure"
+    parent = "shopify_odoo_root_menu"
+    sequence="0"/>
+
+</odoo>

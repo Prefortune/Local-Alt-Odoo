@@ -1,0 +1,32 @@
+<odoo>
+    <record id="view_shopify_operation_wizard_form" model="ir.ui.view">
+        <field name="name">shopify.operation.wizard.form</field>
+        <field name="model">shopify.operation.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Shopify Operation Wizard">
+                <group>
+                    <field name="shopify_connector_id"/>
+                    <field name="operation"/>
+                    <field name="record_id"/>
+                </group>
+                <footer>
+                    <button string="Import" type="object" name="execute_operation" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_shopify_operation_wizard" model="ir.actions.act_window">
+        <field name="name">Operation</field>
+        <field name="res_model">shopify.operation.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_shopify_operation_wizard"
+              name="Operation"
+              parent = "shopify_odoo_root_menu"
+              action="action_shopify_operation_wizard"
+              sequence="3"/>
+</odoo>

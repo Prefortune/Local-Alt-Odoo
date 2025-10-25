@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="pf_remove_optional_customer_note" model="ir.ui.view">
+        <field name="name">pos.order.line.form.remove.optional</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='customer_note']" position="attributes">
+                <attribute name="optional" />
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

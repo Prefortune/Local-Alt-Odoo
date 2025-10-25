@@ -1,0 +1,29 @@
+<odoo>
+    <record id="action_reconcile_wizard" model="ir.actions.act_window">
+        <field name="name">Reconcile Invoices</field>
+        <field name="res_model">reconcile.wizard.form</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <record id="view_reconcile_wizard_form" model="ir.ui.view">
+    <field name="name">reconcile.wizard.form.view</field>
+    <field name="model">reconcile.wizard.form</field>
+    <field name="arch" type="xml">
+        <form string="Reconcile Invoices">
+            <footer>
+                <button string="Run Reconciliation" type="object" name="action_run_reconciliation" class="btn-primary"/>
+                <button string="Cancel" class="btn-secondary" special="cancel"/>
+            </footer>
+        </form>
+    </field>
+</record>
+
+
+    <menuitem id="menu_accounting_reconcile_root" name="Reconciliation Tool" sequence="100"/>
+
+    <menuitem id="menu_reconcile_invoices" name="Reconcile Invoices"
+              action="action_reconcile_wizard"
+              parent="menu_accounting_reconcile_root"
+              sequence="1"/>
+</odoo>

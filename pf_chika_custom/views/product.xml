@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_product_template_kanban_inherit_price_range" model="ir.ui.view">
+        <field name="name">product.template.kanban.inherit.price.range</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_kanban_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@name='product_lst_price']" position="replace">
+                <div name="product_lst_price" class="mt-1">
+                    <t t-if="record.product_variant_count.raw_value &gt; 1">
+                        Price Range:
+                        <t t-if="record.min_variant_price.raw_value != record.max_variant_price.raw_value">
+                            <field name="min_variant_price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                            -
+                            <field name="max_variant_price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </t>
+                        <t t-else="">
+                            <field name="min_variant_price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                        </t>
+                    </t>
+                    <t t-else="">
+                        Price:
+                        <field name="list_price" widget="monetary" options="{'currency_field': 'currency_id'}"/>
+                    </t>
+                </div>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

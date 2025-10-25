@@ -1,0 +1,13 @@
+<odoo>
+    <record id="view_pos_order_line_form_inherit_size_chart" model="ir.ui.view">
+        <field name="name">pos.order.line.form.inherit.size.chart</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet//field[@name='lines']//tree" position="inside">
+                <field name="pf_size_chart_line_ids" widget="many2many_tags" context="{'default_pos_order_line_id': active_id}">                  
+                </field>
+            </xpath>
+        </field>
+    </record>
+</odoo>

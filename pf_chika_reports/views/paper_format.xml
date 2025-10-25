@@ -1,0 +1,18 @@
+<odoo>
+    <!-- Custom Paper Format -->
+    <record id="paperformat_invoice_compact" model="report.paperformat">
+        <field name="name">Invoice Compact Format</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="page_height">0</field>
+        <field name="page_width">0</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">5</field>       <!-- top margin in mm -->
+        <field name="margin_bottom">5</field>    <!-- bottom margin in mm -->
+        <field name="margin_left">5</field>
+        <field name="margin_right">5</field>
+        <field name="header_line" eval="False"/>
+        <field name="dpi">90</field>
+        <!-- <field name="report_ids" eval="[(4, ref('account.report_invoice_document'))]"/> -->
+    </record>
+</odoo>

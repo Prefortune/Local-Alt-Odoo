@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pf_view_picking_form_inherit_ewaybill" model="ir.ui.view">
+        <field name="name">pf.view.picking.form.inherit.ewaybill</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//header" position="inside">
+                <button string="Add Altration"
+                        type="object"
+                        name="GenrateProduction"
+                        class="oe_highlight"
+                />                
+            </xpath>
+            <div name="button_box" position="inside">
+                <button type="object"
+                        name="action_view_mrp"
+                        class="oe_stat_button"
+                        icon="fa-truck"
+                        string="Altration"
+                >
+                        <field string="Altration" name="pf_mrp_count" widget="statinfo"/>
+                </button>
+            </div>
+        </field>
+    </record>
+</odoo>

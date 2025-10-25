@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="point_of_sale.ProductCard" t-inherit="point_of_sale.ProductCard" t-inherit-mode="extension">
+        
+        <!-- Add price range at the very end using the root div -->
+        <xpath expr="//div[3]" position="inside">
+            <t t-set="product" t-value="env.services.pos.db.get_product_by_id(props.productId)"/>
+
+            <div class="product-price-range mt-2" style="font-size: 0.85rem;">
+                <t t-if="product and product.min_variant_price !== undefined and product.max_variant_price !== undefined">
+                    <span>Price: </span>
+                    <t t-if="product.min_variant_price !== product.max_variant_price">
+                        <span>
+                            <t t-esc="product.min_variant_price"/> - <t t-esc="product.max_variant_price"/>
+                        </span>
+                    </t>
+                    <t t-else="">
+                        <span>
+                            <t t-esc="product.min_variant_price"/>
+                        </span>
+                    </t>
+                </t>
+                <t t-elif="product and product.list_price">
+                    <span>Price: </span>
+                    <t t-esc="product.list_price"/>
+                </t>
+            </div>
+        </xpath>
+    </t>
+</templates>

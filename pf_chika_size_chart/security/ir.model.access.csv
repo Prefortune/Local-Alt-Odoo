@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+pf_chika_size_chart.access_pf_size_chart,access_pf_size_chart,pf_chika_size_chart.model_pf_size_chart,base.group_user,1,1,1,1
+pf_chika_size_chart.access_pf_size_chart_line,access_pf_size_chart_line,pf_chika_size_chart.model_pf_size_chart_line,base.group_user,1,1,1,1

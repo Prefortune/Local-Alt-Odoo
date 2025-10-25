@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_custom_invoice">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="web.internal_layout">
+                    <div class="page" style="font-family: Arial, sans-serif; font-size: 11px; max-width: 800px; margin: 0 auto; padding: 20px; line-height: 1.4;">
+                        <!-- Header -->
+                        <div style="text-align: center; margin-bottom: 15px;">
+                            <h2 style="font-size: 16px; font-weight: bold; margin: 0;">A1 Ghaff Artefacts Trading LLC</h2>
+                            <p style="margin: 2px 0;">Alserkal Avenue 69, Street 17, At Quoz, Dubai, UAE</p>
+                            <p style="margin: 2px 0;">+971 4 345 8888 | +971 52 194 7377</p>
+                            <p style="margin: 2px 0;">TRN: 188350860100083</p>
+                            <p style="margin: 2px 0;">Main Outlet</p>
+                        </div>
+                        <pre>-----------------------------------------------------------------------------------------------------</pre>
+                        <!-- Invoice Title and Details -->
+                        <div style="text-align: center; margin-bottom: 15px;">
+                            <h3 style="font-size: 14px; font-weight: bold; margin: 0;">Receipt / Tax Invoice #<t t-esc="o.name or '5062'"/></h3>
+                            <p style="margin: 2px 0;"><t t-esc="o.invoice_date"/></p>
+                            <p style="font-weight: bold; margin: 2px 0;">* Reprint *</p>
+                        </div>
+                        <pre>-----------------------------------------------------------------------------------------------------</pre>
+                        <!-- Itemized List -->
+                        <div style="margin-bottom: 20px;">
+                            <t t-foreach="o.invoice_line_ids" t-as="line">
+                                <div style="margin-bottom: 10px;">
+                                    <p style="margin: 0; font-weight: bold;"><t t-esc="line.name"/></p>
+                                    <p style="margin: 0;">SKU: <t t-esc="line.product_id.default_code"/></p>
+                                    <!-- <p t-if="line.note" style="margin: 0;">Note: <t t-esc="line.note"/></p> -->
+                                    <p style="margin: 0;">
+                                        <span style="display: inline-block; width: 50px;"><t t-esc="line.quantity"/> @</span>
+                                        <span style="display: inline-block; width: 100px;">AED <t t-esc="'{:.2f}' % line.price_unit"/></span>
+                                        <span style="float: right;">AED <t t-esc="'{:.2f}' % line.price_subtotal"/></span>
+                                    </p>
+                                    <p style="margin: 0;">
+                                        <span style="float: right;">Tax: VAT (5% / AED <t t-esc="'{:.2f}' % (line.tax_ids[0].amount * line.price_subtotal / 100) if line.tax_ids else '0.00'"/>)</span>
+                                    </p>
+                                </div>
+                            </t>                         
+                        </div>
+                        <pre>-----------------------------------------------------------------------------------------------------</pre>
+                        <!-- Note -->
+                        <div style="text-align: left; margin-bottom: 10px;">
+                            <p style="margin: 0;">Note: Whatsapp Order</p>
+                        </div>
+                        <pre>-----------------------------------------------------------------------------------------------------</pre>
+                        <!-- Totals -->
+                        <!-- <div style="text-align: right; margin-bottom: 15px;">
+                            <p style="margin: 2px 0;">Subtotal: <t t-esc="'AED {:.2f}' % o.amount_untaxed"/></p>
+                            <p style="margin: 2px 0;">Additional discount: <t t-esc="'AED {:.2f}' % (o.amount_total - o.amount_untaxed - o.amount_tax)"/></p>
+                            <p style="margin: 2px 0;">Tax (VAT, 5%): <t t-esc="'AED {:.2f}' % o.amount_tax"/></p>
+                            <p style="margin: 2px 0; font-weight: bold;">TOTAL (4 items): <t t-esc="'AED {:.2f}' % o.amount_total'"/></p>
+                            <p style="margin: 2px 0;">Bank Transfer: <t t-esc="'AED {:.2f}' % o.amount_total"/></p>                           
+                        </div> -->
+
+                        <!-- Customer Information -->
+                        <div style="text-align: left; margin-bottom: 15px;">
+                            <p style="margin: 2px 0; font-weight: bold;"><t t-esc="o.partner_id.name"/></p>
+                            <p style="margin: 2px 0;"><t t-esc="o.partner_id.name"/></p>
+                            <p style="margin: 2px 0;">Email: <t t-esc="o.partner_id.email"/></p>
+                            <p style="margin: 2px 0;">Phone: <t t-esc="o.partner_id.phone"/></p>
+                            <p style="margin: 2px 0;">Address: <t t-esc="o.partner_id.contact_address"/></p>
+                        </div>
+
+                        <!-- Payment Instructions -->
+                        <div style="text-align: left; margin-bottom: 15px;">
+                            <h4 style="font-size: 12px; font-weight: bold; margin: 0;">TERMS and CONDITIONS:</h4>
+                            <p style="margin: 2px 0;">According to your preference please forward the payment via:</p>
+                            <p style="margin: 2px 0;">Beneficiary: AL GHAFF ARTEFACTS TRADING LLC</p>
+                            <p style="margin: 2px 0;">AED Account Number: 1914984790101</p>
+                            <p style="margin: 2px 0;">IBAN: AE290260001014984790101</p>
+                            <p style="margin: 2px 0;">Swift Code: EBILAEAD</p>
+                            <p style="margin: 2px 0;">Bank: EMIRATES NBD BANK</p>
+                            <p style="margin: 2px 0;">Branch: JUMEIRAH BRANCH</p>
+                            <p style="margin: 2px 0;">Bank Address: P.O. Box 777, Dubai, UAE</p>
+                        </div>
+
+                        <!-- Footer -->
+                        <div style="text-align: center; margin-top: 20px;">
+                            <p style="margin: 2px 0;">Thank you!</p>
+                            <p style="margin: 2px 0;">Bchikacollection | Bchi ka seace</p>
+                            <p style="margin: 2px 0;"><a href="http://chikaspace.com">chikaspace.com</a></p>
+                            <p style="margin: 2px 0;">SUPPORT@CHIKASPACE.COM</p>
+                            <p style="margin: 2px 0;">Thank you for shopping at CHI-KA, an Al Ghaff Artefacts Trading LLC brand.</p>
+                        </div>
+                        <pre>-----------------------------------------------------------------------------------------------------</pre>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <!-- Report Definition -->
+    <record id="action_report_custom_invoice" model="ir.actions.report">
+        <field name="name">Custom Invoice</field>
+        <field name="model">account.move</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">pf_pos_multi_currency.report_custom_invoice</field>
+        <field name="print_report_name">('Custom Invoice - %s' % (object.name))</field>
+    </record>
+</odoo>

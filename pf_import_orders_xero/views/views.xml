@@ -1,0 +1,75 @@
+<odoo>
+  <data>
+
+   <!-- Action -->
+    <record model="ir.actions.act_window" id="import_csv_action_xero">
+      <field name="name">Import CSV for Purchase Order And Bill</field>
+      <field name="res_model">import.orders.xero</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[]</field>
+      <field name="context">{}</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="cron_csv_action_xero">
+      <field name="name">Cron CSV for Purchase Order</field>
+      <field name="res_model">cron.list.xero</field>
+      <field name="view_mode">tree,form</field>
+      <field name="domain">[]</field>
+      <field name="context">{}</field>
+    </record>
+
+    <!-- Form View -->
+    <record id="import_csv_form_view_xero" model="ir.ui.view">
+      <field name="name">import.orders.view.form</field>
+      <field name="model">import.orders.xero</field>
+      <field name="arch" type="xml">
+        <form string="Import CSV">
+          <sheet>
+            <group>
+              <group>
+                  <field name="file_data" required="1"/>
+              </group>
+              <group>
+                <button type="object" name="click_me" string="Sync Orders" class="btn-primary"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+    <record id="inherit_view_id_purchase_order_form_xero" model="ir.ui.view">
+      <field name="name">purchase.order.view.form.inherit</field>
+      <field name="model">purchase.order</field>
+      <field name="inherit_id" ref="purchase.purchase_order_form"/>
+      <field name="arch" type="xml">
+        <xpath expr="//field[@name='partner_ref']" position="after">
+            <field name="xero_ref" />
+            <field name="is_xero_order" />
+        </xpath>
+      </field>
+    </record>
+    
+
+    <!-- Define the Main Menu -->
+    <menuitem id="menu_main_csv_xero"
+              name="CSV Import Xero"
+              sequence="1"/>
+
+    <!-- Define the Sub Menu for Upload CSV under Main Menu -->
+    <menuitem id="menu_upload_csv_xero"
+              name="Upload CSV Xero"
+              parent="menu_main_csv_xero"
+              action="import_csv_action_xero"
+              sequence="10"/>
+
+    <menuitem id="menu_cron_csv_xero"
+              name="Cron CSV Xero"
+              parent="menu_main_csv_xero"
+              action="cron_csv_action_xero"
+              sequence="20"/>
+
+
+   
+  </data>
+</odoo>

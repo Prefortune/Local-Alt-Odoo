@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="pf_pos_multi_currency.PaymentScreenButtons"
+       t-inherit="point_of_sale.PaymentScreenButtons"
+       t-inherit-mode="extension">
+        <xpath expr="//button[hasclass('js_invoice')]" position="after">
+            <t t-if="pos.config.partial_payment">
+                <button class="button btn btn-light py-3 text-start rounded-0 border-bottom"
+                        t-ref="PartialPaymentButton"
+                        t-on-click="PartialPaymentButton"
+                        t-att-class="{ 'highlight text-bg-primary': currentOrder.partial_payment }">
+                    <i class="fa fa-file-text-o me-2"/>
+                    Partial Payment
+                </button>
+            </t>
+            <button class="button btn btn-light py-3 text-start rounded-0 border-bottom"
+                        t-ref="AddShippingButton"
+                        t-on-click="AddShippingButton"
+                        t-att-class="{ 'highlight text-bg-primary': currentOrder.addshipping }">
+                    <i class="fa fa-file-text-o me-2"/>
+                    Select Shipping Method
+                </button>
+        </xpath>
+    </t>
+    <t t-name="pf_pos_multi_currency.PaymentScreenValidate"
+       t-inherit="point_of_sale.PaymentScreenValidate"
+       t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('validation')]" position="attributes">
+            <attribute name="t-ref">PartialPayment</attribute>
+        </xpath>
+    </t>
+    <t t-name="pf_pos_multi_currency.SetSaleOrderButton" t-inherit="pos_sale.SetSaleOrderButton" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('o_sale_order_button')]" position="attributes">
+            <attribute name="class">d-none</attribute>
+        </xpath>
+    </t>
+    <!-- <t t-extend="ClosePosPopup" t-inherit="point_of_sale.ClosePosPopup" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('notes-container')]" position="after">
+            
+            <t t-if="env.pos.pay_currency_amount">
+                <div class="session_payment_detail">
+                    <div class="session_payment_detail_header">
+                        Payment Detail
+                    </div>
+                    <div class="session_payment_detail_data">
+                        <t t-foreach="env.pos.pay_currency_amount" t-as="each_currency" t-key="each_currency">
+                            <div class="currency_each_detail">
+                                <span class="currency_name"><t t-esc="env.pos.db.currency_by_id[each_currency].name"/></span> : 
+                                <span class="currency_amount"><t t-esc="env.pos.pay_currency_amount[each_currency].toFixed(2)"/></span>
+                            </div>
+                        </t>
+                    </div>
+                </div>
+            </t>           
+        </xpath>
+    </t>-->
+
+    
+ </templates>

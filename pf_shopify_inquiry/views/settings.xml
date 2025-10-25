@@ -1,0 +1,65 @@
+<!-- <odoo>
+    <record id="view_res_config_settings_inherit" model="ir.ui.view">
+        <field name="name">res.config.settings.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form" />
+        <field name="arch" type="xml">
+            <xpath expr="//form" position="inside">
+                <div class="app_settings_block" string="Shopify Inquiry">
+                    <h2>Shopify Inquiry Configuration</h2>
+                    <p class="text-muted">
+                        Configure the default Helpdesk Team, Ticket Type, and Tags for handling Shopify inquiries.
+                    </p>
+                    <div class="row mt16">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label for="helpdesk_id" class="o_form_label"/>
+                            <field name="helpdesk_id" widget="many2one" options="{'no_create': True}" class="o_form_field"/>
+                        </div>
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label for="ticket_type_id" class="o_form_label"/>
+                            <field name="ticket_type_id" widget="many2one" options="{'no_create': True}" class="o_form_field"/>
+                        </div>
+                    </div>
+                    <div class="row mt16">
+                        <div class="col-lg-6 col-md-6 col-sm-12">
+                            <label for="tag_id" class="o_form_label"/>
+                            <field name="tag_id" widget="many2one" options="{'no_create': True}" class="o_form_field"/>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo> -->
+<odoo>
+
+<record id="view_res_config_settings_inherit" model="ir.ui.view">
+        <field name="name">res.config.settings.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base_setup.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='languages']" position="after">
+                <h2>Shopify Inquiry Configuration</h2>
+                <div class="row mt16 o_settings_container" name="shopify_inquiry_container">
+                 <group>
+                    <group name="shopify_inquiry" string="shopify inquiry">
+                        <field name="helpdesk_id" widget="many2one" options="{'no_create': True}" class="o_form_field"/>
+                        <field name="ticket_type_id" widget="many2one" options="{'no_create': True}" class="o_form_field"/>
+                        <field name="tag_id" widget="many2one" options="{'no_create': True}" class="o_form_field"/>
+                    </group>
+                    <!-- <group name="Set Email Cron" string="Set Email Cron">
+                        <field name="is_create_cron"/>
+                        <field name="cron_date" attrs="{'readonly' : [('is_create_cron','==',False)]}"/>
+                        <field name="cron_run_time" attrs="{'readonly' : [('is_create_cron','==',False)]}"/>
+                        <field name="stop_after" attrs="{'readonly' : [('is_create_cron','==',False)]}"/>
+                        <field name="state" attrs="{'readonly' : [('is_create_cron','==',False)]}" widget="badge" decoration-muted="state == 'create'" decoration-danger="state == 'cancel'" decoration-success="state == 'complete'" decoration-info="state == 'running'"/>
+                    </group> -->
+                </group>
+                <!-- <div class="d-grid gap-2 d-md-flex justify-content-md-end">
+                    <button name="cancle_cron" type="object" class="btn btn-danger btn-sm" attrs="{'invisible' : [('state','!=','running')]}">Stop Cron</button>
+                </div> -->
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

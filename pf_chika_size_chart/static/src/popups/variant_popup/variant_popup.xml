@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+
+    <t t-name="pf_chika_size_chart.SizeChartPopup">
+        <div class="popup popup-confirm pf_product_varient_popup_popup">
+            <!-- Header -->
+            <header class="title drag-handle modal-header">
+                <div>
+                    <span class="modal-title h4">
+                        Select a Size Chart
+                    </span>
+                </div>
+                <div class="pf_header_right_searchbox">
+                    <input type="text" placeholder="Search size chart..."
+                           t-on-input="onSearchInput"
+                           t-att-value="state.searchQuery"
+                           class="search-input"/>
+                </div>
+            </header>
+
+            <!-- Main Body -->
+            <main class="modal-body pf_product_varient_popup_popup_body bg-300" style="max-height: 60vh; overflow-y: auto;">
+                <table class="table table-sm table-hover table-bordered text-center">
+                    <thead class="table-light">
+                        <tr>
+                            <th>Size Chart</th>
+                            <th>Size</th>
+                            <th>Quantity</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <!-- <t t-if="state.sizeLines.length > 0"> -->
+                            <!-- <t t-foreach="state.sizeLines" t-as="line" t-key="line.id"> -->
+                                <tr>
+                                    <td>
+                                        <select class="form-select w-100 mb-1"
+                                                t-on-change="(ev) => selectSizeChart(ev.target.value)">
+                                            <option value="" selected="selected">Select a Size Chart</option>
+                                            <t t-foreach="state.filteredCharts" t-as="size" t-key="size.id">
+                                                <option t-att-value="size.id">
+                                                    <t t-esc="size.name"/>
+                                                </option>
+                                            </t>
+                                        </select>
+                                    </td>
+                                    <td>
+                                         <input type="text"
+                                               class="form-control text-center"                                              
+                                               min="0"
+                                               step="1"
+                                               />
+                                    </td>
+                                    <td>
+                                        <input type="number"
+                                               class="form-control text-center"                                               
+                                               min="0"
+                                               step="1"
+                                               t-on-input="(ev) => updateLineQty(line.id, ev.target.value)"/>
+                                    </td>
+                                </tr>
+                            <!-- </t> -->
+                        <!-- </t> -->
+                        <!-- <t t-if="state.sizeLines.length === 0">
+                            <tr>
+                                <td colspan="3">No size lines available. Please select a size chart.</td>
+                            </tr>
+                        </t> -->
+                    </tbody>
+                </table>
+            </main>
+
+            <!-- Footer -->
+            <footer class="footer modal-footer">
+                <div class="btn btn-lg btn-secondary me-2" t-on-click="closePopup">Close</div>
+                <div class="btn btn-lg btn-primary" t-on-click="confirm">Confirm</div>
+            </footer>
+        </div>
+    </t>
+
+</templates>

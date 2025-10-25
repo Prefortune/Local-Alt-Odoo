@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+<record id="view_shopify_queue_form" model="ir.ui.view">
+    <field name="name">shopify.sync.queue.form</field>
+    <field name="model">shopify.sync.queue</field>
+    <field name="arch" type="xml">
+        <form string="Shopify Queue">
+            <sheet>
+                <!-- General Information Page -->
+                <group>
+                    <group>
+                        <field name="type" readonly="1" />
+                        <field name="shopify_store" readonly="1" />
+                        <field name="state" />
+                        <field name="create_date" readonly="1"/>
+                    </group>
+                    <group>
+                        <field name="error_message" readonly="1" />
+                        <field name="sync_attempts" readonly="1" />
+                        <field name="next_cursor" readonly="1" />
+                    </group>
+                </group>
+
+            </sheet>
+        </form>
+    </field>
+</record>
+
+
+<record id="action_shopify_queue" model="ir.actions.act_window">
+    <field name="name">Shopify Queue</field>
+    <field name="type">ir.actions.act_window</field>
+    <field name="res_model">shopify.sync.queue</field>
+    <field name="view_mode">tree,form</field> 
+    <field name="context">{}</field>
+    <field name="help" type="html">
+        <p class="o_view_nocontent_smiling_face">
+            create a Queue
+        </p>
+    </field>
+</record>
+
+<record id="view_shopify_queue_tree" model="ir.ui.view">
+    <field name="name">shopify.sync.queue.tree</field>
+    <field name="model">shopify.sync.queue</field>
+    <field name="arch" type="xml">
+        <tree>
+            <field name="type"/>
+            <field name="create_date"/>
+            <field name="state"/>
+        </tree>
+    </field>
+</record>
+
+<menuitem
+    id="shopify_queue"
+    name="Queue"
+    parent = "shopify_odoo_root_menu"
+    action = "action_shopify_queue"
+    sequence="2"/>
+
+</odoo>
