@@ -1,0 +1,781 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>CRM Facebook Lead Integration - Facebook Leads Connector</title>
+    <style>
+        .section-container {
+            max-width: 1000px;
+            margin: auto;
+        }
+		.card-grid {
+		  display: flex;
+		  flex-wrap: wrap;
+		  gap: 20px;
+		  justify-content: center;
+		  padding: 20px;
+		}
+
+        .card {
+			width: 280px;
+			height: 250px;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 12px;
+            box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+
+        .card.blog {
+            background-color: #f5f0fd;
+        }
+
+        .card.video {
+            background-color: #fff0f0;
+        }
+
+        .card i {
+            font-size: 30px;
+            margin-bottom: 10px;
+            display: block;
+        }
+
+        .card h3 {
+            margin-bottom: 10px;
+            font-size: 20px;
+        }
+
+        .card p {
+            font-size: 14px;
+            margin-bottom: 15px;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            font-size: 14px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+
+        .btn.blog {
+            background-color: #6f42c1;
+            color: white;
+        }
+
+        .btn.video {
+            background-color: #ff3d3d;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="text-center">
+    <img src="img/logo.png" class="img-fluid" style="max-width: 100%; height: auto;">
+</div>
+
+<h2 class="text-center p-4" style="font-weight: bold;">CRM Facebook Lead Integration - Facebook Leads Connector</h2>
+
+<section class="container p-5 border-1 rounded-2" style="background-color: #EBF3FC;border: solid #00BBEE;">
+
+    <div class="row">
+        <div class="col-lg-1"/>
+        <div class="col-lg-10 col-sm-12 p-3" style="background-color: #BEDDFF; border-radius: 30px;">
+            <h3 class="text-center" style="color: #070487; font-weight: bold;">
+                CRM Facebook Lead Integration - Facebook Leads Connector for Odoo
+            </h3>
+        </div>
+        <div class="col-lg-1"/>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-12 col-sm-12 mt-4">
+            <p style="text-align: justify;">
+                CRM Facebook Lead Integration - Facebook Leads Connector is a powerful Odoo module that connects your Facebook Lead Ads with Odoo CRM. This app helps you with lead generation by
+                capturing Facebook form
+                submissions and instantly creating new leads in your CRM pipeline—no manual export or import required.
+            </p>
+
+            <p style="text-align: justify;">Effortless Integration, Enhanced Accuracy</p>
+            <p style="text-align: justify;">
+                With this seamless integration, your sales team can respond to fresh leads faster, boost engagement, and increase conversion rates.
+            </p>
+        </div>
+    </div>
+
+</section>
+
+<section class="container p-0 mt-5 border-1 rounded-2"
+         style="border: solid #00BBEE;">
+
+    <img class="position-absolute w-100 h-100 rounded-2" src="img/bg.png">
+
+    <h2 class="text-center font-size-lg pt-5" style="color: #1A4696; font-weight: bold;">
+        GET INSTANT PERSONALIZED DEMO
+    </h2>
+
+       <div class="row mt-3 px-5">
+        <div class="col-lg-1"/>
+        <div class="col-lg-10 col-sm-12" style="background-color: #1A4696; border-radius: 50px; ">
+            <h4 class="text-center p-3 mt-3">
+                <a href="https://www.reliution.com/contactus" style="color: #FFFFFF;">Copy Link :
+                    https://www.reliution.com/contactus</a>
+            </h4>
+        </div>
+        <div class="col-lg-1"/>
+    </div>
+
+    <div class="mt-3">
+        <h2 class="text-center font-size-md" style="font-weight: bold;">OR</h2>
+    </div>
+
+    <div class="row pb-5 justify-content-center">
+    <!-- Email Us -->
+    <div class="col-lg-4 col-sm-12 mb-3 d-flex justify-content-center">
+        <a href="mailto:info@reliution.com"
+           class="d-block text-center py-4 px-3 border-2"
+           style="border: 2px solid #1A4696; border-radius: 10px; background-color: #00DBB0; width: 80%; text-decoration: none;">
+            <img src="img/m-image1.png" alt="Email Icon" style="width: 35px; height: 28px; margin-bottom: 10px;">
+            <div style="color: #1A4696; font-size: 17px; font-weight: bold;">Email Us</div>
+        </a>
+    </div>
+         <div class="col-lg-4 col-sm-12 mb-3 d-flex justify-content-center">
+        <a href="https://teams.microsoft.com/l/chat/0/0?users=apps.reliution@gmail.com"
+           target="_blank"
+           class="d-block text-center py-4 px-3 border-2"
+           style="border: 2px solid #1A4696; border-radius: 10px; background-color: #00DBB0; width: 80%; text-decoration: none;">
+            <img src="img/team_logo.png" alt="Teams Icon" style="width: 30px; height: 30px; margin-bottom: 10px;">
+            <div style="color: #1A4696; font-size: 17px; font-weight: bold;">Connect to Teams</div>
+            <div style="font-size: 13px; font-weight: bold; color: black;">
+                apps.reliution@gmail.com
+            </div>
+        </a>
+    </div>
+</div>
+</section>
+
+<!-- Video Section -->
+<section class="container mt-5">
+    <h2 class="text-center mb-4" style="font-size: 28px; color: #333;">Video Tutorial</h2>
+
+    <div class="d-flex flex-wrap justify-content-center gap-4">
+
+         <!-- Card 1 -->
+        <a href="https://youtu.be/CMNz5wTA1Ss" target="_blank"
+           class="text-decoration-none text-dark">
+            <div class="m-3 p-4 border-2 shadow-lg bg-white rounded-4 d-flex flex-column align-items-center text-center"
+                 style="width: 310px; height: 240px;">
+                <img src="img/youtube.png" alt="YouTube Icon" style="height: 35px; margin-bottom: 15px;">
+                <p style="color: #333333; font-size: 16px; margin-bottom: auto;">
+                    CRM Facebook Lead Integration - Facebook Leads Connector Flow
+                </p>
+                <div style="color:#333333; font-weight:bold;">
+                    Watch <img src="img/next_icon.png" style="height: 17px;">
+                </div>
+            </div>
+        </a>
+    
+        <!-- Card 2 -->
+        <a href="https://www.youtube.com/watch?v=sE7-mvuDq8g&t=91s" target="_blank"
+           class="text-decoration-none text-dark">
+            <div class="m-3 p-4 border-2 shadow-lg bg-white rounded-4 d-flex flex-column align-items-center text-center"
+                 style="width: 310px; height: 240px;">
+                <img src="img/youtube.png" alt="YouTube Icon" style="height: 35px; margin-bottom: 15px;">
+                <p style="color: #333333; font-size: 16px; margin-bottom: auto;">
+                    How to create a Facebook app for CRM Lead Ads
+                </p>
+                <div style="color:#333333; font-weight:bold;">
+                    Watch <img src="img/next_icon.png" style="height: 17px;">
+                </div>
+            </div>
+        </a>
+
+        <!-- Card 3 -->
+        <a href="https://www.youtube.com/watch?v=Xs3wSnimyAk" target="_blank"
+           class="text-decoration-none text-dark">
+            <div class="m-3 p-4 border-2 shadow-lg bg-white rounded-4 d-flex flex-column align-items-center text-center"
+                 style="width: 310px; height: 240px;">
+                <img src="img/youtube.png" alt="YouTube Icon" style="height: 35px; margin-bottom: 15px;">
+                <p style="color: #404040; font-size: 16px; margin-bottom: auto;">
+                    How to Get Facebook App ID, App Secret & Access Token and set domain for CRM Lead Ads
+                </p>
+               <div style="color:#333333; font-weight:bold;">
+                    Watch <img src="img/next_icon.png" style="height: 17px;">
+                </div>
+            </div>
+        </a>
+    </div>
+</section>
+
+ 
+ 
+
+<section class="container mt-5">
+    <div class="row text-center">
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <a href="#features" class="btn btn-lg m-2 p-3 border-2 shadow-lg bg-white rounded-4 active"
+               style="border-radius: 10px;width:80%;font-size: x-large;" tabindex="-1"
+               role="button" aria-disabled="true"><img src="img/v1.png" alt="configuration_icon"/>
+                <span style="color:#000"> Features </span></a>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <a href="#setup" class="btn btn-lg m-2 p-3 border-2 shadow-lg bg-white rounded-4"
+               style="border-radius: 10px;width:80%;font-size: x-large;" tabindex="-1"
+               role="button" aria-disabled="true"><img src="img/v2.png" alt="configuration_icon"/>
+                <span style="color:#000"> Setup </span></a>
+        </div>
+        <div class="col-lg-4 col-md-4 col-sm-12">
+            <a href="#workflow" class="btn btn-lg m-2 p-3 border-2 shadow-lg bg-white rounded-4"
+               style="border-radius: 10px;width:80%;font-size: x-large;" tabindex="-1"
+               role="button" aria-disabled="true"><img src="img/v3.png" alt="configuration_icon"/>
+                <span style="color:#000"> Workflow </span></a>
+        </div>
+    </div>
+</section>
+
+<section id="features" class="container p-5 mt-5 border-1 rounded-2"
+         style="background-color: #EBF3FC;border: solid #00BBEE;">
+    <h2 class="text-center" id="Hot Features">
+        <span style="text-decoration: underline;">Hot Features</span>
+    </h2>
+    <br/>
+    <div class="container">
+        <div class="row s_nb_column_fixed">
+            <div class="col-lg-6 pt24 pb24 o_colored_level">
+                <div class="row s_col_no_resize s_col_no_bgcolor">
+                    <div class="col-lg-4 pb16 o_not_editable">
+                        <img alt="" src="img/Group 1.png" class="img-fluid rounded-circle mx-auto img-thumbnail"
+                             loading="lazy" data-original-id="417"
+                             data-original-src="/theme_beauty/static/src/img/snippets/s_company_team_1.jpg"
+                             data-mimetype="image/jpeg" style="">
+                    </div>
+                    <div class="col-lg-8">
+                        <h5 class="o_default_snippet_text">
+                            Facebook Lead Sync
+                        </h5>
+                        <p class="o_default_snippet_text">
+                            Pull leads from Facebook Lead Ads as soon as users submit forms.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 pt24 pb24 o_colored_level">
+                <div class="row s_col_no_resize s_col_no_bgcolor">
+                    <div class="col-lg-4 pb16 o_not_editable">
+                        <img alt="" src="img/Group 2.png" class="img-fluid rounded-circle mx-auto img-thumbnail"
+                             loading="lazy" data-original-id="417"
+                             data-original-src="/theme_beauty/static/src/img/snippets/s_company_team_1.jpg"
+                             data-mimetype="image/jpeg" style="">
+                    </div>
+                    <div class="col-lg-8">
+                        <h5 class="o_default_snippet_text">
+                            Direct CRM Integration
+                        </h5>
+                        <p class="o_default_snippet_text">
+                            New leads are created in the Odoo CRM module with mapped fields.
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-lg-6 pt24 pb24 o_colored_level">
+                <div class="row s_col_no_resize s_col_no_bgcolor">
+                    <div class="col-lg-4 pb16 o_not_editable">
+                        <img alt="" src="img/Group 3.png" class="img-fluid rounded-circle mx-auto img-thumbnail"
+                             loading="lazy" data-original-id="417"
+                             data-original-src="/theme_beauty/static/src/img/snippets/s_company_team_1.jpg"
+                             data-mimetype="image/jpeg" style="margin-left:8px;">
+                    </div>
+                    <div class="col-lg-8">
+                        <h5 class="o_default_snippet_text">
+                            Simple Facebook Page & Form Setup
+                        </h5>
+                        <p class="o_default_snippet_text">
+                            Easily connect your Facebook page and associated lead forms using access tokens or secure API integration.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 pt24 pb24 o_colored_level">
+                <div class="row s_col_no_resize s_col_no_bgcolor">
+                    <div class="col-lg-4 pb16 o_not_editable">
+                        <img alt="" src="img/Group 3.png" class="img-fluid rounded-circle mx-auto img-thumbnail"
+                             loading="lazy" data-original-id="417"
+                             data-original-src="/theme_beauty/static/src/img/snippets/s_company_team_1.jpg"
+                             data-mimetype="image/jpeg" style="margin-left:8px;">
+                    </div>
+                    <div class="col-lg-8">
+                        <h5 class="o_default_snippet_text">
+                            Custom Field Mapping
+                        </h5>
+                        <p class="o_default_snippet_text">
+                            Match Facebook form fields to any custom lead fields in Odoo.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-lg-6 pt24 pb24 o_colored_level">
+                <div class="row s_col_no_resize s_col_no_bgcolor">
+                    <div class="col-lg-4 pb16 o_not_editable">
+                        <img alt="" src="img/Group 3.png" class="img-fluid rounded-circle mx-auto img-thumbnail"
+                             loading="lazy" data-original-id="417"
+                             data-original-src="/theme_beauty/static/src/img/snippets/s_company_team_1.jpg"
+                             data-mimetype="image/jpeg" style="margin-left:8px;">
+                    </div>
+                    <div class="col-lg-8">
+                        <h5 class="o_default_snippet_text">
+                            Track Campaign Sources
+                        </h5>
+                        <p class="o_default_snippet_text">
+                            Tag leads with campaign/form info for better tracking and segmentation.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+    </div>
+</section>
+
+<section class="container p-5 mt-5 border-1 rounded-2" style="background-color: #EBF3FC;border: solid #00BBEE;">
+
+    <h2 class="text-center text-decoration-underline" style="font-weight: bold;">
+        Detailed Features
+    </h2>
+
+    <div class="row mt-4">
+        <div class="col-lg-3 mb-3 d-flex align-items-center">
+            <div class="card p-4 pt-2 mt-4 h-100"
+                 style="background-color: #1A4696; border-radius: 24px; text-align: left; border-radius: 20px;border:3px solid #00DBB0;">
+                <span style="color:#00DBB0; font-size: 36px; font-weight: bold;">01</span>
+                <span style="color:white; font-size: 16px;">Facebook Lead Sync - Pull leads from Facebook Lead Ads as soon as users submit forms. Supports multiple forms and pages.</span>
+            </div>
+        </div>
+        <div class="col-lg-3 mb-3 d-flex align-items-center">
+            <div class="card p-4 pt-2 mt-4 h-100"
+                 style="background-color: #1A4696; border-radius: 24px; text-align: left; border-radius: 20px;border:3px solid #00DBB0;">
+                <span style="color:#00DBB0; font-size: 36px; font-weight: bold;">02</span>
+                <span style="color:white; font-size: 16px;">Direct CRM Integration - Each Facebook lead submission is automatically turned into a new lead/opportunity in Odoo CRM. All essential contact details are saved directly to the CRM record.</span>
+            </div>
+        </div>
+        <div class="col-lg-3 mb-3 d-flex align-items-center">
+            <div class="card p-4 pt-2 mt-4 h-100"
+                 style="background-color: #1A4696; border-radius: 24px; text-align: left; border-radius: 20px;border:3px solid #00DBB0;">
+                <span style="color:#00DBB0; font-size: 36px; font-weight: bold;">03</span>
+                <span style="color:white; font-size: 16px;">Simple Facebook Page & Form Setup - Easily connect your Facebook page and associated lead forms using access tokens or secure API integration.</span>
+            </div>
+        </div>
+        <div class="col-lg-3 mb-3 d-flex align-items-center">
+            <div class="card p-4 pt-2 mt-4 h-100"
+                 style="background-color: #1A4696; border-radius: 24px; text-align: left; border-radius: 20px;border:3px solid #00DBB0;">
+                <span style="color:#00DBB0; font-size: 36px; font-weight: bold;">04</span>
+                <span style="color:white; font-size: 16px;">Custom Field Mapping - Map Facebook form fields (like name, phone, email, product interest) to any custom fields in your Odoo CRM.</span>
+            </div>
+        </div>
+
+        <div class="col-lg-3 mb-3 d-flex align-items-center">
+            <div class="card p-4 pt-2 mt-4 h-100"
+                 style="background-color: #1A4696; border-radius: 24px; text-align: left; border-radius: 20px;border:3px solid #00DBB0;">
+                <span style="color:#00DBB0; font-size: 36px; font-weight: bold;">05</span>
+                <span style="color:white; font-size: 16px;">Track Campaign Sources - Tag leads with campaign/form info for better tracking and segmentation. Easily view and filter leads by campaign source within your CRM dashboard.</span>
+            </div>
+        </div>
+    </div>
+
+</section>
+
+<section id="setup" class="container p-5 mt-5 border-1 rounded-2"
+         style="background-color: #EBF3FC;border: solid #00BBEE;">
+
+    <h2 class="text-center text-decoration-underline" style="font-weight: bold;">
+        Set Up
+    </h2>
+
+    <div class="row mt-4">
+        <div class="col-lg-1"/>
+        <div class="col-lg-10 col-sm-12 py-3"
+             style="background-color: #BEDDFF; border-radius: 24px; text-align: left; border-radius: 20px;">
+            <h5 class="text-center" style="color: #000;">
+                To begin with, have the CRM Facebook Lead Integration - Facebook Leads Connector Module downloaded on your system. For its proper setup, go through the steps below.
+                <p class="o_default_snippet_text" style="font-weight:bold; color:#000;"> Firstly, you need to install the CRM Facebook Lead Integration - Facebook Leads Connector App from Odoo Apps.
+                    It's easy to locate,
+                    just search for the name, you can identify it with the change radio button icon. Ta-da, you are ready to go!!</p>
+                <p class="text-center" style="font-weight:bold; color:#000;"> Apps >> <strong>CRM Facebook Lead Integration - Facebook Leads Connector >> </strong>Activate</p>
+            </h5>
+        </div>
+        <div class="col-lg-1"/>
+    </div>
+
+    <div class="text-center mt-4">
+        <img src="img/install_app.png" class="img-fluid mt-3 mb-4" style="max-width: 90%; height: auto;">
+    </div>
+
+</section>
+
+<section id="workflow" class="container p-5 mt-5 border-1 rounded-2"
+         style="background-color: #EBF3FC;border: solid #00BBEE;">
+
+    <h2 class="text-center text-decoration-underline" style="font-weight: bold;">
+        Work Flow
+    </h2>
+
+    <div class="row mt-4">
+        <div class="col-lg-1"/>
+        <div class="col-lg-10 col-sm-12 py-3"
+             style="background-color: #BEDDFF; border-radius: 24px; text-align: left; border-radius: 20px;">
+            <h5 class="text-center" style="color: #000;">
+                To grant a user access to the <strong>CRM Facebook Lead Integration - Facebook Leads Connector </strong>functionality go to
+                <span style="font-weight: bold;"> Settings → Users & Companies → Users.</span>
+                Select the user, then tick the <span style="font-weight: bold;"> Facebook Leads Access </span> option.
+            </h5>
+        </div>
+        <div class="col-lg-1"/>
+    </div>
+
+    <div class="text-center mt-4">
+        <img src="img/grant_access_of_facebook_lead.png" class="img-fluid mt-3 mb-4" style="max-width: 90%; height: auto;">
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-1"/>
+        <div class="col-lg-10 col-sm-12 py-3"
+             style="background-color: #BEDDFF; border-radius: 24px; text-align: left; border-radius: 20px;">
+            <h5 class="text-center" style="color: #000;">
+                The Facebook Leads menu will now be visible. To fetch leads from Facebook, you need the <strong>Facebook App ID </strong>and <strong>App Secret Token</strong>.
+                To add these credentials, go to <strong>Facebook Leads → Facebook App Credential</strong>, then click the <strong>New</strong> button to add a new Facebook App Credential record. Now
+                insert the Facebook App ID and secret token.
+            </h5>
+        </div>
+        <div class="col-lg-1"/>
+    </div>
+
+    <div class="text-center mt-4">
+        <img src="img/fb_app_id_and_secret.png" class="img-fluid mt-3 mb-4" style="max-width: 90%; height: auto;">
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-1"/>
+        <div class="col-lg-10 col-sm-12 py-3"
+             style="background-color: #BEDDFF; border-radius: 24px; text-align: left; border-radius: 20px;">
+            <h5 class="text-center" style="color: #000;">
+                Now, click the <strong>Generate Token</strong> button. This will redirect you to Facebook, where you need to log in and grant access to the pages from which you want to fetch leads
+                into Odoo.
+
+            </h5>
+        </div>
+        <div class="col-lg-1"/>
+    </div>
+
+    <div class="text-center mt-4">
+        <img src="img/generate_token_click.png" class="img-fluid mt-3 mb-4" style="max-width: 90%; height: auto;">
+    </div>
+
+    <div class="text-center mt-4">
+        <img src="img/facebook_redirect.png" class="img-fluid mt-3 mb-4" style="max-width: 90%; height: auto;">
+    </div>
+
+
+    <div class="row mt-4">
+        <div class="col-lg-1"/>
+        <div class="col-lg-10 col-sm-12 py-3"
+             style="background-color: #BEDDFF; border-radius: 24px; text-align: left; border-radius: 20px;">
+            <h5 class="text-center" style="color: #000;">
+                After the process is completed, the <strong>Page Access Token </strong>will be retrieved and automatically set in the <strong>User Access Token</strong> field of the current record.
+            </h5>
+        </div>
+        <div class="col-lg-1"/>
+    </div>
+
+    <div class="text-center mt-4">
+        <img src="img/user_access_token.png" class="img-fluid mt-3 mb-4" style="max-width: 90%; height: auto;">
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-1"/>
+        <div class="col-lg-10 col-sm-12 py-3"
+             style="background-color: #BEDDFF; border-radius: 24px; text-align: left; border-radius: 20px;">
+            <h5 class="text-center" style="color: #000;">
+                After the process is completed, the <strong>Page Access Token </strong>will be retrieved and automatically set in the <strong>User Access Token</strong> field of the current record.
+            </h5>
+        </div>
+        <div class="col-lg-1"/>
+    </div>
+
+    <div class="text-center mt-4">
+        <img src="img/user_access_token.png" class="img-fluid mt-3 mb-4" style="max-width: 90%; height: auto;">
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-1"/>
+        <div class="col-lg-10 col-sm-12 py-3"
+             style="background-color: #BEDDFF; border-radius: 24px; text-align: left; border-radius: 20px;">
+            <h5 class="text-center" style="color: #000;">
+                To retrieve the Facebook pages, click the <strong>Fetch Facebook Pages</strong> button. This will fetch all Facebook pages associated with the connected account.
+            </h5>
+        </div>
+        <div class="col-lg-1"/>
+    </div>
+
+    <div class="text-center mt-4">
+        <img src="img/fetch_fb_page.png" class="img-fluid mt-3 mb-4" style="max-width: 90%; height: auto;">
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-1"/>
+        <div class="col-lg-10 col-sm-12 py-3"
+             style="background-color: #BEDDFF; border-radius: 24px; text-align: left; border-radius: 20px;">
+            <h5 class="text-center" style="color: #000;">
+                You can see all the Facebook pages linked to this app. Click the smart button labeled <strong>Facebook Pages</strong> to view them.
+            </h5>
+        </div>
+        <div class="col-lg-1"/>
+    </div>
+
+    <div class="text-center mt-4">
+        <img src="img/facebook_pages.png" class="img-fluid mt-3 mb-4" style="max-width: 90%; height: auto;">
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-1"/>
+        <div class="col-lg-10 col-sm-12 py-3"
+             style="background-color: #BEDDFF; border-radius: 24px; text-align: left; border-radius: 20px;">
+            <h5 class="text-center" style="color: #000;">
+                Now, click on the particular page, and you will see the page information of the related account.
+            </h5>
+        </div>
+        <div class="col-lg-1"/>
+    </div>
+
+    <div class="text-center mt-4">
+        <img src="img/fb_page_detail.png" class="img-fluid mt-3 mb-4" style="max-width: 90%; height: auto;">
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-1"/>
+        <div class="col-lg-10 col-sm-12 py-3"
+             style="background-color: #BEDDFF; border-radius: 24px; text-align: left; border-radius: 20px;">
+            <h5 class="text-center" style="color: #000;">
+                Click the <strong>Fetch Forms</strong> button to fetch all forms related to this page. You can view them under the <strong>Lead Forms</strong> tab inside the page.
+            </h5>
+        </div>
+        <div class="col-lg-1"/>
+    </div>
+
+    <div class="text-center mt-4">
+        <img src="img/fetch_from_from_page.png" class="img-fluid mt-3 mb-4" style="max-width: 90%; height: auto;">
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-1"/>
+        <div class="col-lg-10 col-sm-12 py-3"
+             style="background-color: #BEDDFF; border-radius: 24px; text-align: left; border-radius: 20px;">
+            <h5 class="text-center" style="color: #000;">
+                Now, click on a <strong>View</strong> button in specific form to view its details and other configuration settings related to it.
+            </h5>
+        </div>
+        <div class="col-lg-1"/>
+    </div>
+
+    <div class="text-center mt-4">
+        <img src="img/click_view_button_form.png" class="img-fluid mt-3 mb-4" style="max-width: 90%; height: auto;">
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-1"/>
+        <div class="col-lg-10 col-sm-12 py-3"
+             style="background-color: #BEDDFF; border-radius: 24px; text-align: left; border-radius: 20px;">
+            <h5 class="text-center" style="color: #000;">
+                Now, click on a <strong>View</strong> button in specific form to view its details and other configuration settings related to it.
+            </h5>
+        </div>
+        <div class="col-lg-1"/>
+    </div>
+
+    <div class="text-center mt-4">
+        <img src="img/click_view_button_form.png" class="img-fluid mt-3 mb-4" style="max-width: 90%; height: auto;">
+    </div>
+
+    <div class="text-center mt-4">
+        <img src="img/form_detail.png" class="img-fluid mt-3 mb-4" style="max-width: 90%; height: auto;">
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-1"/>
+        <div class="col-lg-10 col-sm-12 py-3"
+             style="background-color: #BEDDFF; border-radius: 24px; text-align: left; border-radius: 20px;">
+            <h5 class="text-center" style="color: #000;">
+                You can find the <strong>field mapping</strong> option inside the page. By default, standard fields are already mapped in the field mapping section.
+            </h5>
+        </div>
+        <div class="col-lg-1"/>
+    </div>
+
+    <div class="text-center mt-4">
+        <img src="img/field_mapping.png" class="img-fluid mt-3 mb-4" style="max-width: 90%; height: auto;">
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-1"/>
+        <div class="col-lg-10 col-sm-12 py-3"
+             style="background-color: #BEDDFF; border-radius: 24px; text-align: left; border-radius: 20px;">
+            <h5 class="text-center" style="color: #000;">
+                You can find the <strong>field mapping</strong> option inside the page. By default, standard fields are already mapped in the field mapping section.
+            </h5>
+        </div>
+        <div class="col-lg-1"/>
+    </div>
+
+    <div class="text-center mt-4">
+        <img src="img/field_mapping.png" class="img-fluid mt-3 mb-4" style="max-width: 90%; height: auto;">
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-1"/>
+        <div class="col-lg-10 col-sm-12 py-3"
+             style="background-color: #BEDDFF; border-radius: 24px; text-align: left; border-radius: 20px;">
+            <h5 class="text-center" style="color: #000;">
+                If you want to map <strong>additional fields</strong> from your form, you just need the <strong>Facebook form field name</strong>. Then, select the corresponding <strong>Odoo
+                field</strong> from the dropdown to bind it. Once mapped, the data from Facebook will automatically be displayed in the selected Odoo field.
+            </h5>
+        </div>
+        <div class="col-lg-1"/>
+    </div>
+
+    <div class="text-center mt-4">
+        <img src="img/additional_field_add.png" class="img-fluid mt-3 mb-4" style="max-width: 90%; height: auto;">
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-1"/>
+        <div class="col-lg-10 col-sm-12 py-3"
+             style="background-color: #BEDDFF; border-radius: 24px; text-align: left; border-radius: 20px;">
+            <h5 class="text-center" style="color: #000;">
+                To fetch the leads for a specific form, click the <strong>Fetch Leads</strong> button. This will retrieve all leads associated with that particular form.
+            </h5>
+        </div>
+        <div class="col-lg-1"/>
+    </div>
+
+    <div class="text-center mt-4">
+        <img src="img/fetch_lead_of_form.png" class="img-fluid mt-3 mb-4" style="max-width: 90%; height: auto;">
+    </div>
+
+    <div class="row mt-4">
+        <div class="col-lg-1"/>
+        <div class="col-lg-10 col-sm-12 py-3"
+             style="background-color: #BEDDFF; border-radius: 24px; text-align: left; border-radius: 20px;">
+            <h5 class="text-center" style="color: #000;">
+                Now, click the <strong>Leads</strong> smart button to view the lead information along with the fields mapped to Odoo CRM. By default, the lead will be in the <strong>New</strong>
+                stage.
+            </h5>
+        </div>
+        <div class="col-lg-1"/>
+    </div>
+
+    <div class="text-center mt-4">
+        <img src="img/form_lead_fetch.png" class="img-fluid mt-3 mb-4" style="max-width: 90%; height: auto;">
+    </div>
+
+    <div class="text-center mt-4">
+        <img src="img/lead_detail.png" class="img-fluid mt-3 mb-4" style="max-width: 90%; height: auto;">
+    </div>
+
+</section>
+
+
+<!-- Check out these too -->
+<section id="rcs_like_module" class="rcs_like_module" style="margin: 50px 0;background-color: transparent;">
+    <div class="container">
+        <div class="rcs_center text-center mb-5">
+            <h2 style="text-decoration: underline;">Check Out Our Apps</h2>
+        </div>
+        <div class="row" style="margin-top: 1rem;">
+            <div class="col-md-4 mb-3">
+                <div class="shadow rounded" style="text-align: center;">
+                    <div class="sh_img">
+                        <a href="https://apps.odoo.com/apps/modules/18.0/rcs_edenai_invoice_parser">
+                            <img class="rounded" src="youmaylike/edenai_invoice_banner.gif"
+                                 alt="CRM Facebook Lead Integration - Facebook Leads Connector"
+                                 width="100%">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <div class="shadow rounded" style="text-align: center;">
+                    <div class="sh_img">
+                        <a href="https://apps.odoo.com/apps/modules/18.0/all_in_one_inventory_analysis">
+                            <img class="rounded" src="youmaylike/all_in_one_inventory.gif"
+                                 alt="All in one Inventory Analysis"
+                                 width="100%">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="col-md-4 mb-3">
+                <div class="shadow rounded" style="text-align: center;">
+                    <div class="sh_img">
+                        <a href="https://apps.odoo.com/apps/modules/18.0/bulk_product_price_update">
+                            <img class="rounded" src="youmaylike/bulk_product_price_update.gif"
+                                 alt="Bulk Product Price Update"
+                                 width="100%">
+                        </a>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- Most Demanded Apps -->
+<section id="sh_most_demanded_apps" class="sh_most_demanded_apps"
+         style="margin: 50px 0 0px 0px;background-color: transparent;">
+    <div class="container">
+        <div class="rcs_center text-center mb-5">
+            <h2 style="text-decoration: underline;">Our Most Popular Apps</h2>
+        </div>
+        <div class="row" style="margin-top: 1rem;">
+            <div class="col-md-4 mb-3">
+                <div class="shadow rounded" style="text-align: center;">
+                    <div class="sh_img">
+                        <a href="https://apps.odoo.com/apps/modules/18.0/google_feed">
+                            <img class="rounded" src="most_demanded/google_feed_banner.gif" alt="sh_all_in_one_mbs" width="100%">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class=" shadow rounded" style="text-align: center;">
+                    <div class="sh_img">
+                        <a href="https://apps.odoo.com/apps/modules/18.0/password_formatter">
+                            <img class="rounded" src="most_demanded/password_formatter.gif" alt="sh_activities_management" width="100%">
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-4 mb-3">
+                <div class=" shadow rounded" style="text-align: center;">
+                    <div class="sh_img">
+                        <a href="https://apps.odoo.com/apps/modules/18.0/generate_seq_for_products">
+                            <img class="rounded" src="most_demanded/generate_product_seq_banner.gif" alt="sh_all_in_one_helpdesk"
+                                 style="width: 100%">
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+
+</body>
+
+</html>

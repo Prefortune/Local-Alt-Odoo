@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+pf_payment_pos_clover.access_clover_device,access_clover_device,pf_payment_pos_clover.model_clover_device,base.group_user,1,1,1,1,
+pos_clover.access_clover_webhook_log,access_clover_webhook_log,pos_clover.model_clover_webhook_log,base.group_user,1,1,1,1,

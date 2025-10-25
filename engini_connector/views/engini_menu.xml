@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- תפריט ראשי - אפליקציה נפרדת -->
+        <menuitem
+            id="menu_engini_root"
+            name="פריורטי"
+            web_icon="engini_connector,static/description/icon.png"
+            sequence="50"
+        />
+        
+        <!-- תפריט הגדרות -->
+        <menuitem
+            id="menu_engini_settings"
+            name="הגדרות"
+            parent="menu_engini_root"
+            action="action_engini_settings"
+            sequence="10"
+        />
+        
+        <!-- תפריט פעולות סנכרון -->
+        <menuitem
+            id="menu_engini_sync_actions"
+            name="פעולות סנכרון"
+            parent="menu_engini_root"
+            sequence="20"
+        />
+        
+        <!-- תפריטי משנה לפעולות סנכרון -->
+        <menuitem
+            id="menu_engini_sync_single"
+            name="סנכרון הזמנה בודדת"
+            parent="menu_engini_sync_actions"
+            action="action_sync_single_order_window"
+            sequence="10"
+        />
+        
+        <menuitem
+            id="menu_engini_sync_all"
+            name="סנכרון כל ההזמנות"
+            parent="menu_engini_sync_actions"
+            action="action_sync_all_orders_window"
+            sequence="20"
+        />
+        
+        <menuitem
+            id="menu_engini_bulk_sync"
+            name="סנכרון המוני ממתינים"
+            parent="menu_engini_sync_actions"
+            action="action_bulk_sync_pending_window"
+            sequence="30"
+        />
+        
+        <menuitem
+            id="menu_engini_view_failed"
+            name="הזמנות עם שגיאות סנכרון"
+            parent="menu_engini_sync_actions"
+            action="action_view_failed_sync_orders_window"
+            sequence="40"
+        />
+        
+        <menuitem
+            id="menu_engini_retry_sync"
+            name="ניסיון חוזר בסנכרון"
+            parent="menu_engini_sync_actions"
+            action="action_retry_sync_order_window"
+            sequence="50"
+        />
+        
+        <menuitem
+            id="menu_engini_sync_invoices"
+            name="סנכרון לחשבונית מס קבלה"
+            parent="menu_engini_sync_actions"
+            action="action_sync_invoices_window"
+            sequence="60"
+        />
+        
+        <!-- תפריט היסטוריית סנכרון -->
+        <menuitem
+            id="menu_engini_sync_history"
+            name="היסטוריית סנכרון"
+            parent="menu_engini_root"
+            action="action_engini_sync_history"
+            sequence="30"
+        />
+        
+        <!-- תפריט Bulk Send -->
+        <menuitem
+            id="menu_engini_bulk_runner"
+            name="Bulk Send"
+            parent="menu_engini_root"
+            action="action_engini_webhook_bulk_runner"
+            sequence="40"
+        />
+    </data>
+</odoo>

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="tracking_service_fb_capi_demo" model="website.tracking.service">
+        <field name="website_id" ref="website.default_website"/>
+        <field name="type">fbp</field>
+        <field name="key">770022008833</field>
+        <field name="api_is_active" eval="True"/>
+        <field name="api_token">Test</field>
+        <field name="is_internal_logged" eval="True"/>
+    </record>
+
+</odoo>

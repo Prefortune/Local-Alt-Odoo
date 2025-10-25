@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <!-- טופס הגדרות פריורטי -->
+        <record id="view_engini_settings_form" model="ir.ui.view">
+            <field name="name">engini.settings.form</field>
+            <field name="model">engini.settings</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_activate_settings" 
+                                string="הפעל הגדרות אלו" 
+                                type="object" 
+                                class="btn-success"/>
+                        <button name="action_deactivate_settings" 
+                                string="בטל הגדרות אלו" 
+                                type="object" 
+                                class="btn-warning"/>
+                        <button name="action_test_connection" 
+                                string="בדיקת חיבור" 
+                                type="object" 
+                                class="btn-primary"/>
+                        <button name="action_test_status" 
+                                string="בדיקת סטטוס" 
+                                type="object" 
+                                class="btn-info"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group string="מידע בסיסי">
+                                <field name="name" placeholder="הגדרות פריורטי"/>
+                                <field name="active"/>
+                                <field name="is_primary"/>
+                            </group>
+                        </group>
+                        
+                        <group>
+                            <group string="הגדרות Webhook - יצירת חשבונית">
+                                <field name="webhook_invoice_url" placeholder="https://your-invoice-webhook-url.com"/>
+                            </group>
+                            <group string="הגדרות Webhook - פתיחת הזמנה">
+                                <field name="webhook_open_order_url" placeholder="https://your-open-order-webhook-url.com"/>
+                            </group>
+                        </group>
+                        
+                        <group>
+                            <group string="הגדרות סנכרון">
+                                <field name="auto_sync_on_confirm"/>
+                                <field name="sync_timeout"/>
+                                <field name="max_retry_count"/>
+                            </group>
+                        </group>
+                        
+                        <group string="מידע">
+                            <p>
+                                <strong>הגדרות פריורטי:</strong><br/>
+                                • <strong>יצירת חשבונית:</strong> כתובת השרת ליצירת חשבונית מס קבלה<br/>
+                                • <strong>פתיחת הזמנה:</strong> כתובת השרת לפתיחת הזמנה ללקוח<br/>
+                                • <strong>סנכרון אוטומטי:</strong> סנכרון אוטומטי בעת אישור הזמנות<br/>
+                                • <strong>זמן פסקה:</strong> זמן מקסימלי לסנכרון לפני פסקה<br/>
+                                • <strong>מספר ניסיונות:</strong> מספר ניסיונות מקסימלי לסנכרון
+                            </p>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <!-- פעולת חלון -->
+        <record id="action_engini_settings" model="ir.actions.act_window">
+            <field name="name">הגדרות פריורטי</field>
+            <field name="res_model">engini.settings</field>
+            <field name="view_mode">list,form</field>
+            <field name="target">current</field>
+            <field name="context">{'default_name': 'הגדרות פריורטי'}</field>
+        </record>
+        
+        <!-- פעולה לפתיחת הגדרות קיימות -->
+        <record id="action_engini_settings_existing" model="ir.actions.act_window">
+            <field name="name">הגדרות פריורטי קיימות</field>
+            <field name="res_model">engini.settings</field>
+            <field name="view_mode">form</field>
+            <field name="target">inline</field>
+            <field name="domain">[]</field>
+            <field name="context">{'search_default_existing': 1}</field>
+        </record>
+        
+        <!-- תצוגת רשימה להגדרות -->
+        <record id="view_engini_settings_list" model="ir.ui.view">
+            <field name="name">engini.settings.list</field>
+            <field name="model">engini.settings</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="active"/>
+                    <field name="is_primary"/>
+                    <field name="name"/>
+                    <field name="webhook_invoice_url"/>
+                    <field name="webhook_open_order_url"/>
+                    <field name="auto_sync_on_confirm"/>
+                    <field name="sync_timeout"/>
+                    <field name="max_retry_count"/>
+                </list>
+            </field>
+        </record>
+        
+    </data>
+</odoo> 

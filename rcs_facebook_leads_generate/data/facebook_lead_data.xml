@@ -1,0 +1,14 @@
+<odoo>
+
+    <record id="action_fetch_facebook_leads" model="ir.actions.server">
+        <field name="name">Fetch Facebook Leads</field>
+        <field name="model_id" ref="model_facebook_form_info"/>
+        <field name="binding_model_id" ref="rcs_facebook_leads_generate.model_facebook_form_info"/>
+        <field name="binding_view_types">list</field>
+        <field name="state">code</field>
+        <field name="code">
+            action = model.facebook_leads()
+        </field>
+    </record>
+
+</odoo>

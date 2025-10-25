@@ -1,0 +1,25 @@
+@font-face {
+    font-family: 'Alef';
+    src: url('../fonts/Alef-Regular.ttf') format('truetype'),
+         url('../fonts/Alef-Bold.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'alef_regular';
+
+    src: url('../fonts/Alef-Regular.ttf') format('truetype');
+}
+
+@font-face {
+    font-family: 'alef_bold';
+
+    src: url('../fonts/Alef-Bold.ttf') format('truetype');
+}
+
+.alef_regular {
+    font-family: 'alef_regular' !important;
+}
+
+.alef_bold {
+    font-family: 'alef_bold' !important;
+}

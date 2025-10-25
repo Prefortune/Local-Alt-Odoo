@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- A4 Paper Format for Greeting Card -->
+    <record id="paperformat_greeting_card_a4" model="report.paperformat">
+        <field name="name">Greeting Card A4</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>
+        <field name="orientation">Portrait</field>
+        <field name="margin_top">1</field>
+        <field name="margin_bottom">10</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">10</field>
+        <field name="header_line" eval="False"/>
+        <field name="header_spacing">0</field>
+        <field name="dpi">90</field>
+    </record>
+
+    <!-- Greeting Card Report Template -->
+    <template id="report_greeting_card_document" name="Greeting Card Report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-set="doc" t-value="o"/>
+                <t t-call="alt_product_image_for_sale.report_greeting_card_document_inherit"/>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_greeting_card_document_inherit" name="Greeting Card Report Document">
+        <!-- <template t-name="alt.report_greeting_card"> -->
+        <t t-call="web.html_container">
+            <style>
+                    @font-face {
+                        font-family: 'alef_regular';
+                        src: url('/alt_product_image_for_sale/static/src/fonts/Alef-Regular.ttf') format('truetype');
+                    }
+                    @font-face {
+                        font-family: 'alef_bold';
+                        src: url('/alt_product_image_for_sale/static/src/fonts/Alef-Bold.ttf') format('truetype');
+                    }
+                    .alef_bold {
+                        font-family: 'alef_bold' !important;
+                        font-size: 65px !important;
+                    }
+                    .alef_regular {
+                        font-family: 'alef_bold' !important;
+                        font-size: 40px !important;
+                        line-height: 1.2 !important;
+                    }
+            </style>
+
+            <div class="page">
+                <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+                <t t-set="background_url" t-value="base_url + '/alt_product_image_for_sale/static/src/image/Greetings_BG.jpg'"/>
+                <div class="certificate blue-gold" t-att-style="'height:100%; width: 100%; margin:0; padding: 0; background-image:url(' + background_url + '); background-size: 100% ; background-repeat: no-repeat;'">
+                    <div style="width: 100% !important; text-align: right; padding-top:30px !important; visibility:hidden">
+                        <img t-if="doc.company_id.logo" t-att-src="image_data_uri(doc.company_id.logo)" alt="Company Logo"/>
+                    </div>
+                    <div style="width: 100% !important; margin-top:100px !important; text-align: right;">
+                        <h1 class="alef_bold">כרטיס ברכה</h1>
+                        <div class="alef_regular" style="padding-left:10%;">
+                            <t t-esc="doc.greeting_card"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- old code design -->
+            <!-- <div class="page">
+                <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+                <t t-set="background_url" t-value="base_url + '/alt_product_image_for_sale/static/src/image/Greetings_BG.jpg'"/>
+
+                <div class="certificate blue-gold" t-att-style="'
+                 height: 100%; 
+                 width: 100%;
+                 margin: 0; 
+                 padding: 0; 
+                 background-image: url(' + background_url + '); 
+                 background-size: 100% 100%; background-repeat: no-repeat;'">
+
+                    <div style="width: 100% !important; text-align: right; padding-top:30px !important;">
+                        <img t-if="doc.company_id.logo" t-att-src="image_data_uri(doc.company_id.logo)" alt="Company Logo"/>
+                    </div>
+
+                    <div style="margin-top:100px !important; text-align: right;">
+                        <h1 class="alef_bold">כרטיס ברכה</h1>
+                        <div class="alef_regular">
+                            <t t-esc="doc.greeting_card"/>
+                        </div>
+                    </div>
+
+                </div>
+            </div> -->
+        </t>
+        <!-- </template> -->
+    </template>
+
+    <!-- Report Action -->
+    <record id="action_report_greeting_card" model="ir.actions.report">
+        <field name="name">Greeting Card Report</field>
+        <field name="model">sale.order</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">alt_product_image_for_sale.report_greeting_card_document</field>
+        <field name="report_file">alt_product_image_for_sale.report_greeting_card_document</field>
+        <field name="print_report_name">'Greeting Card - %s' % (object.name)</field>
+        <field name="paperformat_id" ref="paperformat_greeting_card_a4"/>
+        <field name="binding_model_id" eval="False"/>
+        <field name="binding_type">report</field>
+    </record>
+
+</odoo>

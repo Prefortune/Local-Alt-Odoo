@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+    <data noupdate="1">
+    <template id="pf_custom_product_item_price" inherit_id="theme_prime.product_item_price" name="PF Custom Products Item">
+        <xpath expr="." position="replace">
+                <div t-if="request.website._dr_has_b2b_access()" t-attf-class="product_price #{_classes}" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
+
+                    <t t-if="website.is_price_range">
+                        <span class="h6 text-primary mb-0">
+                                <t t-esc="product.website_price_range"/>
+                                <t t-esc="product.currency_id.symbol" />
+                        </span>
+                        <span style="display:none;" t-attf-class="#{_size or 'h6'} text-primary mb-0 " t-if="template_price_vals['price_reduce'] or not website.prevent_zero_price_sale" t-out="template_price_vals['price_reduce']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                    </t>
+                    <t t-elif="not website.is_price_range">
+                        <span t-attf-class="#{_size or 'h6'} text-primary mb-0 " t-if="template_price_vals['price_reduce'] or not website.prevent_zero_price_sale" t-out="template_price_vals['price_reduce']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                    </t>
+                        <span t-attf-class="#{_size or 'h6'}" t-elif="any(ptav.price_extra for ptav in product.attribute_line_ids.product_template_value_ids)">&amp;nbsp;</span>
+                        <span t-attf-class="#{_size or 'h6'} mb-0" t-else="" t-field="website.prevent_zero_price_sale_text"/>
+                        <t t-if="'base_price' in template_price_vals">
+                            <del t-attf-class="text-body ms-1 #{_size or 'h6'} mb-0" style="white-space: nowrap;">
+                                <span class="small" t-out="template_price_vals['base_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
+                            </del>
+                        </t>
+                        <span itemprop="price" style="display:none;" t-out="template_price_vals['price_reduce']" />
+                        <span itemprop="priceCurrency" style="display:none;" t-out="website.currency_id.name" />
+                        <small t-if="'base_price' in template_price_vals" class="tp-discount-percentage d-none d-md-inline-block ms-1">
+                                (            <t t-out="round((template_price_vals['base_price'] - template_price_vals['price_reduce']) / template_price_vals['base_price'] * 100)"/>
+                        % OFF)
+                        </small>
+                </div>
+                <div t-else="" t-attf-class="#{_classes}">
+                    <t t-call="theme_prime.tp_b2b_price_label"/>
+                </div>
+                <!-- <t t-if="website.is_price_range">
+                    <div t-if="request.website._dr_has_b2b_access()" t-attf-class="product_price #{_classes}" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
+                        <span class="h6 text-primary mb-0">
+                                <t t-esc="product.website_price_range"/>
+                                <t t-esc="product.currency_id.symbol" />
+                        </span>
+                        <span style="display:none;" t-attf-class="#{_size or 'h6'} text-primary mb-0 " t-if="template_price_vals['price_reduce'] or not website.prevent_zero_price_sale" t-out="template_price_vals['price_reduce']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                        <span t-attf-class="#{_size or 'h6'}" t-elif="any(ptav.price_extra for ptav in product.attribute_line_ids.product_template_value_ids)">&amp;nbsp;</span>
+                        <span t-attf-class="#{_size or 'h6'} mb-0" t-else="" t-field="website.prevent_zero_price_sale_text"/>
+                        <t t-if="'base_price' in template_price_vals">
+                            <del t-attf-class="text-body ms-1 #{_size or 'h6'} mb-0" style="white-space: nowrap;">
+                                <span class="small" t-out="template_price_vals['base_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
+                            </del>
+                        </t>
+                        <span itemprop="price" style="display:none;" t-out="template_price_vals['price_reduce']" />
+                        <span itemprop="priceCurrency" style="display:none;" t-out="website.currency_id.name" />
+                        <small t-if="'base_price' in template_price_vals" class="tp-discount-percentage d-none d-md-inline-block ms-1">
+                                (            <t t-out="round((template_price_vals['base_price'] - template_price_vals['price_reduce']) / template_price_vals['base_price'] * 100)"/>
+                        % OFF)
+                        </small>
+                    </div>
+                    <div t-else="" t-attf-class="#{_classes}">
+                        <t t-call="theme_prime.tp_b2b_price_label"/>
+                    </div>
+                </t>
+                <t t-else="">
+                    <div t-if="request.website._dr_has_b2b_access()" t-attf-class="product_price #{_classes}" itemprop="offers" itemscope="itemscope" itemtype="http://schema.org/Offer">
+                        <span t-attf-class="#{_size or 'h6'} text-primary mb-0 " t-if="template_price_vals['price_reduce'] or not website.prevent_zero_price_sale" t-out="template_price_vals['price_reduce']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}"/>
+                        <span t-attf-class="#{_size or 'h6'}" t-elif="any(ptav.price_extra for ptav in product.attribute_line_ids.product_template_value_ids)">&amp;nbsp;</span>
+                        <span t-attf-class="#{_size or 'h6'} mb-0" t-else="" t-field="website.prevent_zero_price_sale_text"/>
+                        <t t-if="'base_price' in template_price_vals">
+                            <del t-attf-class="text-body ms-1 #{_size or 'h6'} mb-0" style="white-space: nowrap;">
+                                <span class="small" t-out="template_price_vals['base_price']" t-options="{'widget': 'monetary', 'display_currency': website.currency_id}" />
+                            </del>
+                        </t>
+                        <span itemprop="price" style="display:none;" t-out="template_price_vals['price_reduce']" />
+                        <span itemprop="priceCurrency" style="display:none;" t-out="website.currency_id.name" />
+                        <small t-if="'base_price' in template_price_vals" class="tp-discount-percentage d-none d-md-inline-block ms-1">
+                                (            <t t-out="round((template_price_vals['base_price'] - template_price_vals['price_reduce']) / template_price_vals['base_price'] * 100)"/>
+                        % OFF)
+                        </small>
+                    </div>
+                    <div t-else="" t-attf-class="#{_classes}">
+                        <t t-call="theme_prime.tp_b2b_price_label"/>
+                    </div>
+                </t> -->
+        </xpath>
+    </template>
+    </data>
+</odoo>

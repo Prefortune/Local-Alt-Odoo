@@ -1,0 +1,194 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * pf_guest_address
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-14 12:00+0000\n"
+"PO-Revision-Date: 2025-07-14 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Hebrew\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n==2) ? 1 : 2;\n"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Full Name"
+msgstr "שם מלא"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Email"
+msgstr "דוא\"ל"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Phone"
+msgstr "טלפון"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Street"
+msgstr "רחוב"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Street 2"
+msgstr "רחוב 2"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "City"
+msgstr "עיר"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Zip"
+msgstr "מיקוד"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Country"
+msgstr "מדינה"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "State / Province"
+msgstr "מחוז / אזור"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Shipping Address"
+msgstr "כתובת משלוח"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Fill in your Billing Address"
+msgstr "מלא את כתובת החיוב שלך"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Delivery address same as Billing address?"
+msgstr "האם כתובת המשלוח זהה לכתובת החיוב?"
+
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Please Fill Your Mail"
+msgstr "אנא מלא את כתובת האימייל שלך"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Already have an account?"
+msgstr "כבר יש לך חשבון?"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Sign in"
+msgstr "התחבר"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Personal Details"
+msgstr "פרטים אישיים"
+
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "VAT"
+msgstr "ח.פ | ע.מ | ת.ז"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "H.P. | A.M. | T.Z."
+msgstr "ח.פ | ע.מ | ת.ז"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Company Name"
+msgstr "שם החברה"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Set Delivery Quantity"
+msgstr "כמות כתובות רצויה"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Add to cart the number of deliveries you wish to purchase"
+msgstr "הוסיפו לעגלה את כמות המשלוחים שברצונכם לשלוח (מספר הכתובות)"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "The cart total will update according to the number of deliveries you select"
+msgstr "סכום החיוב בעגלה יתעדכן בהתאם לבחירתכם"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Set Delivery"
+msgstr "תזמון משלוח"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Want to schedule a delivery date that works for you?"
+msgstr "מעוניין/ת לתזמן את המשלוח למועד שמתאים לך?"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Want to Fill Above Data ?"
+msgstr "רוצה שנעתיק את השדות מהפרטים לחשבונית?"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Where You Want To Shipping Your Order ?"
+msgstr "לאן לשלוח את ההזמנה שלך?"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Choose a delivery method"
+msgstr "בחר שיטת משלוח"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "You can choose a future delivery date starting from 10 business days after order confirmation, and we will do our best to deliver your packages exactly on time for you."
+msgstr "ניתן לבחור תאריך אספקה עתידי החל מעשרה ימי עסקים מרגע אישור ההזמנה ואנו נעשה הכל כדי לספק את המארזים שלנו בזמן המדוייק עבורכם."
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "⚠️ We will collect the delivery address after the payment"
+msgstr "לאחר אישור ההזמנה אנו נשלח אליכם לינק בו תוכלו למלא את כתובות המשלוח או אפילו להעלות לנו קובץ אקסל, ואנחנו נדאג לכל השאר."
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "fill in your shipping address ?"
+msgstr "מלא את כתובת המשלוח שלך?"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Greeting Card"
+msgstr "כרטיס ברכה"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Delivery Notes"
+msgstr "הערות למשלוח"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Would you like to add a greeting card ?"
+msgstr "האם תרצה להוסיף כרטיס ברכה?"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Would you like to add delivery notes ?"
+msgstr "האם תרצה להוסיף הערות למשלוח?"
+
+#. module: pf_guest_address
+#: model_terms:ir.ui.view,arch_db:pf_guest_address.custom_website_sale_address_billing_form
+msgid "Want an invoice on a company name?"
+msgstr "רוצה חשבונית על שם חברה?"

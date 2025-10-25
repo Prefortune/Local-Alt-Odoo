@@ -1,0 +1,909 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* odoo_wix_connector
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 17.0-20240104\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-04-16 04:47+0000\n"
+"PO-Revision-Date: 2024-04-16 04:47+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.import_wizard_form
+msgid ""
+"<b style=\"color:black;\">Note : </b> In case of import with multiple ids, "
+"Ids must be \",\" separated."
+msgstr ""
+"<b style=\"color:black;\">Hinweis: </b> Im Falle eines Imports mit mehreren IDs, "
+"IDs müssen durch \“,\“ getrennt werden."
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "<br/><b>Enable </b>"
+msgstr "<br/><b>Aktivieren </b>"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid ""
+"<span class=\"text-muted\" invisible=\"channel != 'wix'\">\n"
+"\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t<b>NOTE:</b> The Channel Order State is the comma seperated combination of Wix orders payment status and delivery status(eg: <strong>PAYMENT_STATE,DELIVERY_STATE</strong>).\n"
+"\t\t\t\t\t\t<br/> Aailable PAYMENT_STATE: (PAID, NOT_PAID, PENDING, PARTIALLY_PAID, PARTIALLY_REFUNDED, FULLY_REFUNDED, UNSPECIFIED_PAYMENT_STATUS)\n"
+"\t\t\t\t\t\t<br/> Available DELIVERY_STATE: (NOT_FULFILLED, FULFILLED, CANCELED, PARTIALLY_FULFILLED)\n"
+"\t\t\t\t\t\t<br/> Examples: <strong>PAID,FULFILLED or NOT_PAID,NOT_FULFILLED or NOT_PAID,CANCELED or ...etc</strong>\n"
+"\t\t\t\t\t\t<br/>(NOTE: Do not use space anywhere in this combination)\n"
+"\t\t\t\t\t</span>"
+msgstr ""
+"<span class=\"text-muted\" unsichtbar=\"channel != 'wix'\">\n"
+"\t\t\t\t\t\t<br/>\n"
+"\t\t\t\t\t\t<b>HINWEIS:</b> Der Channel-Bestellstatus ist die durch Kommas getrennte Kombination aus dem Zahlungsstatus und dem Lieferstatus von Wix-Bestellungen (z. B. <strong>PAYMENT_STATE,DELIVERY_STATE</) stark>).\n"
+"\t\t\t\t\t\t<br/> Verfügbarer PAYMENT_STATE: (BEZAHLT, NICHT_BEZAHLT, AUSSTEHEND, PARTIALLY_PAID, PARTIALLY_REFUNDED, FULLY_REFUNDED, UNSPECIFIED_PAYMENT_STATUS)\n"
+"\t\t\t\t\t\t<br/> Verfügbar DELIVERY_STATE: (NOT_FULFILLED, FULFILLED, CANCELED, PARTIALLY_FULFILLED)\n"
+"\t\t\t\t\t\t<br/> Beispiele: <strong>BEZAHLT, ERFÜLLT oder NICHT_BEZAHLT, NOT_FULFILLED oder NICHT_BEZAHLT, ABGESAGT oder ... usw.</strong>\n"
+"\t\t\t\t\t\t<br/>(HINWEIS: Verwenden Sie in dieser Kombination nirgendwo Leerzeichen)\n"
+"\t\t\t\t\t</span>"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_categories__update_customer_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_orders__update_customer_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_partners__update_customer_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_products__update_customer_date
+msgid ""
+"A date used for selecting customer updated after (or at) a specified time."
+msgstr ""
+"Ein Datum, das zur Auswahl des Kunden verwendet wird nach (oder zu) einem bestimmten Zeitpunkt aktualisiert wird."
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_categories__import_customer_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_orders__import_customer_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_partners__import_customer_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_products__import_customer_date
+msgid ""
+"A date used for selecting customers created after (or at) a specified time."
+msgstr ""
+"Ein Datum, das zur Auswahl von Kunden verwendet wird, die nach (oder zu) einem bestimmten Zeitpunkt erstellt wurden."
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_categories__import_order_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_orders__import_order_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_partners__import_order_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_products__import_order_date
+msgid ""
+"A date used for selecting orders created after (or at) a specified time."
+msgstr ""
+"Ein Datum, das zum Auswählen von Aufträgen verwendet wird, die nach (oder zu) einem bestimmten Zeitpunkt erstellt wurden."
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_categories__update_order_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_orders__update_order_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_partners__update_order_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_products__update_order_date
+msgid ""
+"A date used for selecting orders that were last updated after (or at) a specified time.\n"
+"            An update is defined as any change in order status,includes updates made by the seller."
+msgstr ""
+"Ein Datum, das zum Auswählen von Bestellungen verwendet wird, die zuletzt nach (oder zu) einem bestimmten Zeitpunkt aktualisiert wurden.\n"
+"            Eine Aktualisierung ist jede Änderung des Bestellstatus, einschließlich Aktualisierungen durch den Verkäufer."
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_categories__import_product_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_orders__import_product_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_partners__import_product_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_products__import_product_date
+msgid ""
+"A date used for selecting products created after (or at) a specified time."
+msgstr ""
+"Ein Datum, das zur Auswahl von Produkten verwendet wird, die nach (oder zu) einem bestimmten Zeitpunkt erstellt wurden."
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_categories__update_product_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_orders__update_product_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_partners__update_product_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_products__update_product_date
+msgid ""
+"A date used for selecting products updated after (or at) a specified time."
+msgstr ""
+"Ein Datum, das zur Auswahl von Produkten verwendet wird, die nach (oder zu) einem bestimmten Zeitpunkt aktualisiert werden."
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__api_record_limit
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__api_record_limit
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__api_record_limit
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__api_record_limit
+msgid "API Record Limit"
+msgstr "API-Datensatzlimit"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "APP ID"
+msgstr "APP ID"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_multi_channel_sale__wix_access_token
+msgid "Access token"
+msgstr "Zugangstoken"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_attributes__wix_filter_type__all
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_attributes_value__wix_filter_type__all
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_categories__wix_filter_type__all
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_operation__wix_filter_type__all
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_orders__wix_filter_type__all
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_partners__wix_filter_type__all
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_products__wix_filter_type__all
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_templates__wix_filter_type__all
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_categories__wix_filter_type__all
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_orders__wix_filter_type__all
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_partners__wix_filter_type__all
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_products__wix_filter_type__all
+msgid "All"
+msgstr "Alle"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_multi_channel_sale__wix_app_id
+msgid "App ID"
+msgstr "App ID"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_multi_channel_sale__wix_app_secret_key
+msgid "App Secret Key"
+msgstr "App Geheimer Schlüssel"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_multi_channel_sale__wix_app_url
+msgid "App URL"
+msgstr "App-URL"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "App url"
+msgstr "App url"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "Base URL"
+msgstr "Basis-URL"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__category_ids
+msgid "Categories ID(s)"
+msgstr "Kategorien-ID(s)"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_attributes__wix_category_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_attributes_value__wix_category_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_categories__wix_category_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_operation__wix_category_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_orders__wix_category_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_partners__wix_category_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_products__wix_category_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_templates__wix_category_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__wix_category_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__wix_category_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__wix_category_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__wix_category_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_attributes__wix_filter_type__category_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_attributes_value__wix_filter_type__category_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_categories__wix_filter_type__category_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_operation__wix_filter_type__category_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_orders__wix_filter_type__category_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_partners__wix_filter_type__category_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_products__wix_filter_type__category_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_templates__wix_filter_type__category_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_categories__wix_filter_type__category_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_orders__wix_filter_type__category_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_partners__wix_filter_type__category_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_products__wix_filter_type__category_id
+msgid "Category ID"
+msgstr "Kategorie ID"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__channel
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__channel
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__channel
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__channel
+msgid "Channel"
+msgstr "Kanal"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__channel_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__channel_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__channel_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__channel_id
+msgid "Channel ID"
+msgstr "Kanal ID"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "Click to manage wix applications"
+msgstr "Klicken Sie hier, um Wix-Anwendungen zu verwalten"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.export_wix_wizard_form_inherit
+msgid "Confirm Update"
+msgstr "Bestätigen Aktualisierung"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "Create connection with Wix"
+msgstr "Verbindung mit Wix erstellen"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__create_uid
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__create_uid
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__create_uid
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__create_uid
+msgid "Created by"
+msgstr "Erstellt von"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__create_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__create_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__create_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__create_date
+msgid "Created on"
+msgstr "Erstellt am"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__import_customer_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__import_customer_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__import_customer_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__import_customer_date
+msgid "Customer Created After"
+msgstr "Kunde erstellt nach"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_attributes__wix_customer_email
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_attributes_value__wix_customer_email
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_categories__wix_customer_email
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_operation__wix_customer_email
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_orders__wix_customer_email
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_partners__wix_customer_email
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_products__wix_customer_email
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_templates__wix_customer_email
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__wix_customer_email
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__wix_customer_email
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__wix_customer_email
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__wix_customer_email
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_attributes__wix_filter_type__customer_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_attributes_value__wix_filter_type__customer_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_categories__wix_filter_type__customer_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_operation__wix_filter_type__customer_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_orders__wix_filter_type__customer_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_partners__wix_filter_type__customer_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_products__wix_filter_type__customer_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_templates__wix_filter_type__customer_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_categories__wix_filter_type__customer_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_orders__wix_filter_type__customer_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_partners__wix_filter_type__customer_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_products__wix_filter_type__customer_id
+msgid "Customer Email"
+msgstr "Kunden-eMail"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__update_customer_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__update_customer_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__update_customer_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__update_customer_date
+msgid "Customer Updated After"
+msgstr "Kunden aktualisiert nach"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_attributes__wix_filter_type__date_range
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_attributes_value__wix_filter_type__date_range
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_categories__wix_filter_type__date_range
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_operation__wix_filter_type__date_range
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_orders__wix_filter_type__date_range
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_partners__wix_filter_type__date_range
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_products__wix_filter_type__date_range
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_templates__wix_filter_type__date_range
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_categories__wix_filter_type__date_range
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_orders__wix_filter_type__date_range
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_partners__wix_filter_type__date_range
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_products__wix_filter_type__date_range
+msgid "Date Range"
+msgstr "Datumsbereich"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__display_name
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__display_name
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__display_name
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__display_name
+msgid "Display Name"
+msgstr "Anzeigename"
+
+#. module: odoo_wix_connector
+#: model:ir.model,name:odoo_wix_connector.model_export_categories
+msgid "Export Category"
+msgstr "Kategorie exportieren"
+
+#. module: odoo_wix_connector
+#: model:ir.model,name:odoo_wix_connector.model_export_templates
+msgid "Export Template"
+msgstr "Vorlage exportieren"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__from_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__from_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__from_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__from_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_categories__from_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_orders__from_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_partners__from_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_products__from_date
+msgid "From Date"
+msgstr "Ab Datum"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_attributes__wix_start_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_attributes_value__wix_start_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_categories__wix_start_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_operation__wix_start_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_orders__wix_start_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_partners__wix_start_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_products__wix_start_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_templates__wix_start_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__wix_start_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__wix_start_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__wix_start_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__wix_start_date
+msgid "From Wix Date"
+msgstr "Von Wix Date"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_attributes__wix_store_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_attributes_value__wix_store_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_categories__wix_store_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_operation__wix_store_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_orders__wix_store_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_partners__wix_store_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_products__wix_store_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_templates__wix_store_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_categories__wix_store_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_orders__wix_store_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_partners__wix_store_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_products__wix_store_id
+msgid "Get Orders"
+msgstr "Aufträge bekommen"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_attributes__wix_customer_email
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_attributes_value__wix_customer_email
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_categories__wix_customer_email
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_operation__wix_customer_email
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_orders__wix_customer_email
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_partners__wix_customer_email
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_products__wix_customer_email
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_templates__wix_customer_email
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_categories__wix_customer_email
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_orders__wix_customer_email
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_partners__wix_customer_email
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_products__wix_customer_email
+msgid "Get Orders made by specific customers"
+msgstr "Erhalten Sie Bestellungen von bestimmten Kunden"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_attributes__wix_category_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_attributes_value__wix_category_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_categories__wix_category_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_operation__wix_category_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_orders__wix_category_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_partners__wix_category_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_products__wix_category_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_templates__wix_category_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_categories__wix_category_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_orders__wix_category_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_partners__wix_category_id
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_products__wix_category_id
+msgid "Get product which belongs to this category ID"
+msgstr "Holen Sie sich ein Produkt, das zu dieser Kategorie-ID gehört"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__id
+msgid "ID"
+msgstr "AUSWEIS"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__image
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__image
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__image
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__image
+msgid "Image"
+msgstr "Bild"
+
+#. module: odoo_wix_connector
+#: model:ir.model,name:odoo_wix_connector.model_import_operation
+msgid "Import Operation"
+msgstr "Importvorgang"
+
+#. module: odoo_wix_connector
+#: model:ir.model,name:odoo_wix_connector.model_import_wix_orders
+msgid "Import Wix Orders"
+msgstr "Wix-Bestellungen importieren"
+
+#. module: odoo_wix_connector
+#: model:ir.model,name:odoo_wix_connector.model_import_wix_partners
+msgid "Import Wix Partners"
+msgstr "Wix-Partner importieren"
+
+#. module: odoo_wix_connector
+#: model:ir.actions.act_window,name:odoo_wix_connector.open_import_wizard_action
+msgid "Import Wizard"
+msgstr "Import-Assistent"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__write_uid
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__write_uid
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__write_uid
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__write_uid
+msgid "Last Updated by"
+msgstr "Zuletzt aktualisiert von"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__write_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__write_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__write_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__write_date
+msgid "Last Updated on"
+msgstr "Zuletzt aktualisiert am"
+
+#. module: odoo_wix_connector
+#: model:ir.model,name:odoo_wix_connector.model_multi_channel_sale
+msgid "Multi Channel Sale"
+msgstr "Mehrkanal Verkauf"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "New Order Webhook"
+msgstr "Neuer Order-Webhook"
+
+#. module: odoo_wix_connector
+#. odoo-javascript
+#: code:addons/odoo_wix_connector/static/src/xml/instance_dashboard.xml:0
+#, python-format
+msgid "Not Found!"
+msgstr "Nicht gefunden!"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.import_wizard_form
+msgid ""
+"Note: This operation gets automatically executed when Order sync run, so you"
+" don't have to run it spearately."
+msgstr ""
+"Hinweis: Dieser Vorgang wird automatisch ausgeführt, wenn die   Bestellung synchronisierung ausgeführt wird"
+"Sie müssen es nicht separat ausführen."
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.import_wizard_form
+msgid ""
+"Note: This operation gets automatically executed when Product Sync run, so "
+"you don't have to run it spearately."
+msgstr ""
+"Hinweis: Dieser Vorgang wird automatisch ausgeführt, wenn Product Sync ausgeführt wird"
+"Sie müssen es nicht separat ausführen."
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.import_wizard_form
+msgid ""
+"Note: Will import Object that are created on wix during defined date range."
+msgstr ""
+"Hinweis: Importiert Objekte, die während des definierten Datumsbereichs auf wix erstellt wurden."
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__object
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__object
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__object
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__object
+msgid "Object"
+msgstr "Objekt"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__operation
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__operation
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__operation
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__operation
+msgid "Operation"
+msgstr "Betrieb"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "Order Cancelled Webhook"
+msgstr "Bestellung storniert Webhook"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__import_order_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__import_order_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__import_order_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__import_order_date
+msgid "Order Created After"
+msgstr "Auftrag erstellt nach"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__order_ids
+msgid "Order ID(s)"
+msgstr "Bestell-ID(s)"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_attributes__wix_filter_type__order_state
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_attributes_value__wix_filter_type__order_state
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_categories__wix_filter_type__order_state
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_operation__wix_filter_type__order_state
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_orders__wix_filter_type__order_state
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_partners__wix_filter_type__order_state
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_products__wix_filter_type__order_state
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_templates__wix_filter_type__order_state
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_categories__wix_filter_type__order_state
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_orders__wix_filter_type__order_state
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_partners__wix_filter_type__order_state
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_products__wix_filter_type__order_state
+msgid "Order State"
+msgstr "Bestellstatus"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__update_order_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__update_order_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__update_order_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__update_order_date
+msgid "Order Updated After"
+msgstr "Bestellung aktualisiert nach"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_attributes__wix_order_state__paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_attributes_value__wix_order_state__paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_categories__wix_order_state__paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_operation__wix_order_state__paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_orders__wix_order_state__paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_partners__wix_order_state__paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_products__wix_order_state__paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_templates__wix_order_state__paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_categories__wix_order_state__paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_orders__wix_order_state__paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_partners__wix_order_state__paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_products__wix_order_state__paid
+msgid "Paid"
+msgstr "Bezahlt"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__parent_categ_id
+msgid "Parent Category"
+msgstr "Eltern-Kategorie"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__partner_ids
+msgid "Partners ID(s)"
+msgstr "Partner-ID(s)"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid ""
+"Paste this URL to the App Url in 'OAuth' section of your wix application"
+msgstr ""
+"Fügen Sie diese URL in die App-URL im Abschnitt „OAuth“ Ihrer Wix-Anwendung ein"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,help:odoo_wix_connector.field_multi_channel_sale__wix_order_webhook_url
+msgid "Paste this URL to the New Order Webhook in Wix Application"
+msgstr "Füge diese URL in den New Order Webhook in der Wix-Anwendung ein"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,help:odoo_wix_connector.field_multi_channel_sale__wix_order_cancel_webhook_url
+msgid "Paste this URL to the Order Canceled Webhook in Wix Application"
+msgstr "Fügen Sie diese URL in den Webhook „Bestellung storniert“ in der Wix-Anwendung ein"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,help:odoo_wix_connector.field_multi_channel_sale__wix_product_create_webhook_url
+msgid "Paste this URL to the Product Created Webhook in Wix Application"
+msgstr "Fügen Sie diese URL in den vom  erstellten Produkt Webhook in der Wix-Anwendung ein"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid ""
+"Paste this Url to the Redirect Url in 'OAuth' section of your wix "
+"application"
+msgstr ""
+"Fügen Sie diese URL in die Weiterleitungs-URL im Abschnitt 'OAuth' Ihres Wix ein"
+"Anwendung"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,help:odoo_wix_connector.field_multi_channel_sale__wix_base_redirectUrl
+msgid "Please Add your Odoo URL"
+msgstr "Bitte fügen Sie Ihre Odoo-URL hinzu"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__import_product_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__import_product_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__import_product_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__import_product_date
+msgid "Product Created After"
+msgstr "Produkt erstellt nach."
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "Product Created Webhook"
+msgstr "Produkt erstellte Webhook"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__product_tmpl_ids
+msgid "Product Template ID(s)"
+msgstr "Produktvorlagen-ID(s)"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__update_product_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__update_product_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__update_product_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__update_product_date
+msgid "Product Updated After"
+msgstr "Produkt aktualisiert nach"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_multi_channel_sale__wix_webhook_public_key
+msgid "Public key"
+msgstr "Öffentlicher Schlüssel"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "Real Time Cancel Order Status From Wix"
+msgstr "Bestellstatus in Echtzeit von Wix stornieren"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "Real Time Sync New Created Product From Wix"
+msgstr "Echtzeit-Synchronisierung neu erstellter Produkte von Wix"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "Real Time Sync Order From Wix"
+msgstr "Echtzeit-Synchronisierung Bestellung von Wix"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_multi_channel_sale__wix_redirect_url
+msgid "Redirect EndPoint"
+msgstr "Endpunkt umleiten"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_multi_channel_sale__wix_base_redirectUrl
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "Redirect Url"
+msgstr "Weiterleitungs-URL"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "Secret Key"
+msgstr "Geheimer Schlüssel"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__source
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__source
+msgid "Source"
+msgstr "Quelle"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_attributes__wix_store_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_attributes_value__wix_store_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_categories__wix_store_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_operation__wix_store_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_orders__wix_store_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_partners__wix_store_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_products__wix_store_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_templates__wix_store_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__wix_store_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__wix_store_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__wix_store_id
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__wix_store_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_attributes__wix_filter_type__store_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_attributes_value__wix_filter_type__store_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_categories__wix_filter_type__store_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_operation__wix_filter_type__store_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_orders__wix_filter_type__store_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_partners__wix_filter_type__store_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_products__wix_filter_type__store_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_templates__wix_filter_type__store_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_categories__wix_filter_type__store_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_orders__wix_filter_type__store_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_partners__wix_filter_type__store_id
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_products__wix_filter_type__store_id
+msgid "Store ID"
+msgstr "Quelle Id"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.wix_inherit_export_odoo_categories_form
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.wix_inherit_export_odoo_templates_form
+msgid "Synchronize"
+msgstr "Synchronisieren"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_attributes__wix_end_data
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_attributes_value__wix_end_data
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_categories__wix_end_data
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_operation__wix_end_data
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_orders__wix_end_data
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_partners__wix_end_data
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_products__wix_end_data
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_templates__wix_end_data
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__wix_end_data
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__wix_end_data
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__wix_end_data
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__wix_end_data
+msgid "Till Wix Date"
+msgstr "Bis Wix Date"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__to_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__to_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__to_date
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__to_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_categories__to_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_orders__to_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_partners__to_date
+#: model:ir.model.fields,help:odoo_wix_connector.field_import_wix_products__to_date
+msgid "To Date"
+msgstr "zu Date"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_attributes__wix_order_state__not_paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_attributes_value__wix_order_state__not_paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_categories__wix_order_state__not_paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_operation__wix_order_state__not_paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_orders__wix_order_state__not_paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_partners__wix_order_state__not_paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_products__wix_order_state__not_paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_templates__wix_order_state__not_paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_categories__wix_order_state__not_paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_orders__wix_order_state__not_paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_partners__wix_order_state__not_paid
+#: model:ir.model.fields.selection,name:odoo_wix_connector.selection__import_wix_products__wix_order_state__not_paid
+msgid "Unpaid"
+msgstr "Unbezahlt"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "Webhook Public Key"
+msgstr "Öffentlicher Webhook-Schlüssel"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "Webhook Public Key is required to use these real-time hooks."
+msgstr "Für die Verwendung dieser Echtzeit-Hooks ist ein öffentlicher Webhook-Schlüssel erforderlich."
+
+#. module: odoo_wix_connector
+#: model:ir.model,name:odoo_wix_connector.model_import_wix_categories
+msgid "Wix Categories import wizard"
+msgstr "Wix-Kategorien-Importassistent"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "Wix Connection"
+msgstr "Wix-Verbindung"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_attributes__wix_filter_type
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_attributes_value__wix_filter_type
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_categories__wix_filter_type
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_operation__wix_filter_type
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_orders__wix_filter_type
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_partners__wix_filter_type
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_products__wix_filter_type
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_templates__wix_filter_type
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__wix_filter_type
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__wix_filter_type
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__wix_filter_type
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__wix_filter_type
+msgid "Wix Filter Type"
+msgstr "Wix-Filtertyp"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_multi_channel_sale__wix_order_cancel_webhook_enable
+msgid "Wix Order Cancel Webhook Enable"
+msgstr "aktivieren Wix Bestellung abbrechen Webhook"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_multi_channel_sale__wix_order_cancel_webhook_url
+msgid "Wix Order Cancel Webhook Url"
+msgstr "Wix Order stornieren Webhook-URL"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_attributes__wix_order_state
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_attributes_value__wix_order_state
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_categories__wix_order_state
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_operation__wix_order_state
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_orders__wix_order_state
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_partners__wix_order_state
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_products__wix_order_state
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_templates__wix_order_state
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_categories__wix_order_state
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_orders__wix_order_state
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_partners__wix_order_state
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_import_wix_products__wix_order_state
+msgid "Wix Order State"
+msgstr "Wix-Bestellstatus"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_multi_channel_sale__wix_order_webhook_enable
+msgid "Wix Order Webhook Enable"
+msgstr "Wix Order Webhook aktivieren"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_multi_channel_sale__wix_order_webhook_url
+msgid "Wix Order Webhook Url"
+msgstr "Wix Order Webhook-URL"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_multi_channel_sale__wix_product_create_webhook_enable
+msgid "Wix Product Create Webhook Enable"
+msgstr "Wix-Produkt Webhook erstellen aktivieren"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_multi_channel_sale__wix_product_create_webhook_url
+msgid "Wix Product Create Webhook Url"
+msgstr "Wix-Produkt erstellen Webhook-URL"
+
+#. module: odoo_wix_connector
+#: model:ir.model,name:odoo_wix_connector.model_import_wix_products
+msgid "Wix Products Import Wizard"
+msgstr "Wix-Produktimportassistent"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "Wix Real-Time Hooks"
+msgstr "Wix Echtzeit-Hooks"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,field_description:odoo_wix_connector.field_multi_channel_sale__wix_show_webhook
+msgid "Wix Show Webhook"
+msgstr "Wix Webhook anzeigen"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "click here"
+msgstr "klicken Sie hier"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "d7a7f0ca-c0fd-4e4f-97a6-de6c42ab966a"
+msgstr "d7a7f0ca-c0fd-4e4f-97a6-de6c42ab966a"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid ""
+"eg. -----BEGIN PUBLIC KEY-----"
+"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0yUhsHsjENJ4vRvlmMMN-----END "
+"PUBLIC KEY-----"
+msgstr ""
+"z. B. -----BEGIN PUBLIC KEY-----"
+"MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0yUhsHsjENJ4vRvlmMMN-----ENDE"
+"ÖFFENTLICHER SCHLÜSSEL-----"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "eg. ck_ccac94fc4362ba12a2045086ea9db285e8f02ac9"
+msgstr "eg. ck_ccac94fc4362ba12a2045086ea9db285e8f02ac9"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,help:odoo_wix_connector.field_multi_channel_sale__wix_app_id
+msgid "eg. d7a7f0ca-c0fd-4e4f-97a6-de6c42ab966a"
+msgstr "eg. d7a7f0ca-c0fd-4e4f-97a6-de6c42ab966a"
+
+#. module: odoo_wix_connector
+#: model:ir.model.fields,help:odoo_wix_connector.field_multi_channel_sale__wix_app_secret_key
+msgid "eg. f4fbb0e1-87a6-4d4b-9dbd-6545640e088c"
+msgstr "eg. f4fbb0e1-87a6-4d4b-9dbd-6545640e088c"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.inherited_multi_channel_sale_wix
+msgid "eg: https://www.odoo-dev.com"
+msgstr "eg: https://www.odoo-dev.com"
+
+#. module: odoo_wix_connector
+#: model_terms:ir.ui.view,arch_db:odoo_wix_connector.multi_channel_view_kanban_wix
+msgid "wix icon"
+msgstr "Wix-Symbol"

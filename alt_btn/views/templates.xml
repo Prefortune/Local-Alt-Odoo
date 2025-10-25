@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="sticky_container" name="Sticky Container" inherit_id="website.layout">
+        <xpath expr="//footer" position="before">
+            <!-- הסרנו את התנאי על הדומיין והנתיב -->
+            <div class="sticky-container">
+                <div class="container">
+                    <a href="#Offer" class="btn btn-primary" aria-label="להצעת מחיר עסקית" title="להצעת מחיר לעסקים">
+                        <i class="fa fa-shopping-cart me-2"/>
+                        להצעת מחיר
+                    </a>
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

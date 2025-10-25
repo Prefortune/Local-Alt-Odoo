@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding='UTF-8'?>
+<odoo noupdate="1">
+
+    <record id="website_tracking_fb_capi_send_events" model="ir.cron">
+        <field name="name">Website Tracking: Meta (Facebook) CAPI - Send Tracking Events</field>
+        <field name="model_id" ref="model_website_tracking_service"/>
+        <field name="state">code</field>
+        <field name="code">model._fb_capi_send_events()</field>
+        <field name="interval_number">30</field>
+        <field name="interval_type">minutes</field>
+    </record>
+
+</odoo>

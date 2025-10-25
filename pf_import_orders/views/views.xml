@@ -1,0 +1,64 @@
+<odoo>
+  <data>
+
+   <!-- Action -->
+    <record model="ir.actions.act_window" id="import_csv_action">
+      <field name="name">Import CSV for Contacts</field>
+      <field name="res_model">pfimport.orders</field>
+      <field name="view_mode">list,form</field>
+      <field name="domain">[]</field>
+      <field name="context">{}</field>
+    </record>
+
+    <record model="ir.actions.act_window" id="cron_csv_action">
+      <field name="name">Cron CSV for Contacts</field>
+      <field name="res_model">cron.list</field>
+      <field name="view_mode">list,form</field>
+      <field name="domain">[]</field>
+      <field name="context">{}</field>
+    </record>
+
+    <!-- Form View -->
+    <record id="import_csv_form_view1" model="ir.ui.view">
+      <field name="name">pfimport.orders.view.form</field>
+      <field name="model">pfimport.orders</field>
+      <field name="arch" type="xml">
+        <form string="Import CSV">
+          <sheet>
+            <group>
+              <group>
+                  <field name="file_data" required="1"/>
+              </group>
+              <group>
+                <button type="object" name="click_me" string="Sync Orders" class="btn-primary"/>
+              </group>
+            </group>
+          </sheet>
+        </form>
+      </field>
+    </record>
+
+   
+
+    <!-- Define the Main Menu -->
+    <menuitem id="menu_main_csv"
+              name="CSV Import"
+              sequence="1"/>
+
+    <!-- Define the Sub Menu for Upload CSV under Main Menu -->
+    <menuitem id="menu_upload_csv"
+              name="Upload CSV"
+              parent="menu_main_csv"
+              action="import_csv_action"
+              sequence="10"/>
+
+    <menuitem id="menu_cron_csv"
+              name="Cron CSV"
+              parent="menu_main_csv"
+              action="cron_csv_action"
+              sequence="20"/>
+
+
+   
+  </data>
+</odoo>

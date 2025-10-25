@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+      <record id="pf_inherit_loyalty_reward_view_form" model="ir.ui.view">
+            <field name="name">loyalty.reward.view.form.inherit</field>
+            <field name="model">loyalty.reward</field>
+            <field name="inherit_id" ref="loyalty.loyalty_reward_view_form"/>
+            <field name="arch" type="xml">
+                <!-- Insert after the reward_type group -->
+                <xpath expr="//group[@name='reward_type_group']" position="after">
+                    <group string="Discounted Product" invisible="reward_type != 'discounted_product'">
+                        <field name="pf_products_to_apply"/>
+                        <field name="pf_discounted_product_id"/>
+                        <field name="pf_discounted_product_price"/>
+                    </group>
+                </xpath>
+            </field>
+        </record>
+</odoo>

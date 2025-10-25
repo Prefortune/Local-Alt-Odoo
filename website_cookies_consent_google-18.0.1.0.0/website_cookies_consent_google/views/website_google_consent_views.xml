@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="website_google_consent_view_form" model="ir.ui.view">
+        <field name="name">website.google.consent.view.form</field>
+        <field name="model">website.google.consent</field>
+        <field name="arch" type="xml">
+            <form>
+                <field name="active" invisible="1"/>
+                <widget name="web_ribbon" text="Archived" bg_color="bg-danger" invisible="active"/>
+                <group>
+                    <field name="website_id" options="{'no_create': True}"/>
+                </group>
+                <group string="Granted by Default">
+                    <field name="ad_storage" widget="boolean_toggle"/>
+                    <field name="ad_user_data" widget="boolean_toggle"/>
+                    <field name="ad_personalization" widget="boolean_toggle"/>
+                    <field name="analytics_storage" widget="boolean_toggle"/>
+                    <field name="functionality_storage" widget="boolean_toggle"/>
+                    <field name="personalization_storage" widget="boolean_toggle"/>
+                    <field name="security_storage" widget="boolean_toggle"/>
+                </group>
+                <group string="Additional">
+                    <field name="region_ids" widget="many2many_tags"/>
+                    <field name="wait_for_update"/>
+                </group>
+            </form>
+        </field>
+    </record>
+
+    <record id="website_google_consent_view_list" model="ir.ui.view">
+        <field name="name">website.google.consent.view.list</field>
+        <field name="model">website.google.consent</field>
+        <field name="arch" type="xml">
+            <list>
+                <field name="website_id" optional="show" groups="website.group_multi_website"/>
+                <field name="region_ids" widget="many2many_tags"/>
+                <field name="ad_storage" optional="show"/>
+                <field name="ad_user_data" optional="show"/>
+                <field name="ad_personalization" optional="show"/>
+                <field name="analytics_storage" optional="show"/>
+                <field name="functionality_storage" optional="show"/>
+                <field name="personalization_storage" optional="show"/>
+                <field name="security_storage" optional="show"/>
+                <field name="wait_for_update"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="website_google_consent_view_search" model="ir.ui.view">
+        <field name="name">website.google.consent.view.search</field>
+        <field name="model">website.google.consent</field>
+        <field name="arch" type="xml">
+            <search>
+                <filter string="Active" name="filter_active" domain="[('active', '=', True)]"/>
+                <filter string="Archived" name="filter_archived" domain="[('active', '=', False)]"/>
+            </search>
+        </field>
+    </record>
+
+    <record id="action_website_google_consent_list" model="ir.actions.act_window">
+        <field name="type">ir.actions.act_window</field>
+        <field name="name">Google Consent Settings</field>
+        <field name="res_model">website.google.consent</field>
+        <field name="view_mode">list,form</field>
+    </record>
+
+    <record id="menu_website_google_consent" model="ir.ui.menu">
+        <field name="name">Google Consent Settings</field>
+        <field name="parent_id" ref="website_cookies_consent.website_cookies_consent_config_menu"/>
+        <field name="action" ref="action_website_google_consent_list"/>
+        <field name="groups_id" eval="[(6, 0, [ref('website.group_website_designer')])]"/>
+        <field name="sequence" eval="10"/>
+    </record>
+
+</odoo>

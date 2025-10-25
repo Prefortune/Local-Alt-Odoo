@@ -1,0 +1,11 @@
+<odoo>
+    <template id="product_template_inherit" inherit_id="website_sale.product">
+        <xpath expr="//a[@id='add_to_cart']" position="after">
+            <div style="padding-right: 24px;">
+                <a href="#Contact-us" class="btn bg-o-color-2 flex-grow-1">
+                    צור איתנו קשר
+                </a>
+            </div>
+        </xpath>
+    </template>
+</odoo>

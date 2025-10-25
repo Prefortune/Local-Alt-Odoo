@@ -1,0 +1,68 @@
+<odoo>
+  <data>
+    <template id="pf_modify_code_form" inherit_id="website_sale.total" name="Discounted Product By Pf">
+      <!-- <xpath expr="//div[@id='cart_total']//table/tr[last()]" position="after">
+        <tr t-if="website_sale_order" class="oe_website_sale_gift_card">
+          <td colspan="3" class="text-center text-xl-end border-0 p-0">
+            <t t-foreach="website_sale_order._get_claimable_and_showable_rewards_dsicounted_product()" t-as="reward">
+              <form t-att-action="'/shop/claimreward%s' % (redirect and '?r=' + redirect or '')" method="post" name="claim_reward">
+                  <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                  <input type="hidden" name="reward_id" t-att-value="reward.id"/>
+                  <div class="alert alert-success text-start mt10" role="alert">
+                    <div class="d-flex flex-row">
+                        <div class="flex-grow-1 text-break">
+                            <t t-set="program" t-value="reward.program_id"/>
+                            <strong t-esc="reward.description"/>
+                        </div>
+                        <div class="justify-content-end">
+                          <a class="btn btn-primary a-submit" href="#" role="button"> 
+                            מימוש  
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+              </form>
+            </t>
+          </td>
+        </tr>
+      </xpath> -->
+      <xpath expr="//div[@id='cart_total']//table/tr[last()]" position="after">
+        <tr t-if="website_sale_order" class="oe_website_sale_gift_card">
+          <td colspan="3" class="text-center text-xl-end border-0 p-0">
+            <t t-foreach="website_sale_order._get_claimable_and_showable_rewards_dsicounted_product()" t-as="reward">
+              <form t-att-action="'/shop/claimreward%s' % (redirect and '?r=' + redirect or '')" method="post" name="claim_reward">
+                  <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                  <input type="hidden" name="reward_id" t-att-value="reward.id"/>
+                  <!-- <span t-esc="reward"/> -->
+                  <div class="alert alert-success text-start mt10" role="alert">
+                    <div class="d-flex flex-row align-items-center">
+                        
+                        <!-- תמונה מהמוצר בשדה pf_products_to_apply -->
+                        <t t-if="reward.pf_products_to_apply">
+                          <img t-att-src="'/web/image/product.product/%s/image_128' % reward.pf_products_to_apply.id"
+                              class="me-2 rounded"
+                              style="width: 50px; height: 50px; object-fit: contain;"/>
+                        </t>
+                        
+                        <!-- טקסט -->
+                        <div class="flex-grow-1 text-break">
+                            <t t-set="program" t-value="reward.program_id"/>
+                            <strong t-esc="reward.description"/>
+                        </div>
+
+                        <!-- כפתור -->
+                        <div class="justify-content-end">
+                          <a class="btn btn-primary a-submit" href="#" role="button"> 
+                            מימוש  
+                          </a>
+                        </div>
+                    </div>
+                  </div>
+              </form>
+            </t>
+          </td>
+        </tr>
+      </xpath>
+    </template>
+  </data>
+</odoo>

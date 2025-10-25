@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Sale Order Form View Extension -->
+    <record id="view_order_form_inherit_alt_split_delivery" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.alt.split.delivery</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//notebook" position="inside">
+                <page string="Split Deliveries" name="alt_split_deliveries">
+                    <group>
+                        <group>
+                            <!-- <field name="has_alt_split_deliveries"/> -->
+                            <field name="alt_split_delivery_count"/>
+                            <field name="alt_split_delivery_total_price"/>
+                            <!-- <field name="alt_split_delivery_url" widget="url"/> -->
+                            <field name="alt_split_delivery_url" widget="url" invisible="alt_split_delivery_count &lt;= 1 or not state == 'sale'"/>
+                            <field name="split_delivery_status" widget="badge"
+                                        decoration-success="split_delivery_status == 'delivered'"
+                                        decoration-info="split_delivery_status == 'filed'"
+                                        decoration-warning="split_delivery_status == 'not_file'"
+                                        decoration-primary="split_delivery_status == 'normal_order'" />
+
+
+                        </group>
+                    </group>
+                    <field name="picking_ids">
+                        <list>
+                            <field name="name"/>
+                            <field name="scheduled_date"/>
+                            <field name="state"/>
+                        </list>
+                    </field>
+                    <group>
+                        <field name="alt_split_delivery_note" readonly="1"/>
+                    </group>
+                </page>
+            </xpath>
+            <xpath expr="//field[@name='payment_term_id']" position="after">
+                <field name="customer_delivery_date" />
+                <field name="greeting_card" />
+                <field name="delivery_note" />
+            </xpath>
+
+            <xpath expr="//sheet" position="before">
+                <div class="alert alert-info" invisible="alt_split_delivery_count &lt;= 1">
+                    <p>
+                         <!-- לקוח יקר, בחרת משלוח עם  <field name="alt_split_delivery_count" readonly="1" nolabel="1" class="fw-bold"/> כתובות. אנא שבץ את המוצרים שלך בכתובות. -->
+                         <p> שימו לב! בהזמנה זו יש משלוחים מפוצלים – יש לטפל בהתאם.</p>
+                    </p>
+                </div>
+            </xpath>
+
+        </field>
+    </record>
+
+    <record id="view_order_list_inherit_alt_split_delivery" model="ir.ui.view">
+        <field name="name">sale.order.list.inherit.alt.split.delivery</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_quotation_tree_with_onboarding"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='website_id']" position="after">
+                <field name="alt_split_delivery_count" />
+            </xpath>
+
+            <xpath expr="//field[@name='state']" position="after">
+                <field name="split_delivery_status" widget="badge"
+                        decoration-success="split_delivery_status == 'delivered'"
+                        decoration-info="split_delivery_status == 'filed'"
+                        decoration-warning="split_delivery_status == 'not_file'"
+                        decoration-primary="split_delivery_status == 'normal_order'" />
+
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_sale_order_list_inherit_alt_split_delivery" model="ir.ui.view">
+        <field name="name">view.sale.order.list.inherit.alt.split.delivery</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.sale_order_list_upload"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_status']" position="after">
+                <field name="split_delivery_status" widget="badge"
+                        decoration-success="split_delivery_status == 'delivered'"
+                        decoration-info="split_delivery_status == 'filed'"
+                        decoration-warning="split_delivery_status == 'not_file'"
+                        decoration-primary="split_delivery_status == 'normal_order'" />
+
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_order_search_filter_inherit_alt_split_delivery" model="ir.ui.view">
+    <field name="name">sale.order.search.inherit.alt.split.delivery</field>
+    <field name="model">sale.order</field>
+    <field name="inherit_id" ref="sale.sale_order_view_search_inherit_quotation"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='filter_create_date']" position="after">
+                <separator/>
+                <filter name="alt_split_delivery_count" string="Multi Shipment List"
+                        domain="[('alt_split_delivery_count','&gt;',1)]"/>
+            </xpath>
+
+            <xpath expr="//search" position="inside">
+                <separator/>
+                <group string="Multi Shipment Count" expand="0"> 
+                    <filter string="Multi Shipment" name="alt_split_delivery_count" context="{'group_by': 'alt_split_delivery_count'}"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+
+
+</odoo>

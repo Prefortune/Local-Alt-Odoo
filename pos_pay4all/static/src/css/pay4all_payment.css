@@ -1,0 +1,501 @@
+/* Pay4All Payment Method Selection - Tela 1 */
+.pay4all-payment-screen {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 9999;
+}
+
+.pay4all-modal {
+    background: white;
+    border-radius: 12px;
+    max-width: 480px;
+    width: 90%;
+    max-height: 90vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    animation: fadeInScale 0.3s ease-out;
+}
+
+@keyframes fadeInScale {
+    from {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.pay4all-modal-header {
+    padding: 24px 24px 0;
+    text-align: center;
+}
+
+.pay4all-modal-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0 0 24px 0;
+    line-height: 1.4;
+}
+
+.pay4all-modal-body {
+    padding: 0 24px 24px;
+}
+
+/* Payment Method Options */
+.pay4all-method-options {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 24px;
+}
+
+.pay4all-method-option {
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+}
+
+.pay4all-method-option:hover {
+    border-color: #cbd5e0;
+}
+
+.pay4all-method-option.selected {
+    border-color: #3182ce;
+    background-color: #f7fafc;
+}
+
+.pay4all-method-option.ekwanza.selected {
+    border-color: #3182ce;
+    background-color: #ebf8ff;
+}
+
+.pay4all-method-option.multicaixa.selected {
+    border-color: #38a169;
+    background-color: #f0fff4;
+}
+
+.pay4all-method-content {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.pay4all-method-icon {
+    font-size: 24px;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+}
+
+.pay4all-method-icon.ekwanza {
+    background-color: #ebf8ff;
+    color: #3182ce;
+}
+
+.pay4all-method-icon.multicaixa {
+    background-color: #f0fff4;
+    color: #38a169;
+}
+
+.pay4all-method-info {
+    flex: 1;
+}
+
+.pay4all-method-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0 0 4px 0;
+}
+
+.pay4all-method-description {
+    font-size: 14px;
+    color: #718096;
+    margin: 0;
+}
+
+.pay4all-method-status {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    font-size: 11px;
+    font-weight: 600;
+    padding: 4px 8px;
+    border-radius: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.pay4all-method-status.available.ekwanza {
+    background-color: #3182ce;
+    color: white;
+}
+
+.pay4all-method-status.available.multicaixa {
+    background-color: #38a169;
+    color: white;
+}
+
+/* Phone Input */
+.pay4all-phone-group {
+    margin-bottom: 24px;
+}
+
+.pay4all-phone-label {
+    display: block;
+    font-size: 14px;
+    font-weight: 500;
+    color: #4a5568;
+    margin-bottom: 8px;
+}
+
+.pay4all-phone-input {
+    width: 100%;
+    padding: 12px 16px;
+    border: 2px solid #e2e8f0;
+    border-radius: 8px;
+    font-size: 16px;
+    transition: border-color 0.2s ease;
+    box-sizing: border-box;
+}
+
+.pay4all-phone-input:focus {
+    outline: none;
+    border-color: #3182ce;
+    box-shadow: 0 0 0 3px rgba(49, 130, 206, 0.1);
+}
+
+.pay4all-phone-input::placeholder {
+    color: #a0aec0;
+}
+
+.pay4all-phone-error {
+    color: #e53e3e;
+    font-size: 12px;
+    margin-top: 4px;
+}
+
+/* Action Buttons */
+.pay4all-actions {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.pay4all-btn {
+    padding: 14px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    border: none;
+    text-decoration: none;
+    display: inline-block;
+}
+
+.pay4all-btn-primary {
+    background-color: #3182ce;
+    color: white;
+}
+
+.pay4all-btn-primary:hover {
+    background-color: #2c5282;
+}
+
+.pay4all-btn-primary:disabled {
+    background-color: #a0aec0;
+    cursor: not-allowed;
+}
+
+.pay4all-btn-secondary {
+    background-color: transparent;
+    color: #3182ce;
+    border: none;
+    padding: 14px 24px;
+}
+
+.pay4all-btn-secondary:hover {
+    background-color: #f7fafc;
+}
+
+/* ====================================
+   TELA 2 - PROCESSAMENTO/AGUARDO 
+   ==================================== */
+
+.pay4all-processing-modal {
+    max-width: 520px;
+}
+
+.pay4all-product-title {
+    font-size: 20px;
+    font-weight: 600;
+    color: #2d3748;
+    margin: 0 0 20px 0;
+    text-align: center;
+    line-height: 1.3;
+}
+
+/* Status Section com Countdown */
+.pay4all-status-section {
+    margin-bottom: 24px;
+    text-align: center;
+}
+
+.pay4all-status-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #2d3748;
+    margin-bottom: 16px;
+}
+
+.pay4all-countdown {
+    color: #ed8936;
+    font-weight: 700;
+    font-size: 18px;
+}
+
+/* Progress Bar */
+.pay4all-progress-container {
+    margin-bottom: 8px;
+}
+
+.pay4all-progress-bar {
+    width: 100%;
+    height: 8px;
+    background-color: #e2e8f0;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.pay4all-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #ed8936, #f6ad55);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+/* Caixa de Informação */
+.pay4all-info-box {
+    background-color: #ebf8ff;
+    border: 1px solid #bee3f8;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+}
+
+.pay4all-info-icon {
+    font-size: 20px;
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.pay4all-info-content {
+    flex: 1;
+}
+
+.pay4all-info-text {
+    font-size: 14px;
+    color: #2d3748;
+    line-height: 1.5;
+}
+
+.pay4all-info-text strong {
+    font-weight: 600;
+    color: #1a202c;
+}
+
+/* Detalhes do Pagamento */
+.pay4all-payment-details {
+    background-color: #f7fafc;
+    border-radius: 8px;
+    padding: 16px;
+    margin-bottom: 24px;
+}
+
+.pay4all-detail-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 8px 0;
+}
+
+.pay4all-detail-row:not(:last-child) {
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.pay4all-detail-label {
+    font-size: 14px;
+    color: #718096;
+    font-weight: 500;
+}
+
+.pay4all-detail-value {
+    font-size: 14px;
+    color: #2d3748;
+    font-weight: 600;
+}
+
+/* Animações para countdown */
+@keyframes pulse-orange {
+    0%, 100% {
+        color: #ed8936;
+    }
+    50% {
+        color: #f6ad55;
+    }
+}
+
+.pay4all-countdown.warning {
+    animation: pulse-orange 1s infinite;
+}
+
+/* Estados da progress bar */
+.pay4all-progress-fill.warning {
+    background: linear-gradient(90deg, #f56565, #fc8181);
+}
+
+.pay4all-progress-fill.critical {
+    background: linear-gradient(90deg, #e53e3e, #f56565);
+    animation: pulse-progress 0.5s infinite alternate;
+}
+
+@keyframes pulse-progress {
+    from {
+        opacity: 0.8;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+/* Responsive para Tela 2 */
+@media (max-width: 480px) {
+    .pay4all-processing-modal {
+        width: 95%;
+    }
+    
+    .pay4all-product-title {
+        font-size: 18px;
+    }
+    
+    .pay4all-status-text {
+        font-size: 15px;
+    }
+    
+    .pay4all-countdown {
+        font-size: 16px;
+    }
+    
+    .pay4all-info-box {
+        padding: 12px;
+    }
+    
+    .pay4all-detail-row {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 4px;
+    }
+}
+
+/* ====================================
+   TELA 3 - AGUARDO MULTICAIXA 
+   ==================================== */
+
+/* Texto de aguardo centralizado */
+.pay4all-wait-message {
+    text-align: center;
+    margin: 32px 0;
+    padding: 24px;
+    background-color: #f7fafc;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+}
+
+.pay4all-wait-text {
+    font-size: 16px;
+    font-weight: 500;
+    color: #2d3748;
+    margin-bottom: 16px;
+}
+
+.pay4all-wait-spinner {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* Spinner animado */
+.pay4all-spinner {
+    width: 32px;
+    height: 32px;
+    border: 3px solid #e2e8f0;
+    border-top: 3px solid #3182ce;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Progress bar indeterminada (sem countdown) */
+.pay4all-progress-indeterminate {
+    width: 100%;
+    background: linear-gradient(90deg, #3182ce, #63b3ed, #3182ce);
+    background-size: 200% 100%;
+    animation: progress-slide 2s linear infinite;
+}
+
+@keyframes progress-slide {
+    0% {
+        background-position: 200% 0;
+    }
+    100% {
+        background-position: -200% 0;
+    }
+}
+
+/* Ajustes para Tela 3 */
+.pay4all-multicaixa-wait .pay4all-info-box {
+    background-color: #f0fff4;
+    border-color: #c6f6d5;
+}
+
+/* Responsive para Tela 3 */
+@media (max-width: 480px) {
+    .pay4all-wait-message {
+        margin: 24px 0;
+        padding: 16px;
+    }
+    
+    .pay4all-wait-text {
+        font-size: 15px;
+    }
+    
+    .pay4all-spinner {
+        width: 28px;
+        height: 28px;
+    }
+}

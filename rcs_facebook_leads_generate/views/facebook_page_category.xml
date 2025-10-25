@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="facebook_page_category_form" model="ir.ui.view">
+        <field name="name">facebook.page.category.form</field>
+        <field name="model">facebook.page.category.info</field>
+        <field name="arch" type="xml">
+            <form string="Facebook Page Category">
+                <sheet>
+                    <group>
+                        <field name="name"/>
+                        <field name="category_id"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="facebook_page_category_list" model="ir.ui.view">
+        <field name="name">facebook.page.category.list</field>
+        <field name="model">facebook.page.category.info</field>
+        <field name="arch" type="xml">
+            <list string="Facebook Page Category" editable="bottom">
+                <field name="name"/>
+                <field name="category_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_facebook_page_category" model="ir.actions.act_window">
+        <field name="name">Facebook Page Category</field>
+        <field name="res_model">facebook.page.category.info</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="rcs_facebook_leads_generate.facebook_page_category_list"/>
+        <field name="help" type="html">
+            <p/>
+        </field>
+    </record>
+
+</odoo>

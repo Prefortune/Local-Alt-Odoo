@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="report_split_xlsx" model="ir.actions.report">
+        <field name="name">Split Delivery Order Report</field>
+        <field name="model">split.trainsnet.report</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">alt_split_delivery.report_split_xlsx</field>
+        <field name="report_file">alt_split_delivery.report_split_xlsx</field>
+        <field name="binding_model_id" ref="model_split_trainsnet_report"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Pay4All POS Payment Gateway</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .hero-section {
+            background: linear-gradient(135deg, #3182ce, #2b77cb);
+            color: white;
+            padding: 60px 0;
+            margin-bottom: 40px;
+        }
+        .feature-icon {
+            font-size: 3rem;
+            color: #3182ce;
+            margin-bottom: 20px;
+        }
+        .screenshot-container {
+            border-radius: 10px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            margin-bottom: 30px;
+        }
+        .badge-feature {
+            background: #38a169;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 5px 5px 5px 0;
+            display: inline-block;
+        }
+        .integration-box {
+            background: #f8f9fa;
+            border-left: 4px solid #3182ce;
+            padding: 20px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Hero Section -->
+    <div class="hero-section">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col-lg-6">
+                    <h1 class="display-4 font-weight-bold">Pay4All POS Payment Gateway</h1>
+                    <p class="lead">Complete integration of Angola's leading payment methods for Odoo Point of Sale</p>
+                    <div class="mt-4">
+                        <span class="badge-feature">✅ e-Kwanza</span>
+                        <span class="badge-feature">💳 Multicaixa Express</span>
+                        <span class="badge-feature">📱 Mobile Optimized</span>
+                        <span class="badge-feature">🔒 Secure</span>
+                    </div>
+                </div>
+                <div class="col-lg-6 text-center">
+                    <img src="main_screenshot.png" alt="Pay4All POS Interface" class="img-fluid screenshot-container" style="max-width: 400px;">
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div class="container">
+        
+        <!-- Key Features -->
+        <section class="row mb-5">
+            <div class="col-12">
+                <h2 class="text-center mb-5">🚀 Key Features</h2>
+            </div>
+            <div class="col-md-4 text-center mb-4">
+                <div class="feature-icon">📱</div>
+                <h4>e-Kwanza Integration</h4>
+                <p>Direct integration with Angola's most popular mobile wallet. Process payments instantly with phone number validation.</p>
+            </div>
+            <div class="col-md-4 text-center mb-4">
+                <div class="feature-icon">💳</div>
+                <h4>Multicaixa Express</h4>
+                <p>Terminal-based payments through Multicaixa Express network. Perfect for in-store transactions.</p>
+            </div>
+            <div class="col-md-4 text-center mb-4">
+                <div class="feature-icon">⚡</div>
+                <h4>Smart Timeouts</h4>
+                <p>Intelligent timeout management with different flows for each payment method. Optimized user experience.</p>
+            </div>
+        </section>
+
+        <!-- Screenshots Section -->
+        <section class="mb-5">
+            <h2 class="text-center mb-4">📸 Screenshots</h2>
+            <div class="row">
+                <div class="col-md-4 mb-4">
+                    <div class="screenshot-container">
+                        <img src="screenshot_1.png" alt="Payment Method Selection" class="img-fluid">
+                    </div>
+                    <h5 class="text-center">Payment Method Selection</h5>
+                    <p class="text-center text-muted">Choose between e-Kwanza and Multicaixa Express</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="screenshot-container">
+                        <img src="screenshot_2.png" alt="Processing Screen" class="img-fluid">
+                    </div>
+                    <h5 class="text-center">Processing Screen</h5>
+                    <p class="text-center text-muted">Real-time payment processing with countdown</p>
+                </div>
+                <div class="col-md-4 mb-4">
+                    <div class="screenshot-container">
+                        <img src="screenshot_3.png" alt="Multicaixa Wait Screen" class="img-fluid">
+                    </div>
+                    <h5 class="text-center">Multicaixa Wait Screen</h5>
+                    <p class="text-center text-muted">Specialized waiting screen for terminal payments</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Technical Features -->
+        <section class="mb-5">
+            <h2 class="mb-4">🔧 Technical Features</h2>
+            <div class="row">
+                <div class="col-md-6">
+                    <ul class="list-unstyled">
+                        <li class="mb-2">✅ <strong>Real API Integration</strong> - Official Pay4All endpoints</li>
+                        <li class="mb-2">✅ <strong>Phone Validation</strong> - Automatic formatting for Angolan numbers</li>
+                        <li class="mb-2">✅ <strong>Responsive Design</strong> - Works on all screen sizes</li>
+                        <li class="mb-2">✅ <strong>Error Handling</strong> - Robust error management</li>
+                        <li class="mb-2">✅ <strong>Status Polling</strong> - Real-time payment status updates</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <ul class="list-unstyled">
+                        <li class="mb-2">✅ <strong>Multi-language Ready</strong> - Portuguese/English support</li>
+                        <li class="mb-2">✅ <strong>Secure</strong> - No sensitive data stored locally</li>
+                        <li class="mb-2">✅ <strong>Lightweight</strong> - Optimized for performance</li>
+                        <li class="mb-2">✅ <strong>Easy Configuration</strong> - Simple setup process</li>
+                        <li class="mb-2">✅ <strong>Production Ready</strong> - Tested and validated</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- API Integration -->
+        <div class="integration-box">
+            <h3>🔗 API Integration</h3>
+            <p>This module integrates with official Pay4All APIs:</p>
+            <ul>
+                <li><strong>e-Kwanza API</strong>: <code>/payment/ekwanza/request/plugin</code></li>
+                <li><strong>Multicaixa API</strong>: <code>/payment/appy/request/plugin</code></li>
+                <li><strong>Status API</strong>: <code>/payment/status</code></li>
+            </ul>
+            <p class="mb-0"><small class="text-muted">All API communications are secured and follow Pay4All's official protocols.</small></p>
+        </div>
+
+        <!-- Installation -->
+        <section class="mb-5">
+            <h2 class="mb-4">📦 Installation & Setup</h2>
+            <div class="row">
+                <div class="col-md-8">
+                    <h4>Quick Installation (3 steps)</h4>
+                    <ol class="list-group list-group-numbered">
+                        <li class="list-group-item">
+                            <strong>Install Module</strong><br>
+                            <small class="text-muted">Go to Apps → Search "Pay4All" → Install</small>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Configure Credentials</strong><br>
+                            <small class="text-muted">Point of Sale → Configuration → Payment Providers → Pay4All</small>
+                        </li>
+                        <li class="list-group-item">
+                            <strong>Add to POS</strong><br>
+                            <small class="text-muted">Point of Sale → Configuration → Point of Sale → Add Pay4All provider</small>
+                        </li>
+                    </ol>
+                </div>
+                <div class="col-md-4">
+                    <h4>Requirements</h4>
+                    <ul class="list-unstyled">
+                        <li>✅ Odoo 16.0+</li>
+                        <li>✅ Point of Sale module</li>
+                        <li>✅ Payment module</li>
+                        <li>✅ Pay4All account</li>
+                        <li>✅ API credentials</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Support Section -->
+        <section class="mb-5">
+            <div class="row">
+                <div class="col-md-6">
+                    <h3>📞 Support & Documentation</h3>
+                    <ul class="list-unstyled">
+                        <li class="mb-2">📧 <strong>Email</strong>: suporte@pay4all.ao</li>
+                        <li class="mb-2">🌐 <strong>Website</strong>: <a href="https://pay4all.ao" target="_blank">pay4all.ao</a></li>
+                        <li class="mb-2">📖 <strong>Documentation</strong>: Included in module</li>
+                        <li class="mb-2">🔧 <strong>Technical Support</strong>: Available for paid customers</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h3>🌍 About Pay4All</h3>
+                    <p>Pay4All is Angola's leading fintech company, providing secure and reliable payment solutions for businesses across the country. Our POS integration brings the power of e-Kwanza and Multicaixa Express directly to your Odoo system.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="text-center py-4 border-top">
+            <p class="text-muted mb-2">
+                <strong>Pay4All POS Payment Gateway</strong> v16.0.2.0.0
+            </p>
+            <p class="text-muted mb-0">
+                Developed by Pay4All Development Team | Compatible with Odoo 16.0+
+            </p>
+        </footer>
+
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>

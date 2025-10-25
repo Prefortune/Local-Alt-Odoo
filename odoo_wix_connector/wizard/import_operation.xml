@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2015-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- "License URL : <https://store.webkul.com/license.html/>" -->
+<odoo>
+	<data>
+		<record id="import_wizard_form" model="ir.ui.view">
+			<field name="name">import.operation.form</field>
+			<field name="model">import.operation</field>
+			<field name="inherit_id" ref="odoo_multi_channel_sale.import_wizard_form"/>
+			<field name="type">form</field>
+			<field name="arch" type="xml">
+				<xpath expr="//field[@name='channel_id']" position="after">
+					<br/>
+				</xpath>
+				<xpath expr="//group[@name='filters']" postion="inside">
+					<group>
+						<field
+							name  ="wix_filter_type"
+							invisible = "channel != 'wix'"
+							widget="radio"
+						/>
+					</group>
+					<group invisible = "channel != 'wix' or wix_filter_type != 'date_range' or object in ['product.category','product.attribute']">
+						<field name="wix_start_date" required ="wix_filter_type == 'date_range'"/>
+					</group>
+					<group invisible = "channel != 'wix' or wix_filter_type != 'date_range' or object in['product.category','product.attribute']">
+						<field name="wix_end_data" required = "wix_filter_type == 'date_range'"/>
+					</group>
+					<group invisible = "channel != 'wix' or wix_filter_type != 'category_id' or object !=  'product.category'">
+						<field name="wix_category_id" required = "wix_filter_type == 'category_id'"/>
+					</group>
+					<group invisible = "channel != 'wix' or wix_filter_type != 'customer_id' or object != 'res.partner'">
+						<field name="wix_customer_email" required= "wix_filter_type == 'customer_id'"/>
+					</group>
+					<group invisible = "channel != 'wix' or wix_filter_type != 'order_state' or object !='sale.order'">
+						<field name="wix_order_state" required = "wix_filter_type == 'order_state'"/>
+					</group>
+					<group invisible = "channel != 'wix' or wix_filter_type != 'store_id' or object not in ['product.template','sale.order','res.partner']">
+						<field name="wix_store_id" required = "wix_filter_type == 'store_id'"/>
+					</group>
+				</xpath>
+				<xpath expr="//form" postion="inside">
+					<p invisible = "channel != 'wix' or wix_filter_type != 'date_range' or object not in ['sale.order','res.partner','product.template']">
+						Note: Will import Object that are created on wix during defined date range.
+					</p>
+					<p style = "color:red;" invisible = "channel != 'wix' or object not in ['product.attribute']">
+						Note: This operation gets automatically executed when Product Sync run, so you don't have to run it spearately.
+					</p>
+					<p style = "color:red;" invisible = "channel != 'wix' or object not in ['delivery.carrier']">
+						Note: This operation gets automatically executed when Order sync run, so you don't have to run it spearately.
+					</p>
+					<p style='inline-size: max-content;' 
+					invisible="wix_filter_type != 'store_id' or channel != 'wix'"
+					required="wix_filter_type == 'store_id'">
+					<b style = "color:black;">Note : </b> In case of import with multiple ids, Ids must be "," separated.
+					</p>
+
+				</xpath>
+			</field>
+		</record>
+
+		<record id="open_import_wizard_action" model="ir.actions.act_window">
+			<field name="name">Import Wizard</field>
+			<field name="res_model">import.operation</field>
+			<field name="view_mode">form</field>
+			<field name="target">new</field>
+		</record>
+	</data>
+</odoo>

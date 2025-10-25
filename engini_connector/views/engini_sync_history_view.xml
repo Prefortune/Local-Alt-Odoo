@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <!-- טופס היסטוריית סנכרון -->
+        <record id="view_engini_sync_history_form" model="ir.ui.view">
+            <field name="name">engini.sync.history.form</field>
+            <field name="model">engini.sync.history</field>
+            <field name="arch" type="xml">
+                <form>
+                    <header>
+                        <button name="action_retry_sync" 
+                                string="ניסיון חוזר" 
+                                type="object" 
+                                class="btn-warning"
+                                invisible="sync_status not in ('failed', 'cancelled')"/>
+                        <button name="action_cancel_sync" 
+                                string="ביטול" 
+                                type="object" 
+                                class="btn-secondary"
+                                invisible="sync_status != 'pending'"/>
+                        <button name="action_view_order" 
+                                string="צפייה בהזמנה" 
+                                type="object" 
+                                class="btn-primary"/>
+                        <button name="action_cleanup_old_history" 
+                                string="ניקוי היסטוריה ישנה" 
+                                type="object" 
+                                class="btn-secondary"/>
+                        <field name="sync_status" widget="statusbar" 
+                               statusbar_visible="pending,synced,failed"/>
+                    </header>
+                    <sheet>
+                        <group>
+                            <group string="מידע בסיסי">
+                                <field name="name"/>
+                                <field name="order_id"/>
+                                <field name="order_name"/>
+                                <field name="webhook_url"/>
+                            </group>
+                            <group string="סטטוס">
+                                <field name="sync_date"/>
+                                <field name="sync_duration"/>
+                                <field name="retry_count"/>
+                                <field name="is_successful"/>
+                                <field name="sync_age_hours"/>
+                            </group>
+                        </group>
+                        
+                        <group>
+                            <group string="שגיאות" invisible="not error_message">
+                                <field name="error_message" nolabel="1"/>
+                                <field name="error_details" nolabel="1"/>
+                            </group>
+                            <group string="נתונים" invisible="not data_sent">
+                                <field name="data_sent" nolabel="1"/>
+                                <field name="response_received" nolabel="1"/>
+                            </group>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+        
+        <!-- רשימת היסטוריית סנכרון -->
+        <record id="view_engini_sync_history_tree" model="ir.ui.view">
+            <field name="name">engini.sync.history.tree</field>
+            <field name="model">engini.sync.history</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="name"/>
+                    <field name="order_id"/>
+                    <field name="order_name"/>
+                    <field name="sync_status" widget="badge" 
+                           decoration-success="sync_status == 'synced'"
+                           decoration-warning="sync_status == 'pending'"
+                           decoration-danger="sync_status == 'failed'"/>
+                    <field name="sync_date"/>
+                    <field name="retry_count"/>
+                    <field name="is_successful"/>
+                    <field name="sync_age_hours"/>
+                </list>
+            </field>
+        </record>
+        
+        <!-- חיפוש היסטוריית סנכרון -->
+        <record id="view_engini_sync_history_search" model="ir.ui.view">
+            <field name="name">engini.sync.history.search</field>
+            <field name="model">engini.sync.history</field>
+            <field name="arch" type="xml">
+                <search>
+                    <field name="name"/>
+                    <field name="order_id"/>
+                    <field name="order_name"/>
+                    <field name="sync_status"/>
+                    <filter string="הצלחות" name="successful" domain="[('sync_status', '=', 'synced')]"/>
+                    <filter string="כשלונות" name="failed" domain="[('sync_status', '=', 'failed')]"/>
+                    <filter string="ממתינים" name="pending" domain="[('sync_status', '=', 'pending')]"/>
+                    <filter string="בוטלו" name="cancelled" domain="[('sync_status', '=', 'cancelled')]"/>
+                    <group expand="0" string="קבוצה לפי">
+                        <filter string="סטטוס" name="group_by_status" context="{'group_by': 'sync_status'}"/>
+                        <filter string="תאריך" name="group_by_date" context="{'group_by': 'sync_date:day'}"/>
+                        <filter string="הזמנה" name="group_by_order" context="{'group_by': 'order_id'}"/>
+                    </group>
+                </search>
+            </field>
+        </record>
+        
+        <!-- פעולת חלון -->
+        <record id="action_engini_sync_history" model="ir.actions.act_window">
+            <field name="name">היסטוריית סנכרון פריורטי</field>
+            <field name="res_model">engini.sync.history</field>
+            <field name="view_mode">list,form</field>
+            <field name="context">{'search_default_failed': 1}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    אין היסטוריית סנכרון עדיין
+                </p>
+                <p>
+                    היסטוריית הסנכרון תוצג כאן כאשר תתחיל לסנכרן הזמנות לפריורטי.
+                </p>
+            </field>
+        </record>
+        
+
+        
+    </data>
+</odoo> 

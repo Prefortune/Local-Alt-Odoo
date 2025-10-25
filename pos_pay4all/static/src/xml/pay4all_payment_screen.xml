@@ -1,0 +1,100 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <!-- Tela 1: Seleção de Método de Pagamento Pay4All -->
+    <t t-name="Pay4AllPaymentScreen" owl="1">
+        <div class="pay4all-payment-screen">
+            <div class="pay4all-modal">
+                <!-- Header -->
+                <div class="pay4all-modal-header">
+                    <h2 class="pay4all-modal-title">
+                        Escolha seu método de pagamento preferido:
+                    </h2>
+                </div>
+                
+                <!-- Body -->
+                <div class="pay4all-modal-body">
+                    <!-- Payment Method Options -->
+                    <div class="pay4all-method-options">
+                        <!-- e-Kwanza Option -->
+                        <div class="pay4all-method-option ekwanza" 
+                             t-att-class="{ 'selected': state.selectedMethod === 'ekwanza' }"
+                             t-on-click="selectMethod('ekwanza')">
+                            <div class="pay4all-method-content">
+                                <div class="pay4all-method-icon ekwanza">📱</div>
+                                <div class="pay4all-method-info">
+                                    <h3 class="pay4all-method-name">E-kwanza</h3>
+                                    <p class="pay4all-method-description">
+                                        Pagamento via carteira móvel E-kwanza
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="pay4all-method-status available ekwanza">
+                                DISPONÍVEL
+                            </span>
+                        </div>
+                        
+                        <!-- Multicaixa Express Option -->
+                        <div class="pay4all-method-option multicaixa"
+                             t-att-class="{ 'selected': state.selectedMethod === 'multicaixa' }"
+                             t-on-click="selectMethod('multicaixa')">
+                            <div class="pay4all-method-content">
+                                <div class="pay4all-method-icon multicaixa">💳</div>
+                                <div class="pay4all-method-info">
+                                    <h3 class="pay4all-method-name">Multicaixa Express</h3>
+                                    <p class="pay4all-method-description">
+                                        Pagamento via Multicaixa Express
+                                    </p>
+                                </div>
+                            </div>
+                            <span class="pay4all-method-status available multicaixa">
+                                DISPONÍVEL
+                            </span>
+                        </div>
+                    </div>
+                    
+                    <!-- Phone Input -->
+                    <div class="pay4all-phone-group">
+                        <label class="pay4all-phone-label" for="pay4all-phone">
+                            Número de telefone
+                        </label>
+                        <input 
+                            type="tel" 
+                            id="pay4all-phone"
+                            class="pay4all-phone-input"
+                            placeholder="+244 XXX XXX XXX"
+                            t-model="state.phoneNumber"
+                            t-on-input="onPhoneInput"
+                        />
+                        <div t-if="state.phoneError" class="pay4all-phone-error">
+                            <t t-esc="state.phoneError"/>
+                        </div>
+                    </div>
+                    
+                    <!-- Action Buttons -->
+                    <div class="pay4all-actions">
+                        <button 
+                            class="pay4all-btn pay4all-btn-primary"
+                            t-att-disabled="!canContinue()"
+                            t-on-click="continuePayment">
+                            <t t-if="state.selectedMethod === 'ekwanza'">
+                                Continuar com E-kwanza
+                            </t>
+                            <t t-elif="state.selectedMethod === 'multicaixa'">
+                                Continuar com Multicaixa Express
+                            </t>
+                            <t t-else="">
+                                Continuar
+                            </t>
+                        </button>
+                        
+                        <button 
+                            class="pay4all-btn pay4all-btn-secondary"
+                            t-on-click="cancel">
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

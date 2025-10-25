@@ -1,0 +1,160 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="view_facebook_page_kanban" model="ir.ui.view">
+        <field name="name">facebook.page.kanban</field>
+        <field name="model">facebook.page</field>
+        <field name="arch" type="xml">
+            <kanban class="o_kanban_dashboard o_account_kanban" create="false">
+                <field name="name"/>
+                <field name="facebook_page_id"/>
+                <field name="category_id"/>
+                <field name="rating_count"/>
+                <field name="follower_count"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div class="oe_kanban_card oe_kanban_global_click" style="max-width: 450px;">
+                            <div class="o_kanban_record_top">
+                                <div class="o_squared_image" style="height: 200px; overflow: hidden;">
+                                    <img t-att-src="kanban_image('facebook.page', 'cover', record.id.raw_value)"
+                                         alt="Cover Photo" style="width: 100%; object-fit: cover;"/>
+                                </div>
+                            </div>
+                            <div style="margin-bottom: 10px;">
+                                <div class="o_kanban_record_headings"
+                                     style="margin-bottom: 10px; display: flex; align-items: center; justify-content: space-between;">
+                                    <h1 style="display: flex; align-items: center; gap: 10px;">
+                                        <field name="name"/>
+                                    </h1>
+                                    <h3>
+                                        <field name="rating_count" widget="priority" readonly="1"/>
+                                    </h3>
+                                </div>
+                                <div class="row" style="margin-bottom: 10px;">
+                                    <div class="col-6">
+                                        <strong style="font-size: 15px;">Followers:</strong>
+                                        <field name="follower_count" style="font-size: 15px;"/>
+                                    </div>
+                                    <div class="col-6">
+                                        <strong style="font-size: 15px;">Category:</strong>
+                                        <field name="category_id" style="font-size: 15px;"/>
+                                    </div>
+                                </div>
+                                <div class="row" style="margin-bottom: 10px;">
+                                    <div class="col-12">
+                                        <strong style="font-size: 15px;">No. of leads:</strong>
+                                        <field name="facebook_lead_count" style="font-size: 15px;"/>
+                                    </div>
+                                </div>
+                                <div class="oe_kanban_footer">
+                                    <div class="o_kanban_record_bottom" style="float:right;">
+                                        <div class="oe_kanban_bottom_right">
+                                            <button type="object" name="action_get_forms" class="btn btn-primary">
+                                                <span>Fetch Forms</span>
+                                            </button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+    <record id="facebook_page_form" model="ir.ui.view">
+        <field name="name">facebook.page.form</field>
+        <field name="model">facebook.page</field>
+        <field name="arch" type="xml">
+            <form string="Facebook Page" create="false">
+                <header>
+                    <button name="action_get_forms" type="object" string="Fetch Forms" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_forms"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-pencil-square-o"
+                                invisible="1">
+                            <!--                                invisible="form_count == 0"-->
+
+                            <field name="form_count" widget="statinfo" string="Forms"/>
+                        </button>
+                    </div>
+                    <field name="cover" widget="image" class="oe_avatar" style="max-width: 220px;max-height: 220px;"/>
+
+                    <div class="oe_title">
+                        <label for="name" string="Name"/>
+                        <h1>
+                            <div class="d-flex">
+                                <field class="text-break" name="name" options="{'line_breaks': False}" widget="text"/>
+                            </div>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="facebook_page_id"/>
+                            <field name="category_id"/>
+                            <field name="follower_count" invisible="1"/>
+                            <field name="page_access_token" class="oe_edit_only" invisible="1"/>
+                        </group>
+                        <group>
+                            <field name="rating_count" widget="priority" readonly="1"/>
+                        </group>
+                    </group>
+                    <group string="Other">
+                        <field name="about"/>
+                        <field name="description"/>
+                    </group>
+
+
+                    <notebook>
+                        <page string="Lead Forms">
+                            <field name="form_ids">
+                                <list editable="bottom" readonly="1" create="0">
+                                    <field name="name"/>
+                                    <field name="facebook_form_id"/>
+                                    <field name="team_id" optional="hide" options="{'no_create': True}"/>
+                                    <field name="campaign_id" optional="hide" options="{'no_create': True}"/>
+                                    <field name="medium_id" optional="hide" options="{'no_create': True}"/>
+                                    <field name="source_id" optional="hide" options="{'no_create': True}"/>
+                                    <field name="lead_count" optional="hide" sum="Total"/>
+                                    <field name="won_lead" optional="hide" sum="Total"/>
+                                    <field name="lost_lead" optional="hide" sum="Total"/>
+                                    <button name="my" type="object" icon="fa-exchange" invisible="True"/>
+                                    <!--                                    <button name="action_view_forms" type="object" string="View"/>-->
+                                </list>
+                            </field>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="facebook_pages_list" model="ir.ui.view">
+        <field name="name">facebook.page.list</field>
+        <field name="model">facebook.page</field>
+        <field name="arch" type="xml">
+            <list string="Facebook Page" create="false">
+                <field name="name"/>
+                <field name="facebook_page_id" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+
+    <record id="action_facebook_page" model="ir.actions.act_window">
+        <field name="name">Facebook Pages</field>
+        <field name="res_model">facebook.page</field>
+        <field name="view_mode">list,form,kanban</field>
+        <field name="view_id" ref="rcs_facebook_leads_generate.view_facebook_page_kanban"/>
+        <field name="help" type="html">
+            <p/>
+        </field>
+    </record>
+
+</odoo>

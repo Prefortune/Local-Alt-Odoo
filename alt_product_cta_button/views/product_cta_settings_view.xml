@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_product_cta_settings_form" model="ir.ui.view">
+        <field name="name">product.cta.settings.form</field>
+        <field name="model">website.product.cta.settings</field>
+        <field name="arch" type="xml">
+            <form string="Product CTA Settings">
+                <sheet>
+                    <group>
+                        <field name="cta_behavior"/>
+                        <field name="cta_link"/>
+                    </group>
+                    <footer>
+                        <button name="save_settings"
+                                type="object"
+                                string="Save"
+                                class="btn-primary"/>
+                        <button string="Discard" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_product_cta_settings" model="ir.actions.act_window">
+        <field name="name">Product CTA Settings</field>
+        <field name="res_model">website.product.cta.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+
+    <!-- תפריט ראשי עצמאי -->
+    <menuitem id="menu_product_cta_root"
+              name="CTA Settings"
+              parent="website.menu_website_configuration"
+              sequence="80"/>
+
+    <!-- תפריט פעולה מתחתיו -->
+    <menuitem id="menu_product_cta_settings"
+              name="Product CTA Settings"
+              parent="menu_product_cta_root"
+              action="action_product_cta_settings"
+              sequence="10"/>
+</odoo>

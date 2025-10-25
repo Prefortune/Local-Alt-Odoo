@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+  <template id="success_page" name="Newsletter Subscription Successful">
+    <t t-call="website.layout">
+      <div class="container" dir="rtl" lang="he">
+        <div class="text-center" style="padding:50px; background:#f8f9fa;">
+          <div class="success" style="color:#28a745; font-size:24px; margin-bottom:20px;">:✅: הצלחה!</div>
+          <div class="message" style="font-size:18px; margin-bottom:30px;"><t t-esc="partner.name"/>, הטופס שלך נקלט בהצלחה והעגלה קושרה לחשבון שלך!</div>
+        </div>
+      </div>
+    </t>
+  </template>
+</odoo>

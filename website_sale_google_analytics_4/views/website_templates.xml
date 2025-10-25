@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="layout" name="Website Sale Google Tag (gtag.js)" inherit_id="website_cookies_consent_google.layout">
+        <xpath expr="//t[@name='gtag_script']" position="attributes">
+            <attribute name="t-if">website and website.tracking_is_active and website.gtag_get_primary_key() and not editable</attribute>
+        </xpath>
+    </template>
+
+    <template id="gtm_layout" name="Website Google Tag Manager Consent Script" inherit_id="website_cookies_consent_google.gtm_layout">
+        <xpath expr="//t[@name='gtm_google_consents']" position="attributes">
+            <attribute name="t-if">not website.gtag_get_primary_key() or website.gtag_get_primary_key() and not website.tracking_is_active</attribute>
+        </xpath>
+        <xpath expr="//t[@name='google_tag_serving_url']" position="attributes">
+            <attribute name="t-out">website.gtag_serving_url.rstrip('/')</attribute>
+        </xpath>
+        <xpath expr="//iframe[@name='gtm_noscript']" position="attributes">
+            <attribute name="t-attf-src">{{ website.gtag_serving_url.rstrip('/') }}/ns.html?id={{ website.gtm_get_key() }}</attribute>
+        </xpath>
+    </template>
+
+    <template id="google_consent" name="Website Google Tag (gtag.js) Extra Calls" inherit_id="website_cookies_consent_google.google_consent">
+        <xpath expr="//t[@name='google_tag_extra_calls']" position="inside">
+            <t t-foreach="website._gtag_extra_calls()" t-as="gtag_call">
+                    gtag('<t t-out="gtag_call['action']"/>', '<t t-out="gtag_call['param_name']"/>', <t t-out="json.dumps(gtag_call['param_vals'])"/>);
+            </t>
+        </xpath>
+    </template>
+
+</odoo>

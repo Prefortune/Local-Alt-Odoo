@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Alt Split Delivery Tree View -->
+    <record id="view_alt_split_delivery_tree" model="ir.ui.view">
+        <field name="name">alt.split.delivery.tree</field>
+        <field name="model">alt.split.delivery</field>
+        <field name="arch" type="xml">
+            <list string="Split Deliveries">
+                <field name="alt_delivery_index"/>
+                <field name="sale_order_id"/>
+                <field name="alt_partner_shipping_id"/>
+                <field name="alt_delivery_price"/>
+                <field name="alt_state"/>
+                <field name="alt_scheduled_date"/>
+                <field name="alt_actual_delivery_date"/>
+            </list>
+        </field>
+    </record>
+
+    <!-- Alt Split Delivery Form View -->
+    <record id="view_alt_split_delivery_form" model="ir.ui.view">
+        <field name="name">alt.split.delivery.form</field>
+        <field name="model">alt.split.delivery</field>
+        <field name="arch" type="xml">
+            <form string="Split Delivery">
+                <header>
+                    <button name="action_confirm" string="Confirm" type="object" 
+                            class="oe_highlight" invisible="alt_state != 'draft'"/>
+                    <button name="action_in_transit" string="In Transit" type="object" 
+                            class="oe_highlight" invisible="alt_state != 'confirmed'"/>
+                    <button name="action_delivered" string="Delivered" type="object" 
+                            class="oe_highlight" invisible="alt_state != 'in_transit'"/>
+                    <button name="action_cancel" string="Cancel" type="object" 
+                            invisible="alt_state not in ('draft', 'confirmed', 'in_transit')"/>
+                    <field name="alt_state" widget="statusbar" 
+                           statusbar_visible="draft,confirmed,in_transit,delivered"/>
+                </header>
+                <sheet>
+                    <div class="oe_title">
+                        <h1>
+                            <field name="alt_delivery_index" readonly="1"/>
+                        </h1>
+                    </div>
+                    <group>
+                        <group>
+                            <field name="sale_order_id"/>
+                            <field name="alt_delivery_price"/>
+                            <field name="currency_id" invisible="1"/>
+                            <field name="alt_scheduled_date"/>
+                            <field name="alt_actual_delivery_date"/>
+                        </group>
+                        <group>
+                            <field name="alt_partner_shipping_id"/>
+                            <field name="alt_delivery_carrier_id"/>
+                        </group>
+                    </group>
+                    <notebook>
+                        <page string="Delivery Address">
+                            <group>
+                                <field name="alt_partner_shipping_id" widget="many2one_avatar"/>
+                                <field name="alt_delivery_notes" placeholder="Additional delivery notes"/>
+                            </group>
+                        </page>
+                        <page string="Order Lines">
+                            <field name="alt_delivery_line_ids"/>
+                        </page>
+                    </notebook>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <!-- Alt Split Delivery Search View -->
+    <record id="view_alt_split_delivery_search" model="ir.ui.view">
+        <field name="name">alt.split.delivery.search</field>
+        <field name="model">alt.split.delivery</field>
+        <field name="arch" type="xml">
+            <search string="Search Split Deliveries">
+                <field name="alt_delivery_index"/>
+                <field name="sale_order_id"/>
+                <field name="alt_partner_shipping_id"/>
+                <filter string="Draft" name="draft" domain="[('alt_state', '=', 'draft')]"/>
+                <filter string="Confirmed" name="confirmed" domain="[('alt_state', '=', 'confirmed')]"/>
+                <filter string="In Transit" name="in_transit" domain="[('alt_state', '=', 'in_transit')]"/>
+                <filter string="Delivered" name="delivered" domain="[('alt_state', '=', 'delivered')]"/>
+                <group expand="0" string="Group By">
+                    <filter string="Status" name="group_state" context="{'group_by': 'alt_state'}"/>
+                    <filter string="Order" name="group_order" context="{'group_by': 'sale_order_id'}"/>
+                    <filter string="Delivery Index" name="group_index" context="{'group_by': 'alt_delivery_index'}"/>
+                </group>
+            </search>
+        </field>
+    </record>
+
+    <!-- Alt Split Delivery Action -->
+    <record id="action_alt_split_delivery" model="ir.actions.act_window">
+        <field name="name">Split Deliveries</field>
+        <field name="res_model">alt.split.delivery</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_ids" eval="[(5, 0, 0),
+            (0, 0, {'view_mode': 'list', 'view_id': ref('view_alt_split_delivery_tree')}),
+            (0, 0, {'view_mode': 'form', 'view_id': ref('view_alt_split_delivery_form')})]"/>
+        <field name="search_view_id" ref="view_alt_split_delivery_search"/>
+        <field name="help" type="html">
+            <p class="o_view_nocontent_smiling_face">
+                Create your first split delivery
+            </p>
+            <p>
+                Split deliveries allow you to split one order into multiple delivery addresses.
+            </p>
+        </field>
+    </record>
+
+    <!-- Menu Item -->
+    <menuitem id="menu_alt_split_delivery"
+              name="Split Deliveries"
+              parent="sale.menu_sale_config"
+              action="action_alt_split_delivery"
+              sequence="50"/>
+</odoo> 

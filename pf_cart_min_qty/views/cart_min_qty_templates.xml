@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="cart_min_qty_warning" name="Cart Minimum Quantity Warning">
+        <t t-call="website.layout">
+            <div class="container mt32 mb32">
+                <div class="alert alert-danger border-0" role="alert">
+                    <h4>Minimum Quantity Not Met</h4>
+
+                    <p><t t-out="'Your current cart total is'"/> <strong><t t-esc="total_qty"/></strong>.<br/><t t-out="'Only'"/> <strong><t t-esc="min_qty - total_qty"/></strong> <t t-out="'more products to enjoy the business prices!'"/></p>
+                    <a href="/shop/cart" class="btn btn-primary mt16">Return to Cart</a>
+                </div>
+                <div class="alert alert-secondary border-0" role="alert">
+                    <h4>Want to order less than the minimum quantity?</h4>
+                    <p>You can place smaller orders through our website for private customers.</p>
+                    <a href="http://linfarm.co.il?utm_source=b2b&amp;utm_medium=cart_warning&amp;utm_campaign=min_qty_redirect" class="btn btn-primary mt16">Order as a private customer</a>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

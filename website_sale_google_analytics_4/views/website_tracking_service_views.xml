@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="website_tracking_service_view_form" model="ir.ui.view">
+        <field name="name">website.tracking.service.view.form.inherit.website_sale_google_analytics_4</field>
+        <field name="model">website.tracking.service</field>
+        <field name="inherit_id" ref="website_sale_tracking_base.website_tracking_service_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='options']" position="inside">
+                <group string="Google Analytics 4" name="ga4_options" invisible="type != 'ga4'">
+                    <field name="ga4_debug_mode" widget="boolean_toggle"/>
+                </group>
+            </xpath>
+            <xpath expr="//field[@name='event_ids']/list/field[@name='name']" position="after">
+                <field name="send_to" optional="show"/>
+            </xpath>
+            <xpath expr="//field[@name='track_customer_data_source']" position="after">
+                <field name="gtag_enhanced_conversions" widget="boolean_toggle" invisible="type not in ['gtag', 'gtm']"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="website_tracking_service_view_list" model="ir.ui.view">
+        <field name="name">website.tracking.service.view.list.inherit.website_sale_google_analytics_4</field>
+        <field name="model">website.tracking.service</field>
+        <field name="inherit_id" ref="website_sale_tracking_base.website_tracking_service_view_list"/>
+        <field name="arch" type="xml">
+            <field name="key" position="after">
+                <field name="ga4_debug_mode" invisible="type != 'ga4'" optional="show"/>
+                <field name="gtag_enhanced_conversions" string="Enhanced Conversions" invisible="type not in ['gtag', 'gtm']" optional="hide"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

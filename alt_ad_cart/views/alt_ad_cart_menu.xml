@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="alt_ad_cart_view_action" model="ir.actions.act_window">
+        <field name="name">Ad Cart</field>
+        <field name="res_model">alt.ad.card</field>
+        <field name="view_mode">list,form</field>
+        <field name="domain">[]</field>
+        <field name="context">{}</field>
+    </record>
+
+    <menuitem
+        id="alt_ad_cart_main_menu"
+        name="Alt Ad Cart"
+        sequence="10"/>
+
+    <menuitem
+        id="alt_ad_cart_sub_menu"
+        name="Ad Cart"
+        sequence="10"
+        action="alt_ad_cart.alt_ad_cart_view_action"
+        parent="alt_ad_cart.alt_ad_cart_main_menu"/>
+
+</odoo>

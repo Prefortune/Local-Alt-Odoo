@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+
+    <!-- Data Feed Recipients -->
+    <record id="recipient_facebook" model="product.data.feed.recipient">
+        <field name="name">Facebook Catalog</field>
+        <field name="special_avail_in">in stock</field>
+        <field name="special_avail_out">out of stock</field>
+        <field name="special_avail_order">available for order</field>
+    </record>
+
+</odoo>

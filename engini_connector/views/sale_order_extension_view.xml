@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        
+        <!-- הוספת שדות חדשים לטופס הזמנת מכירה -->
+        <record id="view_order_form_inherit_engini" model="ir.ui.view">
+            <field name="name">sale.order.form.inherit.engini</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_form"/>
+            <field name="arch" type="xml">
+                
+                <xpath expr="//notebook" position="inside">
+                    <page string="סנכרון פריורטי" name="engini_sync">
+                        <group>
+                            <group string="סטטוס סנכרון">
+                                <field name="engini_sync_status" widget="badge" 
+                                       decoration-success="engini_sync_status == 'synced'"
+                                       decoration-warning="engini_sync_status == 'pending'"
+                                       decoration-danger="engini_sync_status == 'failed'"/>
+                                <field name="engini_no_sync"/>
+                                <field name="engini_sync_date" readonly="1"/>
+                                <field name="engini_retry_count" readonly="1"/>
+                                <field name="engini_last_retry" readonly="1"/>
+                            </group>
+                        
+                        </group>
+                        
+                        <group>
+                            <group string="מידע נוסף">
+                                <field name="engini_priority"/>
+                                <field name="engini_total_items" readonly="1"/>
+                                <field name="engini_has_discount" readonly="1"/>
+                            </group>
+                            <group string="הערות">
+                                <field name="engini_customer_notes" placeholder="הערות לקוח..."/>
+                                <field name="engini_internal_notes" placeholder="הערות פנימיות..."/>
+                            </group>
+                        </group>
+                        
+                        <group invisible="not engini_error_message">
+                            <field name="engini_error_message" readonly="1" nolabel="1"/>
+                        </group>
+                    </page>
+                </xpath>
+                
+            </field>
+        </record>
+        
+        <!-- הוספת שדות לרשימת הזמנות -->
+        <record id="view_sales_order_tree_inherit_engini" model="ir.ui.view">
+            <field name="name">sale.order.tree.inherit.engini</field>
+            <field name="model">sale.order</field>
+            <field name="inherit_id" ref="sale.view_order_tree"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='amount_total']" position="after">
+                    <field name="engini_sync_status" widget="badge" optional="show"
+                           decoration-success="engini_sync_status == 'synced'"
+                           decoration-warning="engini_sync_status == 'pending'"
+                           decoration-danger="engini_sync_status == 'failed'"/>
+                    <field name="engini_no_sync" widget="boolean_toggle" optional="show"/>
+                    <field name="engini_priority" widget="badge" optional="show"
+                           decoration-info="engini_priority == 'low'"
+                           decoration-warning="engini_priority == 'medium'"
+                           decoration-danger="engini_priority == 'high'"/>
+                    <field name="engini_sync_history_count" widget="statinfo" string="סנכרונים" optional="show"/>
+                </xpath>
+            </field>
+        </record>
+        
+        <!-- הוספת פעולות לתפריט פריורטי נפרד -->
+        <!-- תפריט אב פריורטי - יופיע אחרי Print -->
+        <record id="action_priority_menu" model="ir.actions.server">
+            <field name="name">פריורטי</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="state">code</field>
+            <field name="code"><![CDATA[
+# This is a header action - no actual execution
+pass
+            ]]></field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="binding_type">action</field>
+        </record>
+        
+        <!-- סנכרון הזמנה בודדת - יופיע בתפריט פריורטי -->
+        <record id="action_sync_single_order_server" model="ir.actions.server">
+            <field name="name">סנכרון להזמנה</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="state">code</field>
+            <field name="code"><![CDATA[
+records.action_sync_to_engini()
+            ]]></field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="binding_type">action</field>
+        </record>
+        
+        <!-- סנכרון כל ההזמנות -->
+        <record id="action_sync_all_orders_server" model="ir.actions.server">
+            <field name="name">סנכרון כל ההזמנות</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="state">code</field>
+            <field name="code"><![CDATA[
+records.action_sync_to_engini()
+            ]]></field>
+        </record>
+        
+        <record id="action_bulk_sync_pending_server" model="ir.actions.server">
+            <field name="name">סנכרון המוני ממתינים</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="state">code</field>
+            <field name="code"><![CDATA[
+model.action_bulk_sync_pending_orders()
+            ]]></field>
+        </record>
+        
+        <!-- הוספת פעולה לצפייה בהזמנות עם שגיאות -->
+        <record id="action_view_failed_sync_orders_server" model="ir.actions.server">
+            <field name="name">הזמנות עם שגיאות סנכרון</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="state">code</field>
+            <field name="code"><![CDATA[
+model.action_view_failed_sync_orders()
+            ]]></field>
+        </record>
+        
+        <!-- ניסיון חוזר בסנכרון -->
+        <record id="action_retry_sync_order_server" model="ir.actions.server">
+            <field name="name">ניסיון חוזר בסנכרון</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="state">code</field>
+            <field name="code"><![CDATA[
+records.action_retry_sync()
+            ]]></field>
+        </record>
+        
+        <!-- סנכרון לחשבונית - יופיע בתפריט פריורטי -->
+        <record id="action_sync_invoice_from_order_server" model="ir.actions.server">
+            <field name="name">סנכרון לחשבונית</field>
+            <field name="model_id" ref="sale.model_sale_order"/>
+            <field name="state">code</field>
+            <field name="code"><![CDATA[
+records.action_sync_invoice_to_engini()
+            ]]></field>
+            <field name="binding_model_id" ref="sale.model_sale_order"/>
+            <field name="binding_view_types">list,form</field>
+            <field name="binding_type">action</field>
+        </record>
+        
+        <!-- Actions חלון לתפריטים -->
+        
+        <!-- סנכרון הזמנה בודדת - action חלון -->
+        <record id="action_sync_single_order_window" model="ir.actions.act_window">
+            <field name="name">סנכרון הזמנה בודדת</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">list,form</field>
+            <field name="domain">[('engini_sync_status', '!=', 'synced')]</field>
+            <field name="context">{'default_engini_sync_status': 'pending'}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    אין הזמנות לסנכרון
+                </p>
+                <p>
+                    הזמנות שטרם סונכרנו לפריורטי יופיעו כאן.
+                </p>
+            </field>
+        </record>
+        
+        <!-- סנכרון כל ההזמנות - action חלון -->
+        <record id="action_sync_all_orders_window" model="ir.actions.act_window">
+            <field name="name">סנכרון כל ההזמנות</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">list,form</field>
+            <field name="domain">[('engini_sync_status', '!=', 'synced')]</field>
+            <field name="context">{'default_engini_sync_status': 'pending'}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    אין הזמנות לסנכרון
+                </p>
+                <p>
+                    הזמנות שטרם סונכרנו לפריורטי יופיעו כאן.
+                </p>
+            </field>
+        </record>
+        
+        <!-- סנכרון המוני ממתינים - action חלון -->
+        <record id="action_bulk_sync_pending_window" model="ir.actions.act_window">
+            <field name="name">סנכרון המוני ממתינים</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">list,form</field>
+            <field name="domain">[('engini_sync_status', '=', 'pending')]</field>
+            <field name="context">{'default_engini_sync_status': 'pending'}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    אין הזמנות ממתינות לסנכרון
+                </p>
+                <p>
+                    הזמנות במצב "ממתין" יופיעו כאן לסנכרון המוני.
+                </p>
+            </field>
+        </record>
+        
+        <!-- הזמנות עם שגיאות סנכרון - action חלון -->
+        <record id="action_view_failed_sync_orders_window" model="ir.actions.act_window">
+            <field name="name">הזמנות עם שגיאות סנכרון</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">list,form</field>
+            <field name="domain">[('engini_sync_status', '=', 'failed')]</field>
+            <field name="context">{'default_engini_sync_status': 'failed'}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    אין הזמנות עם שגיאות סנכרון
+                </p>
+                <p>
+                    הזמנות שנכשלו בסנכרון יופיעו כאן.
+                </p>
+            </field>
+        </record>
+        
+        <!-- ניסיון חוזר בסנכרון - action חלון -->
+        <record id="action_retry_sync_order_window" model="ir.actions.act_window">
+            <field name="name">ניסיון חוזר בסנכרון</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">list,form</field>
+            <field name="domain">[('engini_sync_status', 'in', ['failed', 'cancelled'])]</field>
+            <field name="context">{'default_engini_sync_status': 'pending'}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    אין הזמנות לניסיון חוזר
+                </p>
+                <p>
+                    הזמנות שנכשלו או בוטלו יופיעו כאן לניסיון חוזר.
+                </p>
+            </field>
+        </record>
+        
+        <!-- סנכרון לחשבונית - action חלון -->
+        <record id="action_sync_invoices_window" model="ir.actions.act_window">
+            <field name="name">סנכרון לחשבונית מס קבלה</field>
+            <field name="res_model">sale.order</field>
+            <field name="view_mode">list,form</field>
+            <field name="domain">[('engini_sync_status', '=', 'synced'), ('invoice_status', '!=', 'invoiced')]</field>
+            <field name="context">{'default_engini_sync_status': 'synced'}</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    אין הזמנות לסנכרון חשבונית
+                </p>
+                <p>
+                    הזמנות שסונכרנו בהצלחה וטרם נוצרה להן חשבונית יופיעו כאן.
+                </p>
+            </field>
+        </record>
+        
+
+        
+
+        
+
+        
+    </data>
+</odoo> 

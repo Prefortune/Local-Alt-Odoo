@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="google_consent" name="Google Consent Mode">
+                    <t t-foreach="website.google_consent_mode_ids" t-as="gcm">
+                    gtag('consent', 'default', <t t-out="json.dumps(gcm._get_params())"/>);
+                    </t>
+                    <t t-if="website.google_consent_ads_data_redaction">gtag('set', 'ads_data_redaction', true);</t>
+                    <t t-if="website.google_consent_url_passthrough">gtag('set', 'url_passthrough', true);</t>
+                    <!-- Update the Google consents from a visitor's cookies (only if the standard Odoo Cookie Bar is active and used) -->
+                    <t t-if="website.cookies_consent_manager == 'odoo' and website._get_cookie_consents()">gtag('consent', 'update', <t t-out="json.dumps(website._get_google_consents())"/>);</t>
+                    <t name="google_tag_extra_calls"/>
+    </template>
+
+    <template id="layout" name="Website Google Tag (gtag.js) Consent Script" inherit_id="website_google_analytics_4.layout">
+        <xpath expr="//t[@name='gtag_prior_calls']" position="inside">
+            <t t-call="website_cookies_consent_google.google_consent"/>
+        </xpath>
+    </template>
+
+    <template id="gtm_layout" name="Website Google Tag Manager Consent Script" inherit_id="website_google_tag.gtm_layout">
+        <xpath expr="//t[@name='gtm_prior_calls']" position="inside">
+            <!-- Add Google Consent script calling only if the gtag script is inactive, otherwise the consent defaults can be called twice. -->
+            <t t-if="not website.gtag_get_primary_key()" name="gtm_google_consents">
+                <script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+
+                    <t t-call="website_cookies_consent_google.google_consent"/>
+                </script>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>

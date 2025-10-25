@@ -1,0 +1,131 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+#   * alt_split_delivery
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-07-17 12:00+0000\n"
+"PO-Revision-Date: 2025-07-17 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Hebrew\n"
+"Language: he\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Plural-Forms: nplurals=3; plural=(n==1) ? 0 : (n==2) ? 1 : 2;\n"
+
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.alt_split_delivery_form
+msgid "Greeting Card"
+msgstr "כרטיס ברכה"
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.alt_split_delivery_form
+msgid "Delivery Notes"
+msgstr "הערות משלוח"
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.alt_split_delivery_form
+msgid "Would you like to add a greeting card ?"
+msgstr "האם תרצה להוסיף כרטיס ברכה?"
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.alt_split_delivery_form
+msgid "Would you like to add delivery notes ?"
+msgstr "האם תרצה להוסיף פתקי משלוח?"
+
+
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.alt_split_delivery_form
+msgid "Set Delivery Quantity"
+msgstr "כמות כתובות רצויה"
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.alt_split_delivery_form
+msgid "Add to cart the number of deliveries you wish to purchase"
+msgstr "הוסיפו לעגלה את כמות המשלוחים שברצונכם לשלוח (מספר הכתובות)"
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.alt_split_delivery_form
+msgid "The cart total will update according to the number of deliveries you select"
+msgstr "סכום החיוב בעגלה יתעדכן בהתאם לבחירתכם"
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.alt_split_delivery_form
+msgid "Set Delivery"
+msgstr "תזמון משלוח"
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.alt_split_delivery_form
+msgid "Want to schedule a delivery date that works for you?"
+msgstr "מעוניין/ת לתזמן את המשלוח למועד שמתאים לך?"
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.alt_split_delivery_form
+msgid "You can choose a future delivery date starting from 10 business days after order confirmation, and we will do our best to deliver your packages exactly on time for you."
+msgstr "ניתן לבחור תאריך אספקה עתידי החל מעשרה ימי עסקים מרגע אישור ההזמנה ואנו נעשה הכל כדי לספק את המארזים שלנו בזמן המדוייק עבורכם."
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.alt_split_delivery_form
+msgid "⚠️ We will collect the delivery address after the payment"
+msgstr "לאחר אישור ההזמנה אנו נשלח אליכם לינק בו תוכלו למלא את כתובות המשלוח או אפילו להעלות לנו קובץ אקסל, ואנחנו נדאג לכל השאר."
+
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.split_delivery_page
+msgid "Split Delivery for Order:"
+msgstr "משלוח מפוצל להזמנה"
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.split_delivery_page
+msgid "Product"
+msgstr "מוּצָר"
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.split_delivery_page
+msgid "Quantity"
+msgstr "כַּמוּת"
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.split_delivery_page
+msgid "Select Existing Address"
+msgstr "בחר כתובת קיימת"
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.split_delivery_page
+msgid "Street"
+msgstr "רְחוֹב"
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.split_delivery_page
+msgid "Street 2"
+msgstr "רחוב 2"
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.split_delivery_page
+msgid "City"
+msgstr "עִיר"
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.split_delivery_page
+msgid "Zip code"
+msgstr "מיקוד"
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.split_delivery_page
+msgid "Save Delivery Addresses"
+msgstr "שמירת כתובות משלוח"
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.split_delivery_page
+msgid "Product Details"
+msgstr "פרטי מוצר"
+
+#. module: alt_split_delivery
+#: model_terms:ir.ui.view,arch_db:alt_split_delivery.split_delivery_page
+msgid "This delivery is Done and cannot be edited."
+msgstr "משלוח זה בוצע ואינו ניתן לערוך אותו."

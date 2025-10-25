@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="website_google_consent_region_view_list" model="ir.ui.view">
+        <field name="name">website.google.consent.region.view.list</field>
+        <field name="model">website.google.consent.region</field>
+        <field name="arch" type="xml">
+            <list editable="bottom">
+                <field name="country_id"/>
+                <field name="state_id"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_website_google_consent_region_list" model="ir.actions.act_window">
+        <field name="type">ir.actions.act_window</field>
+        <field name="name">Google Consent Regions</field>
+        <field name="res_model">website.google.consent.region</field>
+        <field name="view_mode">list</field>
+    </record>
+
+    <record id="menu_website_google_consent_region" model="ir.ui.menu">
+        <field name="name">Google Consent Regions</field>
+        <field name="parent_id" ref="website_cookies_consent.website_cookies_consent_config_menu"/>
+        <field name="action" ref="action_website_google_consent_region_list"/>
+        <field name="groups_id" eval="[(6, 0, [ref('website.group_website_designer')])]"/>
+        <field name="sequence" eval="20"/>
+    </record>
+
+</odoo>

@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+  <record id="pf_link_tracker_view_form_inherit" model="ir.ui.view">
+    <field name="name">link.tracker.view.form.inherit</field>
+    <field name="model">link.tracker</field>
+    <field name="inherit_id" ref="link_tracker.link_tracker_view_form"/>
+    <field name="arch" type="xml">
+        <xpath expr="//group[@name='url']" position="replace">
+            <group name="url" string="URL">
+              <field name="title"/>
+              <field name="label"/>
+              <field name="url"/>
+              <label for="code" string="Tracked URL"/>
+              <div>
+                  <field name="pf_short_url_host" nolabel="1" readonly="1" class="me-1 oe_inline"/>
+                  <field name="code" nolabel="1" readonly="not code" class="oe_inline o_input"/>
+              </div>
+              <!-- <field name="short_url_host"/> -->
+            </group>
+        </xpath>
+    </field>
+  </record>
+
+</odoo>

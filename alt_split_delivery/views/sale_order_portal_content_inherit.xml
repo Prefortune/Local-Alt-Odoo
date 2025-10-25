@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="sale_order_portal_content_inherit" inherit_id="sale.sale_order_portal_content">
+        <xpath expr="//section[@t-if='sale_order.payment_term_id']" position="after">
+            <section t-if="sale_order.alt_split_delivery_url" class="mt-4">
+                <h4 class="">Delivery Split url</h4>
+                <hr class="mt-0 mb-1"/>
+                <!-- <span t-att-href="sale_order.alt_split_delivery_url"/> -->
+                <a t-attf-href="#{sale_order.alt_split_delivery_url}">Add Split Delivery Address Here !</a>
+            </section>
+        </xpath>
+    </template>
+
+</odoo>

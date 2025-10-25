@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2015-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- "License URL : <https://store.webkul.com/license.html/>" -->
+<odoo>
+	<data noupdate='1'>
+		<record id="wix_channel_demo_data" model="multi.channel.sale">
+            <field name="name">Wix</field>
+            <field name="channel">wix</field>
+            <field name="environment">sandbox</field>
+            <field name="debug">enable</field>
+	        <field name="auto_evaluate_feed">True</field>
+			<field name="color">#0c6cfc</field>
+			<field name="image" type="base64" file="odoo_wix_connector/static/description/icon.png"/>
+			<field name="order_state_ids" eval="[
+						(0,0,{'channel_state':'NOT_PAID,NOT_FULFILLED','default_order_state':True,'odoo_order_state':'draft'}),
+                        (0,0,{'channel_state':'PENDING,NOT_FULFILLED','odoo_order_state':'sale'}),
+                        (0,0,{'channel_state':'NOT_PAID,CANCELED','odoo_order_state':'cancelled'}),
+                        (0,0,{'channel_state':'NOT_PAID,FULFILLED','odoo_order_state':'sale'}),
+                        (0,0,{'channel_state':'NOT_PAID,PARTIALLY_FULFILLED','odoo_create_invoice':False,'odoo_set_invoice_state':False,'odoo_ship_order':False,'odoo_order_state':'sale'}),
+						(0,0,{'channel_state':'PAID,FULFILLED','odoo_create_invoice':True,'odoo_set_invoice_state':'paid','odoo_ship_order':True,'odoo_order_state':'sale'}),
+						(0,0,{'channel_state':'PAID,NOT_FULFILLED','odoo_create_invoice':False,'odoo_set_invoice_state':False,'odoo_ship_order':False,'odoo_order_state':'sale'}),
+						(0,0,{'channel_state':'PAID,CANCELED','odoo_order_state':'cancelled'}),
+						(0,0,{'channel_state':'FULLY_REFUNDED,NOT_FULFILLED','odoo_order_state':'draft'}),
+						(0,0,{'channel_state':'FULLY_REFUNDED,CANCELED','odoo_order_state':'cancelled'}),
+						(0,0,{'channel_state':'PARTIALLY_PAID,NOT_FULFILLED','odoo_order_state':'draft'}),
+						(0,0,{'channel_state':'PARTIALLY_REFUNDED,NOT_FULFILLED','odoo_order_state':'draft'})
+					]" />
+        </record>
+	</data>
+</odoo>

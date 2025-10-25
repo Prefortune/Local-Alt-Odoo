@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo noupdate="1">
+
+    <!-- Product Template Sale Descriptions -->
+    <record id="product.product_product_13_product_template" model="product.template">
+        <field name="description_sale">Corner Desk Black on two legs.</field>
+    </record>
+    <record id="product.product_product_5_product_template" model="product.template">
+        <field name="description_sale">Alternative Corner Desk Right Sit.</field>
+    </record>
+    <record id="product.product_product_22_product_template" model="product.template">
+        <field name="description_sale">Useful Desk Stand with the 12" Screen.</field>
+    </record>
+    <record id="product.product_product_8_product_template" model="product.template">
+        <field name="description_sale">Large desk for teamwork.</field>
+    </record>
+
+</odoo>

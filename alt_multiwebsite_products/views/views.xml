@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="alt_multiwebsite_products.list">
+      <field name="name">alt_multiwebsite_products list</field>
+      <field name="model">alt_multiwebsite_products.alt_multiwebsite_products</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </list>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="alt_multiwebsite_products.action_window">
+      <field name="name">alt_multiwebsite_products window</field>
+      <field name="res_model">alt_multiwebsite_products.alt_multiwebsite_products</field>
+      <field name="view_mode">list,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="alt_multiwebsite_products.action_server">
+      <field name="name">alt_multiwebsite_products server</field>
+      <field name="model_id" ref="model_alt_multiwebsite_products_alt_multiwebsite_products"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "list,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="alt_multiwebsite_products" id="alt_multiwebsite_products.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="alt_multiwebsite_products.menu_1" parent="alt_multiwebsite_products.menu_root"/>
+    <menuitem name="Menu 2" id="alt_multiwebsite_products.menu_2" parent="alt_multiwebsite_products.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="alt_multiwebsite_products.menu_1_list" parent="alt_multiwebsite_products.menu_1"
+              action="alt_multiwebsite_products.action_window"/>
+    <menuitem name="Server to list" id="alt_multiwebsite_products" parent="alt_multiwebsite_products.menu_2"
+              action="alt_multiwebsite_products.action_server"/>
+-->
+  </data>
+</odoo>

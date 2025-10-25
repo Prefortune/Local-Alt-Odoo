@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="layout" name="Website Google Tag (gtag.js) Script" inherit_id="website.layout">
+        <xpath expr="//head/script[@id='web.layout.odooscript']" position="after">
+            <!-- Google Tag (gtag.js) -->
+            <t t-if="website and website.gtag_get_primary_key() and not editable" name="gtag_script">
+                <script id="google_tag_code" async="1" t-attf-src="{{ website.gtag_get_source_url() }}"/>
+                <script>
+                    window.dataLayer = window.dataLayer || [];
+                    function gtag(){dataLayer.push(arguments);}
+                    <t name="gtag_prior_calls"/>
+                    gtag('js', new Date());
+                    <t t-foreach="website._gtag_configs()" t-as="config">
+                    gtag('config', '<t t-esc="config['key']"/>', <t t-out="json.dumps(config['params'])"/>);
+                    </t>
+                    <t name="gtag_post_calls"/>
+                </script>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>

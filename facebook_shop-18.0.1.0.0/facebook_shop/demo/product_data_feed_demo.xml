@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- pylint:disable=redundant-modulename-xml -->
+<odoo noupdate="1">
+
+    <record id="facebook_shop.feed_facebook_product" model="product.data.feed">
+        <field name="model_domain">[('is_published', '=', True), ('public_categ_ids.id', '=', 1)]</field>
+    </record>
+
+    <record id="facebook_shop.feed_facebook_product_template" model="product.data.feed">
+        <field name="model_domain">[('is_published', '=', True), ('public_categ_ids.id', '=', 1)]</field>
+    </record>
+
+</odoo>

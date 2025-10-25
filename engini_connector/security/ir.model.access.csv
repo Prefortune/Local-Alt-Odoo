@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_engini_settings_admin,access.engini.settings.admin,model_engini_settings,base.group_system,1,1,1,1
+access_engini_webhook_bulk_runner,access_engini_webhook_bulk_runner,model_engini_webhook_bulk_runner,base.group_system,1,1,1,1
+access_engini_sync_history_admin,access.engini.sync.history.admin,model_engini_sync_history,base.group_system,1,1,1,1
+access_engini_sync_history_user,access.engini.sync.history.user,model_engini_sync_history,sales_team.group_sale_salesman,1,1,1,0
+access_engini_settings_user,access.engini.settings.user,model_engini_settings,sales_team.group_sale_salesman,1,1,1,0
+access_engini_settings_manager,access.engini.settings.manager,model_engini_settings,sales_team.group_sale_manager,1,1,1,1

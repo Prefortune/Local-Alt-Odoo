@@ -1,0 +1,203 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    
+<template id="split_delivery_page" name="Split Delivery Page">
+        
+        <t t-call="website.layout">
+        <div class="container" style="max-width: 1390px;"> <!-- רוחב אחיד לכל העמוד -->
+            <!-- כותרת ראשית -->
+            <h2 style="margin-top:20px;margin-bottom:15px;">
+                משלוחים מפוצלים להזמנה מס׳
+                <span style="color:#2F4F4F;">(<t t-esc="order.name"/>)</span>
+            </h2>
+
+            <!-- פתיח -->
+            <div class="alert alert-info mt-3" style="font-size:15px;line-height:1.8;">
+                <p>
+                    היי <strong><t t-esc="order.partner_id.name"/></strong>, תודה שבחרת ב<b><t t-out="order.company_id.name"/></b>!  
+                    אנחנו שמחים ללוות אותך בתהליך המשלוחים שלך.
+                </p>
+                <p>
+                    מאחר ובחרת באפשרות של <strong>משלוחים מרובים</strong>, הכנו עבורך טופס פשוט ונוח שיאפשר לך להחליט
+                    לאיזו כתובת תגיע כל כמות מהמוצרים שהזמנת.
+                </p>
+                <p>
+                    <b>איך למלא?</b><br/>
+                    • תחילה תמצא/י טבלה עם פרטי ההזמנה שלך – כל המוצרים והכמויות.<br/>
+                    • לכל משלוח הזן/י כתובת מלאה (עיר, רחוב, מיקוד) ואת הכמות שתרצה/י לשלוח לשם.<br/>
+                    • אפשר לבחור כתובת קיימת או ליצור חדשה.<br/>
+                    • בסיום – לחיצה על <strong>"שמירת כתובות משלוח"</strong> תסגור עבורך את הפינה 🚀
+                </p>
+                <p>
+                    שיהיה בהצלחה – ואנחנו כאן לכל שאלה,<br/>
+                    צוות <t t-out="order.company_id.name"/>
+                </p>
+            </div>
+
+            <!-- סקשן פרטי ההזמנה -->
+            <h4 class="mt-4 mb-3">פרטי ההזמנה שלך</h4>
+            <table class="table table-bordered table-sm mb-4">
+                <thead class="table-light">
+                    <tr>
+                        <th style="text-align:right;">מוצר</th>
+                        <th>מק״ט</th>
+                        <th>כמות</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <t t-foreach="order.order_line.filtered(lambda l: l.product_id and l.product_id.type != 'service' and l.price_unit > 0)" t-as="line">
+                        <tr>
+                            <td style="text-align:right;">
+                                <t t-out="line.product_id.with_context(display_default_code=False).display_name"/>
+                            </td>
+                            <td><t t-out="line.product_id.default_code or '-'"/></td>
+                            <td><t t-out="line.product_uom_qty"/></td>
+                        </tr>
+                    </t>
+                </tbody>
+            </table>
+
+            <!-- טופס הפיצול -->
+            <form class="split-delivery-form" 
+                  t-att-action="'/my/orders/%s/%s/split_delivery/save' %(order.id , order.split_access_token)" 
+                  method="post">
+                  
+                <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                <input type="hidden" name="count" t-att-value="order.alt_split_delivery_count"/>
+
+                <t t-set="filtered_lines" t-value="order.order_line.filtered(lambda l: l.product_id and l.product_id.type != 'service' and l.price_unit > 0)"/>
+
+                <!-- כותרת לפני המשלוחים -->
+                    <h4 class="mt-4 mb-3">הזנת כתובות למשלוחים מפוצלים:</h4>
+                    
+                    <t t-foreach="range(order.alt_split_delivery_count)" t-as="i">
+                        <t t-set="delivery" t-value="delivery_data.get(i)"/>
+                    
+                        <!-- Hidden delivery ID -->
+                        <t t-if="delivery and delivery.get('picking_id')">
+                            <input type="hidden" t-attf-name="picking_id_#{i}" t-att-value="delivery['picking_id']"/>
+                        </t>
+                    
+                        <div class="row g-3 mb-4 border p-3 rounded bg-light">
+                            <!-- כותרת לכל משלוח -->
+                            <div class="col-12">
+                                <h5 class="mb-3">📦 משלוח מס׳ <t t-esc="i+1"/></h5>
+                            </div>
+                    
+                            <t t-if="delivery and delivery['is_done']">
+                                <div class="col-12">
+                                    <div class="alert alert-warning">משלוח זה הושלם ולא ניתן לערוך אותו.</div>
+                                    <input type="hidden" t-attf-name="picking_status_#{i}" value="done"/>
+                                </div>
+                            </t>
+                    
+                            <!-- Product Table 30% -->
+                            <div class="col-lg-4 col-12 mb-3">
+                                <table class="table table-sm table-bordered" style="table-layout: fixed; width: 100%;">
+                                    <thead>
+                                        <tr>
+                                            <th style="width:75%;">מוצר</th>
+                                            <th style="width:25%;">כמות</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <t t-foreach="filtered_lines" t-as="line">
+                                            <t t-set="move" t-value="delivery and delivery['moves'].get(line.id)"/>
+                                            <tr>
+                                                <td>
+                                                    <input type="text" class="form-control" readonly="readonly" t-attf-name="product_name_#{i}_#{line.id}" t-att-value="line.product_id.with_context(display_default_code=False).display_name"/>
+                                                    <input type="hidden" t-attf-name="order_line_id_#{i}_#{line.id}" t-att-value="line.id"/>
+                                                    <t t-if="move and move.get('move_id')">
+                                                        <input type="hidden" t-attf-name="move_id_#{i}_#{line.id}" t-att-value="move['move_id']"/>
+                                                    </t>
+                                                </td>
+                                                <td>
+                                                    <input type="number" class="form-control text-center" t-attf-name="quantity_#{i}_#{line.id}" t-att="{ 'value': move['quantity'] if move else '', 'readonly': 'readonly' if delivery and delivery['is_done'] else None }" required="required"/>
+                                                </td>
+                                            </tr>
+                                        </t>
+                                    </tbody>
+                                </table>
+                            </div>
+                    
+                            <!-- Address Fields 70% -->
+                            <div class="col-lg-8 col-12">
+                                <div class="form-group mb-3">
+                                    <label>בחר כתובת קיימת</label>
+                                    <t t-set="main_partner" t-value="order.partner_id.parent_id or order.partner_id"/>
+                                    <select t-attf-name="partner_id_#{i}" class="form-control address-selector" t-attf-data-index="#{i}" t-att-disabled="delivery and delivery['is_done'] and 'disabled'">
+                                        <option value="">-- צור כתובת חדשה --</option>
+                                        <t t-foreach="main_partner.child_ids" t-as="addr">
+                                            <option t-att-value="addr.id" t-att-selected="delivery and delivery['partner_id'] == addr.id" t-att-data-street="addr.street or ''" t-att-data-street2="addr.street2 or ''" t-att-data-city="addr.city or ''" t-att-data-zip="addr.zip or ''" t-att-data-country="addr.country_id.name or ''" t-att-data-phone="addr.phone or ''" t-att-data-name="addr.name or ''">
+                                                <t t-esc="addr.display_name"/>
+                                            </option>
+                                        </t>
+                                    </select>
+                                </div>
+                    
+                                <div class="row">
+                                    <div class="col-md-6 mb-2">
+                                        <label>רחוב</label>
+                                        <input type="text" t-attf-name="street_#{i}" class="form-control" required="required" t-att="{ 'value': delivery and delivery.get('street', ''), 'readonly': 'readonly' if delivery and delivery['is_done'] else None }"/>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <label>רחוב 2</label>
+                                        <input type="text" t-attf-name="street2_#{i}" class="form-control" t-att="{ 'value': delivery and delivery.get('street2', ''), 'readonly': 'readonly' if delivery and delivery['is_done'] else None }"/>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <label>עיר</label>
+                                        <input type="text" t-attf-name="city_#{i}" class="form-control" t-att="{ 'value': delivery and delivery.get('city', ''), 'readonly': 'readonly' if delivery and delivery['is_done'] else None }"/>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <label>מיקוד</label>
+                                        <input type="text" t-attf-name="zip_#{i}" class="form-control" t-att="{ 'value': delivery and delivery.get('zip', ''), 'readonly': 'readonly' if delivery and delivery['is_done'] else None }"/>
+                                    </div>
+
+                                    <div class="col-md-6 mb-2">
+                                        <label>מספר טלפון</label>
+                                        <input type="number" required="required" t-attf-name="phone_#{i}" class="form-control" t-att="{ 'value': delivery and delivery.get('phone', ''), 'readonly': 'readonly' if delivery and delivery['is_done'] else None }"/>
+                                    </div>
+                                    <div class="col-md-6 mb-2">
+                                        <label>שם הנמען</label>
+                                        <input type="text" required="required" t-attf-name="name_#{i}" class="form-control" t-att="{ 'value': delivery and delivery.get('name', ''), 'readonly': 'readonly' if delivery and delivery['is_done'] else None }"/>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+
+
+                <div class="text-end">
+                    <button type="submit" class="btn btn-primary">שמירת כתובות משלוח</button>
+                </div>
+            </form>
+        </div>
+    </t>
+    
+</template>
+
+<template id="split_delivery_error_page" name="Split Delivery Error Page">
+    <t t-call="website.layout">
+        <div class="container my-5">
+            <h2 class="text-danger">🚫 Delivery Assignment Error</h2>
+            <p>Please fix the following issues:</p>
+            <ul class="list-group">
+                <t t-foreach="error_messages" t-as="err">
+                    <li class="list-group-item list-group-item-warning">
+                        <t t-esc="err" />
+                    </li>
+                </t>
+            </ul>
+
+            <div class="mt-4">
+                <a t-attf-href="/my/orders/{{ order }}/{{ split_access_token }}/split_delivery" class="btn btn-primary">
+                        🔁 Go Back to Split Delivery Form 
+                                                                                            <!-- <t t-esc="order" /> -->
+                </a>
+            </div>
+        </div>
+    </t>
+</template>
+
+</odoo>

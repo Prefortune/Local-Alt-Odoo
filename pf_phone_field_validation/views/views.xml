@@ -1,0 +1,60 @@
+<odoo>
+  <data>
+    <!-- explicit list view definition -->
+<!--
+    <record model="ir.ui.view" id="pf_phone_field_validation.list">
+      <field name="name">pf_phone_field_validation list</field>
+      <field name="model">pf_phone_field_validation.pf_phone_field_validation</field>
+      <field name="arch" type="xml">
+        <list>
+          <field name="name"/>
+          <field name="value"/>
+          <field name="value2"/>
+        </list>
+      </field>
+    </record>
+-->
+
+    <!-- actions opening views on models -->
+<!--
+    <record model="ir.actions.act_window" id="pf_phone_field_validation.action_window">
+      <field name="name">pf_phone_field_validation window</field>
+      <field name="res_model">pf_phone_field_validation.pf_phone_field_validation</field>
+      <field name="view_mode">list,form</field>
+    </record>
+-->
+
+    <!-- server action to the one above -->
+<!--
+    <record model="ir.actions.server" id="pf_phone_field_validation.action_server">
+      <field name="name">pf_phone_field_validation server</field>
+      <field name="model_id" ref="model_pf_phone_field_validation_pf_phone_field_validation"/>
+      <field name="state">code</field>
+      <field name="code">
+        action = {
+          "type": "ir.actions.act_window",
+          "view_mode": "list,form",
+          "res_model": model._name,
+        }
+      </field>
+    </record>
+-->
+
+    <!-- Top menu item -->
+<!--
+    <menuitem name="pf_phone_field_validation" id="pf_phone_field_validation.menu_root"/>
+-->
+    <!-- menu categories -->
+<!--
+    <menuitem name="Menu 1" id="pf_phone_field_validation.menu_1" parent="pf_phone_field_validation.menu_root"/>
+    <menuitem name="Menu 2" id="pf_phone_field_validation.menu_2" parent="pf_phone_field_validation.menu_root"/>
+-->
+    <!-- actions -->
+<!--
+    <menuitem name="List" id="pf_phone_field_validation.menu_1_list" parent="pf_phone_field_validation.menu_1"
+              action="pf_phone_field_validation.action_window"/>
+    <menuitem name="Server to list" id="pf_phone_field_validation" parent="pf_phone_field_validation.menu_2"
+              action="pf_phone_field_validation.action_server"/>
+-->
+  </data>
+</odoo>

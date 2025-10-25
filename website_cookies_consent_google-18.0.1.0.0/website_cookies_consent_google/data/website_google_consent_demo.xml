@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+
+    <record id="region_us_ca" model="website.google.consent.region">
+        <field name="country_id" ref="base.us"/>
+        <field name="state_id" ref="base.state_us_5"/>
+    </record>
+    <record id="region_ca" model="website.google.consent.region">
+        <field name="country_id" ref="base.ca"/>
+    </record>
+
+    <record id="gcm_global" model="website.google.consent">
+        <field name="website_id" ref="website.default_website"/>
+        <field name="ad_storage" eval="False"/>
+        <field name="ad_user_data" eval="False"/>
+        <field name="ad_personalization" eval="False"/>
+        <field name="analytics_storage" eval="False"/>
+        <field name="functionality_storage" eval="False"/>
+        <field name="personalization_storage" eval="False"/>
+        <field name="security_storage" eval="True"/>
+        <field name="wait_for_update">0</field>
+    </record>
+
+    <record id="gcm_us_ca" model="website.google.consent">
+        <field name="website_id" ref="website.default_website"/>
+        <field name="ad_storage" eval="False"/>
+        <field name="ad_user_data" eval="False"/>
+        <field name="ad_personalization" eval="False"/>
+        <field name="analytics_storage" eval="True"/>
+        <field name="functionality_storage" eval="True"/>
+        <field name="personalization_storage" eval="True"/>
+        <field name="security_storage" eval="True"/>
+        <field name="region_ids" eval="[Command.link(ref('region_us_ca')), Command.link(ref('region_ca'))]"/>
+        <field name="wait_for_update">2000</field>
+    </record>
+
+</odoo>

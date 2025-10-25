@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Sale Order Action for Pick Report - Only in Print menu -->
+
+    <!-- <record id="action_print_pick_report" model="ir.actions.server">
+        <field name="name">הדפס לליקוט</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+        <field name="state">code</field>
+        <field name="code">
+        if records:
+            action = records.action_print_pick_report()
+        </field>
+    </record> -->
+
+    <!-- Sale Order Action for Greeting Card Report -->
+    <record id="action_print_greeting_card" model="ir.actions.server">
+        <field name="name">Gretting Card</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+        <field name="state">code</field>
+        <field name="code">
+        if records:
+            action = records.action_print_greeting_card()
+        </field>
+    </record>
+
+    <record id="action_print_picking_report" model="ir.actions.server">
+        <field name="name">Sale For Picking</field>
+        <field name="model_id" ref="sale.model_sale_order"/>
+        <field name="binding_model_id" ref="sale.model_sale_order"/>
+        <field name="binding_type">report</field>
+        <field name="state">code</field>
+        <field name="code">
+        if records:
+            action = records.action_print_pick_report()
+        </field>
+    </record>
+
+</odoo> 

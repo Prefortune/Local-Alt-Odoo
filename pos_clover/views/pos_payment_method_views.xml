@@ -1,0 +1,19 @@
+<odoo>
+  <record id="view_pos_payment_method_form_clover" model="ir.ui.view">
+    <field name="name">pos.payment.method.form.clover</field>
+    <field name="model">pos.payment.method</field>
+    <field name="inherit_id" ref="point_of_sale.pos_payment_method_view_form"/>
+    <field name="arch" type="xml">
+    <xpath expr="//field[@name='use_payment_terminal']" position="after">
+        <!-- <group string="Clover Payment Terminal" invisible="use_payment_terminal != 'clover'"> -->
+                   <field name="clover_api_key" password="True" invisible="use_payment_terminal != 'clover'"/>
+                    <field name="clover_merchant_id" invisible="use_payment_terminal != 'clover'"/>
+                    <field name="clover_access_token" password="True" invisible="use_payment_terminal != 'clover'"/>
+                    <field name="clover_environment" invisible="use_payment_terminal != 'clover'"/>
+                    <field name="clover_latest_response" readonly="1" invisible="use_payment_terminal != 'clover'"/>
+        <!-- </group> -->
+    </xpath>
+      
+    </field>
+  </record>
+</odoo>

@@ -1,0 +1,423 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="custom_website_sale_address_billing_form" inherit_id="website_sale.address" name="Website Sale Address with Billing for Anonymous">
+        <!-- Inject Billing Address after default delivery address form -->
+        <xpath expr="//t[@t-if='is_anonymous_cart']" position="replace">
+           <!-- <span>is_anonymous_cart <h1 t-esc="is_anonymous_cart"/></span>
+           <span>is_enable_guest_checkout <h1 t-esc="is_enable_guest_checkout"/></span>
+           <span>required_fields <h1 t-esc="required_fields"/></span> -->
+            <t t-if="is_anonymous_cart and is_enable_guest_checkout">
+                <h4 class="fs-6 small text-uppercase fw-bolder">Personal Details</h4>
+                <div class="list-group mb-4 list-group-item pb-2">
+                    <input type="hidden" id="flag_is_enable_company_vat_visible" t-att-value="is_enable_company_vat_visible"/>
+                    <div class="card-body mb-2">
+                        <input type="text" t-att-value="is_partner_sudo_id" name="is_partner_sudo_id" id="is_partner_sudo_id" class="form-control" style="display:none"/>
+                        <t t-if="is_partner_sudo_id">
+                            <div class="mb-3">
+                            <label class="form-label fw-medium" for="personal_name">Full Name</label>
+                            <input type="text" t-att-value="is_partner_sudo.name" name="personal_name" id="personal_name" class="form-control" required="required"/>
+                            </div>
+                            <!-- Email & Phone -->
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium" for="personal_email">Email</label>
+                                    <input type="email" t-att-value="is_partner_sudo.email" name="personal_email" id="personal_email" class="form-control" required="required"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium" for="personal_phone">Phone</label>
+                                    <input type="text" t-att-value="is_partner_sudo.phone" name="personal_phone" id="personal_phone" class="form-control" required="required"/>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-else="">
+                        <!-- Full Name -->
+                            <div class="mb-3">
+                                <label class="form-label fw-medium" for="personal_name">Full Name</label>
+                                <input type="text" name="personal_name" id="personal_name" class="form-control" required="required"/>
+                            </div>
+                            <!-- Email & Phone -->
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium" for="personal_email">Email</label>
+                                    <input type="email" name="personal_email" id="personal_email" class="form-control" required="required"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium" for="personal_phone">Phone</label>
+                                    <input type="text" name="personal_phone" id="personal_phone" class="form-control" required="required"/>
+                                </div>
+                            </div>
+                        </t>
+
+                        <t t-if="is_enable_company_vat_visible">
+                            <!-- Company & VAT -->
+                            <!-- Show the checkbox -->
+                            <div id="checkbox_is_enable_company_vat_visible" class="form-check mb-2">
+                                <input type="checkbox" class="form-check-input" id="show_company_fields_checkbox"/>
+                                <label class="form-check-label" for="show_company_fields_checkbox">Want an invoice on a company name?</label>
+                            </div>
+                            <div id="company_vat_block" class="row g-3 company-vat-#{is_enable_company_vat_visible}" style="display: none;">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium" for="personal_company">Company Name</label>
+                                    <input type="text" name="personal_company" id="personal_company" class="form-control" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium" for="personal_vat">H.P. | A.M. | T.Z.</label>
+                                    <input type="text" name="personal_vat" id="personal_vat" class="form-control" />
+                                </div>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium" for="personal_company">Company Name</label>
+                                    <input type="text" name="personal_company" id="personal_company" class="form-control" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium" for="personal_vat">H.P. | A.M. | T.Z.</label>
+                                    <input type="text" name="personal_vat" id="personal_vat" class="form-control" />
+                                </div>
+                            </div>
+                        </t>
+
+                    </div>
+                </div>
+
+                <div class="row mb-2" id="guest_mode_delivery_list">
+                    <h4 class="fs-6 small text-uppercase fw-bolder">Choose a delivery method</h4>
+                    <div class="col-12">
+                        <ul t-if="delivery_methods" id="o_delivery_methods" class="list-group">
+                            <t t-foreach="delivery_methods" t-as="dm">
+                                <li name="o_delivery_method" class="list-group-item text-muted o_outline">
+                                    <div class="row flex-column flex-md-row flex-grow-1 gap-lg-3">
+                                        <div class="col">
+                                            <div class="d-flex form-check mb-0 gap-2">
+                                                <input t-attf-id="o_delivery_{{dm.id}}" name="guest_delivery_carrier_id" type="radio" t-att-checked="is_selected" class="form-check-input position-absolute" t-att-data-dm-id="dm.id" t-att-data-delivery-type="dm.delivery_type" t-att-data-is-supports-split="dm.supports_split_delivery" t-att-data-is-supports-pickup="dm.supports_self_pickup" />
+                                                <label class="o_delivery_carrier_label" t-field="dm.name" t-attf-for="o_delivery_{{dm.id}}" />
+                                            </div>
+                                        </div>
+                                        <div class="col col-auto">
+                                            <span class="o_wsale_delivery_price_badge float-end fw-bold" name="price">
+                                                <t t-esc="dm.fixed_price" />
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+                <div id="pf_guest_delivery_split_show" class="my-4 mt-4 alt_split_delivery_block" style="display:none">
+                    <h4 class="fs-6 small text-uppercase fw-bolder mb-2">Set Delivery Quantity</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item o_outline">
+                            <label class="o_delivery_carrier_label mb-2" style="display: block;">
+                            Add to cart the number of deliveries you wish to purchase
+                            </label>
+                            <div class="text-muted mt-1 mb-2">
+                            The cart total will update according to the number of deliveries you select
+                            </div>
+                            <div name="alt_split_delivery_quantity" class="css_quantity input-group flex-nowrap mb-2" style="max-width: 180px; margin-right: auto; margin-left: auto;">
+                                <a href="#" class="btn btn-link d-inline-block border-end-0 address_page_split_delivery_minus flex-shrink-0 px-2" aria-label="Remove one" title="Remove one">
+                                    <i class="position-relative z-1 fa fa-minus"></i>
+                                </a>
+                                <input id="address_page_split_delivery_qty" type="text" class="js_quantity quantity form-control border-start-0 border-end-0 address_page_split_delivery_qty text-center flex-shrink-0 px-1" value="1" style="width: 60px; min-width: 40px; max-width: 70px;" />
+                                <a href="#" class="btn btn-link d-inline-block float_left border-start-0 address_page_split_delivery_plus flex-shrink-0 px-2" aria-label="Add one" title="Add one">
+                                    <i class="fa fa-plus position-relative z-1"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="warning_block" class="alert alert-warning mt-3" style="display: none;">
+                    <h5 class="mb-0">
+                    ⚠️ We will collect the delivery address after the payment
+                    </h5>
+                </div>
+
+                <t t-if="is_enable_set_delivery_date">  
+                    <div id="guest_delivery_date_div" class="my-4 mt-4">
+                        <h4 class="fs-6 small text-uppercase fw-bolder mb-2">Set Delivery</h4>
+                        <div class="form-group list-group list-group-item">
+                            <div class="form-check mb-2">
+                                <input type="checkbox" class="form-check-input" id="_delivery_date"/>
+                                <label class="form-check-label" for="_delivery_date">
+                                Want to schedule a delivery date that works for you?
+                                </label>
+                            </div>
+                            <input type="date" id="guest_delivery_date" name="guest_delivery_date" class="form-control guest_delivery_date" style="display:none;" />
+                            <div id="delivery_date_error" class="text-danger mt-1" style="display:none;"></div>
+                            <div class="text-muted mt-1 mb-2">
+                                You can choose a future delivery date starting from 10 business days after order confirmation, and we will do our best to deliver your packages exactly on time for you.
+                            </div>
+                        </div>
+                    </div>
+                </t>
+
+                <div id="guest_greeting_card" class="my-4 mt-4">
+                    <h4 class="fs-6 small text-uppercase fw-bolder mb-2">Greeting Card</h4>
+                    <div class="form-group list-group list-group-item">
+                        <div class="form-check mb-2">
+                            <input type="checkbox" class="form-check-input" id="guest_greeting_card_input"/>
+                            <label class="form-check-label" for="guest_greeting_card_input">
+                            Would you like to add a greeting card ?
+                            </label>
+                        </div>
+                        <textarea id="guest_greeting_card_text" name="guest_greeting_card_input" class="form-control guest_greeting_card_input mb-1" style="display:none;" />
+                    </div>
+                </div>
+
+                <div id="guest_delivery_note" class="my-4 mt-4">
+                    <h4 class="fs-6 small text-uppercase fw-bolder mb-2">Delivery Notes</h4>
+                    <div class="form-group list-group list-group-item">
+                        <div class="form-check mb-2">
+                            <input type="checkbox" class="form-check-input" id="guest_delivery_note_input"/>
+                            <label class="form-check-label" for="guest_delivery_note_input">
+                            Would you like to add delivery notes ?
+                            </label>
+                        </div>
+                        <textarea id="guest_delivery_note_text" name="guest_delivery_note_text" class="form-control guest_delivery_note_text mb-1" style="display:none;" />
+                    </div>
+                </div>
+
+                <!-- <div class="form-check mt-4">
+                    <input type="checkbox" class="form-check-input" id="same_as_delivery" name="same_address" checked="checked"/>
+                    <label class="form-check-label" for="same_as_delivery">
+                    Delivery address same as Billing address?
+                    </label>
+                </div> -->
+
+                <div id="div_email_public" t-attf-class="col-lg-12 guest-enabled-#{is_enable_guest_checkout}">
+                    <label class="col-form-label" for="o_email">Please Fill Your Mail</label>
+                    <div t-if="website.account_on_checkout != 'disabled'" class="align-items-center float-end" style="margin-top: -11px">
+                        <span>Already have an account?</span>
+                        <a role="button" href='/web/login?redirect=/shop/checkout' class="btn btn-primary">
+                                                    Sign in
+                        </a>
+                    </div>
+                    <input id="o_email" type="email" name="email" class="form-control" t-att-value="partner_sudo.email" />
+                </div>
+                <!-- <h4 class="mb-1 mt-5">Fill in your Billing Address</h4> -->
+                <h4 class="fs-6 small text-uppercase fw-bolder mb-2" id="shipping_address_label">fill in your shipping address ? </h4>
+                <div class="form-check mt-4" id="fill_address_div">
+                    <!-- <input type="checkbox" class="form-check-input" id="want_fill_above_data" name="want_fill_above_data" checked="checked"/> -->
+                    <input type="checkbox" class="form-check-input" id="want_fill_above_data" name="want_fill_above_data" />
+                    <label class="form-check-label" for="want_fill_above_data">
+                        Want to Fill Above Data ?
+                    </label>
+                </div>
+            </t>
+            <t t-elif="is_enable_guest_checkout and required_fields">
+                <h4 class="fs-6 small text-uppercase fw-bolder">Personal Details</h4>
+                <div class="list-group mb-4 list-group-item pb-2">
+                    <input type="hidden" id="flag_is_enable_company_vat_visible" t-att-value="is_enable_company_vat_visible"/>
+                    <div class="card-body mb-2">
+                        <input type="text" t-att-value="is_partner_sudo_id" name="is_partner_sudo_id" id="is_partner_sudo_id" class="form-control" style="display:none"/>
+                        <t t-if="is_partner_sudo_id">
+                            <div class="mb-3">
+                            <label class="form-label fw-medium" for="personal_name">Full Name</label>
+                            <input type="text" t-att-value="is_partner_sudo.name" name="personal_name" id="personal_name" class="form-control" required="required"/>
+                            </div>
+                            <!-- Email & Phone -->
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium" for="personal_email">Email</label>
+                                    <input type="email" t-att-value="is_partner_sudo.email" name="personal_email" id="personal_email" class="form-control" required="required"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium" for="personal_phone">Phone</label>
+                                    <input type="text" t-att-value="is_partner_sudo.phone" name="personal_phone" id="personal_phone" class="form-control" required="required"/>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-else="">
+                        <!-- Full Name -->
+                            <div class="mb-3">
+                                <label class="form-label fw-medium" for="personal_name">Full Name</label>
+                                <input type="text" name="personal_name" id="personal_name" class="form-control" required="required"/>
+                            </div>
+                            <!-- Email & Phone -->
+                            <div class="row g-3 mb-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium" for="personal_email">Email</label>
+                                    <input type="email" name="personal_email" id="personal_email" class="form-control" required="required"/>
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium" for="personal_phone">Phone</label>
+                                    <input type="text" name="personal_phone" id="personal_phone" class="form-control" required="required"/>
+                                </div>
+                            </div>
+                        </t>
+
+                        <t t-if="is_enable_company_vat_visible">
+                            <!-- Company & VAT -->
+                            <!-- Show the checkbox -->
+                            <div id="checkbox_is_enable_company_vat_visible" class="form-check mb-2">
+                                <input type="checkbox" class="form-check-input" id="show_company_fields_checkbox"/>
+                                <label class="form-check-label" for="show_company_fields_checkbox">Want an invoice on a company name?</label>
+                            </div>
+                            <div id="company_vat_block" class="row g-3 company-vat-#{is_enable_company_vat_visible}" style="display: none;">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium" for="personal_company">Company Name</label>
+                                    <input type="text" name="personal_company" id="personal_company" class="form-control" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium" for="personal_vat">H.P. | A.M. | T.Z.</label>
+                                    <input type="text" name="personal_vat" id="personal_vat" class="form-control" />
+                                </div>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <div class="row g-3">
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium" for="personal_company">Company Name</label>
+                                    <input type="text" name="personal_company" id="personal_company" class="form-control" />
+                                </div>
+                                <div class="col-md-6">
+                                    <label class="form-label fw-medium" for="personal_vat">H.P. | A.M. | T.Z.</label>
+                                    <input type="text" name="personal_vat" id="personal_vat" class="form-control" />
+                                </div>
+                            </div>
+                        </t>
+
+                    </div>
+                </div>
+
+                <div class="row mb-2" id="guest_mode_delivery_list">
+                    <h4 class="fs-6 small text-uppercase fw-bolder">Choose a delivery method</h4>
+                    <div class="col-12">
+                        <ul t-if="delivery_methods" id="o_delivery_methods" class="list-group">
+                            <t t-foreach="delivery_methods" t-as="dm">
+                                <li name="o_delivery_method" class="list-group-item text-muted o_outline">
+                                    <div class="row flex-column flex-md-row flex-grow-1 gap-lg-3">
+                                        <div class="col">
+                                            <div class="d-flex form-check mb-0 gap-2">
+                                                <input t-attf-id="o_delivery_{{dm.id}}" name="guest_delivery_carrier_id" type="radio" t-att-checked="is_selected" class="form-check-input position-absolute" t-att-data-dm-id="dm.id" t-att-data-delivery-type="dm.delivery_type" t-att-data-is-supports-split="dm.supports_split_delivery" t-att-data-is-supports-pickup="dm.supports_self_pickup" />
+                                                <label class="o_delivery_carrier_label" t-field="dm.name" t-attf-for="o_delivery_{{dm.id}}" />
+                                            </div>
+                                        </div>
+                                        <div class="col col-auto">
+                                            <span class="o_wsale_delivery_price_badge float-end fw-bold" name="price">
+                                                <t t-esc="dm.fixed_price" />
+                                            </span>
+                                        </div>
+                                    </div>
+                                </li>
+                            </t>
+                        </ul>
+                    </div>
+                </div>
+                <div id="pf_guest_delivery_split_show" class="my-4 mt-4 alt_split_delivery_block" style="display:none">
+                    <h4 class="fs-6 small text-uppercase fw-bolder mb-2">Set Delivery Quantity</h4>
+                    <ul class="list-group">
+                        <li class="list-group-item o_outline">
+                            <label class="o_delivery_carrier_label mb-2" style="display: block;">
+                            Add to cart the number of deliveries you wish to purchase
+                            </label>
+                            <div class="text-muted mt-1 mb-2">
+                            The cart total will update according to the number of deliveries you select
+                            </div>
+                            <div name="alt_split_delivery_quantity" class="css_quantity input-group flex-nowrap mb-2" style="max-width: 180px; margin-right: auto; margin-left: auto;">
+                                <a href="#" class="btn btn-link d-inline-block border-end-0 address_page_split_delivery_minus flex-shrink-0 px-2" aria-label="Remove one" title="Remove one">
+                                    <i class="position-relative z-1 fa fa-minus"></i>
+                                </a>
+                                <input id="address_page_split_delivery_qty" type="text" class="js_quantity quantity form-control border-start-0 border-end-0 address_page_split_delivery_qty text-center flex-shrink-0 px-1" value="1" style="width: 60px; min-width: 40px; max-width: 70px;" />
+                                <a href="#" class="btn btn-link d-inline-block float_left border-start-0 address_page_split_delivery_plus flex-shrink-0 px-2" aria-label="Add one" title="Add one">
+                                    <i class="fa fa-plus position-relative z-1"></i>
+                                </a>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                <div id="warning_block" class="alert alert-warning mt-3" style="display: none;">
+                    <h5 class="mb-0">
+                    ⚠️ We will collect the delivery address after the payment
+                    </h5>
+                </div>
+
+                <t t-if="is_enable_set_delivery_date">  
+                    <div id="guest_delivery_date_div" class="my-4 mt-4">
+                        <h4 class="fs-6 small text-uppercase fw-bolder mb-2">Set Delivery</h4>
+                        <div class="form-group list-group list-group-item">
+                            <div class="form-check mb-2">
+                                <input type="checkbox" class="form-check-input" id="_delivery_date"/>
+                                <label class="form-check-label" for="_delivery_date">
+                                Want to schedule a delivery date that works for you?
+                                </label>
+                            </div>
+                            <input type="date" id="guest_delivery_date" name="guest_delivery_date" class="form-control guest_delivery_date" style="display:none;" />
+                            <div id="delivery_date_error" class="text-danger mt-1" style="display:none;"></div>
+                            <div class="text-muted mt-1 mb-2">
+                                You can choose a future delivery date starting from 10 business days after order confirmation, and we will do our best to deliver your packages exactly on time for you.
+                            </div>
+                        </div>
+                    </div>
+                </t>
+
+                <div id="guest_greeting_card" class="my-4 mt-4">
+                    <h4 class="fs-6 small text-uppercase fw-bolder mb-2">Greeting Card</h4>
+                    <div class="form-group list-group list-group-item">
+                        <div class="form-check mb-2">
+                            <input type="checkbox" class="form-check-input" id="guest_greeting_card_input"/>
+                            <label class="form-check-label" for="guest_greeting_card_input">
+                            Would you like to add a greeting card ?
+                            </label>
+                        </div>
+                        <textarea id="guest_greeting_card_text" name="guest_greeting_card_input" class="form-control guest_greeting_card_input mb-1" style="display:none;" />
+                    </div>
+                </div>
+
+                <div id="guest_delivery_note" class="my-4 mt-4">
+                    <h4 class="fs-6 small text-uppercase fw-bolder mb-2">Delivery Notes</h4>
+                    <div class="form-group list-group list-group-item">
+                        <div class="form-check mb-2">
+                            <input type="checkbox" class="form-check-input" id="guest_delivery_note_input"/>
+                            <label class="form-check-label" for="guest_delivery_note_input">
+                            Would you like to add delivery notes ?
+                            </label>
+                        </div>
+                        <textarea id="guest_delivery_note_text" name="guest_delivery_note_text" class="form-control guest_delivery_note_text mb-1" style="display:none;" />
+                    </div>
+                </div>
+
+                <!-- <div class="form-check mt-4">
+                    <input type="checkbox" class="form-check-input" id="same_as_delivery" name="same_address" checked="checked"/>
+                    <label class="form-check-label" for="same_as_delivery">
+                    Delivery address same as Billing address?
+                    </label>
+                </div> -->
+
+                <div id="div_email_public" t-attf-class="col-lg-12 guest-enabled-#{is_enable_guest_checkout}">
+                    <label class="col-form-label" for="o_email">Please Fill Your Mail</label>
+                    <div t-if="website.account_on_checkout != 'disabled'" class="align-items-center float-end" style="margin-top: -11px">
+                        <span>Already have an account?</span>
+                        <a role="button" href='/web/login?redirect=/shop/checkout' class="btn btn-primary">
+                                                    Sign in
+                        </a>
+                    </div>
+                    <input id="o_email" type="email" name="email" class="form-control" t-att-value="partner_sudo.email" />
+                </div>
+                <!-- <h4 class="mb-1 mt-5">Fill in your Billing Address</h4> -->
+                <h4 class="fs-6 small text-uppercase fw-bolder mb-2" id="shipping_address_label">fill in your shipping address ? </h4>
+                <div class="form-check mt-4" id="fill_address_div">
+                    <!-- <input type="checkbox" class="form-check-input" id="want_fill_above_data" name="want_fill_above_data" checked="checked"/> -->
+                    <input type="checkbox" class="form-check-input" id="want_fill_above_data" name="want_fill_above_data" />
+                    <label class="form-check-label" for="want_fill_above_data">
+                        Want to Fill Above Data ?
+                    </label>
+                </div>
+            </t>
+            <t t-else="">
+                <div id="div_email_public" t-attf-class="col-lg-12">
+                    <label class="col-form-label" for="o_email">Please Fill Your Mail</label>
+                    <div t-if="website.account_on_checkout != 'disabled'" class="align-items-center float-end" style="margin-top: -11px">
+                        <span>Already have an account?</span>
+                        <a role="button" href='/web/login?redirect=/shop/checkout' class="btn btn-primary">
+                                                    Sign in
+                        </a>
+                    </div>
+                    <input id="o_email" type="email" name="email" class="form-control" t-att-value="partner_sudo.email" />
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo>

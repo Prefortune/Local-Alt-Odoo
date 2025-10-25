@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="alt_cta_button" inherit_id="website_sale.product">
+        <xpath expr="//div[@id='o_wsale_cta_wrapper']" position="after">
+            <!-- עטיפה חכמה שמתמודדת עם רספונסיביות -->
+            <div id="o_wsale_cta_wrapper"
+                 class="d-flex flex-wrap gap-2 align-items-center justify-content-start w-100">
+
+                <!-- קריאת ההגדרות -->
+                <t t-set="cta_behavior" t-value="request.env['ir.config_parameter'].sudo().get_param('alt_product_cta_button.cta_behavior', 'default')"/>
+                <t t-set="cta_link" t-value="request.env['ir.config_parameter'].sudo().get_param('alt_product_cta_button.cta_link', '#')"/>
+
+                <!-- כפתור Add to cart -->
+                <t t-if="cta_behavior in ['default', 'both']">
+                    <a role="button"
+                       id="add_to_cart"
+                       href="#"
+                       class="btn btn-primary js_check_product a-submit d-inline-flex align-items-center flex-grow-1 flex-md-grow-0">
+                        <i class="fa fa-shopping-cart me-2"/>
+                        Add to cart
+                    </a>
+                </t>
+
+                <!-- כפתור Contact us -->
+                <t t-if="cta_behavior in ['contact_only', 'both']">
+                    <a t-att-href="cta_link"
+                       class="btn btn-primary d-inline-flex align-items-center flex-grow-1 flex-md-grow-0">
+                        <i class="fa fa-envelope me-2"/>
+                        Contact us
+                    </a>
+                </t>
+            </div>
+        </xpath>
+    </template>
+</odoo>

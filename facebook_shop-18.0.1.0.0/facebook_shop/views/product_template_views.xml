@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+   <record id="product_template_form_view" model="ir.ui.view">
+        <field name="name">product.template.common.form.inherit.facebook_shop</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product_data_feed.product_template_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='data_feed']/group" position="after">
+                <group string="Facebook" name="feed_facebook" colspan="4">
+                    <group string="Optional" name="fb_optional"/>
+                    <group string="Visibility" name="fb_visibility"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="product_template_only_form_view" model="ir.ui.view">
+        <field name="name">product.template.only.form.inherit.facebook_shop</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@name='fb_visibility']" position="inside">
+                <field name="feed_fb_status" invisible="product_variant_count &gt; 1"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

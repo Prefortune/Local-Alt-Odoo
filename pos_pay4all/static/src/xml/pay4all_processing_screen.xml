@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <!-- Tela 2: Processamento/Aguardo Pay4All -->
+    <t t-name="Pay4AllProcessingScreen" owl="1">
+        <div class="pay4all-payment-screen">
+            <div class="pay4all-modal pay4all-processing-modal">
+                <!-- Header com produto -->
+                <div class="pay4all-modal-header">
+                    <h2 class="pay4all-product-title">
+                        <t t-esc="props.description"/>
+                    </h2>
+                </div>
+                
+                <!-- Body -->
+                <div class="pay4all-modal-body">
+                    <!-- Status com countdown -->
+                    <div class="pay4all-status-section">
+                        <div class="pay4all-status-text">
+                            Aguardando pagamento - <span class="pay4all-countdown"><t t-esc="formatTime(state.timeRemaining)"/></span>
+                        </div>
+                        
+                        <!-- Progress Bar -->
+                        <div class="pay4all-progress-container">
+                            <div class="pay4all-progress-bar">
+                                <div class="pay4all-progress-fill" 
+                                     t-att-style="'width: ' + getProgressPercentage() + '%'">
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Caixa de Informação -->
+                    <div class="pay4all-info-box">
+                        <div class="pay4all-info-icon">ℹ️</div>
+                        <div class="pay4all-info-content">
+                            <div class="pay4all-info-text">
+                                <t t-if="props.method === 'ekwanza'">
+                                    Confirme o pagamento de <strong><t t-esc="props.amount"/> Kz</strong> no seu E-kwanza para o número <strong><t t-esc="props.phone"/></strong>
+                                </t>
+                                <t t-elif="props.method === 'multicaixa'">
+                                    Confirme o pagamento de <strong><t t-esc="props.amount"/> Kz</strong> no Multicaixa Express para o número <strong><t t-esc="props.phone"/></strong>
+                                </t>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Detalhes do Pagamento -->
+                    <div class="pay4all-payment-details">
+                        <div class="pay4all-detail-row">
+                            <span class="pay4all-detail-label">Referência:</span>
+                            <span class="pay4all-detail-value"><t t-esc="state.reference"/></span>
+                        </div>
+                        <div class="pay4all-detail-row">
+                            <span class="pay4all-detail-label">Valor:</span>
+                            <span class="pay4all-detail-value"><t t-esc="props.amount"/></span>
+                        </div>
+                    </div>
+                    
+                    <!-- Botão Cancelar -->
+                    <div class="pay4all-actions">
+                        <button 
+                            class="pay4all-btn pay4all-btn-secondary"
+                            t-on-click="cancel">
+                            Cancelar
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+</templates>

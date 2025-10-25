@@ -1,0 +1,4 @@
+.border-color-split {
+    border : var(--btn-border-width) solid var(--o-border-color);
+
+}

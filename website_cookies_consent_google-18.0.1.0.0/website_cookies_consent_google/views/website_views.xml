@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_website_form" model="ir.ui.view">
+        <field name="name">model.name.inherit.website_cookies_consent_google</field>
+        <field name="model">website</field>
+        <field name="inherit_id" ref="website_cookies_consent.view_website_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//page[@name='cookies_consent']" position="inside">
+                <group string="Google Consent Mode">
+                    <field name="google_consent_mode_ids" context="{'default_website_id': id}" nolabel="1" colspan="2">
+                        <list>
+                            <field name="region_ids" widget="many2many_tags"/>
+                            <field name="ad_storage" optional="show"/>
+                            <field name="ad_user_data" optional="show"/>
+                            <field name="ad_personalization" optional="show"/>
+                            <field name="analytics_storage" optional="show"/>
+                            <field name="functionality_storage" optional="show"/>
+                            <field name="personalization_storage" optional="show"/>
+                            <field name="security_storage" optional="show"/>
+                            <field name="wait_for_update"/>
+                        </list>
+                    </field>
+                    <field name="google_consent_ads_data_redaction" widget="boolean_toggle"/>
+                    <field name="google_consent_url_passthrough" widget="boolean_toggle"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

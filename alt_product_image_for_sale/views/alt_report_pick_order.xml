@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Pick Report Template -->
+    <template id="report_pick_order_document" name="Pick Order Report">
+        <t t-call="web.html_container">
+            <t t-foreach="docs" t-as="o">
+                <t t-call="alt_product_image_for_sale.report_pick_order_document_inherit"/>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_pick_order_document_inherit" name="Pick Order Report Document">
+        <t t-name="alt.report_saleorder_picking">
+            <t t-call="web.external_layout">
+                <t t-set="doc" t-value="docs[0]"/>
+
+                <div class="page" dir="rtl" style="direction: rtl; text-align: right;">
+                    <main dir="rtl" style="direction: rtl; text-align: right;">
+
+                        <!-- כותרת -->
+                        <h2 style="text-align:center; margin-bottom: 6px;">
+                            טופס איסוף להזמנה <t t-esc="doc.name"/>
+                        </h2>
+                        <p class="text-center" style="margin:0;">
+                            לקוח: <span t-esc="doc.partner_id.display_name"/>
+                        </p>
+                        <p class="text-center" style="margin:0 0 10px 0;">
+                            תאריך הזמנה: <span t-esc="doc.date_order.strftime('%d/%m/%Y')"/>
+                        </p>
+
+                        <!-- שתי טבלאות עליונות 50%-50% עם רווח -->
+                        <div class="row mb-3" style="direction: rtl;">
+                            <!-- כתובת/טלפון/מייל/תאריך -->
+                            <div class="col-6 p-2 m-1" style="border:0;">
+                                <table class="table table-sm" style="width:100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width:30%;"><strong>למשלוח אל:</strong></td>
+                                            <td>
+                                                <span t-esc="doc.partner_shipping_id.display_name"/><br/>
+                                                <t t-if="doc.partner_shipping_id.street">
+                                                    <span t-esc="doc.partner_shipping_id.street"/><br/>
+                                                </t>
+                                                <t t-if="doc.partner_shipping_id.street2">
+                                                    <span t-esc="doc.partner_shipping_id.street2"/><br/>
+                                                </t>
+                                                <t t-if="doc.partner_shipping_id.city">
+                                                    <span t-esc="doc.partner_shipping_id.city"/>
+                                                </t>
+                                                <t t-if="doc.partner_shipping_id.zip">
+                                                    , <span t-esc="doc.partner_shipping_id.zip"/>
+                                                </t><br/>
+                                                <t t-if="doc.partner_shipping_id.state_id">
+                                                    <span t-esc="doc.partner_shipping_id.state_id.name"/>
+                                                </t>
+                                                <t t-if="doc.partner_shipping_id.country_id">
+                                                    , <span t-esc="doc.partner_shipping_id.country_id.name"/>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>טלפון:</strong></td>
+                                            <td><span t-esc="doc.partner_id.phone or ''"/></td>
+                                        </tr>
+                                        <tr>
+                                            <td><strong>אימייל:</strong></td>
+                                            <td><span t-esc="doc.partner_id.email or ''"/></td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <!-- תאריך אספקה/ברכה/פתק עם כותרת 25% ומקום לטקסט -->
+                            <div class="col-6 p-2 m-1" style="border:0;">
+                                <table class="table table-sm" style="width:100%;">
+                                    <tbody>
+                                        <tr>
+                                            <td style="width:25%;"><strong>תאריך אספקה משוער:</strong></td>
+                                            <td>
+                                                <t t-if="doc.customer_delivery_date">
+                                                    <t t-esc="doc.customer_delivery_date.strftime('%d/%m/%Y')"/>
+                                                </t>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:25%;"><strong>ברכה:</strong></td>
+                                            <td style="min-height:60px;">
+                                                <span t-esc="doc.greeting_card or ''"/>
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="width:25%;"><strong>פתק למוביל:</strong></td>
+                                            <td style="min-height:60px;">
+                                                <span t-esc="doc.delivery_note or ''"/>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+
+                        <!-- טבלת שורות ההזמנה -->
+                        <table class="table table-sm table-bordered mt32" dir="rtl" style="width:100%; direction: rtl; text-align:right;">
+                            <thead>
+                                <tr>
+                                    <th style="width:5%; text-align:right;">#</th>
+                                    <th style="width:15%; text-align:right;">מק"ט</th>
+                                    <th style="text-align:right;">שם מוצר / שורה</th>
+                                    <th style="width:12%; text-align:right;">כמות מוזמנת</th>
+                                    <th style="width:12%; text-align:right;">כמות שנאספה</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <t t-set="index" t-value="1"/>
+                                <t t-foreach="doc.order_line" t-as="line">
+
+                                    <!-- Section -->
+                                    <t t-if="line.display_type == 'line_section'">
+                                        <tr>
+                                            <td colspan="5" style="background:#f5f7fa; font-weight:600;">
+                                                <span t-esc="line.name"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+
+                                    <!-- Note -->
+                                    <t t-elif="line.display_type == 'line_note'">
+                                        <tr>
+                                            <td colspan="5" style="color:#666; font-style:italic;">
+                                                <span t-esc="line.name"/>
+                                            </td>
+                                        </tr>
+                                    </t>
+
+                                    <!-- Product line -->
+                                    <t t-else="">
+                                        <tr>
+                                            <td><t t-esc="index"/></td>
+                                            <td><t t-esc="line.product_id.default_code or ''"/></td>
+                                            <td>
+                                                <span dir="rtl" style="display:block; text-align:right;">
+                                                    <t t-esc="line.product_id.display_name or line.name or ''"/>
+                                                </span>
+                                            </td>
+                                            <td><t t-esc="line.product_uom_qty"/></td>
+                                            <td/> <!-- למילוי ידני -->
+                                        </tr>
+                                        <t t-set="index" t-value="index + 1"/>
+                                    </t>
+
+                                </t>
+                            </tbody>
+                        </table>
+
+                        <p style="margin-top: 16px;">
+                            <strong>סה״כ שורות:</strong> <t t-esc="len(doc.order_line)"/>
+                        </p>
+
+                        <div style="margin-top: 40px;">
+                            חתימת אוסף: _____________________________
+                        </div>
+
+                    </main>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo> 

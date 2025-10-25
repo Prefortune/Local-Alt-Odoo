@@ -1,0 +1,84 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="purchase_split_delivery_page" name="Purchase Split Delivery Page">
+        <t t-call="website.layout">
+            <div class="container mt-4">
+                <div class="row">
+                    <div class="col-12">
+                        <h1>ניהול מנות משלוח - הזמנה <t t-esc="order.name"/></h1>
+                        
+                        <form method="post" t-att-action="'/my/purchase/orders/' + str(order.id) + '/split_delivery/save'">
+                            <input type="hidden" name="count" t-att-value="order.alt_split_delivery_count"/>
+                            
+                            <t t-foreach="range(order.alt_split_delivery_count)" t-as="i">
+                                <div class="card mb-4">
+                                    <div class="card-header">
+                                        <h4>מנה <t t-esc="i + 1"/></h4>
+                                    </div>
+                                    <div class="card-body">
+                                        <!-- כתובת משלוח -->
+                                        <div class="row mb-3">
+                                            <div class="col-md-6">
+                                                <label>רחוב</label>
+                                                <input type="text" class="form-control" 
+                                                       t-att-name="'street_' + str(i)"
+                                                       t-att-value="delivery_data.get(i, {}).get('street', '')"/>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <label>רחוב 2</label>
+                                                <input type="text" class="form-control" 
+                                                       t-att-name="'street2_' + str(i)"
+                                                       t-att-value="delivery_data.get(i, {}).get('street2', '')"/>
+                                            </div>
+                                        </div>
+                                        <div class="row mb-3">
+                                            <div class="col-md-4">
+                                                <label>עיר</label>
+                                                <input type="text" class="form-control" 
+                                                       t-att-name="'city_' + str(i)"
+                                                       t-att-value="delivery_data.get(i, {}).get('city', '')"/>
+                                            </div>
+                                            <div class="col-md-4">
+                                                <label>מיקוד</label>
+                                                <input type="text" class="form-control" 
+                                                       t-att-name="'zip_' + str(i)"
+                                                       t-att-value="delivery_data.get(i, {}).get('zip', '')"/>
+                                            </div>
+                                        </div>
+                                        
+                                        <!-- כמויות מוצרים -->
+                                        <h5>כמויות מוצרים</h5>
+                                        <t t-foreach="order.order_line" t-as="line" 
+                                           t-if="line.product_id.type != 'service'">
+                                            <div class="row mb-2">
+                                                <div class="col-md-6">
+                                                    <label t-esc="line.product_id.name"/>
+                                                    <small class="text-muted">
+                                                        (זמין: <t t-esc="line.product_qty"/>)
+                                                    </small>
+                                                </div>
+                                                <div class="col-md-6">
+                                                    <input type="number" class="form-control" 
+                                                           t-att-name="'quantity_' + str(i) + '_' + str(line.id)"
+                                                           t-att-value="delivery_data.get(i, {}).get('moves', {}).get(str(line.id), {}).get('quantity', 0)"
+                                                           min="0" 
+                                                           t-att-max="line.product_qty"/>
+                                                </div>
+                                            </div>
+                                        </t>
+                                    </div>
+                                </div>
+                            </t>
+                            
+                            <div class="text-center">
+                                <button type="submit" class="btn btn-primary btn-lg">
+                                    שמור מנות משלוח
+                                </button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

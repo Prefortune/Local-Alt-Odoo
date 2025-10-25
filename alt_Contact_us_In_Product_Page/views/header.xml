@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="announcement_bar" inherit_id="website.layout">
+        <xpath expr="//header" position="before">
+            <div class="strip_header_line">
+                🚀 Special Offer: Get 20% Off Today! 🎉
+            </div>
+            <!-- <script>
+                document.body.style.paddingTop = "40px"; // Prevents content from being hidden
+            </script> -->
+        </xpath>
+    </template>
+</odoo>

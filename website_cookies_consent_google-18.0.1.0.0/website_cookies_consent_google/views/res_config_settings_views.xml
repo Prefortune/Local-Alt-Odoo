@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="website_config_settings_view_form" model="ir.ui.view">
+        <field name="name">website.config.settings.view.form.inherit.website_cookies_consent_google</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="website.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//setting[@id='website_cookies_bar_setting']" position="after">
+                <setting id="website_google_consent_setting"
+                         string="Google Consent Mode"
+                         documentation="https://support.google.com/analytics/answer/9976101"
+                         help="Google Consent mode lets you communicate your website users’ cookie consent status to Google">
+                    <div class="content-group">
+                        <div class="mt8">
+                            <button type="action" name="%(action_website_google_consent_list)d" string="Default Google Consents" icon="fa-arrow-right" class="btn-link"/>
+                        </div>
+                        <div class="row mt16">
+                            <div>
+                                <field name="website_google_consent_ads_data_redaction"/>
+                                <label for="website_google_consent_ads_data_redaction"/>
+                            </div>
+                            <div>
+                                <field name="website_google_consent_url_passthrough"/>
+                                <label for="website_google_consent_url_passthrough"/>
+                            </div>
+                        </div>
+                    </div>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>
