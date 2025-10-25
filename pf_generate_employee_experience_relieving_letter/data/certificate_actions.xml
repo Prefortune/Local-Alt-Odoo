@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_experience_certificate" model="ir.actions.report">
+        <field name="name">Experience Certificate</field>
+        <field name="model">hr.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">pf_generate_employee_experience_relieving_letter.experience_certificate_report</field>
+        <field name="report_file">pf_generate_employee_experience_relieving_letter.experience_certificate_report</field>
+        <field name="print_report_name">'Experience Certificate - %s' % (object.name)</field>
+    </record>
+
+    <record id="action_report_relieving_certificate" model="ir.actions.report">
+        <field name="name">Relieving Certificate</field>
+        <field name="model">hr.employee</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">pf_generate_employee_experience_relieving_letter.relieving_certificate_report</field>
+        <field name="report_file">pf_generate_employee_experience_relieving_letter.relieving_certificate_report</field>
+        <field name="print_report_name">'Relieving Certificate - %s' % (object.name)</field>
+    </record>
+</odoo>

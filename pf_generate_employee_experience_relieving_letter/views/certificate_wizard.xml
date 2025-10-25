@@ -1,0 +1,45 @@
+<odoo>
+    <!-- Wizard View -->
+    <record id="view_certificate_wizard_form" model="ir.ui.view">
+        <field name="name">certificate.wizard.form</field>
+        <field name="model">certificate.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Generate Certificate">
+                <group>
+                    <field name="certificate_type" invisible="1"/>
+                    <field name="certificate_issue_date"/>
+                    <field name="employee_id"/>
+                    <field name="job_id"/>
+                    <field name="joining_date"/>
+                    <field name="ending_date"/>
+                </group>
+                <footer>
+                    <button name="action_generate_certificate" string="Print" type="object" class="btn-primary"/>
+                    <button string="Cancel" special="cancel" class="btn-secondary"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Experience Action -->
+    <record id="action_certificate_wizard_experience" model="ir.actions.act_window">
+        <field name="name">Generate Experience Certificate</field>
+        <field name="res_model">certificate.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'certificate_type': 'experience'}</field>
+        <field name="binding_model_id" ref="hr.model_hr_employee"/>
+        <field name="binding_type">action</field>
+    </record>
+
+    <!-- Relieving Action -->
+    <record id="action_certificate_wizard_relieving" model="ir.actions.act_window">
+        <field name="name">Generate Relieving Certificate</field>
+        <field name="res_model">certificate.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="context">{'certificate_type': 'relieving'}</field>
+        <field name="binding_model_id" ref="hr.model_hr_employee"/>
+        <field name="binding_type">action</field>
+    </record>
+</odoo>

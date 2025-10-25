@@ -1,0 +1,482 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Blue and Gold Experience Template -->
+    <record id="blue_gold_experience_template" model="ir.ui.view">
+        <field name="name">Blue and Gold Experience Certificate Template</field>
+        <field name="key">pf_generate_employee_experience_relieving_letter.blue_gold_experience_template</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+            <t t-set="background_url" t-value="base_url + '/pf_generate_employee_experience_relieving_letter/static/src/img/blue_and_gold.png'"/>
+            
+            <div class="certificate blue-gold"
+                 t-att-style="'display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; margin: 0; padding: 0; background-image: url(' + background_url + '); background-size: 100% 100%; background-repeat: no-repeat; font-family: Times New Roman;'">
+                
+                <div style="max-width: 80%; padding: 40px; border-radius: 16px;">
+                    <h2 style="margin-bottom: 15px; font-size: 28px;"><t t-esc="company.name"/></h2>
+                    <h1 style="margin-bottom: 20px; font-size: 36px;">Employee Experience Letter</h1>
+                    <p style="margin-bottom: 10px; font-size: 20px;">Letter Issue Date: <t t-esc="current_date"/></p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This is to certify that <strong><t t-esc="employee.name"/></strong>, who was working with us as <t t-esc="employee.job_id.name"/>, has been employed with <strong><t t-esc="company.name"/></strong> from <strong><t t-esc="joining_date"/></strong> to <strong><t t-esc="ending_date"/></strong> during this period. <t t-esc="employee.name"/> has exhibited exceptional skills and dedication in her role.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">We found Employee to be a highly motivated and responsible professional. Consistently meeting and often exceeding expectations. <t t-esc="employee.name"/> demonstrated teamwork, Effective communication skills, and a strong commitment to achieving organizational goals.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This experience letter is issued to acknowledge the valuable contributions made by Employee during the tenure with <t t-esc="company.name"/>. We wish <t t-esc="employee.name"/> the best for future endeavors.</p>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <!-- Blue and Gold Relieving Template -->
+    <record id="blue_gold_relieving_template" model="ir.ui.view">
+        <field name="name">Blue and Gold Relieving Certificate Template</field>
+        <field name="key">pf_generate_employee_experience_relieving_letter.blue_gold_relieving_template</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+            <t t-set="background_url" t-value="base_url + '/pf_generate_employee_experience_relieving_letter/static/src/img/blue_and_gold.png'"/>
+            
+            <div class="certificate blue-gold"
+                 t-att-style="'display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; margin: 0; padding: 0; background-image: url(' + background_url + '); background-size: 100% 100%; background-repeat: no-repeat; font-family: Times New Roman;'">
+                
+                <div style="max-width: 80%; padding: 40px; border-radius: 16px;">
+                    <h2 style="margin-bottom: 15px; font-size: 28px;"><t t-esc="company.name"/></h2>
+                    <h1 style="margin-bottom: 20px; font-size: 36px;">Relieving Certificate</h1>
+                    <p style="margin-bottom: 10px; font-size: 20px;">Letter Issue Date: <t t-esc="current_date"/></p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This is to certify that <strong><t t-esc="employee.name"/></strong>, who was working with us as <t t-esc="employee.job_id.name"/>, has been relieved from duties at <strong><t t-esc="company.name"/></strong> effective <t t-esc="ending_date"/>.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">The employee was employed with us from <strong><t t-esc="joining_date"/></strong> to <strong><t t-esc="ending_date"/></strong>. During this period, the employee fulfilled the responsibilities of the role with professionalism, and all dues have been settled.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This relieving letter is issued to confirm the completion of the employee tenure with <t t-esc="company.name"/>. We wish <t t-esc="employee.name"/> the best in future endeavors.</p>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <!-- Gray and Gold Experience Template -->
+    <record id="gray_gold_experience_template" model="ir.ui.view">
+        <field name="name">Gray and Gold Experience Certificate Template</field>
+        <field name="key">pf_generate_employee_experience_relieving_letter.gray_gold_experience_template</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+            <t t-set="background_url" t-value="base_url + '/pf_generate_employee_experience_relieving_letter/static/src/img/gray_and_gold.png'"/>
+            
+            <div class="certificate gray-gold"
+                 t-att-style="'display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; margin: 0; padding: 0; background-image: url(' + background_url + '); background-size: 100% 100%; background-repeat: no-repeat; font-family: Times New Roman;'">
+                
+                <div style="max-width: 80%; padding: 40px; border-radius: 16px;">
+                    <h2 style="margin-bottom: 15px; font-size: 28px;"><t t-esc="company.name"/></h2>
+                    <h1 style="margin-bottom: 20px; font-size: 36px;">Employee Experience Letter</h1>
+                    <p style="margin-bottom: 10px; font-size: 20px;">Letter Issue Date: <t t-esc="current_date"/></p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This is to certify that <strong><t t-esc="employee.name"/></strong>, who was working with us as <t t-esc="employee.job_id.name"/>, has been employed with <strong><t t-esc="company.name"/></strong> from <strong><t t-esc="joining_date"/></strong> to <strong><t t-esc="ending_date"/></strong> during this period. <t t-esc="employee.name"/> has exhibited exceptional skills and dedication in her role.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">We found Employee to be a highly motivated and responsible professional. Consistently meeting and often exceeding expectations. <t t-esc="employee.name"/> demonstrated teamwork, Effective communication skills, and a strong commitment to achieving organizational goals.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This experience letter is issued to acknowledge the valuable contributions made by Employee during the tenure with <t t-esc="company.name"/>. We wish <t t-esc="employee.name"/> the best for future endeavors.</p>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <!-- Gray and Gold Relieving Template -->
+    <record id="gray_gold_relieving_template" model="ir.ui.view">
+        <field name="name">Gray and Gold Relieving Certificate Template</field>
+        <field name="key">pf_generate_employee_experience_relieving_letter.gray_gold_relieving_template</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+            <t t-set="background_url" t-value="base_url + '/pf_generate_employee_experience_relieving_letter/static/src/img/gray_and_gold.png'"/>
+            
+            <div class="certificate gray-gold"
+                 t-att-style="'display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; margin: 0; padding: 0; background-image: url(' + background_url + '); background-size: 100% 100%; background-repeat: no-repeat; font-family: Times New Roman;'">
+                
+                <div style="max-width: 80%; padding: 40px; border-radius: 16px;">
+                    <h2 style="margin-bottom: 15px; font-size: 28px;"><t t-esc="company.name"/></h2>
+                    <h1 style="margin-bottom: 20px; font-size: 36px;">Relieving Certificate</h1>
+                    <p style="margin-bottom: 10px; font-size: 20px;">Letter Issue Date: <t t-esc="current_date"/></p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This is to certify that <strong><t t-esc="employee.name"/></strong>, who was working with us as <t t-esc="employee.job_id.name"/>, has been relieved from duties at <strong><t t-esc="company.name"/></strong> effective <t t-esc="ending_date"/>.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">The employee was employed with us from <strong><t t-esc="joining_date"/></strong> to <strong><t t-esc="ending_date"/></strong>. During this period, the employee fulfilled the responsibilities of the role with professionalism, and all dues have been settled.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This relieving letter is issued to confirm the completion of the employee tenure with <t t-esc="company.name"/>. We wish <t t-esc="employee.name"/> the best in future endeavors.</p>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <!-- Red and Gold Experience Template -->
+    <record id="red_gold_experience_template" model="ir.ui.view">
+        <field name="name">Red and Gold Experience Certificate Template</field>
+        <field name="key">pf_generate_employee_experience_relieving_letter.red_gold_experience_template</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+            <t t-set="background_url" t-value="base_url + '/pf_generate_employee_experience_relieving_letter/static/src/img/red.png'"/>
+            
+            <div class="certificate red-gold"
+                 t-att-style="'display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; margin: 0; padding: 0; background-image: url(' + background_url + '); background-size: 100% 100%; background-repeat: no-repeat; font-family: Times New Roman;'">
+                
+                <div style="max-width: 80%; padding: 40px; border-radius: 16px;">
+                    <h2 style="margin-bottom: 15px; font-size: 28px;"><t t-esc="company.name"/></h2>
+                    <h1 style="margin-bottom: 20px; font-size: 36px;">Employee Experience Letter</h1>
+                    <p style="margin-bottom: 10px; font-size: 20px;">Letter Issue Date: <t t-esc="current_date"/></p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This is to certify that <strong><t t-esc="employee.name"/></strong>, who was working with us as <t t-esc="employee.job_id.name"/>, has been employed with <strong><t t-esc="company.name"/></strong> from <strong><t t-esc="joining_date"/></strong> to <strong><t t-esc="ending_date"/></strong> during this period. <t t-esc="employee.name"/> has exhibited exceptional skills and dedication in her role.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">We found Employee to be a highly motivated and responsible professional. Consistently meeting and often exceeding expectations. <t t-esc="employee.name"/> demonstrated teamwork, Effective communication skills, and a strong commitment to achieving organizational goals.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This experience letter is issued to acknowledge the valuable contributions made by Employee during the tenure with <t t-esc="company.name"/>. We wish <t t-esc="employee.name"/> the best for future endeavors.</p>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <!-- Red and Gold Relieving Template -->
+    <record id="red_gold_relieving_template" model="ir.ui.view">
+        <field name="name">Red and Gold Relieving Certificate Template</field>
+        <field name="key">pf_generate_employee_experience_relieving_letter.red_gold_relieving_template</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+            <t t-set="background_url" t-value="base_url + '/pf_generate_employee_experience_relieving_letter/static/src/img/red.png'"/>
+            
+            <div class="certificate red-gold"
+                 t-att-style="'display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; margin: 0; padding: 0; background-image: url(' + background_url + '); background-size: 100% 100%; background-repeat: no-repeat; font-family: Times New Roman;'">
+                
+                <div style="max-width: 80%; padding: 40px; border-radius: 16px;">
+                    <h2 style="margin-bottom: 15px; font-size: 28px;"><t t-esc="company.name"/></h2>
+                    <h1 style="margin-bottom: 20px; font-size: 36px;">Relieving Certificate</h1>
+                    <p style="margin-bottom: 10px; font-size: 20px;">Letter Issue Date: <t t-esc="current_date"/></p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This is to certify that <strong><t t-esc="employee.name"/></strong>, who was working with us as <t t-esc="employee.job_id.name"/>, has been relieved from duties at <strong><t t-esc="company.name"/></strong> effective <t t-esc="ending_date"/>.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">The employee was employed with us from <strong><t t-esc="joining_date"/></strong> to <strong><t t-esc="ending_date"/></strong>. During this period, the employee fulfilled the responsibilities of the role with professionalism, and all dues have been settled.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This relieving letter is issued to confirm the completion of the employee tenure with <t t-esc="company.name"/>. We wish <t t-esc="employee.name"/> the best in future endeavors.</p>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <!-- Green Experience Template -->
+    <record id="green_experience_template" model="ir.ui.view">
+        <field name="name">Green Experience Certificate Template</field>
+        <field name="key">pf_generate_employee_experience_relieving_letter.green_experience_template</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+            <t t-set="background_url" t-value="base_url + '/pf_generate_employee_experience_relieving_letter/static/src/img/green.png'"/>
+            
+            <div class="certificate green"
+                 t-att-style="'display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; margin: 0; padding: 0; background-image: url(' + background_url + '); background-size: 100% 100%; background-repeat: no-repeat; font-family: Times New Roman;'">
+                
+                <div style="max-width: 80%; padding: 20px 40px 40px 40px; border-radius: 16px;">
+                    <h2 style="margin-bottom: 15px; font-size: 28px;"><t t-esc="company.name"/></h2>
+                    <h1 style="margin-bottom: 20px; font-size: 36px;">Employee Experience Letter</h1>
+                    <p style="margin-bottom: 10px; font-size: 20px;">Letter Issue Date: <t t-esc="current_date"/></p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This is to certify that <strong><t t-esc="employee.name"/></strong>, who was working with us as <t t-esc="employee.job_id.name"/>, has been employed with <strong><t t-esc="company.name"/></strong> from <strong><t t-esc="joining_date"/></strong> to <strong><t t-esc="ending_date"/></strong> during this period. <t t-esc="employee.name"/> has exhibited exceptional skills and dedication in her role.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">We found Employee to be a highly motivated and responsible professional. Consistently meeting and often exceeding expectations. <t t-esc="employee.name"/> demonstrated teamwork, Effective communication skills, and a strong commitment to achieving organizational goals.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This experience letter is issued to acknowledge the valuable contributions made by Employee during the tenure with <t t-esc="company.name"/>. We wish <t t-esc="employee.name"/> the best for future endeavors.</p>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <!-- Green Relieving Template -->
+    <record id="green_relieving_template" model="ir.ui.view">
+        <field name="name">Green Relieving Certificate Template</field>
+        <field name="key">pf_generate_employee_experience_relieving_letter.green_relieving_template</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+            <t t-set="background_url" t-value="base_url + '/pf_generate_employee_experience_relieving_letter/static/src/img/green.png'"/>
+            
+            <div class="certificate green"
+                 t-att-style="'display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; margin: 0; padding: 0; background-image: url(' + background_url + '); background-size: 100% 100%; background-repeat: no-repeat; font-family: Times New Roman;'">
+                
+                <div style="max-width: 80%; padding: 20px 40px 40px 40px; border-radius: 16px;">
+                    <h2 style="margin-bottom: 15px; font-size: 28px;"><t t-esc="company.name"/></h2>
+                    <h1 style="margin-bottom: 20px; font-size: 36px;">Relieving Certificate</h1>
+                    <p style="margin-bottom: 10px; font-size: 20px;">Letter Issue Date: <t t-esc="current_date"/></p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This is to certify that <strong><t t-esc="employee.name"/></strong>, who was working with us as <t t-esc="employee.job_id.name"/>, has been relieved from duties at <strong><t t-esc="company.name"/></strong> effective <t t-esc="ending_date"/>.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">The employee was employed with us from <strong><t t-esc="joining_date"/></strong> to <strong><t t-esc="ending_date"/></strong>. During this period, the employee fulfilled the responsibilities of the role with professionalism, and all dues have been settled.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This relieving letter is issued to confirm the completion of the employee tenure with <t t-esc="company.name"/>. We wish <t t-esc="employee.name"/> the best in future endeavors.</p>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <!-- Black and Gray Experience Template -->
+    <record id="black_gray_experience_template" model="ir.ui.view">
+        <field name="name">Black and Gray Experience Certificate Template</field>
+        <field name="key">pf_generate_employee_experience_relieving_letter.black_gray_experience_template</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+            <t t-set="background_url" t-value="base_url + '/pf_generate_employee_experience_relieving_letter/static/src/img/black_and_gray.png'"/>
+            
+            <div class="certificate black-gray"
+                 t-att-style="'display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; margin: 0; padding: 0; background-image: url(' + background_url + '); background-size: cover; background-repeat: no-repeat; font-family: Times New Roman;'">
+                
+                <div style="max-width: 80%; padding: 40px; border-radius: 16px;">
+                    <h2 style="margin-bottom: 15px; font-size: 28px;"><t t-esc="company.name"/></h2>
+                    <h1 style="margin-bottom: 20px; font-size: 36px;">Employee Experience Letter</h1>
+                    <p style="margin-bottom: 10px; font-size: 20px;">Letter Issue Date: <t t-esc="current_date"/></p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This is to certify that <strong><t t-esc="employee.name"/></strong>, who was working with us as <t t-esc="employee.job_id.name"/>, has been employed with <strong><t t-esc="company.name"/></strong> from <strong><t t-esc="joining_date"/></strong> to <strong><t t-esc="ending_date"/></strong> during this period. <t t-esc="employee.name"/> has exhibited exceptional skills and dedication in her role.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">We found Employee to be a highly motivated and responsible professional. Consistently meeting and often exceeding expectations. <t t-esc="employee.name"/> demonstrated teamwork, Effective communication skills, and a strong commitment to achieving organizational goals.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This experience letter is issued to acknowledge the valuable contributions made by Employee during the tenure with <t t-esc="company.name"/>. We wish <t t-esc="employee.name"/> the best for future endeavors.</p>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <!-- Black and Gray Relieving Template -->
+    <record id="black_gray_relieving_template" model="ir.ui.view">
+        <field name="name">Black and Gray Relieving Certificate Template</field>
+        <field name="key">pf_generate_employee_experience_relieving_letter.black_gray_relieving_template</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+            <t t-set="background_url" t-value="base_url + '/pf_generate_employee_experience_relieving_letter/static/src/img/black_and_gray.png'"/>
+            
+            <div class="certificate black-gray"
+                 t-att-style="'display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; margin: 0; padding: 0; background-image: url(' + background_url + '); background-size: cover; background-repeat: no-repeat; font-family: Times New Roman;'">
+                
+                <div style="max-width: 80%; padding: 40px; border-radius: 16px;">
+                    <h2 style="margin-bottom: 15px; font-size: 28px;"><t t-esc="company.name"/></h2>
+                    <h1 style="margin-bottom: 20px; font-size: 36px;">Relieving Certificate</h1>
+                    <p style="margin-bottom: 10px; font-size: 20px;">Letter Issue Date: <t t-esc="current_date"/></p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This is to certify that <strong><t t-esc="employee.name"/></strong>, who was working with us as <t t-esc="employee.job_id.name"/>, has been relieved from duties at <strong><t t-esc="company.name"/></strong> effective <t t-esc="ending_date"/>.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">The employee was employed with us from <strong><t t-esc="joining_date"/></strong> to <strong><t t-esc="ending_date"/></strong>. During this period, the employee fulfilled the responsibilities of the role with professionalism, and all dues have been settled.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This relieving letter is issued to confirm the completion of the employee tenure with <t t-esc="company.name"/>. We wish <t t-esc="employee.name"/> the best in future endeavors.</p>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <!-- Gold Experience Template -->
+    <record id="gold_experience_template" model="ir.ui.view">
+        <field name="name">Golden Experience Certificate Template</field>
+        <field name="key">pf_generate_employee_experience_relieving_letter.gold_experience_template</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+            <t t-set="background_url" t-value="base_url + '/pf_generate_employee_experience_relieving_letter/static/src/img/golden.png'"/>
+            
+            <div class="certificate golden"
+                 t-att-style="'display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; margin: 0; padding: 0; background-image: url(' + background_url + '); background-size: 100% 100%; background-repeat: no-repeat; font-family: Times New Roman;'">
+                
+                <div style="max-width: 80%; padding: 20px 40px 40px 40px; border-radius: 16px;">
+                    <h2 style="margin-bottom: 15px; font-size: 28px;"><t t-esc="company.name"/></h2>
+                    <h1 style="margin-bottom: 20px; font-size: 36px;">Employee Experience Letter</h1>
+                    <p style="margin-bottom: 10px; font-size: 20px;">Letter Issue Date: <t t-esc="current_date"/></p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This is to certify that <strong><t t-esc="employee.name"/></strong>, who was working with us as <t t-esc="employee.job_id.name"/>, has been employed with <strong><t t-esc="company.name"/></strong> from <strong><t t-esc="joining_date"/></strong> to <strong><t t-esc="ending_date"/></strong> during this period. <t t-esc="employee.name"/> has exhibited exceptional skills and dedication in her role.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">We found Employee to be a highly motivated and responsible professional. Consistently meeting and often exceeding expectations. <t t-esc="employee.name"/> demonstrated teamwork, Effective communication skills, and a strong commitment to achieving organizational goals.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This experience letter is issued to acknowledge the valuable contributions made by Employee during the tenure with <t t-esc="company.name"/>. We wish <t t-esc="employee.name"/> the best for future endeavors.</p>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <!-- Gold Relieving Template -->
+    <record id="gold_relieving_template" model="ir.ui.view">
+        <field name="name">Golden Relieving Certificate Template</field>
+        <field name="key">pf_generate_employee_experience_relieving_letter.gold_relieving_template</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+            <t t-set="background_url" t-value="base_url + '/pf_generate_employee_experience_relieving_letter/static/src/img/golden.png'"/>
+            
+            <div class="certificate golden"
+                 t-att-style="'display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; margin: 0; padding: 0; background-image: url(' + background_url + '); background-size: 100% 100%; background-repeat: no-repeat; font-family: Times New Roman;'">
+                
+                <div style="max-width: 80%; padding: 20px 40px 40px 40px; border-radius: 16px;">
+                    <h2 style="margin-bottom: 15px; font-size: 28px;"><t t-esc="company.name"/></h2>
+                    <h1 style="margin-bottom: 20px; font-size: 36px;">Relieving Certificate</h1>
+                    <p style="margin-bottom: 10px; font-size: 20px;">Letter Issue Date: <t t-esc="current_date"/></p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This is to certify that <strong><t t-esc="employee.name"/></strong>, who was working with us as <t t-esc="employee.job_id.name"/>, has been relieved from duties at <strong><t t-esc="company.name"/></strong> effective <t t-esc="ending_date"/>.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">The employee was employed with us from <strong><t t-esc="joining_date"/></strong> to <strong><t t-esc="ending_date"/></strong>. During this period, the employee fulfilled the responsibilities of the role with professionalism, and all dues have been settled.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This relieving letter is issued to confirm the completion of the employee tenure with <t t-esc="company.name"/>. We wish <t t-esc="employee.name"/> the best in future endeavors.</p>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <!-- Blue and White Experience Template -->
+    <record id="blue_white_experience_template" model="ir.ui.view">
+        <field name="name">Blue and White Experience Certificate Template</field>
+        <field name="key">pf_generate_employee_experience_relieving_letter.blue_white_experience_template</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+            <t t-set="background_url" t-value="base_url + '/pf_generate_employee_experience_relieving_letter/static/src/img/blue_and_white.png'"/>
+            
+            <div class="certificate blue-white"
+                 t-att-style="'display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; margin: 0; padding: 0; background-image: url(' + background_url + '); background-size: 100% 100%; background-repeat: no-repeat; font-family: Times New Roman;'">
+                
+                <div style="max-width: 80%; padding: 40px; border-radius: 16px;">
+                    <h2 style="margin-bottom: 15px; font-size: 28px;"><t t-esc="company.name"/></h2>
+                    <h1 style="margin-bottom: 20px; font-size: 36px;">Employee Experience Letter</h1>
+                    <p style="margin-bottom: 10px; font-size: 20px;">Letter Issue Date: <t t-esc="current_date"/></p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This is to certify that <strong><t t-esc="employee.name"/></strong>, who was working with us as <t t-esc="employee.job_id.name"/>, has been employed with <strong><t t-esc="company.name"/></strong> from <strong><t t-esc="joining_date"/></strong> to <strong><t t-esc="ending_date"/></strong> during this period. <t t-esc="employee.name"/> has exhibited exceptional skills and dedication in her role.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">We found Employee to be a highly motivated and responsible professional. Consistently meeting and often exceeding expectations. <t t-esc="employee.name"/> demonstrated teamwork, Effective communication skills, and a strong commitment to achieving organizational goals.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This experience letter is issued to acknowledge the valuable contributions made by Employee during the tenure with <t t-esc="company.name"/>. We wish <t t-esc="employee.name"/> the best for future endeavors.</p>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <!-- Blue and White Relieving Template -->
+    <record id="blue_white_relieving_template" model="ir.ui.view">
+        <field name="name">Blue and White Relieving Certificate Template</field>
+        <field name="key">pf_generate_employee_experience_relieving_letter.blue_white_relieving_template</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+            <t t-set="background_url" t-value="base_url + '/pf_generate_employee_experience_relieving_letter/static/src/img/blue_and_white.png'"/>
+            
+            <div class="certificate blue-white"
+                 t-att-style="'display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; margin: 0; padding: 0; background-image: url(' + background_url + '); background-size: 100% 100%; background-repeat: no-repeat; font-family: Times New Roman;'">
+                
+                <div style="max-width: 80%; padding: 40px; border-radius: 16px;">
+                    <h2 style="margin-bottom: 15px; font-size: 28px;"><t t-esc="company.name"/></h2>
+                    <h1 style="margin-bottom: 20px; font-size: 36px;">Relieving Certificate</h1>
+                    <p style="margin-bottom: 10px; font-size: 20px;">Letter Issue Date: <t t-esc="current_date"/></p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This is to certify that <strong><t t-esc="employee.name"/></strong>, who was working with us as <t t-esc="employee.job_id.name"/>, has been relieved from duties at <strong><t t-esc="company.name"/></strong> effective <t t-esc="ending_date"/>.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">The employee was employed with us from <strong><t t-esc="joining_date"/></strong> to <strong><t t-esc="ending_date"/></strong>. During this period, the employee fulfilled the responsibilities of the role with professionalism, and all dues have been settled.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This relieving letter is issued to confirm the completion of the employee tenure with <t t-esc="company.name"/>. We wish <t t-esc="employee.name"/> the best in future endeavors.</p>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <!-- Dark Blue and White Experience Template -->
+    <record id="darkblue_white_experience_template" model="ir.ui.view">
+        <field name="name">Dark Blue and White Experience Certificate Template</field>
+        <field name="key">pf_generate_employee_experience_relieving_letter.darkblue_white_experience_template</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+            <t t-set="background_url" t-value="base_url + '/pf_generate_employee_experience_relieving_letter/static/src/img/dark_blue_and_white.png'"/>
+            
+            <div class="certificate darkblue-white"
+                 t-att-style="'display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; margin: 0; padding: 0; background-image: url(' + background_url + '); background-size: 100% 100%; background-repeat: no-repeat; font-family: Times New Roman;'">
+                
+                <div style="max-width: 80%; padding: 40px; border-radius: 16px;">
+                    <h2 style="margin-bottom: 15px; font-size: 28px;"><t t-esc="company.name"/></h2>
+                    <h1 style="margin-bottom: 20px; font-size: 36px;">Employee Experience Letter</h1>
+                    <p style="margin-bottom: 10px; font-size: 20px;">Letter Issue Date: <t t-esc="current_date"/></p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This is to certify that <strong><t t-esc="employee.name"/></strong>, who was working with us as <t t-esc="employee.job_id.name"/>, has been employed with <strong><t t-esc="company.name"/></strong> from <strong><t t-esc="joining_date"/></strong> to <strong><t t-esc="ending_date"/></strong> during this period. <t t-esc="employee.name"/> has exhibited exceptional skills and dedication in her role.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">We found Employee to be a highly motivated and responsible professional. Consistently meeting and often exceeding expectations. <t t-esc="employee.name"/> demonstrated teamwork, Effective communication skills, and a strong commitment to achieving organizational goals.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This experience letter is issued to acknowledge the valuable contributions made by Employee during the tenure with <t t-esc="company.name"/>. We wish <t t-esc="employee.name"/> the best for future endeavors.</p>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <!-- Dark Blue and White Relieving Template -->
+    <record id="darkblue_white_relieving_template" model="ir.ui.view">
+        <field name="name">Dark Blue and White Relieving Certificate Template</field>
+        <field name="key">pf_generate_employee_experience_relieving_letter.darkblue_white_relieving_template</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+            <t t-set="background_url" t-value="base_url + '/pf_generate_employee_experience_relieving_letter/static/src/img/dark_blue_and_white.png'"/>
+            
+            <div class="certificate darkblue"
+                 t-att-style="'display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; margin: 0; padding: 0; background-image: url(' + background_url + '); background-size: 100% 100%; background-repeat: no-repeat; font-family: Times New Roman;'">
+                
+                <div style="max-width: 80%; padding: 40px; border-radius: 16px;">
+                    <h2 style="margin-bottom: 15px; font-size: 28px;"><t t-esc="company.name"/></h2>
+                    <h1 style="margin-bottom: 20px; font-size: 36px;">Relieving Certificate</h1>
+                    <p style="margin-bottom: 10px; font-size: 20px;">Letter Issue Date: <t t-esc="current_date"/></p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This is to certify that <strong><t t-esc="employee.name"/></strong>, who was working with us as <t t-esc="employee.job_id.name"/>, has been relieved from duties at <strong><t t-esc="company.name"/></strong> effective <t t-esc="ending_date"/>.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">The employee was employed with us from <strong><t t-esc="joining_date"/></strong> to <strong><t t-esc="ending_date"/></strong>. During this period, the employee fulfilled the responsibilities of the role with professionalism, and all dues have been settled.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This relieving letter is issued to confirm the completion of the employee tenure with <t t-esc="company.name"/>. We wish <t t-esc="employee.name"/> the best in future endeavors.</p>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <!-- Gold and Purple Experience Template -->
+    <record id="gold_purple_experience_template" model="ir.ui.view">
+        <field name="name">Gold and Purple Experience Certificate Template</field>
+        <field name="key">pf_generate_employee_experience_relieving_letter.gold_purple_experience_template</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+            <t t-set="background_url" t-value="base_url + '/pf_generate_employee_experience_relieving_letter/static/src/img/purple.png'"/>
+            
+            <div class="certificate gold-purple"
+                 t-att-style="'display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; margin: 0; padding: 0; background-image: url(' + background_url + '); background-size: cover; background-repeat: no-repeat; font-family: Times New Roman;'">
+                
+                <div style="max-width: 80%; padding: 40px; border-radius: 16px;">
+                    <h2 style="margin-bottom: 15px; font-size: 28px;"><t t-esc="company.name"/></h2>
+                    <h1 style="margin-bottom: 20px; font-size: 36px;">Employee Experience Letter</h1>
+                    <p style="margin-bottom: 10px; font-size: 20px;">Letter Issue Date: <t t-esc="current_date"/></p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This is to certify that <strong><t t-esc="employee.name"/></strong>, who was working with us as <t t-esc="employee.job_id.name"/>, has been employed with <strong><t t-esc="company.name"/></strong> from <strong><t t-esc="joining_date"/></strong> to <strong><t t-esc="ending_date"/></strong> during this period. <t t-esc="employee.name"/> has exhibited exceptional skills and dedication in her role.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">We found Employee to be a highly motivated and responsible professional. Consistently meeting and often exceeding expectations. <t t-esc="employee.name"/> demonstrated teamwork, Effective communication skills, and a strong commitment to achieving organizational goals.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This experience letter is issued to acknowledge the valuable contributions made by Employee during the tenure with <t t-esc="company.name"/>. We wish <t t-esc="employee.name"/> the best for future endeavors.</p>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <!-- Gold and Purple Relieving Template -->
+    <record id="gold_purple_relieving_template" model="ir.ui.view">
+        <field name="name">Gold and Purple Relieving Certificate Template</field>
+        <field name="key">pf_generate_employee_experience_relieving_letter.gold_purple_relieving_template</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+            <t t-set="background_url" t-value="base_url + '/pf_generate_employee_experience_relieving_letter/static/src/img/purple.png'"/>
+            
+            <div class="certificate gold-purple"
+                 t-att-style="'display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; margin: 0; padding: 0; background-image: url(' + background_url + '); background-size: cover; background-repeat: no-repeat; font-family: Times New Roman;'">
+                
+                <div style="max-width: 80%; padding: 40px; border-radius: 16px;">
+                    <h2 style="margin-bottom: 15px; font-size: 28px;"><t t-esc="company.name"/></h2>
+                    <h1 style="margin-bottom: 20px; font-size: 36px;">Relieving Certificate</h1>
+                    <p style="margin-bottom: 10px; font-size: 20px;">Letter Issue Date: <t t-esc="current_date"/></p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This is to certify that <strong><t t-esc="employee.name"/></strong>, who was working with us as <t t-esc="employee.job_id.name"/>, has been relieved from duties at <strong><t t-esc="company.name"/></strong> effective <t t-esc="ending_date"/>.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">The employee was employed with us from <strong><t t-esc="joining_date"/></strong> to <strong><t t-esc="ending_date"/></strong>. During this period, the employee fulfilled the responsibilities of the role with professionalism, and all dues have been settled.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This relieving letter is issued to confirm the completion of the employee tenure with <t t-esc="company.name"/>. We wish <t t-esc="employee.name"/> the best in future endeavors.</p>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <!-- Gold and Blue Experience Template -->
+    <record id="gold_blue_experience_template" model="ir.ui.view">
+        <field name="name">Gold and Blue Experience Certificate Template</field>
+        <field name="key">pf_generate_employee_experience_relieving_letter.gold_blue_experience_template</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+            <t t-set="background_url" t-value="base_url + '/pf_generate_employee_experience_relieving_letter/static/src/img/gold_and_blue.png'"/>
+            
+            <div class="certificate gold-blue"
+                 t-att-style="'display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; margin: 0; padding: 0; background-image: url(' + background_url + '); background-size: cover; background-repeat: no-repeat; font-family: Times New Roman;'">
+                
+                <div style="max-width: 80%; padding: 40px; border-radius: 16px;">
+                    <h2 style="margin-bottom: 15px; font-size: 28px;"><t t-esc="company.name"/></h2>
+                    <h1 style="margin-bottom: 20px; font-size: 36px;">Employee Experience Letter</h1>
+                    <p style="margin-bottom: 10px; font-size: 20px;">Letter Issue Date: <t t-esc="current_date"/></p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This is to certify that <strong><t t-esc="employee.name"/></strong>, who was working with us as <t t-esc="employee.job_id.name"/>, has been employed with <strong><t t-esc="company.name"/></strong> from <strong><t t-esc="joining_date"/></strong> to <strong><t t-esc="ending_date"/></strong> during this period. <t t-esc="employee.name"/> has exhibited exceptional skills and dedication in her role.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">We found Employee to be a highly motivated and responsible professional. Consistently meeting and often exceeding expectations. <t t-esc="employee.name"/> demonstrated teamwork, Effective communication skills, and a strong commitment to achieving organizational goals.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This experience letter is issued to acknowledge the valuable contributions made by Employee during the tenure with <t t-esc="company.name"/>. We wish <t t-esc="employee.name"/> the best for future endeavors.</p>
+                </div>
+            </div>
+        </field>
+    </record>
+
+    <!-- Gold and Blue Relieving Template -->
+    <record id="gold_blue_relieving_template" model="ir.ui.view">
+        <field name="name">Gold and Blue Relieving Certificate Template</field>
+        <field name="key">pf_generate_employee_experience_relieving_letter.gold_blue_relieving_template</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-set="base_url" t-value="request.env['ir.config_parameter'].sudo().get_param('web.base.url')"/>
+            <t t-set="background_url" t-value="base_url + '/pf_generate_employee_experience_relieving_letter/static/src/img/gold_and_blue.png'"/>
+            
+            <div class="certificate gold-blue"
+                 t-att-style="'display: flex; align-items: center; justify-content: center; text-align: center; height: 100%; width: 100%; margin: 0; padding: 0; background-image: url(' + background_url + '); background-size: cover; background-repeat: no-repeat; font-family: Times New Roman;'">
+                
+                <div style="max-width: 80%; padding: 40px; border-radius: 16px;">
+                    <h2 style="margin-bottom: 15px; font-size: 28px;"><t t-esc="company.name"/></h2>
+                    <h1 style="margin-bottom: 20px; font-size: 36px;">Relieving Certificate</h1>
+                    <p style="margin-bottom: 10px; font-size: 20px;">Letter Issue Date: <t t-esc="current_date"/></p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This is to certify that <strong><t t-esc="employee.name"/></strong>, who was working with us as <t t-esc="employee.job_id.name"/>, has been relieved from duties at <strong><t t-esc="company.name"/></strong> effective <t t-esc="ending_date"/>.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">The employee was employed with us from <strong><t t-esc="joining_date"/></strong> to <strong><t t-esc="ending_date"/></strong>. During this period, the employee fulfilled the responsibilities of the role with professionalism, and all dues have been settled.</p>
+                    <p style="margin-bottom: 10px; font-size: 20px;">This relieving letter is issued to confirm the completion of the employee tenure with <t t-esc="company.name"/>. We wish <t t-esc="employee.name"/> the best in future endeavors.</p>
+                </div>
+            </div>
+        </field>
+    </record>
+</odoo>

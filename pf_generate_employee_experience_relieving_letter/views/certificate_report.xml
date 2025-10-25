@@ -1,0 +1,170 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_experience_certificate" model="ir.actions.report">
+        <field name="name">Experience Certificate</field>
+        <field name="model">hr.employee</field>
+        <field name="report_name">pf_generate_employee_experience_relieving_letter.experience_certificate_report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="print_report_name">'Experience Certificate - ' + object.name</field>
+        <field name="paperformat_id" ref="pf_generate_employee_experience_relieving_letter.certificate_paper_format"/>
+    </record>
+    
+    <record id="experience_certificate_report" model="ir.ui.view">
+        <field name="name">Experience Certificate Report</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-call="web.html_container">
+                <t t-if="not docs">
+                    <div>Error: No employee data provided.</div>
+                </t>
+                <t t-else="">
+                    <t t-set="debug_docs" t-value="[(e.id, e.name) for e in docs]"/>
+                    <t t-foreach="docs.sudo()" t-as="employee">
+                        <t t-set="company" t-value="employee.company_id or env.company"/>
+                        <t t-set="template" t-value="env['ir.config_parameter'].sudo().get_param('pf_generate_employee_experience_relieving_letter.select_template_experience', 'blue_gold')"/>
+                        <t t-if="not template">
+                            <div>Error: No template selected for Experience Certificate. Please configure a template in Settings.</div>
+                        </t>
+                        <t t-else="">
+                            <t t-call="{{ 'pf_generate_employee_experience_relieving_letter.' + template + '_experience_template' }}">
+                                <t t-set="current_date" t-value="env.context.get('certificate_issue_date', '')"/>
+                                <t t-set="joining_date" t-value="env.context.get('wizard_joining_date', employee.joining_date)"/>
+                                <t t-set="ending_date" t-value="env.context.get('wizard_ending_date', employee.leaving_date)"/>
+                                <t t-set="job_title" t-value="employee.job_id.name or 'N/A'"/>
+                                <t t-set="company_name" t-value="company.name"/>
+                            </t>
+                        </t>
+                    </t>
+                </t>
+            </t>
+        </field>
+    </record>
+
+    <record id="action_report_relieving_certificate" model="ir.actions.report">
+        <field name="name">Relieving Certificate</field>
+        <field name="model">hr.employee</field>
+        <field name="report_name">pf_generate_employee_experience_relieving_letter.relieving_certificate_report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="print_report_name">'Relieving Certificate - ' + object.name</field>
+        <field name="paperformat_id" ref="pf_generate_employee_experience_relieving_letter.certificate_paper_format"/>
+    </record>
+
+    <record id="relieving_certificate_report" model="ir.ui.view">
+        <field name="name">Relieving Certificate Report</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-call="web.html_container">
+                <t t-if="not docs">
+                    <div>Error: No employee data provided.</div>
+                </t>
+                <t t-else="">
+                    <t t-set="debug_docs" t-value="[(e.id, e.name) for e in docs]"/>
+                    <t t-foreach="docs.sudo()" t-as="employee">
+                        <t t-set="company" t-value="employee.company_id or env.company"/>
+                        <t t-set="template" t-value="env['ir.config_parameter'].sudo().get_param('pf_generate_employee_experience_relieving_letter.select_template_relieving', 'blue_gold')"/>
+                        <t t-if="not template">
+                            <div>Error: No template selected for Relieving Certificate. Please configure a template in Settings.</div>
+                        </t>
+                        <t t-else="">
+                            <t t-call="{{ 'pf_generate_employee_experience_relieving_letter.' + template + '_relieving_template' }}">
+                                <t t-set="current_date" t-value="env.context.get('certificate_issue_date', '')"/>
+                                <t t-set="joining_date" t-value="env.context.get('wizard_joining_date', employee.joining_date)"/>
+                                <t t-set="ending_date" t-value="env.context.get('wizard_ending_date', employee.leaving_date)"/>
+                                <t t-set="job_title" t-value="employee.job_id.name or 'N/A'"/>
+                                <t t-set="company_name" t-value="company.name"/>
+                            </t>
+                        </t>
+                    </t>
+                </t>
+            </t>
+        </field>
+    </record>
+</odoo>
+
+
+
+<!-- <?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="action_report_experience_certificate" model="ir.actions.report">
+        <field name="name">Experience Certificate</field>
+        <field name="model">hr.employee</field>
+        <field name="report_name">pf_generate_employee_experience_relieving_letter.experience_certificate_report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="print_report_name">'Experience Certificate - ' + object.name</field>
+    </record>
+    
+    <record id="experience_certificate_report" model="ir.ui.view">
+        <field name="name">Experience Certificate Report</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-call="web.html_container">
+                <t t-if="not docs">
+                    <div>Error: No employee data provided.</div>
+                </t>
+                <t t-else="">
+                    <t t-set="debug_docs" t-value="[(e.id, e.name) for e in docs]"/>
+                    <t t-foreach="docs.sudo()" t-as="employee">
+                        <t t-set="company" t-value="employee.company_id or env.company"/>
+                        <t t-set="template" t-value="env['ir.config_parameter'].sudo().get_param('pf_generate_employee_experience_relieving_letter.select_template', 'blue_gold')"/>
+                        <t t-if="not template">
+                            <div>Error: No template selected. Please configure a template in Settings.</div>
+                        </t>
+                        <t t-else="">
+                            <t t-call="{{ 'pf_generate_employee_experience_relieving_letter.' + template + '_template' }}">
+                                <t t-set="certificate_type" t-value="'experience'"/>
+                                <t t-set="current_date" t-value="env.context.get('certificate_issue_date', '')"/>
+                                <t t-set="joining_date" t-value="env.context.get('wizard_joining_date', employee.joining_date)"/>
+                                <t t-set="ending_date" t-value="env.context.get('wizard_ending_date', employee.leaving_date)"/>
+                                <t t-set="job_title" t-value="employee.job_id.name or 'N/A'"/>
+                                <t t-set="company_name" t-value="company.name"/>
+                            </t>
+                        </t>
+                    </t>
+                </t>
+            </t>
+        </field>
+    </record>
+
+    <record id="action_report_relieving_certificate" model="ir.actions.report">
+        <field name="name">Relieving Certificate</field>
+        <field name="model">hr.employee</field>
+        <field name="report_name">pf_generate_employee_experience_relieving_letter.relieving_certificate_report</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="print_report_name">'Relieving Certificate - ' + object.name</field>
+        <field name="paperformat_id" ref="pf_generate_employee_experience_relieving_letter.certificate_paper_format"/>
+    </record>
+    
+
+
+    <record id="relieving_certificate_report" model="ir.ui.view">
+        <field name="name">Relieving Certificate Report</field>
+        <field name="type">qweb</field>
+        <field name="arch" type="xml">
+            <t t-call="web.html_container">
+                <t t-if="not docs">
+                    <div>Error: No employee data provided.</div>
+                </t>
+                <t t-else="">
+                    <t t-set="debug_docs" t-value="[(e.id, e.name) for e in docs]"/>
+                    <t t-foreach="docs.sudo()" t-as="employee">
+                        <t t-set="company" t-value="employee.company_id or env.company"/>
+                        <t t-set="template" t-value="env['ir.config_parameter'].sudo().get_param('pf_generate_employee_experience_relieving_letter.select_template', 'blue_gold')"/>
+                        <t t-if="not template">
+                            <div>Error: No template selected. Please configure a template in Settings.</div>
+                        </t>
+                        <t t-else="">
+                            <t t-call="{{ 'pf_generate_employee_experience_relieving_letter.' + template + '_template' }}">
+                                <t t-set="certificate_type" t-value="'relieving'"/>
+                                <t t-set="current_date" t-value="env.context.get('certificate_issue_date', '')"/>
+                                <t t-set="joining_date" t-value="env.context.get('wizard_joining_date', employee.joining_date)"/>
+                                <t t-set="ending_date" t-value="env.context.get('wizard_ending_date', employee.leaving_date)"/>
+                                <t t-set="job_title" t-value="employee.job_id.name or 'N/A'"/>
+                                <t t-set="company_name" t-value="company.name"/>
+                            </t>
+                        </t>
+                    </t>
+                </t>
+            </t>
+        </field>
+    </record>
+</odoo> -->

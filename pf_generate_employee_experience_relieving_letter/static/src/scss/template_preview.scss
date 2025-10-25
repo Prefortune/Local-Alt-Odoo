@@ -1,0 +1,15 @@
+.oe_template_preview {
+    width: 1408px;
+    height: 1000px; /* Increased height */
+    border: 1px solid #ccc;
+    overflow: hidden;
+    background-color: #ffffff;
+    box-sizing: border-box;
+    margin: 10px auto;
+}
+
+.oe_template_preview > div {
+    width: 1408px;
+    height: 1000px;
+}
+

@@ -1,0 +1,91 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="res_config_settings_view_form_hr_generate" model="ir.ui.view">
+        <field name="name">res.config.settings.views.form.hr.generate</field>
+        <field name="model" >res.config.settings</field>
+        <field name="priority" eval="90" />
+        <field name="inherit_id" ref="hr.res_config_settings_view_form" />
+        <field name="arch" type="xml" >
+            <xpath expr="//app[@data-string='Employees']" position="inside">
+                <block title="Employee Experience / Reliving Letter Content" name="experience_reliving">
+                    <setting id="generate_experience_letter" >
+                        <group>
+                            <field name="select_template_experience" string="Experience Template"/>
+                           
+                          
+                        </group>
+                            
+                    </setting>
+                    
+                    <div class="row mt16">
+                        <div>
+                            <h3>Experience Certificate</h3>
+                            <div class="mt8">
+                                <label for="template_code_experience" string="Experience Template Code"/>
+                                <field name="template_code_experience" widget="ace" options="{'mode': 'xml'}"/>
+                            </div>
+                        </div>
+                        <div class="col-12">
+                            <label for="template_preview_experience" string="Live Preview"/>
+                            <field name="template_preview_experience" widget="html" readonly="1" class="oe_template_preview"/>
+                        </div>
+                    </div>
+
+                    <setting id="generate_reliving_letter" >
+                        <group>
+                          
+                            <field name="select_template_relieving" string="Relieving Template"/>
+                          
+                        </group>
+                            
+                    </setting>
+                    <div class="row mt16">
+                        
+                            <h3>Relieving Certificate</h3>
+                            <div class="mt8">
+                                <label for="template_code_relieving" string="Relieving Template Code"/>
+                                <field name="template_code_relieving" widget="ace" options="{'mode': 'xml'}"/>
+                            </div>
+                            <div class="mt8">
+                                <label for="template_preview_relieving" string="Relieving Live Preview"/>
+                                <field name="template_preview_relieving" widget="html" readonly="1" class="oe_template_preview"/>
+                            </div>
+                    </div>
+                </block>                
+            </xpath>
+            </field>
+    </record>
+</odoo>
+
+<!-- <?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <record id="res_config_settings_view_form_hr_generate" model="ir.ui.view">
+        <field name="name">res.config.settings.views.form.hr.generate</field>
+        <field name="model" >res.config.settings</field>
+        <field name="priority" eval="90" />
+        <field name="inherit_id" ref="hr.res_config_settings_view_form" />
+        <field name="arch" type="xml" >
+            <xpath expr="//app[@data-string='Employees']" position="inside">
+                <block title="Employee Experience / Reliving Letter Content" name="experience_reliving">
+                    <setting id="generate_experience_reliving_letter" >
+                        <group>
+                            <field name="select_template" />
+                          
+                        </group>
+                            
+                    </setting>
+                    <div class="row mt16">
+                        <div >
+                            <label for="template_code" string="Template Code Preview"/>
+                            <field name="template_code" widget="ace" options="{'mode': 'xml'}" />
+                        </div>
+                        <div >
+                            <label for="template_preview" string="Live Preview"/>
+                            <field name="template_preview" widget="html" readonly="1" class="oe_template_preview"/>
+                        </div>
+                    </div>
+                </block>                
+            </xpath>
+            </field>
+    </record>
+</odoo> -->

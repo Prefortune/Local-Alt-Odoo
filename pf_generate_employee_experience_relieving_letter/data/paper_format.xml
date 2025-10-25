@@ -1,0 +1,16 @@
+<odoo>
+    
+    <record id="certificate_paper_format" model="report.paperformat">
+        <field name="name">Certificate Format</field>
+        <field name="default" eval="False"/>
+        <field name="format">A4</field>  <!-- Use only the format -->
+        <field name="orientation">Landscape</field>
+        <field name="margin_top">0</field>
+        <field name="margin_bottom">0</field>
+        <field name="margin_left">0</field>
+        <field name="margin_right">0</field>
+        <field name="header_line" eval="False"/>
+        <field name="report_ids" eval="[(4, ref('pf_generate_employee_experience_relieving_letter.action_report_experience_certificate')),
+                                        (4, ref('pf_generate_employee_experience_relieving_letter.action_report_relieving_certificate'))]"/>
+    </record>  
+</odoo>
