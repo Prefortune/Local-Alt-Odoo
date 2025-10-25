@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="cardcom_pos_redirect_form" name="CardCom POS Redirect Form">
+        <form action="/cardcom/pos/payment/process" method="post">
+            <input name="redirect_url" t-att-value="redirect_url"/>
+        </form>
+    </template>
+
+    <template id="cardcom_pos_iframe_form">
+        <t t-call="website.layout">
+            <div class="container">
+                <iframe t-att-src="iframe_url"  width="100%" height="1000px" frameborder="0" ></iframe>
+            </div>
+        </t>
+    </template>
+
+    <template id="cardcom_pos_failure">
+        <t t-call="website.layout">
+            <section class="container my-5 text-center">
+                <img src="/web/binary/company_logo" alt="לוגו ג'רמי גורמה" class="img-fluid mb-4" style="max-width: 150px;" />
+                <h1 class="display-4 text-danger">התשלום לא הצליח</h1>
+                <p class="lead mt-3">
+                    לצערנו, לא הצלחנו לעבד את התשלום.
+                </p>
+                <p class="text-muted">
+                    ייתכן ומדובר בתקלה זמנית, או בפרטי תשלום שגויים.
+                    כדאי לבדוק שוב או לנסות כרטיס אחר.
+                </p>
+                <div class="mt-4 d-flex justify-content-center flex-wrap gap-2">
+                    <a href="/shop" class="btn btn-primary">
+                    חזרה לחנות
+                </a>
+                    <a href="/contactus" class="btn btn-outline-primary">
+                    צרו קשר עם שירות לקוחות
+                </a>
+                </div>
+                <p class="fw-bold mt-4">
+                אנחנו כאן לכל שאלה.
+            </p>
+            </section>
+        </t>
+    </template>
+
+</odoo>

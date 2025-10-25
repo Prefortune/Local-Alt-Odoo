@@ -1,0 +1,347 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="wa_login_template" inherit_id="web.login">
+        <xpath expr="//button[@type='submit']" position="after">
+            <style type="text/css">
+                .whatsapp_login{
+                color: #fff;
+                background-color: #25d366;
+                }
+            </style>
+            <div t-attf-class="clearfix oe_login_buttons text-center gap-1 d-grid mb-1 {{'pt-2' if form_small else 'pt-3'}}">
+                <a href="/web/login/wa-otp" class="btn  whatsapp_login" role="button">
+                    <i class="fa fa-whatsapp" aria-hidden="false"></i>
+                    Login/Signup with WhatsApp
+                </a>
+            </div>
+            <div class="justify-content-between mt-2 d-flex small">
+                <a t-if="wa_reset_password_enabled" t-attf-href="/web/whatsapp/reset_password?{{ keep_query() }}">Reset Password using WhatsApp</a>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="wa_otp_login_template" name="Login with OTP">
+        <t t-call="web.login_layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <style type="text/css">
+                    @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&amp;display=swap');
+                    a {
+                    color: #007bff;
+                    text-decoration: none;
+                    }
+                    button:focus,
+                    input:focus {
+                    outline: none;
+                    box-shadow: none;
+                    }
+                    a,
+                    a:hover {
+                    text-decoration: none;
+                    }
+                    .form-area {
+                    background-color: #fff;
+                    box-shadow: 0px 5px 10px rgba(90, 116, 148, 0.3);
+                    padding: 40px;
+                    border-radius: 6px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    }
+                    .form-area .form-inner {
+                    width: 100%;
+                    }
+                    .form-control {
+                    display: block;
+                    width: 100%;
+                    height: auto;
+                    padding: 15px 19px;
+                    font-size: 1rem;
+                    line-height: 1.4;
+                    color: #475F7B;
+                    background-color: #FFF;
+                    border: 1px solid #DFE3E7;
+                    border-radius: .267rem;
+                    -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                    }
+                    .form-control:focus {
+                    color: #475F7B;
+                    background-color: #FFF;
+                    border-color: #5A8DEE;
+                    outline: 0;
+                    box-shadow: 0 3px 8px 0 rgb(0 0 0 / 10%);
+                    }
+                </style>
+
+                <!-- Load intl-tel-input CSS and JS -->
+                <link rel="stylesheet"
+                      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css"/>
+                <script src="/whatsapp_login/static/src/lib/intelinputmin.js"></script>
+                <script src="/whatsapp_login/static/src/lib/utils.js"></script>
+
+                <!-- Send OTP Form -->
+                <form id="otp_login_form" class="oe_login_form" role="form" action="/web/send/wa-otp" method="post">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="form-group">
+                        <input type="tel" id="mobile_code" class="form-control" placeholder="WhatsApp Number"
+                               name="mobile"/>
+                    </div>
+                    <input type="hidden" id="country_code" name="country_code"/>
+                    <p t-if="number_error" class="alert alert-danger" role="alert" style="margin-top: 5px;">
+                        This WhatsApp number is not registered with any of the user
+                    </p>
+                     <p t-if="invalid_mobile" class="alert alert-danger" role="alert" style="margin-top: 5px;">
+                        Please enter the WhatsApp number
+                    </p>
+                    <div t-attf-class="clearfix oe_login_buttons text-center mb-1 {{'pt-2' if form_small else 'pt-3'}}">
+                        <button style="width:100%" type="submit" class="btn btn-primary btn-block">Send WhatsApp OTP</button>
+                    </div>
+                    <div style="margin-top:10px; display:flex;">
+                        <a t-attf-href="/web/login" class="btn btn-link" role="button">Login with Password</a>
+                    </div>
+                    <div style="margin-top:10px; display:flex;">
+                        <a t-attf-href="/web/otp/available" class="btn btn-link" role="button">Already Have WhatsApp OTP</a>
+                    </div>
+                </form>
+
+                <!-- Initialize intl-tel-input -->
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                    var input = document.querySelector("#mobile_code");
+                    var countryCodeInput = document.querySelector("#country_code");
+                    var iti = intlTelInput(input, {
+                    initialCountry: "in",
+                    separateDialCode: true,
+                    utilsScript: "/whatsapp_login/static/src/lib/utils.js"
+                    });
+                    document.querySelector("#otp_login_form").addEventListener("submit", function() {
+                    var dialCode = iti.getSelectedCountryData().dialCode;
+                    countryCodeInput.value = '+' + dialCode; // Store country code in hidden input
+                    });
+                    });
+                </script>
+            </div>
+        </t>
+    </template>
+
+    <template id="wa_otp_verification_template" name="WA OTP Verification">
+        <t t-call="web.login_layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <!-- OTP Verification Form -->
+                <form id="form_otp" class="oe_login_form" role="form"
+                      action="/web/verify/wa-otp" method="post">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="form-group">
+                        <label t-attf-style="margin-bottom:10px" for="otp">OTP</label>
+                        <input type="text" placeholder="OTP" name="otp" id="otp"
+                               t-attf-class="form-control #{'form-control-sm' if form_small else ''}"
+                               required="required"/>
+                        <input t-att-value="login" id="login" type="hidden" name="login"/>
+                    </div>
+                    <p t-if="otp_sent" class="alert alert-success" role="alert" style="margin-top: 5px;">
+                        OTP sent on this WhatsApp number <t t-esc="mobile"/> successfully
+                    </p>
+                    <p t-if="otp_invalid" class="alert alert-danger" role="alert" style="margin-top: 5px;">
+                        WhatsApp OTP Invalid
+                    </p>
+                    <p t-if="otp_expired" class="alert alert-danger" role="alert" style="margin-top: 5px;">
+                        WhatsApp OTP Expired
+                    </p>
+                    <div t-attf-class="clearfix oe_login_buttons text-center mb-1 {{'pt-2' if form_small else 'pt-3'}}">
+                        <button style="width:100%" type="submit" class="btn btn-primary btn-block">Verify WhatsApp OTP</button>
+                    </div>
+                    <t t-if="request.session.get('mobile') or mobile">
+                        <div style="display:flex;">
+                            <a href="#" onclick="resendOTP()" class="btn btn-link" role="button">Resend WhatsApp OTP</a>
+                        </div>
+                    </t>
+                    <t t-if="otp_available">
+                        <div style="display:flex;">
+                            <a href="/web/send/wa-otp" class="btn btn-link" role="button">Resend WhatsApp OTP</a>
+                        </div>
+                    </t>
+                </form>
+                <script>
+                    function resendOTP() {
+                        location.reload();
+                    }
+                </script>
+            </div>
+        </t>
+    </template>
+
+    <template id="wa_auth_totp_otp_verification_template" name="WA Auth OTP Verification">
+        <t t-call="web.login_layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <!-- OTP Verification Form -->
+                <form id="auth_form_otp" class="oe_login_form" role="form"
+                      action="" method="post">
+                    <div class="mb-2 mt-2 text-muted">
+                        To login, enter below the six-digit OTP sent on WhatsApp.
+                    </div>
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="form-group">
+                        <label t-attf-style="margin-bottom:10px" for="otp">OTP</label>
+                        <input type="text" placeholder="OTP" name="otp" id="otp"
+                               t-attf-class="form-control #{'form-control-sm' if form_small else ''}"
+                               required="required"/>
+                        <input t-att-value="login" id="login" type="hidden" name="login"/>
+                    </div>
+                    <p t-if="otp_sent" class="alert alert-success" role="alert" style="margin-top: 5px;">
+                        OTP sent on this WhatsApp number <t t-esc="mobile"/> successfully
+                    </p>
+                    <p t-if="otp_invalid" class="alert alert-danger" role="alert" style="margin-top: 5px;">
+                        WhatsApp OTP Invalid
+                    </p>
+                    <p t-if="otp_expired" class="alert alert-danger" role="alert" style="margin-top: 5px;">
+                        WhatsApp OTP Expired
+                    </p>
+                    <div t-attf-class="clearfix oe_login_buttons text-center mb-1 {{'pt-2' if form_small else 'pt-3'}}">
+                        <button style="width:100%" type="submit" class="btn btn-primary btn-block">Login</button>
+                    </div>
+                    <t t-if="request.session.get('mobile') or mobile">
+                        <div style="display:flex;">
+                            <a href="#" onclick="resendOTP()" class="btn btn-link" role="button">Resend WhatsApp OTP</a>
+                        </div>
+                    </t>
+                    <t t-if="otp_available">
+                        <div style="display:flex;">
+                            <a href="/web/send/wa-otp" class="btn btn-link" role="button">Resend WhatsApp OTP</a>
+                        </div>
+                    </t>
+                </form>
+                <form method="POST" action="/web/session/logout" class="oe_login_form" role="form">
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="w-100 text-center" style="margin-top: -3%; margin-bottom: 3%;">
+                        <button type="submit" class="btn btn-primary btn-block" style="width: 100%">
+                            Cancel
+                        </button>
+                    </div>
+                </form>
+                <script>
+                    function resendOTP() {
+                        location.reload();
+                    }
+                </script>
+            </div>
+        </t>
+    </template>
+
+    <template id="wa_auth_reset_password_template" name="Login with OTP">
+        <t t-call="web.login_layout">
+            <div id="wrap" class="oe_structure oe_empty">
+                <style type="text/css">
+                    @import url('https://fonts.googleapis.com/css?family=Roboto:100,300,400,500,700,900&amp;display=swap');
+                    a {
+                    color: #007bff;
+                    text-decoration: none;
+                    }
+                    button:focus,
+                    input:focus {
+                    outline: none;
+                    box-shadow: none;
+                    }
+                    a,
+                    a:hover {
+                    text-decoration: none;
+                    }
+                    .form-area {
+                    background-color: #fff;
+                    box-shadow: 0px 5px 10px rgba(90, 116, 148, 0.3);
+                    padding: 40px;
+                    border-radius: 6px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    }
+                    .form-area .form-inner {
+                    width: 100%;
+                    }
+                    .form-control {
+                    display: block;
+                    width: 100%;
+                    height: auto;
+                    padding: 15px 19px;
+                    font-size: 1rem;
+                    line-height: 1.4;
+                    color: #475F7B;
+                    background-color: #FFF;
+                    border: 1px solid #DFE3E7;
+                    border-radius: .267rem;
+                    -webkit-transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                    transition: border-color .15s ease-in-out,box-shadow .15s ease-in-out;
+                    }
+                    .form-control:focus {
+                    color: #475F7B;
+                    background-color: #FFF;
+                    border-color: #5A8DEE;
+                    outline: 0;
+                    box-shadow: 0 3px 8px 0 rgb(0 0 0 / 10%);
+                    }
+                </style>
+
+                <!-- Load intl-tel-input CSS and JS -->
+                <link rel="stylesheet"
+                      href="https://cdnjs.cloudflare.com/ajax/libs/intl-tel-input/17.0.8/css/intlTelInput.min.css"/>
+                <script src="/whatsapp_login/static/src/lib/intelinputmin.js"></script>
+                <script src="/whatsapp_login/static/src/lib/utils.js"></script>
+
+                <div t-if="message_sent" class="oe_login_form clearfix">
+                    <p class="alert alert-success" t-if="message_sent" role="status">
+                        <t t-esc="message_sent"/>
+                    </p>
+                    <a href="/web/login" class="btn btn-link btn-sm float-start" role="button">Back to Login</a>
+                </div>
+
+                <!-- Send OTP Form -->
+                <form id="otp_login_form" t-if="not message_sent" class="oe_login_form" role="form" action="" method="post">
+                    <div class="mb-2 mt-2 text-muted">
+                        To reset password, enter your WhatsApp number linked with the user.
+                    </div>
+                    <input type="hidden" name="csrf_token" t-att-value="request.csrf_token()"/>
+                    <div class="form-group">
+                        <input type="tel" id="mobile_code" class="form-control" placeholder="WhatsApp Number"
+                               name="mobile"/>
+                    </div>
+                    <input type="hidden" id="country_code" name="country_code"/>
+                    <p class="alert alert-success" t-if="message_sent" role="status">
+                        <t t-esc="message"/>
+                    </p>
+                    <p t-if="error" class="alert alert-danger" role="alert" style="margin-top: 5px;">
+                        <t t-esc="error"/>
+                    </p>
+                    <div t-attf-class="clearfix oe_login_buttons text-center mb-1 {{'pt-2' if form_small else 'pt-3'}}">
+                        <button style="width:100%" type="submit" class="btn btn-primary btn-block">Reset Password</button>
+                    </div>
+                </form>
+
+                <!-- Initialize intl-tel-input -->
+                <script>
+                    document.addEventListener("DOMContentLoaded", function() {
+                    var input = document.querySelector("#mobile_code");
+                    var countryCodeInput = document.querySelector("#country_code");
+                    var iti = intlTelInput(input, {
+                    initialCountry: "in",
+                    separateDialCode: true,
+                    utilsScript: "/whatsapp_login/static/src/lib/utils.js"
+                    });
+                    document.querySelector("#otp_login_form").addEventListener("submit", function() {
+                    var dialCode = iti.getSelectedCountryData().dialCode;
+                    countryCodeInput.value = '+' + dialCode; // Store country code in hidden input
+                    });
+                    });
+                </script>
+            </div>
+        </t>
+    </template>
+
+    <template id="whatsapp_login.signup_fields" name="WhatsApp Signup Fields" inherit_id="auth_signup.fields">
+        <xpath expr="//div[hasclass('field-name')]" position="after">
+            <div class="mb-3 field-mobile">
+                <label for="name">WhatsApp Number</label>
+                <input type="tel" name="mobile" t-att-value="request.session.get('mobile') or mobile" id="mobile" class="form-control form-control-sm"
+                    required="required"/>
+            </div>
+        </xpath>
+    </template>
+</odoo>

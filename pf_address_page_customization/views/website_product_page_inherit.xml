@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <template id="pf_tp_product_quick_view" name="Product" inherit_id="website_sale.product">
+        <xpath expr="//h1[@t-field='product.name']" position="after">
+            <t t-if="website.pf_website_product_label">
+                <t t-if="product.size">
+                    <!-- <span class="fw-bold">Size :</span> <span><t t-esc="product.size"/></span> -->
+                    <h6>Size : <t t-esc="product.size"/>
+                    </h6>
+                </t>
+                <t t-if="product.kosher">
+                    <!-- <span class="fw-bold">Kosher :</span> <span><t t-esc="product.kosher"/></span> -->
+                    <h6>Kosher : <t t-esc="product.kosher"/>
+                    </h6>
+                </t>
+            </t>
+            <t t-else="">
+                <t t-if="product.size">
+                    <!-- <span class="fw-bold">Size :</span> <span><t t-esc="product.size"/></span> -->
+                    <h6><t t-esc="product.size"/></h6>
+                </t>
+                <t t-if="product.kosher">
+                    <!-- <span class="fw-bold">Kosher :</span> <span><t t-esc="product.kosher"/></span> -->
+                    <h6><t t-esc="product.kosher"/></h6>
+                </t>
+            </t>
+        </xpath>
+
+    </template>
+
+</odoo>

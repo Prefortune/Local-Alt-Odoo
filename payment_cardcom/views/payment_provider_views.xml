@@ -1,0 +1,22 @@
+<odoo>
+    <record id="view_payment_provider_cardcom_form" model="ir.ui.view">
+        <field name="name">payment.provider.form.cardcom</field>
+        <field name="model">payment.provider</field>
+        <field name="inherit_id" ref="payment.payment_provider_form"/>
+        <field name="arch" type="xml">
+          <group name="provider_credentials" position="inside">
+            <group invisible="code != 'cardcom'">
+                <field name="cardcom_charge_method"/>
+                <field name="with_invoice"/>
+                <field name="cardcom_terminal_number"/>
+                <field name="cardcom_api_name"/>
+                <field name="cardcom_api_password"/>
+                <field name="success_redirect_url"/>
+                <field name="failed_redirect_url"/>
+                <field name="webhook_url"/>
+            </group>
+          </group>
+
+        </field>
+    </record>
+</odoo>

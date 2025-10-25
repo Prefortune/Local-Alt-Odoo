@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+<template id="pf_alt_website_custom.products_category_wise_template" name="Best Seller">
+        <section class="best_seller_product_snippet">
+           <div class="ref-arrival-content">
+                <p class="ref-section_head ref-centerhead__underline ref-head--primary"
+                   style="color: #0d5272;">Best Seller
+                </p>
+            </div>
+            <div id="top_products_carousel"/>
+        </section>
+    </template>
+</odoo>

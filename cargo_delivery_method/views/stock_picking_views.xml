@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="cargo_delivery_method_stock_inherit_form_view" model="ir.ui.view">
+            <field name="name">cargo.delivery.method.stock.inherit.form</field>
+            <field name="model">stock.picking</field>
+            <field name="inherit_id" ref="stock.view_picking_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//form/header/button[@name='action_cancel']" position="after">
+                    <button name="action_create_shipment_stock_picking" type="object" string="Create Shipment" class="oe_highlight" />
+                    <button name="action_shipment_status" type="object" string="Shipment Status" class="oe_highlight" />
+                    <button name="generate_shipment_label" type="object" string="Generate Shipment Label" class="oe_highlight"/>
+                </xpath>
+                <xpath expr="//notebook" position="inside">
+                    <page string="WayBill">
+                            <group>
+                                <field name="waybill_link" widget="url"/>
+                            </group>
+                    </page>
+                 </xpath>
+            </field>
+        </record>
+
+
+</odoo>

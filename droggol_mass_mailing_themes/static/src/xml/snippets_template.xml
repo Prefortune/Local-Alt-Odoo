@@ -1,0 +1,353 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates>
+
+    <!-- Common Placeholder -->
+    <t t-name="droggol_mass_mailing_themes.s_d_select_records">
+        <div class="o_mail_snippet_general">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 text-center">
+                        <div class="p-3">
+                            <img src="/droggol_mass_mailing_themes/static/src/img/theme_prime/no_data.png" class="img img-fluid" style="max-height:250px;width:auto;"/>
+                        </div>
+                        <h5 class="text-primary">No record was selected</h5>
+                        <p class="text-muted mb-0">Please select some records to display.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <!-- Products -->
+    <t t-name="droggol_mass_mailing_themes.s_d_horizontal_product_block">
+        <div class="o_mail_snippet_general">
+            <div class="container">
+                <div class="row s_nb_column_fixed s_col_no_bgcolor">
+                    <t t-foreach="items" t-as="product" t-key="product.id">
+                        <div class="col-lg-12 pt8 pb8">
+                            <div class="row s_col_no_resize s_col_no_bgcolor align-items-center o_cc o_cc1">
+                                <div class="col-lg-4 align-self-stretch px-0">
+                                    <img t-attf-src="/web/image/product.template/#{product.id}/image_512" style="object-fit:contain;max-width:300px;max-height:300px;" class="h-100 w-100" />
+                                </div>
+                                <div class="col-lg-8 mt-2">
+                                    <h4 t-esc="product.name"/>
+                                    <span class="text-primary mt-2 font-weight-bold" t-out="product.price" style="display:block;"/>
+                                    <small class="mt-2" style="display:block;" t-if="product.rating">
+                                        <t t-out="product.rating"/>
+                                    </small>
+                                    <small class="mt-2" t-esc="product.description_sale" style="display:block;"/>
+                                    <div class="mt-4" t-if="product.website_url">
+                                        <a class="btn btn-primary" t-att-href="product.website_url">
+                                            <i class="fa fa-shopping-cart"/> Buy Now
+                                        </a>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="droggol_mass_mailing_themes.s_d_product_item">
+        <div class="s_col_no_bgcolor border text-center col-lg-6">
+            <div class="card rounded-0" style="border: 1px solid #dfdfdf;">
+                <img t-attf-src="/web/image/product.template/#{product.id}/image_512/250x250" style="display: inline-block !important;width: 100%;object-fit: contain;"/>
+                <div style="background-color:#f5f5f5 !important;" class="card-body p-2 text-center">
+                    <div class="container">
+                        <div class="row">
+                            <div class="s_col_no_bgcolor text-start col-lg-12">
+                                <a t-att-href="product.website_url" class="font-weight-bold text-black">
+                                    <t t-esc="product.name"/>
+                                </a>
+                            </div>
+                            <div class="s_col_no_bgcolor text-start col-lg-6">
+                                <div class="font-weight-bold mt-1" t-out="product.price"/>
+                            </div>
+                            <div class="s_col_no_bgcolor text-end col-lg-6" t-if="product.website_url">
+                                <a class="btn btn-primary btn-sm" t-att-href="product.website_url">
+                                    <i class="fa fa-bolt"/> Buy Now
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="droggol_mass_mailing_themes.s_d_product_horizontal_item">
+        <div class="card bg-white h-100" style="border: 1px solid #dfdfdf;">
+            <img t-attf-src="/web/image/product.template/#{product.id}/image_512" style="display: inline-block !important;" class="d-block mx-auto w-100" />
+            <hr class="s_hr_1px s_hr_solid w-100 mt-0"/>
+            <div class="card-body">
+                <div class="row">
+                    <div class="col-lg-12">
+                        <a t-att-href="product.website_url" class="font-weight-bold h5 text-black">
+                            <t t-esc="product.name"/>
+                        </a>
+                    </div>
+                    <div class="col-lg-6">
+                        <span class="text-primary mt-2 h6 font-weight-bold" t-out="product.price" style="display:block;"/>
+                    </div>
+                    <div class="col-lg-6 text-end">
+                        <small class="mt-2" style="display:block;" t-if="product.rating">
+                            <t t-out="product.rating"/>
+                        </small>
+                    </div>
+                    <div class="col-lg-12 mt-2 d-grid" t-if="product.website_url">
+                    <a class="btn btn-primary rounded" t-att-href="product.website_url">
+                        <i class="fa fa-shopping-cart"/> Buy Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="droggol_mass_mailing_themes.s_d_product_grid">
+        <div class="o_mail_snippet_general">
+            <div class="container">
+                <div class="row g-0">
+                    <t t-foreach="items" t-as="product" t-key="product.id">
+                        <t t-call="droggol_mass_mailing_themes.s_d_product_item"/>
+                    </t>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="droggol_mass_mailing_themes.s_d_horizontal_product_grid">
+        <div class="o_mail_snippet_general">
+            <div class="container">
+                <div class="row">
+                    <t t-foreach="items" t-as="product" t-key="product.id">
+                        <div class="col-lg-6 pt16 pb16">
+                            <t t-call="droggol_mass_mailing_themes.s_d_product_horizontal_item"/>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <!-- Blogs -->
+    <t t-name="droggol_blog_card_common">
+        <div class="o_mail_snippet_general">
+            <div class="container">
+                <div class="row">
+                    <t t-foreach="items" t-as="blog" t-key="blog.id">
+                        <div t-attf-class="#{_classes} s_col_no_bgcolor pt16 pb16">
+                            <div class="card bg-white h-100" style="border: 1px solid #dfdfdf;">
+                                <img t-att-src="blog.blog_img" t-if="_classes === 'col-lg-12'" class="d-block mx-auto" style="max-height:280px;object-fit:cover;width:100%;"/>
+                                <img t-att-src="blog.blog_img" t-if="_classes === 'col-lg-6'" class="d-block mx-auto" style="max-height:220px;object-fit:cover;width:100%;"/>
+                                <div class="card-body px-2">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="col-lg-7">
+                                                <img class="rounded-circle" t-att-src="blog.author_img" style="max-height:25px;height:25px;object-fit:cover;width:auto;"/>
+                                                <small>
+                                                    <b class="ms-1" t-esc="blog.author_name"/>
+                                                </small>
+                                            </div>
+                                            <div class="col-lg-5">
+                                                <span style="float:right;">
+                                                    <small t-esc="blog.post_date"></small> |
+                                                    <small>
+                                                        <i class="fa fa-eye"/> <t t-esc="blog.visits"/>
+                                                    </small>
+                                                </span>
+                                            </div>
+                                            <hr class="s_hr_1px s_hr_solid w-100 mt-2"/>
+                                            <div class="col-lg-12">
+                                                <h5 class="text-black font-weight-bold" t-esc="blog.name"></h5>
+                                                <p t-esc="blog.teaser"></p>
+                                                <a t-att-href="blog.website_url" class="btn btn-sm"> Read More ...</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="droggol_mass_mailing_themes.s_d_horizontal_blog_block">
+        <t t-call="droggol_blog_card_common">
+            <t t-set="_classes" t-value="'col-lg-12'"/>
+        </t>
+    </t>
+
+    <t t-name="droggol_mass_mailing_themes.s_d_blog_grid">
+        <t t-call="droggol_blog_card_common">
+            <t t-set="_classes" t-value="'col-lg-6'"/>
+        </t>
+    </t>
+
+    <!-- Events -->
+    <t t-name="droggol_mass_mailing_themes.s_d_event_item">
+        <div class="card bg-white h-100" style="border: 1px solid #dfdfdf;">
+            <img t-att-src="event.cover_img" class="d-block mx-auto" style="max-height:280px;object-fit:cover;width:100%;"/>
+            <div class="card-body">
+                <small style="display:block;">
+                    <span class="badge badge-pill badge-primary" t-esc="event.event_type"/> | <span> <t t-esc="event.start_day"/>, <t t-esc="event.start_month"/> <t t-esc="event.start_year"/></span>
+                </small>
+                <div class="pb-2">
+                    <h5 class="text-black my-2 font-weight-bold" t-esc="event.name"></h5>
+                    <p class="text-start mb-0" style="display:block;">Organized by: <t t-esc="event.organizer_name"/></p>
+                    <p class="text-start mb-0" style="display:block;">
+                        <i class="text-primary fa fa-clock-o"/> <t t-esc="event.date_begin"/> - <t t-esc="event.date_end"/>
+                    </p>
+                    <p class="text-start mb-0" style="display:block;">
+                        <i class="text-primary fa fa-map-marker"/> <t t-esc="event.street"/>, <t t-esc="event.address"/>
+                    </p>
+                </div>
+                <a class="btn btn-primary rounded-circle btn-sm" t-if="event.website_url" t-att-href="event.website_url">Register</a>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="droggol_mass_mailing_themes.s_d_events_grid">
+        <div class="o_mail_snippet_general">
+            <div class="container">
+                <div class="row">
+                    <t t-foreach="items" t-as="event" t-key="event.id">
+                        <div class="col-lg-6 pt16 pb16">
+                            <t t-call="droggol_mass_mailing_themes.s_d_event_item"/>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="droggol_mass_mailing_themes.s_d_event_block">
+        <div class="o_mail_snippet_general">
+                <t t-foreach="items" t-as="event" t-key="event.id">
+                    <div class="container pt8 pb8">
+                        <div class="row align-items-center">
+                            <div class="col-lg-2 text-center my-2">
+                                <h1 t-esc="event.start_day" class="font-weight-bold text-primary"/>
+                                <small t-esc="event.start_month" style="display:block;"></small>
+                                <small t-esc="event.start_year" style="display:block;"></small>
+                            </div>
+                            <div class="col-lg-8 my-2">
+                                <h4 t-esc="event.name"></h4>
+                                <p class="text-start mb-0" style="display:block;">Organized by: <t t-esc="event.organizer_name"/></p>
+                                <p class="text-start mb-0" style="display:block;"><i class="text-primary fa fa-clock-o"/> <t t-esc="event.date_begin"/> - <t t-esc="event.date_end"/></p>
+                                <p class="text-start mb-0" style="display:block;"><i class="text-primary fa fa-map-marker"/> <t t-esc="event.street"/>, <t t-esc="event.address"/></p>
+                            </div>
+                            <div class="col-lg-2 my-2">
+                                <a class="btn btn-primary rounded-circle btn-sm" t-if="event.website_url" t-att-href="event.website_url">Register</a>
+                            </div>
+                        </div>
+                    </div>
+                </t>
+        </div>
+    </t>
+
+    <!-- Recruitment -->
+    <t t-name="droggol_mass_mailing_themes.s_d_recruitment_item">
+        <div class="card text-bg-white h-100" style="border: 1px solid #dfdfdf;">
+            <div class="card-body">
+                <h3 class="card-title" t-esc="recruitment.name"></h3>
+                <small class="text-primary fw-bold"><t t-esc="recruitment.no_of_recruitment"/> Open Positions</small>
+                <div class="card-text" t-if="recruitment.description" t-out="recruitment.description"></div>
+                <a class="btn btn-primary rounded-circle btn-sm w-100" t-if="recruitment.website_url" t-att-href="recruitment.website_url">Apply Now</a>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="droggol_mass_mailing_themes.s_d_recruitment_grid">
+        <div class="o_mail_snippet_general">
+            <div class="container">
+                <div class="row">
+                    <t t-foreach="items" t-as="recruitment" t-key="recruitment.id">
+                        <div class="col-lg-6 pt16 pb16">
+                            <t t-call="droggol_mass_mailing_themes.s_d_recruitment_item"/>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="droggol_mass_mailing_themes.s_d_recruitment_block">
+        <div class="o_mail_snippet_general">
+            <div class="container pt8 pb8">
+                <t t-foreach="items" t-as="recruitment" t-key="recruitment.id">
+                    <div class="row align-items-center">
+                        <div class="col-lg-2 text-center my-2">
+                            <h2 t-esc="recruitment.no_of_recruitment" class="font-weight-bold text-primary mb-0"/>
+                            <small>Open Positions</small>
+                        </div>
+                        <div class="col-lg-7 my-2">
+                            <h4 t-esc="recruitment.name"></h4>
+                            <small t-if="recruitment.description" t-out="recruitment.description"/>
+                        </div>
+                        <div class="col-lg-3 my-2">
+                            <a class="btn btn-primary rounded-circle btn-sm" t-if="recruitment.website_url" t-att-href="recruitment.website_url">Apply Now</a>
+                        </div>
+                    </div>
+                </t>
+            </div>
+        </div>
+    </t>
+
+    <!-- eLearning -->
+    <t t-name="droggol_mass_mailing_themes.s_d_elearning_item">
+        <div class="card h-100" style="border: 1px solid #dfdfdf;">
+            <img t-attf-src="/web/image/slide.channel/#{elearning.id}/image_512" class="card-img-top"/>
+            <div class="card-body">
+                <h5 class="card-title" t-esc="elearning.name"></h5>
+                <div class="card-text" t-if="elearning.description" t-out="elearning.description"></div>
+            </div>
+            <div class="card-footer" style="border-top: 1px solid #dfdfdf;">
+                <small class="float-start fw-bold" t-esc="elearning.total_time"></small>
+                <a class="text-primary float-end" t-if="elearning.website_url" t-att-href="elearning.website_url">View</a>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="droggol_mass_mailing_themes.s_d_elearning_grid">
+        <div class="o_mail_snippet_general">
+            <div class="container">
+                <div class="row">
+                    <t t-foreach="items" t-as="elearning" t-key="elearning.id">
+                        <div class="col-lg-6 pt16 pb16">
+                            <t t-call="droggol_mass_mailing_themes.s_d_elearning_item"/>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </div>
+    </t>
+
+    <t t-name="droggol_mass_mailing_themes.s_d_elearning_block">
+        <div class="o_mail_snippet_general">
+            <div class="container">
+                <t t-foreach="items" t-as="elearning" t-key="elearning.id">
+                <div class="row s_nb_column_fixed s_col_no_bgcolor">
+                    <div class="col-lg-12 pt16 pb16">
+                        <div class="row s_col_no_resize s_col_no_bgcolor g-0 align-items-center o_cc o_cc1">
+                            <div class="col-lg-4 align-self-stretch s_media_list_img_wrapper">
+                                <img t-attf-src="/web/image/slide.channel/#{elearning.id}/image_512" class="s_media_list_img h-100 w-100" alt=""/>
+                            </div>
+                            <div class="col-lg-8 p-3">
+                                <h3 t-esc="elearning.name"></h3>
+                                <p class="fw-bold mb-0" t-esc="elearning.total_time"></p>
+                                <p t-if="elearning.description" class="mb-0" t-out="elearning.description"></p>
+                                <a t-if="elearning.website_url" class="btn btn-primary mb-2" t-att-href="elearning.website_url">View</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                </t>
+            </div>
+        </div>
+    </t>
+
+</templates>

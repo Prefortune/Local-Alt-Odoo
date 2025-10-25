@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template_ext" xml:space="preserve">
+        <t t-name="ChannelLoadExt" t-inherit="mail.DiscussSidebarCategories" t-inherit-mode="extension" owl="1">
+            <xpath expr="//t[@t-foreach='categories']" position="after">
+                 <t t-if="wpchannel.value(store).isOpen">
+                     <div class="d-flex justify-content-center">
+                     <button class="btn btn-primary rounded"
+                             t-on-click="onClickUpdateMesssageLimit">Load More ...</button>
+                </div>
+                 </t>
+            </xpath>
+        </t>
+</templates>

@@ -1,0 +1,17 @@
+<odoo>
+    <record id="view_payment_provider_cardcom_pos_form" model="ir.ui.view">
+        <field name="name">payment.provider.form.cardcom.pos</field>
+        <field name="model">payment.provider</field>
+        <field name="inherit_id" ref="payment.payment_provider_form"/>
+        <field name="arch" type="xml">
+          <group name="provider_credentials" position="inside">
+            <group invisible="code != 'cardcom_pos'">
+                <field name="cardcom_pos_cardcom_terminal_number"/>
+                <field name="cardcom_pos_cardcom_api_name"/>
+                <field name="cardcom_pos_cardcom_api_password"/>
+                <field name="cardcom_pos_webhook_url"/>
+            </group>
+          </group>
+        </field>
+    </record>
+</odoo>

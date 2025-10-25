@@ -1,0 +1,1219 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- Headers -->
+    <template id="d_mail_header_light" name="Light Header">
+        <t t-call="droggol_mass_mailing_themes.d_mail_general_header">
+            <t t-set="_parent_classes" t-value="'d_mail_header_light d_border_option'"/>
+            <t t-set="_logo_url" t-value="'/droggol_mass_mailing_themes/static/src/img/theme_prime/logo.png'"/>
+            <t t-set="_text_color" t-value="''"/>
+            <t t-set="_border_class" t-value="'d-border-bottom'"/>
+        </t>
+    </template>
+
+    <template id="d_mail_header_color" name="Color Header">
+        <t t-call="droggol_mass_mailing_themes.d_mail_general_header">
+            <t t-set="_parent_classes" t-value="'d_mail_header_color bg-o-color-1'"/>
+            <t t-set="_logo_url" t-value="'/droggol_mass_mailing_themes/static/src/img/theme_prime/logo_white.png'"/>
+            <t t-set="_text_color" t-value="'text-white'"/>
+            <t t-set="_border_class" t-value="''"/>
+        </t>
+    </template>
+
+    <template id="d_mail_header_dark" name="Dark Header">
+        <t t-call="droggol_mass_mailing_themes.d_mail_general_header">
+            <t t-set="_parent_classes" t-value="'d_mail_header_dark bg-900'"/>
+            <t t-set="_logo_url" t-value="'/droggol_mass_mailing_themes/static/src/img/theme_prime/logo_dark.png'"/>
+            <t t-set="_text_color" t-value="'text-white'"/>
+            <t t-set="_border_class" t-value="''"/>
+        </t>
+    </template>
+
+    <template id="d_mail_header_center_logo_light" name="Center Header Light">
+        <t t-call="droggol_mass_mailing_themes.d_mail_center_header">
+            <t t-set="_parent_classes" t-value="'d_mail_header_center_logo_light d_border_option'"/>
+            <t t-set="_logo_url" t-value="'/droggol_mass_mailing_themes/static/src/img/theme_prime/logo.png'"/>
+            <t t-set="_text_color" t-value="'text-primary'"/>
+        </t>
+    </template>
+
+    <template id="d_mail_header_center_logo_color" name="Center Header Color">
+        <t t-call="droggol_mass_mailing_themes.d_mail_center_header">
+            <t t-set="_parent_classes" t-value="'d_mail_header_center_logo_color bg-o-color-1'"/>
+            <t t-set="_logo_url" t-value="'/droggol_mass_mailing_themes/static/src/img/theme_prime/logo_white.png'"/>
+            <t t-set="_text_color" t-value="'text-white'"/>
+        </t>
+    </template>
+
+    <template id="d_mail_header_center_logo_dark" name="Center Header Dark">
+        <t t-call="droggol_mass_mailing_themes.d_mail_center_header">
+            <t t-set="_parent_classes" t-value="'d_mail_header_center_logo_dark bg-900'"/>
+            <t t-set="_logo_url" t-value="'/droggol_mass_mailing_themes/static/src/img/theme_prime/logo_dark.png'"/>
+            <t t-set="_text_color" t-value="'text-primary'"/>
+        </t>
+    </template>
+
+    <template id="d_mail_jumbo_header_light" name="Jumbo Header Light">
+        <t t-call="droggol_mass_mailing_themes.d_mail_jumbo_header">
+            <t t-set="_parent_classes" t-value="'d_mail_jumbo_header_light d_border_option'"/>
+            <t t-set="_logo_url" t-value="'/droggol_mass_mailing_themes/static/src/img/theme_prime/logo.png'"/>
+            <t t-set="_pre_bg_color" t-value="'bg-o-color-1'"/>
+            <t t-set="_pre_text_color" t-value="'text-white'"/>
+            <t t-set="_bg_color" t-value="''"/>
+            <t t-set="_text_color" t-value="'text-primary'"/>
+            <t t-set="_text_color2" t-value="''"/>
+        </t>
+    </template>
+
+    <template id="d_mail_jumbo_header_color" name="Jumbo Header Color">
+        <t t-call="droggol_mass_mailing_themes.d_mail_jumbo_header">
+            <t t-set="_parent_classes" t-value="'d_mail_jumbo_header_color'"/>
+            <t t-set="_logo_url" t-value="'/droggol_mass_mailing_themes/static/src/img/theme_prime/logo_white.png'"/>
+            <t t-set="_pre_bg_color" t-value="'bg-900'"/>
+            <t t-set="_pre_text_color" t-value="'text-white'"/>
+            <t t-set="_bg_color" t-value="'bg-o-color-1'"/>
+            <t t-set="_text_color" t-value="'text-white'"/>
+            <t t-set="_text_color2" t-value="''"/>
+        </t>
+    </template>
+
+    <template id="d_mail_jumbo_header_dark" name="Jumbo Header Dark">
+        <t t-call="droggol_mass_mailing_themes.d_mail_jumbo_header">
+            <t t-set="_parent_classes" t-value="'d_mail_jumbo_header_dark'"/>
+            <t t-set="_logo_url" t-value="'/droggol_mass_mailing_themes/static/src/img/theme_prime/logo_dark.png'"/>
+            <t t-set="_pre_bg_color" t-value="'bg-o-color-1'"/>
+            <t t-set="_pre_text_color" t-value="'text-white'"/>
+            <t t-set="_bg_color" t-value="'bg-900'"/>
+            <t t-set="_text_color" t-value="'text-primary'"/>
+            <t t-set="_text_color2" t-value="'text-white'"/>
+        </t>
+    </template>
+
+    <template id="d_mail_header_pre_header_light" name="Pre Header Light">
+        <t t-call="droggol_mass_mailing_themes.d_mail_pre_header">
+            <t t-set="_parent_classes" t-value="'d_mail_header_pre_header_light'"/>
+            <t t-set="_logo_url" t-value="'/droggol_mass_mailing_themes/static/src/img/theme_prime/logo.png'"/>
+            <t t-set="_text_color" t-value="'text-primary'"/>
+        </t>
+    </template>
+
+    <template id="d_mail_header_pre_header_color" name="Pre Header Color">
+        <t t-call="droggol_mass_mailing_themes.d_mail_pre_header">
+            <t t-set="_parent_classes" t-value="'d_mail_header_pre_header_color bg-o-color-1'"/>
+            <t t-set="_logo_url" t-value="'/droggol_mass_mailing_themes/static/src/img/theme_prime/logo_white.png'"/>
+            <t t-set="_text_color" t-value="'text-white'"/>
+        </t>
+    </template>
+
+    <template id="d_mail_header_pre_header_dark" name="Pre Header Dark">
+        <t t-call="droggol_mass_mailing_themes.d_mail_pre_header">
+            <t t-set="_parent_classes" t-value="'d_mail_header_pre_header_color bg-900'"/>
+            <t t-set="_logo_url" t-value="'/droggol_mass_mailing_themes/static/src/img/theme_prime/logo_dark.png'"/>
+            <t t-set="_text_color" t-value="'text-primary'"/>
+        </t>
+    </template>
+
+    <!-- Body element -->
+    <template id="d_mail_title_new" name="Title">
+        <div class="d_mail_title_new o_mail_snippet_general pt32 pb32 d_border_option" data-snippet="d_mail_title_new">
+            <div class="container s_allow_columns text-center">
+                <h2>Check out this <b class="text-primary">New Offers.</b></h2>
+                <h5> Two day sale. Grab the best deals now. </h5>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mini_tagline" name="Tagine">
+        <div class="d_mini_tagline o_mail_snippet_general bg-o-color-1 d_border_option pt8 pb8" data-snippet="d_mini_tagline">
+            <div class="container s_allow_columns text-center">
+                <i class="fa fa-star"/>
+                <span><b class="px-1"> Enter your tagline or offer here </b></span>
+                <i class="fa fa-star"/>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_block_hero_block" name="Text + Image">
+        <div class="d_mail_block_hero_block pt32 pb32 d_border_option o_mail_snippet_general" data-snippet="d_mail_block_hero_block">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 pt16 pb16">
+                        <h1 class="text-primary mt-3 mb-1">75% OFF !</h1>
+                        <h6>LOOK OUR NEW <br/> COLLECTIONS</h6>
+                        <small class="o_mail_no_margin">The best of global brands at your doorstep!</small>
+                        <div class="mt-3 mb-3">
+                            <a role="button" href="#" class="btn btn-primary o_default_snippet_text">SHOP NOW</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 px-0">
+                        <img src="/droggol_mass_mailing_themes/static/src/img/theme_prime/hero.jpeg" class="img img-fluid w-100" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_full_image" name="Full image">
+        <div class="d_mail_full_image o_mail_snippet_general">
+            <img class="img img-fluid" src="/droggol_mass_mailing_themes/static/src/img/theme_prime/full_img.png" style="width:100%;height:auto;"/>
+        </div>
+    </template>
+
+    <template id="d_hero_block" name="Hero Block">
+        <div class="d_hero_block pt32 pb32 d_border_option o_mail_snippet_general" data-snippet="d_hero_block">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 px-0">
+                        <img src="/droggol_mass_mailing_themes/static/src/img/theme_prime/shop.png" class="img img-fluid w-100" />
+                    </div>
+                    <div class="col-lg-6 pt16 pb16">
+                        <h2>ABOUT <strong class="text-primary">MY SHOP</strong></h2>
+                        <hr class="mr-5"/>
+                        <p>My shop is World's leading e-commerce marketplace with over 70M+ products.</p>
+                        <p style="margin-bottom:5px;"><i class="fa fa-check-circle-o text-primary"/> 24x7 customer support</p>
+                        <p style="margin-bottom:5px;"><i class="fa fa-check-circle-o text-primary"/> Cash on delivery</p>
+                        <p style="margin-bottom:5px;"><i class="fa fa-check-circle-o text-primary"/> 30 days replacement</p>
+                        <div class="mt-4">
+                            <a class="btn btn-primary" href="#">More info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_note" name="Note">
+        <div class="d_mini_tagline o_mail_snippet_general d_note d_border_option d-border-solid d-border-left d-border-3px border-primary pt8 pb8" data-snippet="d_note">
+            <div class="container s_allow_columns px-3">
+                <h3>Whatever you’ve got in mind, we’ve got inside.</h3>
+                <p>
+                    Looking to treat yourself and get some inspiration?
+                    my shop is World's leading e-commerce marketplace with over 70M+
+                    products across the 80+ categories.shop wherever you are, with our stylish new android app.
+                </p>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_icon_grid" name="Icon Grid">
+        <div class="d_icon_grid pt32 pb32 d_border_option o_mail_snippet_general" data-snippet="d_icon_grid">
+            <div class="container">
+                <div class="row align-items-center text-center">
+                    <div class="col-lg-6 pt96 pb96" style="border: 1px solid #dfdfdf;">
+                        <span class="fa fa-3x fa-map-marker text-primary"></span>
+                        <h5 class="font-weight-bold mt-3">Address</h5>
+                        <span>New York, United States</span>
+                    </div>
+                    <div class="col-lg-6 pt96 pb96" style="border: 1px solid #dfdfdf;">
+                        <span class="fa fa-3x fa fa-mobile text-primary"></span>
+                        <h5 class="font-weight-bold mt-3">Phone Number</h5>
+                        <span>+42-77539983</span>
+                    </div>
+                    <div class="col-lg-6 pt96 pb96" style="border: 1px solid #dfdfdf;">
+                        <span class="fa fa-3x fa-envelope-o text-primary"></span>
+                        <h5 class="font-weight-bold mt-3">Email</h5>
+                        <span>info@myshop.com</span>
+                    </div>
+                    <div class="col-lg-6 pt96 pb96" style="border: 1px solid #dfdfdf;">
+                        <span class="fa fa-3x fa-volume-control-phone text-primary"></span>
+                        <h5 class="font-weight-bold mt-3">Toll free</h5>
+                        <span>+42-7753992</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_block_services" name="Services">
+        <div class="d_mail_block_services bg-o-color-1 d_border_option o_mail_snippet_general" data-snippet="d_mail_block_services">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 pt16 pb16">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <span class="text-white fa fa-truck fa-3x"></span>
+                                </div>
+                                <div class="col-lg-9">
+                                    <h4 class="o_mail_no_margin text-white">FREE SHIPPING</h4>
+                                    <p class="o_mail_no_margin text-white">
+                                        <small>In 2-3 Days</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 pt16 pb16">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <span class="fa fa-undo fa-3x text-white"></span>
+                                </div>
+                                <div class="col-lg-9">
+                                    <h4 class="o_mail_no_margin text-white">FREE RETURNS</h4>
+                                    <p class="o_mail_no_margin text-white">
+                                        <small>No Questions Asked</small>
+                                    </p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_block_features" name="Features">
+        <div class="d_mail_block_features d_border_option o_mail_snippet_general" data-snippet="d_mail_block_features">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-6 pt16 pb16" style="border: 1px solid #dfdfdf;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <span class="fa fa-truck fa-3x text-primary"></span>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="o_mail_no_margin">
+                                        <b>FREE SHIPPING</b>
+                                    </div>
+                                    <p class="o_mail_no_margin small">Get free shipping in all over world, if rder value is more then $300.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 pt16 pb16" style="border: 1px solid #dfdfdf;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <span class="fa fa-undo fa-3x text-primary"></span>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="o_mail_no_margin">
+                                        <b>Easy Returns</b>
+                                    </div>
+                                    <p class="o_mail_no_margin small">You can return your order in 30 days. No question asked.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 pt16 pb16" style="border: 1px solid #dfdfdf;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <span class="fa fa-shopping-cart fa-3x text-primary"></span>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="o_mail_no_margin">
+                                        <b>10k+ Products</b>
+                                    </div>
+                                    <p class="o_mail_no_margin small">You can return your order in 30 days. No question asked</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-6 pt16 pb16" style="border: 1px solid #dfdfdf;">
+                        <div class="container">
+                            <div class="row">
+                                <div class="col-lg-3">
+                                    <span class="fa fa-life-bouy fa-3x text-primary"></span>
+                                </div>
+                                <div class="col-lg-9">
+                                    <div class="o_mail_no_margin">
+                                        <b>Quick Support</b>
+                                    </div>
+                                    <p class="o_mail_no_margin small">If you have issue for placing order, our team will help you to fix it.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_three_columns_cards" name="Three Columns Cards">
+        <div class="d_mail_three_columns_cards pt32 pb32 d_border_option o_mail_snippet_general" data-snippet="d_mail_three_columns_cards">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 s_col_no_bgcolor pt16 pb16">
+                        <div class="bg-white h-100">
+                            <div>
+                                <img src="/droggol_mass_mailing_themes/static/src/img/theme_prime/man.jpeg" style="width:180px;height:auto;" class="d-block mx-auto img img-fluid" />
+                            </div>
+                            <div class="my-3 px-2">
+                                <h3 class="my-2">MEN</h3>
+                                <small style="display:block;">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</small>
+                                <a role="button" href="#" class="btn my-3 btn-primary"><i class="fa fa-shopping-cart"/> SHOP NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 s_col_no_bgcolor pt16 pb16">
+                        <div class="bg-white h-100">
+                            <div>
+                                <img src="/droggol_mass_mailing_themes/static/src/img/theme_prime/women.jpeg" style="width:180px;height:auto;" class="d-block mx-auto img img-fluid" />
+                            </div>
+                            <div class="my-3 px-2">
+                                <h4 class="my-2">WOMAN</h4>
+                                <small style="display:block;">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</small>
+                                <a role="button" href="#" class="btn my-3 btn-primary"><i class="fa fa-shopping-cart"/> SHOP NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 s_col_no_bgcolor pt16 pb16">
+                        <div class="bg-white h-100">
+                            <div>
+                                <img src="/droggol_mass_mailing_themes/static/src/img/theme_prime/kids.jpeg" style="width:180px;height:auto;" class="d-block mx-auto img img-fluid" />
+                            </div>
+                            <div class="my-3 px-2">
+                                <h4 class="my-2">KIDS</h4>
+                                <small style="display:block;">There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in some form.</small>
+                                <a role="button" href="#" class="btn my-3 btn-primary"><i class="fa fa-shopping-cart"/> SHOP NOW</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_three_columns" name="Three Columns">
+        <div class="d_mail_three_columns_cards pt32 pb32 d_border_option o_mail_snippet_general" data-snippet="d_mail_three_columns_cards">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 s_col_no_bgcolor pt16 pb16">
+                        <div class="bg-white h-100">
+                            <div class="p-3">
+                                <img src="/droggol_mass_mailing_themes/static/src/img/theme_prime/men-square.jpeg" class="d-block img img-fluid rounded-circle mx-auto" />
+                            </div>
+                            <h4 class="text-center">Men's</h4>
+                            <p class="text-center o_mail_no_margin">
+                                        A short description.
+                            </p>
+                            <div class="text-center" style="margin-top:15px;">
+                                <a role="button" href="#" class="btn btn-primary rounded">SHOP NOW!</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 s_col_no_bgcolor pt16 pb16">
+                        <div class="bg-white h-100">
+                            <div class="p-3">
+                                <img src="/droggol_mass_mailing_themes/static/src/img/theme_prime/women-square.jpeg" class="d-block img img-fluid rounded-circle mx-auto" />
+                            </div>
+                            <h4 class="text-center">Women's</h4>
+                            <p class="text-center o_mail_no_margin">
+                                        A short description.
+                            </p>
+                            <div class="text-center" style="margin-top:15px;">
+                                <a role="button" href="#" class="btn btn-primary rounded">SHOP NOW!</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4 s_col_no_bgcolor pt16 pb16">
+                        <div class="bg-white h-100">
+                            <div class="p-3">
+                                <img src="/droggol_mass_mailing_themes/static/src/img/theme_prime/kids-square.jpeg" class="d-block img img-fluid rounded-circle mx-auto" />
+                            </div>
+                            <h4 class="text-center">Kids</h4>
+                            <p class="text-center o_mail_no_margin">
+                                            A short description.
+                            </p>
+                            <div class="text-center" style="margin-top:15px;">
+                                <a role="button" href="#" class="btn btn-primary rounded">SHOP NOW!</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_three_columns_2" name="Three Column Images">
+        <div class="d_mail_three_columns_2 d_border_option o_mail_snippet_general bg-o-color-1" data-snippet="d_mail_three_columns_2">
+            <div class="container">
+                <div class="row g-0 align-items-center">
+                    <div class="col-lg-4">
+                        <img src="/droggol_mass_mailing_themes/static/src/img/theme_prime/three_col_1.jpeg" class="d-block mx-auto img img-fluid" />
+                    </div>
+                    <div class="col-lg-4 pb64 pt112">
+                        <h3 class="text-center text-white">NEW</h3>
+                        <h3 class="text-center text-white">COLLECTION</h3>
+                        <div class="text-center" style="margin-top:15px;">
+                            <p class="text-white">50% FLAT OFF</p>
+                            <a href="#" class="btn mt-2 btn-primary">SHOP NOW !</a>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="/droggol_mass_mailing_themes/static/src/img/theme_prime/three_col_2.jpeg" class="d-block mx-auto img img-fluid" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_banner" name="Banner">
+        <div class="d_mail_banner d_border_option o_mail_snippet_general pt72 pb72" data-snippet="d_mail_banner">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <h1 class="text-center">HUGE SALE</h1>
+                        <div class="text-center">
+                            <font class="o_not_editable" style="letter-spacing: -4px;font-size:24px;">---- </font>
+                            <i class="fa fa-shopping-cart text-primary" style="font-size:24px;"/>
+                            <font class="o_not_editable" style="font-size:24px;letter-spacing: -4px;"> ----</font>
+                        </div>
+                        <h4 class="text-center mt-2">UP TO 80% OFF!</h4>
+                        <div class="mt-4 text-center">
+                            <a class="btn btn-primary rounded me-2" href="#">WOMEN</a>
+                            <a class="btn btn-primary rounded" href="#">MEN</a>
+                            <a class="btn btn-primary rounded ms-2" href="#">KIDS</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_content_snippet" name="Content with button">
+        <div class="d_mail_content_snippet d_border_option text-center o_mail_snippet_general pt72 pb72" data-snippet="d_mail_content_snippet">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-10 offset-lg-1">
+                        <h5>PURCHASE NOW AND</h5>
+                        <h2 class="font-weight-bold">
+                            <span class="text-primary">GET 15%</span> DISCOUNT</h2>
+                        <p class="my-4">
+                            Looking to treat yourself and get some inspiration? Don't miss your chance to grab 15% off.
+                            Shop wherever you are, with our stylish new android app or a new mobile website.
+                        </p>
+                        <a class="mt-2 btn btn-primary rounded-0" href="#">Purchase Now</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_pricing" name="Pricing">
+        <div class="d_mail_pricing d_border_option text-center o_mail_snippet_general" data-snippet="d_mail_pricing">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="s_col_no_bgcolor text-center pt32 pb16 col-lg-4">
+                        <div class="card o_cc o_cc2" style="border: 1px solid #dfdfdf;">
+                            <div class="card-header">
+                                <span class="" style="font-size:18px; font-weight: 500;">STARTER</span>
+                                <h2 class="card-title o_mail_display_coupon text-center ">$8</h2>
+                                <small>user / month (billed annually)</small>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item border-0 small">Basic features</li>
+                                <li class="list-group-item border-0 small">Basic management</li>
+                                <li class="list-group-item border-0 small">No customization</li>
+                                <li class="list-group-item border-0 small">No support</li>
+                            </ul>
+                            <div class="card-footer">
+                                <a href="#" class="btn btn-block btn-primary ">More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="s_col_no_bgcolor text-center pt32 pb16 col-lg-4">
+                        <div class="card o_cc o_cc2 bg-o-color-1">
+                            <div class="card-header">
+                                <span class="" style="font-size:18px; font-weight: 500;">DEFAULT</span>
+                                <h2 class="card-title o_mail_display_coupon text-center ">$8</h2>
+                                <small>user / month (billed annually)</small>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item border-0 small">Basic features</li>
+                                <li class="list-group-item border-0 small">Basic management</li>
+                                <li class="list-group-item border-0 small">No customization</li>
+                                <li class="list-group-item border-0 small">No support</li>
+                            </ul>
+                            <div class="card-footer">
+                                <a href="#" class="btn btn-block btn-primary ">More</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="s_col_no_bgcolor text-center pt32 pb16 col-lg-4">
+                        <div class="card o_cc o_cc2" style="border: 1px solid #dfdfdf;">
+                            <div class="card-header">
+                                <span class="" style="font-size:18px; font-weight: 500;">DEFAULT</span>
+                                <h2 class="card-title o_mail_display_coupon text-center ">$8</h2>
+                                <small>user / month (billed annually)</small>
+                            </div>
+                            <ul class="list-group list-group-flush">
+                                <li class="list-group-item border-0 small">Basic features</li>
+                                <li class="list-group-item border-0 small">Basic management</li>
+                                <li class="list-group-item border-0 small">No customization</li>
+                                <li class="list-group-item border-0 small">No support</li>
+                            </ul>
+                            <div class="card-footer">
+                                <a href="#" class="btn btn-block btn-primary ">More</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_full_order" name="Order Info">
+        <div class="d_mail_full_order o_mail_snippet_general px-2 pt32 pb32" data-snippet="d_mail_full_order">
+            <h3 class="font-weight-bold o_default_snippet_text mb-4 px-4">Your Purchases</h3>
+            <div class="container">
+                <div class="row align-items-center">
+                    <t t-foreach="[1,2,3]" t-as="image">
+                        <div class="col-lg-12">
+                            <div class="container">
+                                <div class="row align-items-center">
+                                    <div class="col-lg-2">
+                                        <img t-attf-src="/droggol_mass_mailing_themes/static/src/img/theme_prime/shoe_#{image}.jpeg" class="d-block mx-auto img img-fluid" />
+                                    </div>
+                                    <div class="col-lg-8">
+                                        <a href="#" class="font-weight-bold text-black">Sports Shoes</a>
+                                        <p> Training and Gym Shoes For Men  (White)</p>
+                                    </div>
+                                    <div class="col-lg-2 text-end px-0">
+                                        <b> $ 18.0 </b>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="s_hr_1px s_hr_solid w-100 mx-auto" style="border-top-color: rgb(233, 236, 239) !important;" />
+                        </div>
+                    </t>
+                    <div class="col-lg-3 offset-lg-6 text-end mb-2">
+                        <b class="text-muted">Subtotal:</b>
+                    </div>
+                    <div class="text-end col-lg-3 mb-2">
+                        <b class="text-muted">$ 54.0</b>
+                    </div>
+                    <div class="col-lg-3 offset-lg-6 text-end mb-2">
+                        <b class="text-muted">Shipping:</b>
+                    </div>
+                    <div class="text-end col-lg-3 mb-2">
+                        <b class="text-muted">$ 10.0</b>
+                    </div>
+                    <div class="col-lg-3 offset-lg-6 text-end mb-2">
+                        <b class="text-primary">Total:</b>
+                    </div>
+                    <div class="text-end col-lg-3 mb-2">
+                        <b class="text-primary">$ 64.0</b>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_product_grid" name="Product Grid">
+        <div class="d_mail_product_grid d_border_option o_mail_snippet_general pt72 pb72" data-snippet="d_mail_product_grid">
+            <div class="container">
+                <div class="row align-items-center g-0">
+                    <t t-foreach="[1,2,3,4]" t-as="image">
+                        <div class="s_col_no_bgcolor text-center col-lg-6" style="border: 1px solid #dfdfdf;">
+                            <div class="card border-0 h-100">
+                                <img class="card-img-top img img-fluid" t-attf-src="/droggol_mass_mailing_themes/static/src/img/theme_prime/shoe_#{image}.jpeg"/>
+                                <div style="background-color:#f5f5f5 !important;" class="card-body p-2 text-center">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="s_col_no_bgcolor text-start col-lg-12">
+                                                <a href="#" class="font-weight-bold text-black">
+                                                    Shoe <t t-esc="image"/>
+                                                </a>
+                                            </div>
+                                            <div class="s_col_no_bgcolor text-start col-lg-6">
+                                                $ <t t-esc="image"/>
+                                            </div>
+                                            <div class="s_col_no_bgcolor text-end col-lg-6">
+                                                <a class="btn btn-primary btn-sm" href="#">
+                                                    <i class="fa fa-bolt"/> Buy Now
+                                                </a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_recommended" name="Recommended Products">
+        <div class="d_mail_recommended d_border_option o_mail_snippet_general pt32 pb32" data-snippet="d_mail_recommended">
+            <h1 class="my-3 text-center">RECOMMENDED FOR YOU</h1>
+            <div class="container">
+                <div class="row align-items-center">
+                    <t t-foreach="[1,2,3]" t-as="image">
+                        <div class="s_col_no_bgcolor text-center col-lg-4">
+                            <div class="card border-0 h-100">
+                                <img class="card-img-top" t-attf-src="/droggol_mass_mailing_themes/static/src/img/theme_prime/shoe_#{image}.jpeg"/>
+                                <div class="card-body p-2 text-center">
+                                    <div class="container">
+                                        <div class="row">
+                                            <div class="s_col_no_bgcolor text-center col-lg-12">
+                                                <a href="#" class="font-weight-bold mt-2 text-black">Running Shoes</a>
+                                                <small style="display:block;" class="mt-1">$ 14.99</small>
+                                                <a class="btn btn-primary mt-2"><i class="fa fa-bolt"/> Buy now</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_call_to_action_boxed" name="Call To Action">
+        <div class="d_mail_call_to_action_boxed d_border_option o_mail_snippet_general pt32 pb32" data-snippet="d_mail_call_to_action_boxed">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-9">
+                        <h4>ORDER NOW AND GET <span class="text-primary">20% OFF</span>
+                        </h4>
+                        <p>Looking to treat yourself and get some inspiration? Don't miss your chance to grab 20% off.</p>
+                    </div>
+                    <div class="col-lg-3">
+                        <a class="btn btn-primary" href="#">ORDER NOW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_call_to_action_thin" name="Call To Action (Thin)">
+        <div class="d_mail_call_to_action_thin d_border_option o_mail_snippet_general bg-o-color-1 pt16 pb16" data-snippet="d_mail_call_to_action_thin">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-9">
+                        <h5 class="m-0">We offer best in class service for your needs</h5>
+                    </div>
+                    <div class="col-lg-3">
+                        <a class="btn btn-primary" href="#">ORDER NOW</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_call_to_action_centered" name="Call To Action (Centered)">
+        <div class="d_mail_call_to_action_centered d_border_option o_mail_snippet_general text-center pt16 pb16" data-snippet="d_mail_call_to_action_centered">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <h4>ORDER NOW AND GET <span class="text-primary">20% OFF</span></h4>
+                        <p>Looking to treat yourself? Don't miss your chance to grab 20% off.</p>
+                        <p><a class="btn btn-primary o_default_snippet_text" href="#">ORDER NOW</a></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_counters" name="Counters">
+        <div class="d_mail_counters d_border_option o_mail_snippet_general text-center" data-snippet="d_mail_counters">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 pt24 pb24">
+                        <div class="p-2"><span class="fa fa-globe fa-3x text-primary"/></div>
+                        <h5 class="mt-2 font-weight-bold">12+</h5>
+                        <div class="mt-2 pb-2">COUNTRIES</div>
+                    </div>
+                    <div class="col-lg-4 pt24 pb24">
+                        <div class="p-2"><span class="fa fa-users fa-3x text-primary"/></div>
+                        <h5 class="mt-2 font-weight-bold">8,000+</h5>
+                        <div class="mt-2 pb-2">HAPPY CLIENTS</div>
+                    </div>
+                    <div class="col-lg-4 pt24 pb24">
+                        <div class="p-2"><span class="fa fa-cubes fa-3x text-primary"/></div>
+                        <h5 class="mt-2 font-weight-bold">1800+</h5>
+                        <div class="mt-2 pb-2">PRODUCTS</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_large_block" name="Large Content + Image">
+        <div class="d_mail_large_block d_border_option o_mail_snippet_general" data-snippet="d_mail_large_block">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-8">
+                        <div class="px-4 py-2">
+                            <h2>YOU'LL <strong class="text-primary">LOVE US</strong>
+                            </h2>
+                            <h5 class="mt-3 mb-1">BE <strong class="text-primary">FIRST</strong> IN LINE</h5>
+                            <p>With live updates and regular emails, you'll always be the first to know about our latest arrivals and fashion tips.</p>
+                            <h5 class="mt-3 mb-1">PERSONAL <strong class="text-primary">STYLE ADVICE</strong>
+                            </h5>
+                            <p>Shop wherever you are, with our stylish new android app or a new mobile website.</p>
+                            <h5 class="mt-3 mb-1">THE <strong class="text-primary">SHOP</strong> CARD</h5>
+                            <p>With 6 months interest-free credit on orders above $149, you can get your order now and purchase later</p>
+                            <div class="text-start mt-3 pt16 pb16">
+                                <a href="#" class="btn btn-primary">Discover more</a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-4">
+                        <img src="/droggol_mass_mailing_themes/static/src/img/theme_prime/black.jpeg" class="d-block mx-auto img img-fluid" />
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Offers -->
+
+    <template id="d_mail_offer" name="Discount">
+        <div class="d_mail_offer d_border_option o_mail_snippet_general" data-snippet="d_mail_offer">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <div class="px-4 py-2">
+                            <div class="text-center my-3">
+                                <h4>OUR GIFT TO YOU!</h4>
+                            </div>
+                            <div class="text-center my-3">
+                                <h1 class="text-primary font-weight-bold">ENJOY 20% OFF</h1>
+                            </div>
+                            <div class="text-center my-3">
+                                <h4>YOUR NEXT ONLINE ORDER</h4>
+                            </div>
+                            <div class="text-center my-3">
+                                <a href="#" class="btn btn-primary">START SHOPPING</a>
+                            </div>
+                            <div class="text-center my-3">
+                                <span>Use code: WELCOMEBACK</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_offer_2" name="Offers">
+        <div class="d_mail_offer_2 d_border_option o_mail_snippet_general bg-o-color-1" data-snippet="d_mail_offer_2">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-12">
+                        <div class="p-3">
+                            <div class="text-center border p-4">
+                                <h5>SPECIAL OFFERS END OF SEASON</h5>
+                                <h1 class="text-primary font-weight-bold">50% OFF</h1>
+                                <h5>ALL THE SPECIAL ITEMS</h5>
+                                <h5>IN STORES &amp; ONLINE</h5>
+                                <div class="text-center mt-3">
+                                    <a href="#" class="btn btn-primary">START SHOPPING</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_event" name="Event">
+        <div class="d_mail_event o_mail_snippet_general d_border_option pt64 pb64">
+            <div class="container">
+                <div class="row align-items-center mt-3 p-3">
+                    <div class="col-lg-2 text-center">
+                        <h1 class="font-weight-bold text-primary">29</h1>
+                        <small style="display:block;">October</small>
+                        <small style="display:block;">2019</small>
+                    </div>
+                    <div class="col-lg-7">
+                        <h4>END OF SEASON</h4>
+                        <small class="text-start" style="display:block;">Looking to treat yourself and get some inspiration? Don't miss your chance to grab upto 80% off</small>
+                        <small class="text-start mt-2" style="display:block;"><i class="text-primary fa fa-calendar"/> 29th Oct - 12th Nov</small>
+                    </div>
+                    <div class="col-lg-3" style="text-align: right;">
+                        <a class="btn btn-primary rounded-circle btn-sm" href="#">Register</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_event_image" name="Event(Image)">
+        <div class="d_mail_event_image o_mail_snippet_general d_border_option">
+            <div class="container">
+                <div class="row align-items-center">
+                    <div class="col-lg-4 text-center">
+                        <img src="/droggol_mass_mailing_themes/static/src/img/theme_prime/beselo_bhai.jpeg" class="d-block mx-auto img img-fluid" />
+                    </div>
+                    <div class="col-lg-8">
+                        <h4>END OF SEASON</h4>
+                        <small class="text-primary" style="display:block;"> <i class="fa fa-calendar"/> 29th Oct - 12th Nov</small>
+                        <small class="mt-2" style="display:block;">
+                            Looking to treat yourself and get some inspiration?
+                            Don't miss your chance to grab upto 80% off.with 6 months interest-free credit on orders above $149,
+                            you can get your order now and purchase later
+                        </small>
+                        <div class="mt-4">
+                            <a class="btn btn-primary rounded-circle btn-sm" href="#">More info</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_festival_offer" name="Festival Offers">
+        <div class="d_mail_festival_offer o_mail_snippet_general d_border_option">
+            <div class="container p-3">
+                <div class="row align-items-center">
+                    <div class="col-lg-12 text-center">
+                        <div class="p-3">
+                            <img src="/droggol_mass_mailing_themes/static/src/img/theme_prime/christmas_tree.png" class="d-block mx-auto img img-fluid" />
+                        </div>
+                        <h6 class="text-center text-primary">
+                            <i class="fa fa-gift"/> Merry Christmas <i class="fa fa-gift"/>
+                        </h6>
+                        <div class="text-center">
+                            <h2 class="text-center">ENJOY <span class="text-primary">25%</span> OFF</h2>
+                            <h6 class="text-center">YOUR NEXT PURCHASE</h6>
+                            <h6 class="text-center">ANY DAY IN <span class="text-primary">DECEMBER</span></h6>
+                        </div>
+                        <div class="text-center my-3">
+                            <a href="#" class="btn btn-primary rounded-circle btn-sm">START SHOPPING</a>
+                        </div>
+                        <div class="text-center my-3">
+                            <span>Use code: CHEISTMAS</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <template id="d_mail_gift" name="Coupon">
+        <div class="d_mail_gift o_mail_snippet_general d_border_option">
+            <div class="container p-3">
+                <div class="row align-items-center">
+                    <div class="col-lg-12 text-center">
+                        <div class="p-3">
+                            <img src="/droggol_mass_mailing_themes/static/src/img/theme_prime/gift.png" class="d-block mx-auto img img-fluid" style="max-height:250px;width:auto;"/>
+                        </div>
+                        <h6 class="text-primary">
+                            <i class="fa fa-gift"/> A GIFT, JUST FOR YOU <i class="fa fa-gift"/>
+                        </h6>
+                        <h2 class=" mb-1"><strong class="text-primary">50%</strong> OFF</h2>
+                        <h6 class="">FREE SHIPPING</h6>
+                        <div class="p-4 border w-50 mx-auto my-4" style="border-style:dashed !important;"><strong>CODE: DR35F3GL</strong></div>
+                        <p class="mt-2">Hurry, offer ends tonight!</p>
+                        <div class=" my-3">
+                            <a href="#" class="btn btn-primary rounded-circle btn-sm">START SHOPPING</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </template>
+
+    <!-- Dynamic Snippet -->
+    <template id="d_horizontal_product_block" name="Product Block">
+        <div data-related-app="sale" data-template="s_d_horizontal_product_block" class="s_dr_dynamic_snippet d_horizontal_product_block d_border_option" data-filter-by-pricelist-id="-1"/>
+    </template>
+
+    <template id="d_product_grid" name="Products Grid">
+        <div data-related-app="sale" data-template="s_d_product_grid" class="s_dr_dynamic_snippet d_product_grid d_border_option" data-filter-by-pricelist-id="-1"/>
+    </template>
+
+    <template id="d_horizontal_product_grid" name="Block Product Grid">
+        <div data-related-app="sale" data-template="s_d_horizontal_product_grid" class="s_dr_dynamic_snippet d_horizontal_product_grid d_border_option" data-filter-by-pricelist-id="-1"/>
+    </template>
+    <!-- Blogs -->
+    <template id="d_horizontal_blog_block" name="Blog Block">
+        <div data-related-app="website_blog" data-template="s_d_horizontal_blog_block" class="s_dr_dynamic_snippet d_horizontal_blog_block o_cc o_cc2 d_border_option"/>
+    </template>
+    <template id="d_blog_grid" name="Blog Grid">
+        <div data-related-app="website_blog" data-template="s_d_blog_grid" class="s_dr_dynamic_snippet d_blog_grid d_border_option"/>
+    </template>
+    <!-- Events -->
+    <template id="d_event_block" name="Event Block">
+        <div data-related-app="event" data-template="s_d_event_block" class="s_dr_dynamic_snippet d_event_block d_border_option"/>
+    </template>
+    <template id="d_events_grid" name="Event Grid">
+        <div data-related-app="event" data-template="s_d_events_grid" class="s_dr_dynamic_snippet d_events_grid d_border_option"/>
+    </template>
+    <!-- Recruitment -->
+    <template id="d_recruitment_block" name="Recruitment Block">
+        <div data-related-app="hr_recruitment" data-template="s_d_recruitment_block" class="s_dr_dynamic_snippet d_recruitment_block d_border_option"/>
+    </template>
+    <template id="d_recruitment_grid" name="Recruitment Grid">
+        <div data-related-app="hr_recruitment" data-template="s_d_recruitment_grid" class="s_dr_dynamic_snippet d_recruitment_grid d_border_option"/>
+    </template>
+    <!-- eLearning -->
+    <template id="d_elearning_block" name="eLearning Block">
+        <div data-related-app="website_slides" data-template="s_d_elearning_block" class="s_dr_dynamic_snippet d_elearning_block d_border_option"/>
+    </template>
+    <template id="d_elearning_grid" name="eLearning Grid">
+        <div data-related-app="website_slides" data-template="s_d_elearning_grid" class="s_dr_dynamic_snippet d_elearning_grid d_border_option"/>
+    </template>
+
+    <!-- Footer -->
+    <template id="d_grid_footer_light" name="Footer Columns Light">
+        <t t-call="droggol_mass_mailing_themes.d_footer_grid">
+            <t t-set="_parent_classes" t-value="'d_grid_footer_light d_border_option'"/>
+            <t t-set="_logo_url" t-value="'/droggol_mass_mailing_themes/static/src/img/theme_prime/logo.png'"/>
+            <t t-set="_text_color" t-value="'text-black'"/>
+            <t t-set="_content" t-value="''"/>
+            <t t-set="_btn" t-value="'btn-primary'"/>
+            <t t-set="_icon" t-value="'text-primary'"/>
+        </t>
+    </template>
+
+    <template id="d_grid_footer_color" name="Footer Columns Color">
+        <t t-call="droggol_mass_mailing_themes.d_footer_grid">
+            <t t-set="_parent_classes" t-value="'d_grid_footer_light bg-o-color-1'"/>
+            <t t-set="_logo_url" t-value="'/droggol_mass_mailing_themes/static/src/img/theme_prime/logo_white.png'"/>
+            <t t-set="_text_color" t-value="'text-white'"/>
+            <t t-set="_content" t-value="'text-white'"/>
+            <t t-set="_btn" t-value="'btn-primary'"/>
+            <t t-set="_icon" t-value="'text-white'"/>
+        </t>
+    </template>
+
+    <template id="d_grid_footer_dark" name="Footer Columns Dark">
+        <t t-call="droggol_mass_mailing_themes.d_footer_grid">
+            <t t-set="_parent_classes" t-value="'d_grid_footer_light bg-900'"/>
+            <t t-set="_logo_url" t-value="'/droggol_mass_mailing_themes/static/src/img/theme_prime/logo_dark.png'"/>
+            <t t-set="_text_color" t-value="'text-white'"/>
+            <t t-set="_content" t-value="'text-600'"/>
+            <t t-set="_btn" t-value="'btn-primary'"/>
+            <t t-set="_icon" t-value="'text-primary'"/>
+        </t>
+    </template>
+
+    <template id="d_smooth_footer_light" name="Footer Centered Light">
+        <t t-call="droggol_mass_mailing_themes.d_smooth_footer">
+            <t t-set="_parent_classes" t-value="'d_smooth_footer_light d_border_option'"/>
+            <t t-set="_text_color" t-value="'text-primary'"/>
+            <t t-set="_content" t-value="''"/>
+            <t t-set="_icon" t-value="'text-primary'"/>
+        </t>
+    </template>
+
+    <template id="d_smooth_footer_color" name="Footer Centered Color">
+        <t t-call="droggol_mass_mailing_themes.d_smooth_footer">
+            <t t-set="_parent_classes" t-value="'d_smooth_footer_light bg-o-color-1'"/>
+            <t t-set="_text_color" t-value="'text-white'"/>
+            <t t-set="_content" t-value="'text-white'"/>
+            <t t-set="_icon" t-value="'text-white'"/>
+        </t>
+    </template>
+
+    <template id="d_smooth_footer_dark" name="Footer Centered Dark">
+        <t t-call="droggol_mass_mailing_themes.d_smooth_footer">
+            <t t-set="_parent_classes" t-value="'d_smooth_footer_light bg-900'"/>
+            <t t-set="_text_color" t-value="'text-primary'"/>
+            <t t-set="_content" t-value="'text-white'"/>
+            <t t-set="_icon" t-value="'text-primary'"/>
+        </t>
+    </template>
+
+    <template id="d_light_footer" name="Footer Logo Light">
+        <t t-call="droggol_mass_mailing_themes.d_footer_logo">
+            <t t-set="_parent_classes" t-value="'d_footer_logo d_border_option'"/>
+            <t t-set="_text_color" t-value="'text-primary'"/>
+            <t t-set="_content" t-value="''"/>
+            <t t-set="_icon" t-value="'text-primary'"/>
+            <t t-set="_logo" t-value="'/droggol_mass_mailing_themes/static/src/img/theme_prime/logo.png'"/>
+        </t>
+    </template>
+
+    <template id="d_color_footer" name="Footer Logo Color">
+        <t t-call="droggol_mass_mailing_themes.d_footer_logo">
+            <t t-set="_parent_classes" t-value="'d_color_footer bg-o-color-1'"/>
+            <t t-set="_text_color" t-value="'text-white'"/>
+            <t t-set="_content" t-value="'text-white'"/>
+            <t t-set="_icon" t-value="'text-white'"/>
+            <t t-set="_logo" t-value="'/droggol_mass_mailing_themes/static/src/img/theme_prime/logo_white.png'"/>
+        </t>
+    </template>
+
+    <template id="d_dark_footer" name="Footer Logo Dark">
+        <t t-call="droggol_mass_mailing_themes.d_footer_logo">
+            <t t-set="_parent_classes" t-value="'d_dark_footer bg-900'"/>
+            <t t-set="_text_color" t-value="'text-white'"/>
+            <t t-set="_content" t-value="'text-white'"/>
+            <t t-set="_icon" t-value="'text-primary'"/>
+            <t t-set="_logo" t-value="'/droggol_mass_mailing_themes/static/src/img/theme_prime/logo_dark.png'"/>
+        </t>
+    </template>
+
+    <template id="d_light_footer_mini" name="Mini Footer Light">
+        <t t-call="droggol_mass_mailing_themes.d_footer_mini">
+            <t t-set="_parent_classes" t-value="'d_light_footer_mini'"/>
+            <t t-set="_text_color" t-value="''"/>
+            <t t-set="_icon" t-value="'text-primary'"/>
+        </t>
+    </template>
+
+    <template id="d_color_footer_mini" name="Mini Footer Color">
+        <t t-call="droggol_mass_mailing_themes.d_footer_mini">
+            <t t-set="_parent_classes" t-value="'d_color_footer_mini bg-o-color-1'"/>
+            <t t-set="_text_color" t-value="'text-white'"/>
+            <t t-set="_icon" t-value="'text-white'"/>
+        </t>
+    </template>
+
+    <template id="d_dark_footer_mini" name="Mini Footer Dark">
+        <t t-call="droggol_mass_mailing_themes.d_footer_mini">
+            <t t-set="_parent_classes" t-value="'d_dark_footer_mini bg-900'"/>
+            <t t-set="_text_color" t-value="'text-white'"/>
+            <t t-set="_icon" t-value="'text-primary'"/>
+        </t>
+    </template>
+
+    <template id="d_mail_social_light" name="Social Light">
+        <t t-call="droggol_mass_mailing_themes.d_mail_social">
+            <t t-set="_parent_classes" t-value="'d_mail_social_light d_border_option'"/>
+            <t t-set="_text_color" t-value="'text-primary'"/>
+            <t t-set="_icon" t-value="'text-primary'"/>
+        </t>
+    </template>
+
+    <template id="d_mail_social_color" name="Social Color">
+        <t t-call="droggol_mass_mailing_themes.d_mail_social">
+            <t t-set="_parent_classes" t-value="'d_mail_social_color bg-o-color-1'"/>
+            <t t-set="_text_color" t-value="'text-white'"/>
+            <t t-set="_icon" t-value="'text-white'"/>
+        </t>
+    </template>
+
+    <template id="d_mail_social_dark" name="Social Dark">
+        <t t-call="droggol_mass_mailing_themes.d_mail_social">
+            <t t-set="_parent_classes" t-value="'d_mail_social_dark bg-900'"/>
+            <t t-set="_text_color" t-value="'text-primary'"/>
+            <t t-set="_icon" t-value="'text-primary'"/>
+        </t>
+    </template>
+
+
+    <template id="d_email_designer_snippets_options" inherit_id="mass_mailing.snippet_options">
+        <xpath expr="." position="inside">
+            <div data-js="d_mass_mailing_theme_option_module_status" data-selector=".s_dr_dynamic_snippet"/>
+            <div t-if="request.env['mailing.mailing'].dr_module_is_installed('sale')" data-js="d_mass_mailing_theme_option_products" data-selector=".d_horizontal_product_block, .d_product_grid, .d_horizontal_product_grid">
+                <we-many2many string="Products" data-name="product_opt" data-attribute-name="selectedIds" data-no-preview="true" data-model="product.template" data-allow-delete="true" data-fakem2m="true" data-select-data-attribute=""/>
+
+                <we-select string="Pricelist" data-no-preview="true" data-name="dr_pricelist_opt" data-attribute-name="filterByPricelistId">
+                    <we-button data-select-data-attribute="-1">Default</we-button>
+                    <!-- the Pricelist list will be generated in js -->
+                </we-select>
+
+            </div>
+            <div t-if="request.env['mailing.mailing'].dr_module_is_installed('website_blog')" data-js="d_mass_mailing_theme_option_blogs" data-selector=".d_horizontal_blog_block, .d_blog_grid">
+                <we-many2many string="Blogs" data-name="blog_opt" data-attribute-name="selectedIds" data-no-preview="true" data-model="blog.post" data-allow-delete="true" data-fakem2m="true" data-select-data-attribute=""/>
+            </div>
+            <div t-if="request.env['mailing.mailing'].dr_module_is_installed('event')" data-js="d_mass_mailing_theme_option_event" data-selector=".d_event_block, .d_events_grid">
+                <we-many2many string="Events" data-name="event_opt" data-attribute-name="selectedIds" data-no-preview="true" data-model="event.event" data-allow-delete="true" data-fakem2m="true" data-select-data-attribute=""/>
+            </div>
+            <div t-if="request.env['mailing.mailing'].dr_module_is_installed('hr_recruitment')" data-js="d_mass_mailing_theme_option_recruitment" data-selector=".d_recruitment_block, .d_recruitment_grid">
+                <we-many2many string="Recruitment" data-name="recruitment_opt" data-attribute-name="selectedIds" data-no-preview="true" data-model="hr.job" data-allow-delete="true" data-fakem2m="true" data-select-data-attribute=""/>
+            </div>
+            <div t-if="request.env['mailing.mailing'].dr_module_is_installed('website_slides')" data-js="d_mass_mailing_theme_option_elearning" data-selector=".d_elearning_block, .d_elearning_grid">
+                <we-many2many string="eLearning" data-name="elearning_opt" data-attribute-name="selectedIds" data-no-preview="true" data-model="slide.channel" data-allow-delete="true" data-fakem2m="true" data-select-data-attribute=""/>
+            </div>
+            <div data-js="colorpicker"
+                data-selector=".d-bg-table-row-color">
+                <div class="dropdown-submenu">
+                    <a tabindex="-1" href="#" class="dropdown-item"><i class="fa fa-eyedropper"/>Background Color</a>
+                    <div class="dropdown-menu" role="menu"/>
+                </div>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="d_email_designer_snippets" inherit_id="mass_mailing.email_designer_snippets">
+        <xpath expr="//div[@id='email_designer_default_headers']" position="after">
+            <div id="droggol_mass_mail_themes_dynamic_snippet_block" class="o_panel">
+                <div class="o_panel_header">
+                    <i class="fa fa-cogs"/> Dynamic Snippets
+                </div>
+                <div class="o_panel_body">
+                    <t t-snippet="droggol_mass_mailing_themes.d_horizontal_product_block" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_dynamic_products.png"/>
+                    <t t-snippet="droggol_mass_mailing_themes.d_product_grid" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_dynamic_products2.png"/>
+                    <t t-snippet="droggol_mass_mailing_themes.d_horizontal_product_grid" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_dynamic_blog2.png"/>
+                    <t t-snippet="droggol_mass_mailing_themes.d_horizontal_blog_block" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_dynamic_blog1.png"/>
+                    <t t-snippet="droggol_mass_mailing_themes.d_blog_grid" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_dynamic_blog2.png"/>
+                    <t t-snippet="droggol_mass_mailing_themes.d_event_block" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_dynamic_event1.png"/>
+                    <t t-snippet="droggol_mass_mailing_themes.d_events_grid" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_dynamic_event2.png"/>
+                    <t t-snippet="droggol_mass_mailing_themes.d_recruitment_block" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_dynamic_event1.png"/>
+                    <t t-snippet="droggol_mass_mailing_themes.d_recruitment_grid" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_dynamic_event2.png"/>
+                    <t t-snippet="droggol_mass_mailing_themes.d_elearning_block" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_dynamic_event1.png"/>
+                    <t t-snippet="droggol_mass_mailing_themes.d_elearning_grid" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_dynamic_event2.png"/>
+                </div>
+            </div>
+        </xpath>
+
+        <xpath expr="//div[@id='email_designer_default_body']/div[hasclass('o_panel_body')]" position="inside">
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_title_new" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_title.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mini_tagline" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_tagline.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_hero_block" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_hero_block.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_full_image" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_full_img.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_content_snippet" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_content_btn.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_block_hero_block" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_text_image.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_large_block" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_large_block.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_block_services" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_services.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_block_features" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_features.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_banner" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_banner.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_three_columns_cards" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_three_cards.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_three_columns" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_three_col.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_three_columns_2" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_three_col2.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_product_grid" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_product_grid.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_recommended" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_sugg_products.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_call_to_action_boxed" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_cta.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_call_to_action_thin" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_cta2.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_call_to_action_centered" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_cta3.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_counters" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_counter.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_pricing" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_pricing.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_full_order" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_order.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_note" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_note.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_icon_grid" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_icon_grid.png"/>
+        </xpath>
+        <xpath expr="//div[@id='email_designer_default_headers']/div[hasclass('o_panel_body')]" position="inside">
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_header_light" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_header_light.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_header_color" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_header_color.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_header_dark" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_header_dark.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_header_center_logo_light" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_header_center_light.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_header_center_logo_color" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_header_center_color.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_header_center_logo_dark" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_header_center_dark.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_jumbo_header_light" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_header_jumbo_light.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_jumbo_header_color" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_header_jumbo_color.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_jumbo_header_dark" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_header_jumbo_dark.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_header_pre_header_light" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_preheader_light.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_header_pre_header_color" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_preheader_color.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_header_pre_header_dark" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_preheader_dark.png"/>
+        </xpath>
+        <xpath expr="//div[@id='email_designer_default_extra']/div[hasclass('o_panel_body')]" position="inside">
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_event" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_event.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_event_image" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_img_event.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_offer" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_discount.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_offer_2" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_discount2.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_festival_offer" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_coupon.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_gift" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_coupon2.png"/>
+        </xpath>
+        <xpath expr="//div[@id='email_designer_default_footer']/div[hasclass('o_panel_body')]" position="inside">
+            <t t-snippet="droggol_mass_mailing_themes.d_grid_footer_light" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_footer_col.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_grid_footer_color" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_footer_col_color.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_grid_footer_dark" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_footer_col_dark.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_smooth_footer_light" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_footer_center_light.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_smooth_footer_color" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_footer_center_color.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_smooth_footer_dark" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_footer_center_dark.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_light_footer" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_footer_light.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_color_footer" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_footer_color.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_dark_footer" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_footer_dark.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_light_footer_mini" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_footer_light_mini.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_color_footer_mini" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_footer_color_mini.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_dark_footer_mini" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_footer_dark_mini.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_social_light" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_social_light.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_social_color" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_social_color.png"/>
+            <t t-snippet="droggol_mass_mailing_themes.d_mail_social_dark" t-thumbnail="/droggol_mass_mailing_themes/static/src/img/thumbs/drg_social_dark.png"/>
+        </xpath>
+    </template>
+</odoo>

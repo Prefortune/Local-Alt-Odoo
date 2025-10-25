@@ -1,0 +1,187 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="report_saleorder_document" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//t[@t-call='web.external_layout']" position="replace">
+            <t t-set="doc" t-value="doc.with_context(lang=lang)"/>
+            <t t-call="pf_sale_invoice_template.custom_standard_external_layout">
+                <t t-set="company" t-value="company_id or request.env.user.company_id"/>
+                <t t-set="lang" t-value="doc.partner_id.lang or 'en_US'"/>
+                <t t-set="direction" t-value="'rtl' if lang.startswith('he') or lang.startswith('ar') or lang.startswith('fa') else 'ltr'"/>
+                <br></br><br></br>
+                <t t-if="direction == 'rtl'">
+
+                <t t-if="doc.pf_title">
+                    <div style="text-align: center; font-weight: bold; font-size: 18px; margin-bottom: 10px;">
+                        <t t-esc="doc.pf_title"/>
+                    </div>
+                </t> 
+    
+                <div class="customer-info" style="margin-top: 40px; padding: 10px; background-color: #fff; border: 1px solid #ddd; border-radius: 3px; direction: rtl; text-align: right;">
+                    <div><strong t-translation="on">To</strong> <span t-field="doc.partner_id.name"/></div>
+                    <div t-if="doc.partner_id.vat"><strong t-translation="on">ID/Tax No:</strong> <span t-field="doc.partner_id.vat"/></div>   
+                </div>
+
+                <div class="page" style="margin-top: 20px;">
+                    <table class="table table-sm mt-4" style="width: 100%;text-align:right; border-collapse: collapse;">
+                        <thead style="background-color: #f0f0f0;">
+                            <tr>
+                                <th style="padding: 8px;text-align:left;padding-left:10px">Total</th>
+                                <th style="padding: 8px;text-align:right"><span t-translation="on">Discounts</span></th>
+                                <th style="padding: 8px;text-align:right"><span t-translation="on">Unit Price</span></th>
+                                <th style="padding: 8px;text-align:right"><span t-translation="on">Quantity</span></th>
+                                <th style="padding: 8px;text-align:right;"><span t-translation="on">Item</span></th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-set="row_index" t-value="0"/>
+                            <t t-foreach="doc.order_line" t-as="line">
+                                <t t-set="product_name_without_code" t-value="line.product_id.with_context(display_default_code=False).display_name"/>
+                                <tr t-att-style="'background-color: ' + ('#f9f9f9' if row_index % 2 == 0 else '#f0f0f0')">
+                                    <td style="padding: 8px; text-align: left; direction: rtl; margin-left: 0px;">
+                                        <span t-field="line.price_subtotal"
+                                              t-options='{"widget": "monetary", "display_currency": doc.currency_id}'/>
+                                    </td>
+                                    <td style="padding: 8px;text-align:right"><span t-field="line.discount"/></td>
+                                    <td style="padding: 8px;text-align:right"><span t-field="line.price_unit"/></td>
+                                    <td style="padding: 8px;text-align:right"><span t-field="line.product_uom_qty"/></td>
+                                    <td style="padding: 8px;text-align:right"><span t-esc="product_name_without_code"/></td>
+                                </tr>
+                                <t t-set="row_index" t-value="row_index + 1"/>
+                            </t>
+                        </tbody>
+                    </table>
+
+                    <div style="width: 50%; margin-left: 0; margin-right: auto; margin-bottom: 30px; padding: 10px; direction: rtl;">
+                        <table style="width: 100%; border-collapse: collapse; font-size: 14px; marign-left:10px">
+                            <t t-set="tax_totals" t-value="doc.tax_totals"/>
+                            <tr style="background-color: #ffffff;">
+                                <td style="text-align: right; padding: 20px 20px 20px 0; font-weight: bold; white-space: nowrap;" t-translation="on">Total before Tax</td>
+                                <td style="text-align: left; padding: 20px 20px 20px 0; white-space: nowrap;">
+                                    <span t-esc="tax_totals['amount_untaxed']" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.currency_id}"/>
+                                </td>
+                            </tr>
+                
+                            <tr style="background-color: #f0f0f0; font-weight: bold;">
+                                <td style="text-align: right; padding: 20px 20px 20px 0; white-space: nowrap;" t-translation="on">Total with VAT</td>
+                                <td style="text-align: left; padding: 20px 20px 20px 0; white-space: nowrap;">
+                                    <span t-esc="tax_totals['amount_total']" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.currency_id}"/>
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    
+                    <div class="notes-block" style="margin-top: 10px; padding: 15px; border: 1px solid #eee;height:120px; border-radius: 3px;
+                        background-color: #fafafa; font-size: 12px; text-align:right; overflow: hidden;">
+                        <div style="float: right; font-weight: bold; font-size: 14px; margin-right: 0;" t-translation="on">Notes</div>
+                        <div style="float: right; font-weight: normal;font-size:12px; margin-right: 10px;width:90%;">
+                            <span t-out="doc.note or ''" />
+                        </div>
+                    </div>
+                </div> 
+
+                <section t-if="company.pf_signature" id="signature" name="Signature" style="margin-top: 20px;">
+                    <div class="row justify-content-end" style="margin-left:50px" name="signature">
+                        <div class="col-auto text-end">
+                            <img t-att-src="image_data_uri(company.pf_signature)" 
+                                style="max-height: 6rem; max-width: 100%; display: block;"/>
+                            <h5 style="text-align: left;" t-translation="on">Company Signature</h5>
+                        </div>
+                    </div>
+                </section>
+                </t>
+
+                <t t-else="">
+                    <t t-if="doc.pf_title">
+                        <div style="text-align: center; font-weight: bold; font-size: 18px; margin-bottom: 10px;">
+                            <t t-esc="doc.pf_title"/>
+                        </div>
+                </t> 
+
+                <div class="customer-info" style="margin-top: 40px; padding: 10px; background-color: #fff; border: 1px solid #ddd; border-radius: 3px; text-align: left;">
+                    <div>
+                        <strong><span t-translation="on">To</span></strong>
+                        <span t-field="doc.partner_id.name"/>
+                    </div>
+                    <div t-if="doc.partner_id.vat">
+                        <strong><span t-translation="on">VAT/ID:</span></strong>
+                        <span t-field="doc.partner_id.vat"/>
+                    </div>   
+                </div>
+                        
+
+            <div class="page" style="margin-top: 20px;">
+            <table class="table table-sm mt-4" style="width: 100%;text-align:left; border-collapse: collapse;">
+            <thead style="background-color: #f0f0f0;">
+                <tr>
+                    <th style="padding: 8px; text-align: left; padding-left: 10px;"><span t-translation="on">Item</span></th>
+                    <th style="padding: 8px; text-align: left;"><span t-translation="on">Quantity</span></th>
+                    <th style="padding: 8px; text-align: left;"><span t-translation="on">Unit Price</span></th>
+                    <th style="padding: 8px; text-align: left;"><span t-translation="on">Discount</span></th>
+                    <th style="padding: 8px; text-align: left;"><span t-translation="on">Total</span></th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <t t-set="row_index" t-value="0"/>
+                <t t-foreach="doc.order_line" t-as="line">
+                    <t t-set="product_name_without_code" t-value="line.product_id.with_context(display_default_code=False).display_name"/>
+                    <tr t-att-style="'background-color: ' + ('#f9f9f9' if row_index % 2 == 0 else '#f0f0f0')">
+                    <td style="padding: 8px; text-align:left"><span t-esc="product_name_without_code"/></td>
+                    <td style="padding: 8px; text-align:left"><span t-field="line.product_uom_qty"/></td>
+                    <td style="padding: 8px; text-align:left"><span t-field="line.price_unit"/></td>
+                    <td style="padding: 8px; text-align:left"><span t-field="line.discount"/></td>
+                    <td style="padding: 8px; text-align:left; margin-left:0px"><span t-field="line.price_subtotal"/></td>
+                    </tr>
+                    <t t-set="row_index" t-value="row_index + 1"/>
+                </t>
+            </tbody>
+            </table>
+
+            <div style="width: 50%; margin-right: 0; margin-left: auto; margin-bottom: 30px; padding: 10px;">
+                <table style="width: 100%; border-collapse: collapse; font-size: 14px;">
+                    <t t-set="tax_totals" t-value="doc.tax_totals"/>
+                    <tr style="background-color: #ffffff;">
+                        <td style="text-align: left; padding: 20px 20px 20px 0; font-weight: bold; white-space: nowrap;">
+                            <span t-translation="on">Total before VAT</span>
+                        </td>                                
+                        <td style="text-align: left; padding: 20px 20px 20px 0; white-space: nowrap;">
+                            <span t-esc="tax_totals['amount_untaxed']" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.currency_id}"/>
+                        </td>
+                    </tr>
+        
+                    <tr style="background-color: #f0f0f0; font-weight: bold;">
+                        <td style="text-align: left; padding: 20px 20px 20px 0; white-space: nowrap;">
+                            <span t-translation="on">Total including VAT</span>
+                        </td>
+                        
+                        <td style="text-align: left; padding: 20px 20px 20px 0; white-space: nowrap;">
+                            <span t-esc="tax_totals['amount_total']" t-options="{&quot;widget&quot;: &quot;monetary&quot;, &quot;display_currency&quot;: doc.currency_id}"/>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="notes-block" style="margin-top: 10px; padding: 15px; border: 1px solid #eee; height:120px; border-radius: 3px;background-color: #fafafa; font-size: 12px; text-align: left; overflow: hidden;">
+                <div style="float: left; font-weight: bold; font-size: 14px; margin-left: 0;">
+                    <span t-translation="on">Note</span>
+                </div>
+            <div style="float: left; font-weight: normal; font-size: 12px; margin-left: 10px; width: 90%;">
+                <span t-out="doc.note or ''" />
+            </div>
+            </div>
+            </div>
+
+            <section t-if="company.pf_signature" id="signature" name="Signature" style="margin-top:20px;">
+                <div class="row justify-content-end" name="signature">
+                    <div class="col-auto text-end" style="text-align: right;">
+                        <img t-att-src="image_data_uri(company.pf_signature)" 
+                            style="max-height: 6rem; max-width: 5cm; display: block; margin-right: 2px; margin-left: auto;" />
+                        <h5 style="text-align: right;margin-right:2px"> <span t-translation="on">Company</span></h5>
+                    </div>
+                </div>
+            </section>
+                </t>
+            </t>
+        </xpath>
+        </template>
+    </odoo>

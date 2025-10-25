@@ -1,0 +1,23 @@
+<odoo>
+    <record id="cargo_delivery_shipment_view_form" model="ir.ui.view">
+        <field name="name">cargo.delivery.shipment.form</field>
+        <field name="model">cargo.delivery</field>
+        <field name="arch" type="xml">
+            <form string="Shipment">
+                <header>
+                    <button name="action_create_shipment" type="object" string="Create Shipment" class="oe_highlight" />
+                </header>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_shipment" model="ir.actions.act_window">
+        <field name="name">Shipments</field>
+        <field name="res_model">cargo.delivery</field>
+        <field name="view_mode">form</field>
+    </record>
+
+    <menuitem id="menu_shipment_root" name="Cargo Delivery"/>
+
+   <menuitem id="menu_shipment" name="Cargo Delivery Method" parent="menu_shipment_root" action="action_shipment"/>
+</odoo>

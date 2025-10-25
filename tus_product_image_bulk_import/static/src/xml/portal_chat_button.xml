@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+<t t-name="website_portal_chat.PortalchatButton">
+    <Dropdown t-if="env.services.user.context.uid" togglerClass="'btn m-2 p-2'">
+        <t t-set-slot="toggler">
+            <i class="fa fa-lg fa-comments" role="img" aria-label="Messages" style="font-size: 24px;color:#714B67"/>
+            <span t-if="counter" class="o-mail-MessagingMenu-counter badge rounded-pill" style="margin-right: -1.5em;
+                        border: 0;
+                        padding: 3px 6px;
+                        background-color: var(--o-navbar-badge-bg, #dc3545);
+                        font-size: 0.7em;
+                        color: var(--o-navbar-badge-color, #FFF);
+                        text-shadow: var(--o-navbar-badge-text-shadow, none);
+                        transform: translate(-0.6em, -30%);">
+                <t t-esc="counter"/>
+            </span>
+        </t>
+         <t t-set-slot="default">
+             <ChannelSelector category="store.discuss.chats" onValidate="() => chatWindowService.closeNewMessage()" multiple="false" autofocus="true"/>
+             <t t-foreach="threads" name="threads" t-as="thread" t-key="thread.localId">
+                <t t-set="message" t-value="thread.isChatChannel or (thread.type === 'channel' and thread.needactionMessages.length === 0) ? thread.newestPersistentNotEmptyOfAllMessage : thread.needactionMessages.at(-1)"/>
+                <NotificationItem
+                    body="message?.inlineBody or message?.subtype_description"
+                    counter="thread.needactionCounter"
+                    datetime="message?.datetime"
+                    displayName="thread.displayName"
+                    iconSrc="thread.imgUrl"
+                    hasMarkAsReadButton="thread.isUnread"
+                    muted="thread.muteUntilDateTime ? 2 : !thread.isUnread ? 1 : 0"
+                    onClick="(isMarkAsRead) => this.onClickThread(isMarkAsRead, thread)"
+                >
+                    <t t-set-slot="icon">
+                        <ImStatus t-if="thread.type === 'chat'" persona="thread.chatPartner" thread="thread" className="'position-absolute top-100 start-100 translate-middle mt-n1 ms-n1'"/>
+                    </t>
+                </NotificationItem>
+            </t>
+         </t>
+    </Dropdown>
+</t>
+
+</templates>

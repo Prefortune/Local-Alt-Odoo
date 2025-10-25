@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pf_product_review_tree" model="ir.ui.view">
+        <field name="name">product.review.tree</field>
+        <field name="model">product.review</field>        
+        <field name="arch" type="xml">
+            <tree editable="bottom">
+                <field name="create_date"/>
+                <field name="pf_customer_id"/>
+                <field name="pf_rating"  widget="priority"/>
+                <field name="pf_review"/>             
+                <field name="pf_is_active"/>
+                <field name="pf_rating_int"/>
+                <field name="pf_product_ids" widget="many2many_tags"/>
+            </tree>
+        </field>
+</record>
+
+<record id="pf_product_review_form" model="ir.ui.view">
+        <field name="name">product.review.form</field>
+        <field name="model">product.review</field>        
+        <field name="arch" type="xml">
+            <form>
+                <group>
+                    <field name="create_date"/>
+                    <field name="pf_customer_id"/>
+                    <field name="pf_rating"  widget="priority"/>
+                    <field name="pf_review"/>                    
+                    <field name="pf_is_active"/>
+                    <field name="pf_rating_int"/>
+                    <field name="pf_product_ids" widget="many2many_tags"/>
+                </group>           
+            </form>
+        </field>
+</record>
+
+
+  <record id="action_product_review" model="ir.actions.act_window">
+        <field name="name">Product</field>
+        <field name="res_model">product.review</field>
+        <field name="view_mode">tree,form,kanban</field>           
+    </record>
+
+    <record id="service_request_view_kanban" model="ir.ui.view">
+        <field name="name">product.review.kanban</field>
+        <field name="model">product.review</field>
+        <field name="arch" type="xml">
+            <kanban default_group_by="pf_service_state">
+                <field name="pf_service_state"/>
+                <field name="pf_is_active"/>
+                <templates>
+                    <t t-name="kanban-box">
+                        <div t-attf-class="oe_kanban_card oe_kanban_global_click"
+                            style="width: 300px; height: 80px;">
+                            <div class="oe_kanban_card">
+                                <div class="oe_kanban_content">
+                                    <div class="oe_kanban_card_top">
+                                    </div>
+                                    <div class="text-muted">
+                                        <field name="pf_customer_id"/>
+                                        <field name="pf_review"/>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </t>
+                </templates>
+            </kanban>
+        </field>
+    </record>
+
+  <menuitem id="menu_product_reviews" name="Product Review"
+    parent="website_sale.menu_catalog"  sequence="4" action="action_product_review"/>
+</odoo>

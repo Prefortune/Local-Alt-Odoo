@@ -1,0 +1,554 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <template id="custom_standard_external_layout" inherit_id="web.external_layout_standard">
+        <xpath expr="//div[1]" position="replace">
+            <link rel='stylesheet' href="/pf_saled_invoice_template/static/src/css/style.css"/>
+            <t t-set="company" t-value="company_id or request.env.user.company_id"/>
+            <t t-foreach="docs" t-as="doc">
+                <t t-if="doc._name == 'sale.order'">
+                    <t t-set="lang" t-value="doc.partner_id.lang or 'en_US'"/>
+                    <t t-set="direction" t-value="'rtl' if lang.startswith('he') or lang.startswith('ar') or lang.startswith('fa') else 'ltr'"/>
+                </t>
+                <t t-elif="doc._name == 'account.move'">
+                    <t t-set="lang" t-value="o.partner_id.lang or 'en_US'"/>
+                    <t t-set="direction" t-value="'rtl' if lang.startswith('he') or lang.startswith('ar') or lang.startswith('fa') else 'ltr'"/>
+                </t>
+                <t t-elif="doc._name == 'stock.picking'">
+                    <t t-set="lang" t-value="doc.partner_id.lang or 'en_US'"/>
+                    <t t-set="direction" t-value="'rtl' if lang.startswith('he') or lang.startswith('ar') or lang.startswith('fa') else 'ltr'"/>
+                </t>
+            </t>
+            <div t-attf-class="header o_company_#{company.id}_layout" t-att-style="report_header_style">
+                <t t-if="direction == 'rtl' and (doc._name == 'stock.picking' and doc.picking_type_id.code in ['outgoing', 'incoming', 'internal'])">
+                    <div class="row" style="margin: 0 !important; padding: 0 !important;">
+                        <div class="col-4" style="text-align: right; margin: 0 !important; padding: 0 !important;">
+                                <h3 style="margin: 0; font-size: 16px; font-weight: bold;"><span t-esc="company.name"/></h3>                   
+                                 <t t-if="company.report_header and company.report_header.strip() != '&lt;p&gt;&lt;br&gt;&lt;/p&gt;'">
+                                    <div style="margin: 0 !important; font-size: 15px;">
+                                        <div style="margin: 0 !important;" t-esc="company.report_header"/>
+                                    </div>
+                                </t>    
+                                <div t-attf-style="margin-top: #{ company.report_header and company.report_header.strip() != '&lt;p&gt;&lt;br&gt;&lt;/p&gt;' and '-15px' or '0' };">
+                                    <p style="margin: 2px 0; font-size: 15px;"><span t-translation="on">ח.פ:</span><span t-esc="company.company_registry or 'N/A'"/></p>
+                                    <p style="margin: 2px 0; font-size: 15px;"><span t-esc="company.street"/></p>
+                                    <p style="margin: 2px 0; font-size: 15px;"><span t-translation="on">טלפון:</span><span t-esc="company.phone"/></p>
+                                    <p style="margin: 2px 0; font-size: 15px;"><span t-translation="on">דוא"ל:</span><span t-esc="company.email"/></p>
+                                    <p style="margin: 2px 0; font-size: 15px;"><span t-translation="on">אתר:</span><span t-esc="company.website"/></p>
+                                </div>
+                        </div>
+
+                        <div class="col-4 text-center" style="margin: 0 !important; padding: 0 !important;">
+                            <img t-if="company.logo" t-att-src="'/web/image/res.company/%s/logo' % company.id" style="max-height: 60px;" alt="Logo"/>
+                        </div>
+
+                        <t t-foreach="docs" t-as="doc">
+                            <div class="col-4" style="text-align: left; margin: 0 !important; padding: 0 !important;">
+                                <t t-if="doc._name == 'sale.order' or (doc._name == 'account.move' and doc.name) or (doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing')">
+                                    <h2 style="margin: 0; font-size: 20px; font-weight: bold;">
+                                        <div style="margin-left:0px">
+                                        <t t-if="doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing' and doc.origin">
+                                            מספר הזמנה:
+                                        <t t-esc="doc.origin"/>
+                                        </t>
+                                        </div>
+                                        <t t-if="doc._name == 'sale.order'"><span t-translation="on">מספר הזמנה:</span></t>
+                                        <t t-if="doc._name == 'account.move'"><span t-translation="on">מספר הזמנה:</span></t>
+                                        <t t-if="doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing'">
+                                            <span t-translation="on">מספר משלוח:</span>
+                                        </t>
+                                        <span style="margin-left: 0px;">
+                                            <t t-if="doc._name == 'account.move'">
+                                                <t t-esc="doc.name"/>
+                                            </t>
+                                            <t t-if="doc._name == 'sale.order'">
+                                                <t t-esc="doc.name"/>
+                                            </t>
+
+                                            <t t-if="doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing'">
+                                                <t t-esc="doc.name"/>
+                                            </t>
+                                        </span>
+                                    </h2>
+
+
+                                    <p style="font-size: 20px; margin: 0;">
+                                        <strong style="font-size: 20px;">
+                                            <span t-translation="on">תאריך:</span>
+                                        </strong>
+                                        <!-- <t t-if="doc._name == 'sale.order'">
+                                            <t t-if="doc.date_order">
+                                                <span t-esc="doc.date_order.strftime('%d/%m/%Y')"/>
+                                            </t>
+                                        </t>
+                                        <t t-if="doc._name == 'account.move' and doc.invoice_origin">
+                                            <t t-if="doc.invoice_date">
+                                                <span t-esc="doc.invoice_date.strftime('%d/%m/%Y')"/>
+                                            </t>
+                                        </t> -->
+
+                                        <t t-if="doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing' and doc.scheduled_date != ''">
+                                            <t t-if="doc.scheduled_date">
+                                                <span t-esc="doc.scheduled_date.strftime('%d/%m/%Y')"/>
+                                            </t>
+                                        </t>
+                                    </p>
+
+                                    <p style="font-size: 20px; margin: 0;">
+                                        <t t-if="(doc._name == 'sale.order' and doc.date_order and doc.date_order != '') or
+                                        (doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing' and doc.date_deadline and doc.deadline != '')">
+                                        <strong style="font-size: 20px;">
+                                            <span t-translation="on">בתוקף עד:</span>
+                                        </strong>
+                                        </t>
+                                        <!-- <t t-if="doc._name == 'sale.order'">
+                                            <t t-if="doc.validity_date">
+                                                <span t-field="doc.validity_date"/>
+                                            </t>
+                                        </t>
+                                        <t t-if="doc._name == 'account.move' and doc.invoice_origin">
+                                            <t t-if="doc.invoice_date_due">
+                                                <span t-field="doc.invoice_date_due"/>
+                                            </t>
+                                        </t> -->
+                                        <t t-if="doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing' and  doc.date_deadline != ''">
+                                            <t t-if="doc.date_deadline">
+                                                <span t-field="doc.date_deadline"/>
+                                            </t>
+                                        </t>
+                                    </p>
+                                </t>
+                            </div>
+                        </t>
+                        
+                    </div>
+                </t>
+
+                <t t-elif="direction == 'rtl'">
+                    <div class="row" style="margin: 0 !important; padding: 0 !important;">
+                        <!-- Right Column -->
+                        <div class="col-4" style="text-align: right; margin: 0 !important; padding: 0 !important;">
+                            <h3 style="margin: 0; font-size: 16px; font-weight: bold;"><span t-esc="company.name"/></h3>
+                            <t t-if="company.report_header and company.report_header.strip() != '&lt;p&gt;&lt;br&gt;&lt;/p&gt;'">
+                                <div style="margin: 0 !important; font-size: 15px;">
+                                    <div style="margin: 0 !important;" t-esc="company.report_header"/>
+                                </div>
+                            </t>
+                            <div t-attf-style="margin-top: #{ company.report_header and company.report_header.strip() != '&lt;p&gt;&lt;br&gt;&lt;/p&gt;' and '-15px' or '0' };">
+                                <p style="margin: 2px 0; font-size: 15px;"><span t-translation="on">Company Registration No:</span><span t-esc="company.company_registry or 'N/A'"/></p>
+                                <p style="margin: 2px 0; font-size: 15px;"><span t-esc="company.street"/></p>
+                                <p style="margin: 2px 0; font-size: 15px;"><span t-translation="on">Phone:</span><span t-esc="company.phone"/></p>
+                                <p style="margin: 2px 0; font-size: 15px;"><span t-translation="on">Email:</span><span t-esc="company.email"/></p>
+                                <p style="margin: 2px 0; font-size: 15px;"><span t-translation="on">Website:</span><span t-esc="company.website"/></p>
+                            </div>
+                        </div>
+                
+                        <!-- Center Column -->
+                        <div class="col-4 text-center" style="margin: 0 !important; padding: 0 !important;">
+                            <img t-if="company.logo" t-att-src="'/web/image/res.company/%s/logo' % company.id" style="max-height: 60px;" alt="Logo"/>
+                        </div>
+                
+                        <t t-foreach="docs" t-as="doc">
+                            <div class="col-4" style="text-align: left; margin: 0 !important; padding: 0 !important;">
+                                <t t-if="doc._name == 'sale.order' or (doc._name == 'account.move' and doc.name) or (doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing') or  (doc._name == 'purchase.order' and doc.name)">
+                                    <h2 style="margin: 0; font-size: 20px; font-weight: bold;">
+                                        <div style="margin-left:0px">
+                                            <t t-if="doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing' and doc.origin">
+                                                Order Numbers
+                                                <t t-esc="doc.origin"/>
+                                            </t>
+                                        </div>
+                                        <t t-if="doc._name == 'sale.order'"><span t-translation="on">Order Numbers</span></t>
+                                        <t t-if="doc._name == 'purchase.order'"><span t-translation="on">Order Numbers</span></t>
+                                        <t t-if="doc.state != 'draft'">
+                                        <t t-if="doc._name == 'account.move' and doc.move_type == 'out_invoice'"><span t-translation="on">Invoice Numbers</span></t>
+                                        </t>
+                                        <t t-if="doc._name == 'stock.picking'">
+                                            <span t-translation="on">Delivery Numbers</span>
+                                        </t>
+                                        <t t-if="doc._name == 'account.move' and doc.move_type == 'in_invoice' and doc.state != 'draft'">
+                                            <span t-translation="on">Vendor bill</span>
+                                        </t>
+
+                                        <span style="margin-left: 0px;">
+                                            <t t-if="doc._name == 'account.move' and doc.move_type == 'out_invoice' and doc.state != 'draft'">
+                                                <t t-esc="doc.name"/>
+                                            </t>
+                                            
+                                            <t t-if="doc._name == 'account.move' and doc.move_type == 'in_invoice'">
+                                                <t t-if="doc.name != '/'">
+                                                <t t-esc="doc.name"/>
+                                                </t>
+                                            </t>
+                                            <span style="margin-left:0px">
+                                            <t t-if="doc._name == 'sale.order'">
+                                                <t t-esc="doc.name"/>
+                                            </t>
+                                            </span>
+                                            <t t-if="doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing'">
+                                                <t t-esc="doc.name"/>
+                                            </t>
+                                            </span>
+                                            <span style="margin-left:0px">
+                                                <t t-if="doc._name == 'purchase.order'">
+                                                    <t t-esc="doc.name"/>
+                                                </t>
+                                            </span>
+
+                                        
+                                    </h2>
+                
+                                    <t t-if="doc._name == 'sale.order' and doc.pf_confimation_number">
+                                        <p style="font-size: 20px; margin: 0;">
+                                            <strong style="font-size: 20px;margin-left:10px">
+                                                <span t-translation="on">Confirmation Numbers</span>
+                                            </strong>
+                                            <t t-if="doc.pf_confimation_number">
+                                                <span t-esc="doc.pf_confimation_number"/>
+                                            </t>
+                                        </p>
+                                    </t>
+                
+                                    <t t-if="doc.state != 'draft'">
+                                    <p style="font-size: 20px; margin: 0;">
+                                        <t t-if="(doc._name == 'sale.order' and doc.date_order and doc.date_order != '') or
+                                        (doc._name == 'account.move' and doc.invoice_origin and doc.invoice_date and doc.invoice_date != '') or
+                                        (doc._name == 'purchase.order' and doc.date_approve and doc.date_approve != '') or
+                                        (doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing' and doc.scheduled_date and doc.scheduled_date != '')">
+                                        <strong style="font-size: 20px;">
+                                            <span t-translation="on">Date:</span>
+                                        </strong>
+                                        </t>
+
+                                        <t t-if="doc._name == 'sale.order'">
+                                            <t t-if="doc.date_order">
+                                                <span t-esc="doc.date_order.strftime('%d/%m/%Y')"/>
+                                            </t>
+                                        </t>
+                                        <t t-if="doc._name == 'account.move' and doc.invoice_origin">
+                                            <t t-if="doc.invoice_date">
+                                                <span t-esc="doc.invoice_date.strftime('%d/%m/%Y')"/>
+                                            </t>
+                                        </t>
+                                        <t t-if="doc._name == 'purchase.order' and doc.date_approve">
+                                            <t t-if="doc.date_approve">
+                                                <span t-esc="doc.date_approve.strftime('%d/%m/%Y')"/>
+                                            </t>
+                                        </t>
+                
+                                        <t t-if="doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing'">
+                                            <t t-if="doc.scheduled_date">
+                                                <span t-esc="doc.scheduled_date.strftime('%d/%m/%Y')"/>
+                                            </t>
+                                        </t>
+                                    </p>
+                                    </t>
+                
+                                    <t t-if="doc.state != 'draft'">
+                                    <p style="font-size: 20px; margin: 0;">
+
+                                        <t t-if="(doc._name == 'sale.order' and doc.validity_date and doc.validity_date != '') or
+                                        (doc._name == 'account.move' and doc.invoice_origin and doc.invoice_date_due and doc.invoice_date_due != '') or
+                                        (doc._name == 'purchase.order' and doc.date_order and doc.date_order != '') or
+                                        (doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing' and doc.date_deadline and doc.date_deadline != '')">
+                                        
+                                        <strong style="font-size: 20px;">
+                                            <span t-translation="on">Valid Until:</span>
+                                        </strong>
+                                        </t>
+                                        <t t-if="doc._name == 'sale.order'">
+                                            <t t-if="doc.validity_date">
+                                                <span t-field="doc.validity_date"/>
+                                            </t>
+                                        </t>
+                                        <t t-if="doc._name == 'account.move' and doc.invoice_origin">
+                                            <t t-if="doc.invoice_date_due">
+                                                <span t-field="doc.invoice_date_due"/>
+                                            </t>
+                                        </t>  
+                                        <t t-if="doc._name == 'purchase.order' and doc.date_order">
+                                            <t t-if="doc.date_order">
+                                                <span t-esc="doc.date_order.strftime('%d/%m/%Y')"/>
+                                            </t>
+                                        </t>                                     
+                                        <t t-if="doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing'">
+                                            <t t-if="doc.date_deadline">
+                                                <span t-field="doc.date_deadline"/>
+                                            </t>
+                                        </t>
+                                    </p>
+                                    </t>
+                                </t>
+                            </div>
+                        </t>
+                        
+                    </div>
+                </t>
+                
+                <t t-else="">
+                    <div class="row" style="margin: 0 !important; padding: 0 !important;">
+                        <!-- Right Column -->
+
+                        <t t-foreach="docs" t-as="doc">
+                            <div class="col-4" style="text-align: right; margin: 0 !important; padding: 0 !important;">
+                                <t t-if="doc._name == 'sale.order' or (doc._name == 'account.move' and doc.name)  or (doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing') or (doc._name == 'purchase.order' and doc.name)">
+                                    <h2 style="margin: 0; font-size: 20px; font-weight: bold;">
+
+                                        <t t-if="doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing' and doc.origin">
+                                            <span t-translation="on">Order Number</span>
+                                                <t t-esc="doc.origin"/>
+                                        </t>
+                                        
+                                        <t t-if="doc._name == 'sale.order'">
+                                            <span t-translation="on">Order Number</span>
+                                        </t>
+                                                      
+                                        <t t-if="doc._name == 'purchase.order'">
+                                            <span t-translation="on">Order Number</span>
+                                        </t>
+
+                                        <t t-if="doc._name == 'account.move' and doc.move_type == 'in_invoice' and doc.state != 'draft'">
+                                            <span t-translation="on">Vendor bill</span>
+                                        </t>
+
+                                        <t t-if="doc.state != 'draft'">
+                                        <t t-if="doc._name == 'account.move' and  doc.move_type == 'out_invoice'">
+                                            <span t-translation="on">Invoice Number</span>
+                                        </t>
+                                        </t>
+
+                                        <t t-if="doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing'">
+                                            <span t-translation="on">Delivery Number</span>
+                                        </t>
+
+                                        <span style="margin-left: 0px;">
+                                            <t t-if="doc._name == 'account.move' and  doc.move_type == 'out_invoice'">
+                                                <t t-if="doc.name != '/'">
+                                                    <t t-esc="doc.name"/>
+                                                </t>
+                                            </t>
+
+                                            <t t-if="doc._name == 'sale.order'">
+                                                <t t-if="doc.name">
+                                                    <t t-esc="doc.name"/>
+                                                </t>
+                                            </t>
+
+                                            <t t-if="doc._name == 'account.move' and  doc.move_type == 'in_invoice'">
+                                                <t t-if="doc.name != '/'">
+                                                    <t t-esc="doc.name"/>
+                                                </t>
+                                            </t>
+
+                                            <t t-if="doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing'">
+                                                <t t-esc="doc.name"/>
+                                            </t>
+
+                                            <t t-if="doc._name == 'purchase.order'">
+                                                <t t-esc="doc.name"/>
+                                            </t>
+
+                                        </span>
+                                    </h2>
+
+                                    <t t-if="doc._name == 'sale.order' and doc.pf_confimation_number">
+                                        <p style="font-size: 20px; margin: 0;">
+                                            <strong style="font-size: 20px;">
+                                                <span t-translation="on">Confirmation Number</span>
+                                            </strong>
+                                            <span t-esc="doc.pf_confimation_number"/>
+                                        </p>
+                                    </t>
+
+                                    <t t-if="doc.state != 'draft'">
+                                    <p style="font-size: 20px; margin: 0;">
+                                        <t t-if="doc._name == 'sale.order'">
+                                            <t t-if="doc.date_order">
+                                                <span t-esc="doc.date_order.strftime('%d/%m/%Y')"/>
+                                            </t>
+                                        </t>
+
+                                        <t t-if="doc._name == 'purchase.order' and doc.date_approve">
+                                            <t t-if="doc.date_approve">
+                                                <span t-esc="doc.date_approve.strftime('%d/%m/%Y')"/>
+                                            </t>
+                                        </t>
+
+                                        <t t-if="doc._name == 'account.move' and doc.invoice_origin">
+                                            <t t-if="doc.invoice_date">
+                                                <span t-esc="doc.invoice_date.strftime('%d/%m/%Y')"/>
+                                            </t>
+                                        </t>
+
+                                        <t t-if="doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing' and doc.scheduled_date">
+                                            <t t-if="doc.scheduled_date">
+                                                <span t-esc="doc.scheduled_date.strftime('%d/%m/%Y')"/>
+                                            </t>
+                                        </t>
+
+                                        <t t-if="(doc._name == 'sale.order' and doc.date_order and doc.date_order != '') or
+                                        (doc._name == 'account.move' and doc.invoice_origin and doc.invoice_date and doc.invoice_date != '') or
+                                        (doc._name == 'purchase.order' and doc.date_approve and doc.date_approve != '') or
+                                        (doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing' and doc.scheduled_date and doc.scheduled_date != '')">
+                                        <strong style="font-size: 20px;">
+                                            <span t-translation="on">Date</span>
+                                        </strong>
+                                        </t>
+
+                                    </p>
+                                    </t>
+
+                                    
+                                    <t t-if="doc.state != 'draft'">
+                                    <p style="font-size: 20px; margin: 0;">
+                                        <t t-if="doc._name == 'sale.order'">
+                                            <t t-if="doc.validity_date">
+                                                <span t-field="doc.validity_date"/>
+                                            </t>
+                                        </t>
+                                        <t t-if="doc._name == 'account.move' and doc.invoice_origin">
+                                            <t t-if="doc.invoice_date_due">
+                                                <span t-field="doc.invoice_date_due"/>
+                                            </t>
+                                        </t>
+
+                                        <t t-if="doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing' and doc.date_deadline">
+                                            <t t-if="doc.date_deadline">
+                                                <span t-esc="doc.date_deadline.strftime('%d/%m/%Y')"/>
+                                            </t>
+                                        </t>
+                                        <t t-if="doc._name == 'purchase.order' and doc.date_order">
+                                            <t t-if="doc.date_order">
+                                                <span t-esc="doc.date_order.strftime('%d/%m/%Y')"/>
+                                            </t>
+                                        </t>         
+                                        
+                                        <t t-if="(doc._name == 'sale.order' and doc.validity_date and doc.validity_date != '') or
+                                        (doc._name == 'account.move' and doc.invoice_date_due  and doc.invoice_date_due != '') or
+                                        (doc._name == 'purchase.order' and doc.date_order and doc.date_order != '') or
+                                        (doc._name == 'stock.picking' and doc.picking_type_id.code == 'outgoing' and doc.date_deadline and doc.date_deadline != '')">
+                                        <strong style="font-size: 20px;">
+                                            <span t-translation="on">Valid Until</span>
+                                        </strong>
+                                        </t>
+                                    </p>
+                                    </t>
+                                </t>
+                            </div>
+                        </t>
+
+                        <!-- Center Column -->
+                        <div class="col-4 text-center" style="margin: 0 !important; padding: 0 !important;">
+                            <img t-if="company.logo" t-att-src="'/web/image/res.company/%s/logo' % company.id" style="max-height: 60px;" alt="Logo"/>
+                        </div>
+
+                        <div class="col-4" style="text-align: left; margin: 0 !important; padding: 0 !important;">
+                            <h3 style="margin: 0; font-size: 16px; font-weight: bold;">
+                                <span t-esc="company.name"/>
+                            </h3>
+                            <!-- <p style="margin: 2px 0; font-size: 15px;">
+                        <span t-translation="on">Think different. Be .alt</span>
+                    </p> -->
+                            <t t-if="company.report_header and company.report_header.strip() != '&lt;p&gt;&lt;br&gt;&lt;/p&gt;'">
+                                <p style="margin: 2px 0; font-size: 15px;">
+                                    <!-- <span t-esc="company.report_header"></span> -->
+                                    <!-- <span><t t-out="company.clean_report_header()"/></span> -->
+                                    <t t-raw="company.report_header"/>
+                                </p>
+                            </t>
+
+                            <div t-attf-style="margin-top: #{ company.report_header and company.report_header.strip() != '&lt;p&gt;&lt;br&gt;&lt;/p&gt;' and '-15px' or '0' };">
+                                <p style="margin: 2px 0; font-size: 15px;" >
+                                    <span t-esc="company.company_registry or 'N/A'"/>
+                                    <span t-translation="on">Company ID</span>
+                                </p>
+                                <p style="margin: 2px 0; font-size: 15px;">
+                                    <span t-esc="company.street"/>
+                                </p>
+                                <p style="margin: 2px 0; font-size: 15px;">
+                                    <span t-esc="company.phone or ''"/>
+                                    <span t-translation="on">phone</span>
+                                </p>
+                            </div>
+                            <!-- <p style="margin: 2px 0; font-size: 15px;">
+                        <span t-translation="on">:Email</span>
+                        <span t-esc="company.email"/>
+
+                    </p>
+                    <p style="margin: 2px 0; font-size: 15px;">
+                        <span t-translation="on">:site</span>
+                        <span t-esc="company.website"/>
+                    </p> -->
+                            <p style="margin: 2px 0; font-size: 15px;">
+                                <t t-if="not company.email">
+                                    <span t-translation="on">:Email</span>
+                                </t>
+                                <t t-else="">
+                                    <span>Email</span>
+                                    <span>:</span>
+                                    <span t-esc="company.email or ''"/>
+                                </t>
+                            </p>
+                            <p style="margin: 2px 0; font-size: 15px;">
+                                <t t-if="not company.website">
+                                    <span t-translation="on">:Site</span>
+                                </t>
+                                <t t-else="">
+                                    <span t-translation="on">Site</span>
+                                    <span>:</span>
+                                    <span t-esc="company.website or ''"/>
+                                </t>
+                            </p>
+
+                        </div>
+
+
+                    </div>
+                </t>
+            </div>
+            <!-- </div> -->
+
+        </xpath>
+
+        <!--report footer-->
+        <xpath expr="//div[@t-attf-class='footer o_standard_footer o_company_#{company.id}_layout']" position="replace">
+            <t t-foreach="docs" t-as="doc">
+                <t t-if="doc._name == 'sale.order'">
+                    <t t-set="lang" t-value="doc.partner_id.lang or 'en_US'"/>
+                    <t t-set="direction" t-value="'rtl' if lang.startswith('he') or lang.startswith('ar') or lang.startswith('fa') else 'ltr'"/>
+                </t>
+                <t t-elif="doc._name == 'account.move'">
+                    <t t-set="lang" t-value="o.partner_id.lang or 'en_US'"/>
+                    <t t-set="direction" t-value="'rtl' if lang.startswith('he') or lang.startswith('ar') or lang.startswith('fa') else 'ltr'"/>
+                </t>
+            </t>
+            <div t-attf-class="footer o_standard_footer o_company_#{company.id}_layout">
+                <div class="text-center" style="border-top: 1px solid #ddd; bottom: 0; font-size: 14px; padding-top: 5px;">
+                    <t t-if="direction == 'rtl'">
+                        <div>
+                            <p>
+                            <span t-esc="company.name"/> | <span t-esc="company.street"/> | <span t-esc="company.city"/>
+                            </p>
+                        </div>
+                        
+                    </t>
+                    <t t-else="">
+                        <div>
+                            <p>
+                            <span t-esc="company.name"/> | <span t-esc="company.street"/> | <span t-esc="company.city"/>
+                            </p>
+                        </div>
+                    </t>
+                </div>
+                <div style="margin-top:-10px;font-size: 12px;" class="text-end">
+                    <t t-set-locale="lang" t-if="direction == 'rtl'">
+                        <span t-translation="on">Page</span> <span class="page"/> <span t-translation="on">from</span> <span class="topage"/>
+                    </t>
+                    <t t-set-locale="lang" t-else="">
+                        <span t-translation="on">Page</span> <span class="page"/> <span t-translation="on">from</span> <span class="topage"/>
+                    </t>
+                </div>
+            </div>
+       </xpath>
+    </template>
+</odoo>

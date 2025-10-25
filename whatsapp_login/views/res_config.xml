@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="view_config_fields_inherit_whatsapp_signup" model="ir.ui.view">
+        <field name="name">res.config.settings.config.whatsapp.signup.inherit</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="base.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[@id='invite_users']" position="after">
+                <h2>Otp Whatsapp Configration</h2>
+                <div class="row mt16 o_settings_container">
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_right_pane">
+                            <strong>Provider </strong>
+                            <field name="provider_id" string="Provider" class="oe_inline"/>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_right_pane">
+                            <strong>WhatsApp OTP Template </strong>
+                            <field name="wa_template_id" string="Template id" class="oe_inline" domain="[('category', '=', 'authentication'), ('model_id.model', '=', 'res.partner'), ('provider_id', '=', provider_id)]"/>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box">
+                        <div class="o_setting_right_pane">
+                            <strong>Reset Password with WhatsApp </strong>
+                            <field name="wa_reset_password_enabled" string="Reset Password" class="oe_inline"/>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-6 o_setting_box" invisible="not wa_reset_password_enabled">
+                        <div class="o_setting_right_pane">
+                            <strong>Reset Password WhatsApp Template</strong>
+                            <field name="wa_reset_password_template_id" string="Reset Password WhatsApp Template" class="oe_inline" domain="[('model_id.model', '=', 'res.partner'), ('provider_id', '=', provider_id)]"/>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

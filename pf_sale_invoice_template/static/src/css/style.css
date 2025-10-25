@@ -1,0 +1,36 @@
+
+.header {
+    position: absolute;
+    top: 20px;
+    right: 10px;
+    left: 10px;
+    direction: rtl;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    padding: 0;
+    margin: 0;
+}
+
+/* Override Bootstrap padding/margins */
+.header .row {
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+/* Ensure columns align nicely */
+.header .col-4 {
+    padding: 0 !important;
+    margin: 0 !important;
+    font-size: 15px;
+}
+
+/* Logo centered nicely */
+.header img {
+    max-height: 60px;
+    display: block;
+    margin: 0 auto;
+}
+
+/* Optional: Adjust header height */
+.o_report_layout_standard .header {
+    height: 160px;
+}

@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<templates xml:space="preserve">
+
+    <t t-name="pf_alt_website_custom.PfCreateTicket" t-inherit="mail.Message.actions" t-inherit-mode="primary">
+        <xpath expr="//Dropdown" position="after">
+            <button class="btn px-1 py-0 rounded-0" tabindex="1" title="Add a Ticket" aria-label="Add a Ticket"><i class="oi fa-lg oi-smile-add"/></button>
+        </xpath>
+    </t>
+
+</templates>

@@ -1,0 +1,260 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>	
+	<template id="pf_alt_website_custom.brand_promotion" inherit_id="website_sale.brand_promotion">
+        <xpath expr="//t[@t-call='web.brand_promotion_message']" position="replace">			
+        </xpath>
+    </template>
+	<template id="product_text_descrption" inherit_id="website_sale.product">	
+		<xpath expr="//div[@t-field='product.description_ecommerce']" position="after">
+			<t t-if="request.env.lang=='he_IL'">
+				<t t-if="product.statement_content">
+					<div class="row justify-content-center">
+						<div class="col-12 col-md-8 position-relative">
+							<div class="d-flex justify-content-end mb-4">
+								<img t-attf-class="img-fluid #{request.env.lang == 'he' or request.env.lang == 'he_IL' and 'rtl-flip' or ''}" 
+									width="40" height="40" 
+									src="https://naomidror.com/wp-content/uploads/2023/11/icon-quote-start.svg" 
+									alt=""/>
+							</div>
+							<div class="mb-4 text-center">
+								<p class="font-italic">
+									<div class="col-12">
+										<p t-field="product.statement_content"/>										
+									</div>
+								</p>
+							</div>
+							<div class="mb-4 text-center"></div>
+						</div>
+					</div>
+					<div class="d-flex justify-content-start mt-10">
+						<img t-attf-class="img-fluid #{request.env.lang == 'ar_SY' or request.env.lang == 'he_IL' and 'rtl-flip' or ''}" 
+							width="40" height="40" 
+							src="https://naomidror.com/wp-content/uploads/2023/11/icon-quote-end.svg" 
+							alt=""/>
+					</div>
+				</t>
+			</t>
+			<t t-else="">
+				<t t-if="product.statement_content">
+					<div class="row justify-content-center">
+						<div class="col-12 col-md-8 position-relative">
+							<div class="d-flex justify-content-end mb-4">
+								<img t-attf-class="img-fluid #{request.env.lang == 'he' or request.env.lang == 'he_IL' and 'rtl-flip' or ''}" 
+									width="40" height="40" 
+									src="https://naomidror.com/wp-content/uploads/2023/11/icon-quote-end.svg" 
+									alt=""/>
+							</div>
+							<div class="mb-4 text-center">
+								<p class="font-italic">
+									<div class="col-12">
+										<p t-field="product.statement_content"/>									
+									</div>
+								</p>
+							</div>
+							<div class="mb-4 text-center"></div>
+						</div>
+					</div>
+					<div class="d-flex justify-content-start mt-10">
+						<img t-attf-class="img-fluid #{request.env.lang == 'ar_SY' or request.env.lang == 'he_IL' and 'rtl-flip' or ''}" 
+							width="40" height="40" 
+							src="https://naomidror.com/wp-content/uploads/2023/11/icon-quote-start.svg" 
+							alt=""/>
+					</div>
+			</t>
+			</t>			
+			<div>
+				<t t-if="product.detailed_type == 'combo' and product.combo_ids or product.products_review_line_ids">
+					<t t-foreach="product.combo_ids" t-as="combo">
+					<t t-if="request.env.lang=='he_IL'">
+						<t t-foreach="combo.combo_line_ids" t-as="line">
+							<div class="container my-4">								
+								<div class="d-flex justify-content-start text-end">
+									<div class="p-2">
+									<t t-if="line.product_id.image_1920">
+											<img t-att-src="'/web/image/product.product/%s/image_128' % line.product_id.id" class="o_image_128_max rounded" width="200" height="200"/>
+										</t>
+										
+									</div>
+									<div class="p-2 justify-content-end">
+										<a t-att-href="keep(line.product_id.product_tmpl_id.website_url)">
+											<i style="font-size: 20px;" class="fa fa-external-link" aria-hidden="true"></i>
+										</a>
+										<span style="font-size: 20px;color: black;"> (<t t-out="line.product_id.qty_available"/>) <t t-out="line.product_id.product_tmpl_id.name"></t> </span>
+										<br/>
+										<span style="font-size: 16px; !importantcolor: black !important;color: black;"><t t-out="line.product_id.product_tmpl_id.description"/></span>
+									</div>
+								</div>							
+							</div>
+						</t>
+					</t>
+					<t t-else="">
+						<t t-foreach="combo.combo_line_ids" t-as="line">
+							<div class="container my-4">
+
+                                
+                                <div class="d-flex justify-content-end text-end">
+                                    <div class="p-2">
+                                        <a t-att-href="keep(line.product_id.product_tmpl_id.website_url)">
+                                            <i style="font-size: 20px;" class="fa fa-external-link" aria-hidden="true"></i>
+                                        </a>
+                                        <span style="font-size: 20px;color: black;"> (<t t-out="line.product_id.qty_available"/>) <t t-out="line.product_id.product_tmpl_id.name"></t> </span>
+                                        <br/>
+                                        <span style="font-size: 16px; !importantcolor: black !important;color: black;"><t t-out="line.product_id.product_tmpl_id.description"/></span>
+                                    </div>
+                                    <div class="p-2">
+                                        <t t-if="line.product_id.image_1920">
+											<img t-att-src="'/web/image/product.product/%s/image_128' % line.product_id.id" class="o_image_128_max rounded" width="200" height="200"/>
+										</t>
+                                    </div>
+                                </div>							
+							</div>
+						</t>
+					</t>						
+					</t>                    				
+				</t>            
+
+                <t t-if="product.detailed_type == 'bundle' and product.product_bundle_ids or product.products_review_line_ids">
+						<t t-foreach="product.product_bundle_ids" t-as="line">
+							<t t-if="request.env.lang=='he_IL'">
+								<div class="container my-4">
+
+									<div class="d-flex justify-content-end text-end">
+										<div class="p-2">
+											<t t-if="line.product_id.image_1920">
+												<img t-att-src="'/web/image/product.product/%s/image_128' % line.product_id.id" class="o_image_128_max rounded" width="200" height="200"/>
+											</t>
+										</div>
+										<div class="p-2">
+																					<a t-att-href="keep(line.product_id.product_tmpl_id.website_url)">
+											<i style="font-size: 20px;" class="fa fa-external-link" aria-hidden="true"></i>
+											</a>
+											<span style="font-size: 20px;color: black;"> (<t t-out="line.pf_qty"/>) <t t-out="line.product_id.product_tmpl_id.name"></t> </span>
+											<br/>
+											<span style="font-size: 16px; !importantcolor: black !important;color: black;"><t t-out="line.product_id.product_tmpl_id.description"/></span>
+										</div>
+									</div>
+								</div>
+							</t>
+							<t t-else="">
+								<div class="container my-4">
+
+									<div class="d-flex justify-content-end text-end">
+										<div class="p-2">
+											<a t-att-href="keep(line.product_id.product_tmpl_id.website_url)">
+												<i style="font-size: 20px;" class="fa fa-external-link" aria-hidden="true"></i>
+											</a>
+											<span style="font-size: 20px;color: black;"> (<t t-out="line.pf_qty"/>) <t t-out="line.product_id.product_tmpl_id.name"></t> </span>
+											<br/>
+											<span style="font-size: 16px; !importantcolor: black !important;color: black;"><t t-out="line.product_id.product_tmpl_id.description"/></span>
+										</div>
+										<div class="p-2">
+											<t t-if="line.product_id.image_1920">
+												<img t-att-src="'/web/image/product.product/%s/image_128' % line.product_id.id" class="o_image_128_max rounded" width="200" height="200"/>
+											</t>
+										</div>
+									</div>
+								</div>
+							</t>
+						</t>						
+				</t>
+
+                
+			</div>
+		</xpath>
+	</template>
+
+	<record id="product_template_page_slug_inherit_form" model="ir.ui.view">
+		<field name="name">product.template.inherit.slug.form</field>
+		<field name="model">product.template</field>
+		<field name="inherit_id" ref="website_sale.product_pages_tree_view"/>
+		<field name="arch" type="xml">
+		     <xpath expr="//tree" editable="bottom">
+			 <field name="product_slug"/>
+			 </xpath>
+
+		</field>
+	</record>
+
+
+	<record id="product_template_description" model="ir.ui.view">
+		<field name="name">product.template.inherit.form</field>
+		<field name="model">product.template</field>
+		<field name="inherit_id" ref="product.product_template_only_form_view"/>
+		<field name="arch" type="xml">
+			<xpath expr="//page[@name='purchase']" position="before">
+				<page name="Description" string="Description">
+					<group string="Product Description">
+						<field name="product_description_content"/>
+					</group>
+					<group string="Recommend Use">
+						<field name="recommend_use_content"/>
+					</group>
+					<group string="Statement">
+						<field name="statement_content"/>
+					</group>
+					<group string="Components">
+						<field name="components_content"/>
+					</group>
+					<group string="Read More">
+						<field name="read_more_content"/>
+					</group>
+					<group string="Shipping Policy">
+						<field name="shipping_policy_content"/>
+					</group>
+					<group string="The Labels">
+						<field name="the_labels_content"/>
+					</group>
+				</page>
+			</xpath>
+		</field>
+	</record>
+	
+	<record id="product_template_form_view_inherit_theme_prime" model="ir.ui.view">
+		<field name="name">product.template.product.form.inherit.theme_prime</field>
+		<field name="model">product.template</field>
+		<field name="inherit_id" ref="theme_prime.product_template_only_form_view_inherit_theme_prime"/>
+		<field name="arch" type="xml">
+			<page name="theme_prime" position="replace">
+				<page name="theme_prime" string="Theme Prime">
+					<group>
+						<group name="default">
+							<field name="dr_label_id"/>
+							<field name="dr_product_tab_ids" widget="many2many_tags" context="{'default_content_type': 'tab'}" domain="[('content_type', '=', 'tab')]"/>
+							<field name="dr_product_offer_ids" widget="many2many_tags" context="{'default_content_type': 'offer_popup'}" domain="[('content_type', '=', 'offer_popup')]"/>
+						</group>
+					</group>
+				</page>
+			</page>
+		</field>
+	</record>
+	
+
+    <record id="product_review_view" model="ir.ui.view">
+        <field name="name">product.template.inherit.product.pf_review.form</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id" ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+        <xpath expr="//page[@name='purchase']" position="before">
+            <page name="Product_Review" string="Product Review">
+                <field name="products_review_line_ids">
+                    <form readonly="1">
+					<field name="pf_product_review_id" required="True"></field>
+                        <field name="pf_customer_id"/>
+                        <field name="pf_review"/>                        
+                        <field name="pf_rating" widget="priority"/>
+                    </form>
+                    <tree  string="Recurring order" readonly="1">
+					<field name="pf_product_review_id" required="True"></field>
+                    <field name="pf_customer_id"/>
+                    <field name="pf_review"/>                    
+                    <field name="pf_is_active"/> 
+                    <field name="pf_rating" widget="priority"/>
+                    </tree>
+                </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+	
+</odoo>

@@ -1,0 +1,4 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_product_review,access_product_review,model_product_review,base.group_user,1,1,1,1
+pf_alt_website_custom.access_product_review_line,access_product_review_line,pf_alt_website_custom.model_product_review_line,,1,1,1
+pf_alt_website_custom.access_product_bundle_template,access_product_bundle_template,pf_alt_website_custom.model_product_bundle_template,,1,1,1

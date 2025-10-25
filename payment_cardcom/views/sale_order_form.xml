@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="cardcom_view_order_form_inherit_ribbon" model="ir.ui.view">
+        <field name="name">sale.order.form</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form" />
+        <field name="arch" type="xml">
+
+            <xpath expr="//div[@name='button_box']" position="inside">
+                <button class="oe_stat_button" type="object" name="action_show_transactions" invisible="transaction_count &lt; 1" icon="fa-credit-card">
+                    <field name="transaction_count" widget="statinfo" string="Transactions"/>
+                </button>
+            </xpath>
+
+            <xpath expr="//button[@name='action_cancel']" position="after">
+                <button name="approve_j5_order" type="object" string="Approve J5 Payment" invisible="not is_warning_div" groups="account.group_account_manager"/>
+            </xpath>
+
+            <xpath expr="//field[@name='note']" position="after">
+                <field name="is_warning_div" invisible="1"></field>
+                <field name="transaction_number" string="CardCom Transaction Number" invisible="not transaction_number" readonly="1"/>
+            </xpath>
+
+            <xpath expr="//sheet" position="before">
+                <div class="alert alert-info" invisible="not is_warning_div">
+                    <strong> שימו לב: </strong>
+                    <p>
+                         הזמנה זו שולמה באמצעות אמצעי התשלום J5. בשלב זה, רק מסגרת האשראי נשמרה – החיוב בפועל יושלם רק לאחר שליחת ההזמנה והנפקת החשבונית.
+                    </p> 
+                </div>
+            </xpath>
+
+        </field>
+    </record>
+
+</odoo>
