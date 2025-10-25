@@ -1,0 +1,26 @@
+<odoo>
+    <!-- Extend Purchase Order Form View -->
+    <record id="purchase_order_form_inherit" model="ir.ui.view">
+        <field name="name">purchase.order.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <!-- Add remain_to_receive to the tree view inside the form -->
+            <xpath expr="//field[@name='order_line']/list/field[@name='qty_received']" position="after">
+                <field name="remain_to_receive" optional="show" column_invisible="parent.state not in ('purchase', 'done')"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!-- Extend Purchase Order Line Pivot View -->
+    <record id="purchase_order_line_pivot_inherit" model="ir.ui.view">
+        <field name="name">purchase.order.line.pivot.inherit</field>
+        <field name="model">purchase.report</field>
+        <field name="inherit_id" ref="purchase.purchase_report_view_tree"/>
+        <field name="arch" type="xml">
+            <field name="qty_received" position="after">
+                <field name="remain_to_receive" optional="hide" sum="Sum of Qty Received"/>
+            </field>
+        </field>
+    </record>
+</odoo>

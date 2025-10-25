@@ -1,0 +1,32 @@
+<?xml version="1.0"?>
+<odoo>
+
+    <record id="transaction_form_inherit_receipt" model="ir.ui.view">
+        <field name="name">payment.transaction.form.inherit.receipt.payment</field>
+        <field name="model">payment.transaction</field>
+        <field name="inherit_id" ref="payment.payment_transaction_form"/>
+        <field name="arch" type="xml">
+            <field name="reference" position="after">
+                <field name="ccno"/>
+                <field name="approved_number"/>
+                <field name="npay"/>
+                <field name="fpay"/>
+                <field name="spay"/>
+            </field>
+        </field>
+    </record>
+
+    <record id="account_payment_form__view_inherit" model="ir.ui.view">
+        <field name="name">account.payment.form.view.inherit</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <field name="memo" position="after">
+                <field name="npay" readonly="1"/>
+                <field name="fpay" readonly="1"/>
+                <field name="spay" readonly="1"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

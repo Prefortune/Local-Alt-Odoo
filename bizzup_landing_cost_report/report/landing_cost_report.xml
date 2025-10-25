@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="action_report_landing_cost" model="ir.actions.report">
+        <field name="name">Landing Cost Report</field>
+        <field name="model">account.move</field>
+        <field name="report_type">xlsx</field>
+        <field name="report_name">bizzup_landing_cost_report.report_landing_cost</field>
+        <field name="report_file">bizzup_landing_cost_report.report_landing_cost</field>
+        <field name="binding_view_types">False</field>
+        <field name="binding_model_id" ref="account.model_account_move"/>
+        <field name="binding_type">report</field>
+        <field name="attachment_use" eval="False"/>
+    </record>
+</odoo>

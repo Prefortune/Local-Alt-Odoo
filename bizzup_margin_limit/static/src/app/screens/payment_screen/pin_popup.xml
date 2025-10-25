@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<templates id="template" xml:space="preserve">
+    <t t-name="bizzup_margin_limit.ManagerPINPopup">
+        <Dialog title="props.title" size="'md'">
+            <t t-set-slot="header">
+                <h4 class="modal-title title" t-esc="props.title"/>
+            </t>
+            <div t-ref="root">
+                <div class="body">
+                    <input type="password" t-model="props.pin" placeholder="הזן את ה-PIN של המנהל"/>
+                </div>
+            </div>
+            <t t-set-slot="footer">
+                <div class="d-flex flex-grow-1 justify-content-center">
+                    <button style="margin-right: 10px;" class="btn btn-lg btn-primary" t-on-click="confirm" t-esc="props.confirmLabel" />
+                    <button class="btn btn-secondary btn-lg lh-lg o-default-button"
+                            tabindex="1" t-on-click="close" t-esc="props.cancelLabel"/>
+                </div>
+            </t>
+       </Dialog>
+    </t>
+</templates>

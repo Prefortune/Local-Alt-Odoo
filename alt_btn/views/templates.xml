@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="sticky_container" name="Sticky Container" inherit_id="website.layout">
+        <xpath expr="//footer" position="before">
+            <t t-if="(request.httprequest.host == 'www.amflow.co.il' or request.httprequest.host == 'amflow.co.il') and 'shop' not in request.httprequest.path">
+                <div class="sticky-container">
+                    <div class="container">
+                        <a href="https://www.amflow.co.il/models" class="btn btn-primary" aria-label="לרכישה מוקדמת של אופני Amflow" title="לרכישה מוקדמת של אופני Amflow">
+                            <i class="fa fa-shopping-cart me-2"/>
+                            לרכישה מוקדמת
+                        </a>
+                    </div>
+                </div>
+            </t>
+        </xpath>
+    </template>
+</odoo> 

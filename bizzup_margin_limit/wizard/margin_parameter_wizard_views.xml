@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="margin_parameter_wizard_form_view" model="ir.ui.view">
+        <field name="name">margin.parameter.wizard.form.view</field>
+        <field name="model">margin.parameter.wizard</field>
+        <field name="arch" type="xml">
+            <form>
+                <div>
+                    <field name="order_id" invisible="1"/>
+                    <h5>“אתה עומד לאשר הזמנה שהמרווח נמצא מתחת לפרמטר המוגדר. תרצה להמשיך?”.</h5>
+                </div>
+                <footer>
+                    <button string="Confirm" class="oe_highlight" type="object" name="confirm_margin_parameter"/>
+                    <button string="Cancel" class="oe_link" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <record id="wizard_confirm_margin_parameter_action" model="ir.actions.act_window">
+        <field name="name">Profitability Warning</field>
+        <field name="res_model">margin.parameter.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="margin_parameter_wizard_form_view"/>
+    </record>
+</odoo>

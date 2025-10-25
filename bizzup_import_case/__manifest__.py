@@ -1,0 +1,50 @@
+# -*- coding: utf-8 -*-
+# Copyright (C) Gilliam Management Services and Information Systems, Ltd. (the owner of Bizzup), 2021, 2022, 2023, 2024, 2025
+# All Rights Reserved to Gilliam Management Services and Information Systems, Ltd.
+# Unauthorized copying, editing or printing of this file, in any way is strictly prohibited
+# Proprietary and confidential for more information, please contact
+# lg@bizzup.app
+
+{
+    "name": "Bizzup Import case",
+    "summary": """This module allows to restrict the price and product based 
+    on the company""",
+    "description": """HT01557
+    As a user of the import management system,
+I want to manage an "Import File" as a central entity that contains all relevant information for the import process — including stock transfers, multiple batches, invoices, costs, and additional data —
+so that I can have a single point of reference and track progress via a project task.
+Acceptance Criteria:
+
+    It is possible to create a new Import File with a unique ID, description, and status.
+    The Import File can include multiple stock transfers.
+    The Import File can include multiple batches.
+    Relevant invoices (purchase, customs, cost loading) can be linked to the Import File.
+    Additional import-related fields can be filled, such as arrival date, supplier, container number, etc.
+    The Import File will be represented as a task in a project for progress tracking and activity logging. """,
+    "license": "Other proprietary",
+    "author": "Lilach Gilliam",
+    "website": "https://bizzup.app",
+    "category": "POS/Payment",
+    "version": "18.0.1.4.11",
+    "depends": [
+        "sale_management",
+        "account",
+        "project",
+        "stock",
+        "stock_picking_batch",
+        "stock_landed_costs",
+        "purchase",
+    ],
+    "data": [
+        "security/ir.model.access.csv",
+        "data/ir_sequence_data.xml",
+        "views/project_task_views.xml",
+        "views/account_move_views.xml",
+        "views/project_project_views.xml",
+        "views/stock_landed_cost_views.xml",
+        "views/purchase_order_views.xml",
+        "views/stock_picking_batch_views.xml",
+        "views/stock_picking_views.xml",
+    ],
+    "installable": True,
+}

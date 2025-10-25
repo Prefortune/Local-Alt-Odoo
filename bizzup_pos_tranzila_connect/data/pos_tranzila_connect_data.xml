@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo noupdate="1">
+    <data>
+        <!-- Define Tranzila as an online payment method -->
+        <record id="pos_payment_method_1" model="pos.payment.method">
+            <field name="name">Tranzila</field>
+            <field name="is_online_payment">True</field>
+            <field name="online_payment_provider_ids"
+                   eval="[(4, ref('lyg_payment.payment_provider_tranzila'))]"/>
+        </record>
+
+        <!-- Define Tranzila POS Machine as a physical terminal -->
+        <record id="pos_payment_method_2" model="pos.payment.method">
+            <field name="name">Tranzila POS Machine</field>
+            <field name="is_online_payment">False</field>
+            <field name="is_pos_physical_terminal">True</field>
+            <field name="online_payment_provider_ids"
+                   eval="[(4, ref('lyg_payment.payment_provider_tranzila'))]"/>
+        </record>
+    </data>
+</odoo>

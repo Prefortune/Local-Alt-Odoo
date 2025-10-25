@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  # HT01743  -->
+    <record id="view_account_config_settings_inherit_masav" model="ir.ui.view">
+        <field name="name">res.config.settings.view.inherit.masav</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="account.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <!-- Add the field in the accounting settings -->
+            <xpath expr="//block[@name='fiscal_localization_setting_container']"
+                   position="inside">
+                <setting string="Entry for Payments After Masav"
+                         id="journal_entry_masav"
+                         help="If enabled, Masav journal entries will be created for vendor payments when printing the report.">
+                    <field name="entry_for_payments_after_masav"/>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>

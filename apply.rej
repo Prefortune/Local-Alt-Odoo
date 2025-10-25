@@ -1,0 +1,57 @@
+--- __manifest__.py
++++ __manifest__.py
+@@ -11,8 +11,8 @@
+     "depends": ["lyg_receipt", 'account_reports'],
+     "data": [
+         'security/ir.model.access.csv',
+-        'reports/deposite_reports.xml',
+         'reports/deposite_report_template.xml',
++        'reports/deposite_reports.xml',
+         'views/account_payment_views.xml',
+         'wizard/deposite_report_wizard_views.xml',
+     ],
+--- deposite_report_template.xml
++++ deposite_report_template.xml
+@@ -51,14 +51,14 @@
+                         </t>
+                         <t t-foreach="docs" t-as="docs">
+                             <tr>
+-                                <td class="text-left" name="td_validity_date">
+-                                    <span t-esc="docs.validity_date"/>
++                                <td name="td_validity_date">
++                                    <span t-esc="docs.validity_date if docs.validity_date else docs.date"/>
+                                 </td>
+-                                <td class="text-left" name="td_subject_report">
+-                                    <span t-esc="docs.receipt_id.subject"/>
++                                <td name="td_subject_report">
++                                    <span t-esc="docs.receipt_id.subject if docs.receipt_id.subject else docs.ref"/>
+                                 </td>
+-                                <td class="text-left" name="td_name_report">
+-                                    <span t-esc="docs.receipt_id.name"/>
++                                <td name="td_name_report" align="center">
++                                    <span t-esc="docs.receipt_id.name if docs.receipt_id.name else docs.ref"/>
+                                 </td>
+                                 <td class="text-left" name="td_check_payment_due_date">
+                                     <span t-esc="docs.check_payment_due_date"/>
+@@ -90,7 +90,7 @@
+ 
+     <template id="deposite_report_data">
+         <t t-call="web.html_container">
+-            <t t-call="habayta_deposite_report.deposite_all_data"/>
++            <t t-call="bizzup_deposite_report.deposite_all_data"/>
+         </t>
+     </template>
+ 
+--- deposite_reports.xml
++++ deposite_reports.xml
+@@ -3,8 +3,8 @@
+         <field name="name">Deposit Report</field>
+         <field name="model">account.payment</field>
+         <field name="report_type">qweb-pdf</field>
+-        <field name="report_name">habayta_deposite_report.deposite_report_data</field>
+-        <field name="report_file">habayta_deposite_report.deposite_report_data</field>
++        <field name="report_name">bizzup_deposite_report.deposite_report_data</field>
++        <field name="report_file">bizzup_deposite_report.deposite_report_data</field>
+         <field name="print_report_name">'Deposite Report'</field>
+         <field name="binding_model_id" ref="model_account_payment"/>
+         <field name="binding_type">report</field>

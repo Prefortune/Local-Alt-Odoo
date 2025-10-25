@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <!-- View custom.bank.reconcilation.wizard form -->
+    <record id="view_custom_bank_reconcilation_wizard_form" model="ir.ui.view">
+        <field name="name">view.custom.bank.reconcilation.wizard.form</field>
+        <field name="model">custom.bank.reconcilation.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Custom Bank Reconcilation Wizard">
+                <sheet>
+                    <group>
+                        <group>
+                            <field name="journal_id" options="{'no_create': True}"/>
+                            <field name="match_by_ref" />
+                            <field name="match_by_tolerance" />
+                            <field name="match_by_amount" />
+                        </group>
+                        <group>
+                            <field name="date_tolerance" invisible="not match_by_tolerance" />
+                            <field name="account_ids" widget="many2many_tags" />
+                        </group>
+                    </group>
+                    <field name="custom_bank_reconcilation_line_ids">
+                        <list editable="bottom" string="Custom Bank Reconcilation Lines" delete="false" create="false">
+                            <field name="wizard_id" column_invisible="1"/>
+                            <field name="date" readonly="1" />
+                            <field name="bank_statement_id" readonly="1" column_invisible="1"/>
+                            <field name="bank_statement_line_id" readonly="1" force_save="1" />
+                            <field name="move_line_id"  readonly="1" string="Matched Item" force_save="1"/>
+                            <field name="amount" readonly="1"/>
+                            <field name="company_id" readonly="1"/>
+                            <field name="currency_id" readonly="1"/>
+                            <field name="do_reconcile" invisible="not move_line_id" widget="boolean_toggle" />
+                        </list>
+                    </field>
+                </sheet>
+                <footer>
+                    <button string="Reconcile Matched" type="object" name="action_confirm" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+
+    <!-- Action custom.bank.reconcilation.wizard -->
+    <record id="action_custom_bank_reconcilation_wizard" model="ir.actions.act_window">
+        <field name="name">Custom Bank Reconcilation Wizard</field>
+        <field name="type">ir.actions.act_window</field>
+        <field name="res_model">custom.bank.reconcilation.wizard</field>
+        <field name="view_mode">form</field>
+        <field name="domain">[]</field>
+        <field name="target">new</field>
+    </record>
+
+</odoo>

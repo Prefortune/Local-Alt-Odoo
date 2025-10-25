@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="bizzup_pos_tranzila_connect.OrderReceipt"
+       t-inherit="point_of_sale.OrderReceipt" t-inherit-mode="extension">
+        <xpath expr="//div[hasclass('paymentlines')]" position="inside">
+            <t t-if="props.data.new_npay">
+                <h4>Payment Limit : <t t-esc="props.data.new_npay"/></h4>
+            </t>
+        </xpath>
+    </t>
+</templates>

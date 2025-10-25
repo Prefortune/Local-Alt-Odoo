@@ -1,0 +1,9 @@
+<templates id="template" xml:space="preserve">
+
+    <t t-name="BankRecKanbanButtons" t-inherit="account.BankRecKanbanButtons" t-inherit-mode="extension">
+        <xpath expr="//t[@t-call='account.AccountViewUploadButton']" position="after">
+            <button class="btn btn-primary m-1" t-on-click="openCustomReconciliationWizard">Custom Reconciliation</button>
+        </xpath>
+    </t>
+
+</templates>

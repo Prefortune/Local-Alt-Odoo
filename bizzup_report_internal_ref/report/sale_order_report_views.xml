@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Backend report-->
+    <template id="report_saleorder_document_inherit" inherit_id="sale.report_saleorder_document">
+        <xpath expr="//th[@name='th_description']" position="after">
+            <th name="th_product_internal_ref" class="text-start">Internal Ref.</th>
+        </xpath>
+        <xpath expr="//td[@name='td_name']" position="after">
+            <td name="td_product_internal_ref"><span t-field="line.product_id.default_code"></span></td>
+        </xpath>
+        <xpath expr="//td[@name='td_name']" position="replace">
+            <td name="td_name"><span t-field="line.product_description"></span></td>
+        </xpath>
+    </template>
+
+    <!--Portal Content-->
+    <template id="report_saleorder_portal_content_inherit" inherit_id="sale.sale_order_portal_content">
+        <xpath expr="//th[@id='product_name_header']" position="after">
+            <th id="th_product_internal_ref" class="text-start">התייחסות פנימית</th>
+        </xpath>
+        <xpath expr="//td[@id='product_name']" position="after">
+           <td id="td_product_internal_ref">
+                <span t-field="line.product_id.default_code"/>
+            </td>
+        </xpath>
+        <xpath expr="//td[@id='product_name']" position="replace">
+           <td id="product_name">
+                <span t-field="line.product_description"/>
+            </td>
+        </xpath>
+    </template>
+
+    <record id="view_order_form_inherit_bizzup_internal_ref" model="ir.ui.view">
+        <field name="name">sale.order.form.inherit.bizzup.internal.ref</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//list//field[@name='price_unit']" position="after">
+                  <field name="product_description" widget="section_and_note_text"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

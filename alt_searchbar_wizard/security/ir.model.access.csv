@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_alt_searchbar_config_admin,alt.searchbar.config.admin,model_alt_searchbar_config,group_alt_searchbar_admin,1,1,1,1
+access_alt_searchbar_config_public,alt.searchbar.config.public,model_alt_searchbar_config,base.group_public,1,0,0,0

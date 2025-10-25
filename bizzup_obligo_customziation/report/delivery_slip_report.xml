@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherit delivery report to add related packages -->
+    <!-- Ticket HT01649 -->
+    <template id="report_report_delivery_document_inherit_packages" inherit_id="stock.report_delivery_document">
+        <xpath expr="//div[@name='signature']" position="after">
+            <t t-if="o.move_ids">
+                <t t-set="lines" t-value="o.move_ids.filtered(lambda x: x.product_uom_qty)"/>
+                    <t t-if="o.state != 'done'">
+                        <div>
+                            <strong>חבילה/ות:</strong>
+                            <t t-foreach="lines" t-as="move">
+                                <div t-if="move.package_ids">
+                                    <t t-foreach="move.package_ids" t-as="pkg">
+                                        <span t-esc="pkg.name"/> <br/>
+                                    </t>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                    <t t-else="">
+                        <div>
+                            <strong>חבילה/ות:</strong>
+                            <t t-foreach="lines" t-as="move">
+                                <div t-if="move.package_ids">
+                                    <t t-foreach="move.package_ids" t-as="pkg">
+                                        <span t-esc="pkg.name"/> <br/>
+                                    </t>
+                                </div>
+                            </t>
+                        </div>
+                    </t>
+                </t>
+        </xpath>
+    </template>
+</odoo>

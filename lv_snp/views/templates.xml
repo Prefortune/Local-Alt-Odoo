@@ -1,0 +1,93 @@
+<odoo>
+    <data>
+        <template id="snp-player">&lt;!DOCTYPE html&gt;
+            <html t-att="html_data or {}">
+                <head>
+                    <meta charset="utf-8"/>
+                    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"/>
+                    <meta name="viewport" content="width=device-width, initial-scale=1"/>
+                    <title>odoo local video snippet</title>
+                    <link type="image/x-icon" rel="shortcut icon" t-att-href="x_icon or '/web/static/img/favicon.ico'"/>
+                    <t t-call-assets="web.assets_frontend" t-js="false"/>
+                    <t t-call-assets="web.assets_frontend_minimal" t-css="false" defer_load="True"/>
+                    <t t-call-assets="web.assets_frontend_lazy" t-css="false" lazy_load="True"/>
+                </head>
+                <body class="player-body">
+                    <div class="lc-film-player">
+                      <t t-if="auto_play and controls and loop">
+                          <video class="shadow rounded bg-dark"
+                             style="width:100%;height:100%"
+                             t-att-src="data"
+                             autoplay="autoplay"
+                             controls="controls"
+                             muted="muted"
+                             loop="loop"
+                             playsinline="true"
+                             t-ref="video"/>
+                      </t>
+                      <t t-if="auto_play and not controls and loop">
+                          <video class="shadow rounded bg-dark"
+                             style="width:100%;height:100%"
+                             t-att-src="data"
+                             autoplay="autoplay"
+                             muted="muted"
+                             loop="loop"
+                             playsinline="true"
+                             t-ref="video"/>
+                      </t>
+                     <t t-if="auto_play and controls and not loop">
+                          <video class="shadow rounded bg-dark"
+                             style="width:100%;height:100%"
+                             t-att-src="data"
+                             autoplay="autoplay"
+                             controls="controls"
+                             muted="muted"
+                             playsinline="true"
+                             t-ref="video"/>
+                     </t>
+                     <t t-if="auto_play and not controls and not loop">
+                          <video class="shadow rounded bg-dark"
+                             style="width:100%;height:100%"
+                             t-att-src="data"
+                             autoplay="autoplay"
+                             muted="muted"
+                             playsinline="true"
+                             t-ref="video"/>
+                     </t>
+                     <t t-if="not auto_play and controls and loop">
+                          <video class="shadow rounded bg-dark"
+                             style="width:100%;height:100%"
+                             t-att-src="data"
+                             controls="controls"
+                             loop="loop"
+                             t-ref="video"/>
+                      </t>
+                      <t t-if="not auto_play and not controls and loop">
+                          <video class="shadow rounded bg-dark"
+                             style="width:100%;height:100%"
+                             t-att-src="data"
+                             loop="loop"
+                             t-ref="video"/>
+                      </t>
+                      <t t-if="not auto_play and controls and not loop">
+                          <video class="shadow rounded bg-dark"
+                             style="width:100%;height:100%"
+                             t-att-src="data"
+                             controls="controls"
+                             t-ref="video"/>
+                      </t>
+                      <t t-if="not auto_play and not controls and not loop">
+                          <video class="shadow rounded bg-dark"
+                             style="width:100%;height:100%"
+                             t-att-src="data"
+                             t-ref="video"/>
+                      </t>
+                   </div>
+                </body>
+            </html>
+        </template>
+    </data>
+</odoo>
+
+
+

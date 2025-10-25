@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Default Searchbar Template - Loads on all pages -->
+        <template id="alt_searchbar_default" name="Default Searchbar" inherit_id="website.layout">
+            <xpath expr="//header" position="after">
+                <div class="container-fluid bg-light py-3" id="searchbar_wrapper">
+                    <div class="container-lg">
+                        <!-- Dynamic content will be loaded here -->
+                    </div>
+                </div>
+            </xpath>
+        </template>
+
+        <!-- Searchbar Snippet Template -->
+        <template id="alt_searchbar_snippet" name="Searchbar Snippet">
+            <section class="s_searchbar_snippet">
+                <div class="container-lg">
+                    <form class="row g-3" method="GET" action="/shop">
+                        <!-- Categories -->
+                        <div class="col-sm-2 mb-2" t-if="categories">
+                            <label class="form-label">קטגוריה</label>
+                            <select class="form-select" name="category">
+                                <option value="">כל הקטגוריות</option>
+                                <t t-foreach="categories" t-as="cat">
+                                    <option t-att-value="cat[0]" t-out="cat[1]" />
+                                </t>
+                            </select>
+                        </div>
+                        
+                        <!-- Attributes -->
+                        <t t-foreach="attributes" t-as="attr">
+                            <div class="col-sm-2 mb-2">
+                                <label class="form-label" t-out="attr[1]" />
+                                <select class="form-select" t-att-name="'attr_' + str(attr[0])">
+                                    <option value="">כל האפשרויות</option>
+                                    <t t-if="attr[2]" t-foreach="attr[2]" t-as="value">
+                                        <option t-att-value="value[0]" t-out="value[1]" />
+                                    </t>
+                                </select>
+                            </div>
+                        </t>
+                        
+                        <!-- Tags -->
+                        <div class="col-sm-2 mb-2" t-if="tags">
+                            <label class="form-label">תגיות</label>
+                            <select class="form-select" name="tags">
+                                <option value="">כל התגיות</option>
+                                <t t-foreach="tags" t-as="tag">
+                                    <option t-att-value="tag[0]" t-out="tag[1]" />
+                                </t>
+                            </select>
+                        </div>
+                        
+                        <!-- Price Range -->
+                        <div class="col-sm-2 mb-2" t-if="show_price_filter and price_ranges">
+                            <label class="form-label">טווח מחיר</label>
+                            <select class="form-select" name="price_range">
+                                <option value="">כל המחירים</option>
+                                <t t-foreach="price_ranges" t-as="range">
+                                    <option t-att-value="str(range['min']) + '-' + str(range['max'])" t-out="range['label']" />
+                                </t>
+                            </select>
+                        </div>
+                        
+                        <!-- Submit Button -->
+                        <div class="col-sm-2 mb-2 align-self-end">
+                            <button type="submit" class="btn btn-secondary w-100">התאימו לי אופניים</button>
+                        </div>
+                    </form>
+                </div>
+            </section>
+        </template>
+    </data>
+</odoo>

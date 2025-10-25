@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--add new fields contact form view-->
+    <record id="res_partner_view_form" model="ir.ui.view">
+        <field name="name">res.partner.view.form.inherit.hr</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="birthdate"/>
+            </xpath>
+            <xpath expr="//field[@name='website']" position="before">
+                <field name="mailing_approval"/>
+            </xpath>
+            <xpath expr="//field[@name='property_delivery_carrier_id']"
+                   position="after">
+                <field name="delivery_route_id"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

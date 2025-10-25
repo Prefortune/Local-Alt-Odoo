@@ -1,0 +1,51 @@
+<?xml version="1.0"?>
+
+<odoo>
+    <template id="report_partner_credit_template">
+        <t t-call="web.html_container">
+            <t t-call="web.external_layout">
+                <div class="page">
+                    <h2>Partner Credit Report</h2>
+                    <table class="table table-sm table-bordered mt32">
+                        <thead>
+                            <tr>
+                                <th>Client Id</th>
+                                <th>Client Name</th>
+                                <th>Credit Limit</th>
+                                <th>Credit</th>
+                                <th>Postponed Checks</th>
+                                <th>Obligo</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <t t-foreach="docs" t-as="partner">
+                                <tr>
+                                    <td>
+                                        <t t-esc="partner.id"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="partner.name"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="partner.credit_limit"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="partner.credit"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="partner.postponed_check_total"/>
+                                    </td>
+                                    <td>
+                                        <t t-esc="partner.obligo"/>
+                                    </td>
+                                </tr>
+                            </t>
+                        </tbody>
+                    </table>
+                </div>
+            </t>
+        </t>
+    </template>
+</odoo>
+
+

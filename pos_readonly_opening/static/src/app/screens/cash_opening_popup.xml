@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="pos_readonly_opening.OpeningControlPopup" t-inherit="point_of_sale.OpeningControlPopup"
+       t-inherit-mode="extension">
+        <xpath expr="//Input" position="replace">
+            <input type="text" t-att-value="getValue()" readonly="1"/>
+        </xpath>
+    </t>
+</templates>

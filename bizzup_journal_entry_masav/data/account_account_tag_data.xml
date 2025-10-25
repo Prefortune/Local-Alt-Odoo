@@ -1,0 +1,8 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<odoo noupdate="1">
+    <!--  # HT01743  -->
+    <record id="account_account_tag_for_masav" model="account.account.tag">
+        <field name="name">צל</field>
+        <field name="applicability">accounts</field>
+    </record>
+</odoo>

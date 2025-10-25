@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--add new field is_po_consig-->
+    <record id="view_order_form_inherit" model="ir.ui.view">
+        <field name="name">purchase.order.form</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <field name="is_po_consig" position="after">
+                <field name="tag_from_transfer" invisible="1"/>
+            </field>
+            <field name="is_po_consig" position="attributes">
+                <attribute name="readonly">state == 'purchase' or tag_from_transfer == True</attribute>
+            </field>
+        </field>
+    </record>
+</odoo>

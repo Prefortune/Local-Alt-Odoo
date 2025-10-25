@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--Form View-->
+    <record id="view_account_move_form_import_case" model="ir.ui.view">
+        <field name="name">account.move.import.case</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='ref']" position="after">
+                    <field name="import_case_id"
+                           string="Related Task"
+                           readonly="state == 'posted'"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--List View-->
+    <record id="view_invoice_bill_tree_import" model="ir.ui.view">
+        <field name="name">account.move.list.import</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_invoice_tree"/>
+        <field name="mode">primary</field>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='ref']" position="after">
+                <field name="import_case_id" string="Related Task"/>
+                <field name="import_case_seq" string="Import Case Sequence"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--Search View-->
+    <record id="view_account_move_search_view_inherit" model="ir.ui.view">
+        <field name="name">account.move.search.view.import.case</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_account_bill_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="filter_domain">
+                        ['|',
+                        ('name', 'ilike', self),
+                        ('import_case_id.name', 'ilike', self),]
+                </attribute>
+            </xpath>
+            <xpath expr="//group//filter[@name='partner']" position="after">
+                <filter name="import_case_id" context="{'group_by': 'import_case_id'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

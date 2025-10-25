@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_stock_landed_cost_import_case" model="ir.ui.view">
+        <field name="name">stock.landed.cost.import.case</field>
+        <field name="model">stock.landed.cost</field>
+        <field name="inherit_id" ref="stock_landed_costs.view_stock_landed_cost_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='button_validate']" position="after">
+                <button name="compute_after_removal"
+                        string="Compute after Removal"
+                        type="object"
+                        class="oe_highlight"
+                        />
+            </xpath>
+        </field>
+    </record>
+</odoo>

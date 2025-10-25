@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- List View -->
+        <record id="view_alt_searchbar_config_list" model="ir.ui.view">
+            <field name="name">alt.searchbar.config.list</field>
+            <field name="model">alt.searchbar.config</field>
+            <field name="arch" type="xml">
+                <list>
+                    <field name="name"/>
+                    <field name="website_id"/>
+                    <field name="category_ids" widget="many2many_tags"/>
+                    <field name="attribute_ids" widget="many2many_tags"/>
+                    <field name="tag_ids" widget="many2many_tags"/>
+                    <field name="show_price_filter"/>
+                    <field name="show_on_all_pages"/>
+                    <field name="is_active"/>
+                </list>
+            </field>
+        </record>
+
+        <!-- Form View -->
+        <record id="view_alt_searchbar_config_form" model="ir.ui.view">
+            <field name="name">alt.searchbar.config.form</field>
+            <field name="model">alt.searchbar.config</field>
+            <field name="arch" type="xml">
+                <form>
+                    <sheet>
+                        <group>
+                            <field name="name"/>
+                            <field name="website_id"/>
+                            <field name="is_active"/>
+                            <field name="show_on_all_pages"/>
+                        </group>
+                        <group>
+                            <!-- <field name="category_ids" widget="many2many_tags"/> -->
+                            <field name="category_ids"/>
+                            <!-- <field name="attribute_ids" widget="many2many_checkboxes"/> -->
+                            <field name="attribute_ids"/>
+                            <!-- <field name="tag_ids" widget="many2many_checkboxes"/> -->
+                            <field name="tag_ids" />
+                            <field name="show_price_filter"/>
+                        </group>
+                    </sheet>
+                </form>
+            </field>
+        </record>
+
+        <!-- Action -->
+        <record id="action_alt_searchbar_config" model="ir.actions.act_window">
+            <field name="name">Searchbar Settings</field>
+            <field name="res_model">alt.searchbar.config</field>
+            <field name="view_mode">list,form</field>
+            <field name="help" type="html">
+                <p class="o_view_nocontent_smiling_face">
+                    Create your first searchbar configuration!
+                </p>
+                <p>
+                    Configure the searchbar for your website by selecting categories, 
+                    attributes, tags, and other search options.
+                </p>
+            </field>
+        </record>
+
+        <!-- Menu Item - Use base menu -->
+        <menuitem id="menu_alt_searchbar_config"
+                  name="Searchbar Settings"
+                  parent="base.menu_administration"
+                  action="action_alt_searchbar_config"
+                  sequence="100"/>
+    </data>
+</odoo> 

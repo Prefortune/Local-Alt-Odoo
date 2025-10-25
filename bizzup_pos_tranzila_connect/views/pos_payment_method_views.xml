@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_payment_method_form_view_inherit" model="ir.ui.view">
+        <field name="name">pos.payment.method.form.view.inherit</field>
+        <field name="model">pos.payment.method</field>
+        <field name="inherit_id" ref="point_of_sale.pos_payment_method_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='is_online_payment']" position="after">
+                <field name="is_pos_physical_terminal" invisible="is_online_payment == True"/>
+            </xpath>
+            <xpath expr="//field[@name='is_pos_physical_terminal']" position="after">
+                <field name="payment_limit" invisible="not is_pos_physical_terminal" readonly="1"/>
+            </xpath>
+            <xpath expr="//form/sheet/group[@name='Payment methods']/group[@invisible='not is_online_payment']" position="attributes">
+                <attribute name="invisible">not is_online_payment and not is_pos_physical_terminal</attribute>
+            </xpath>
+            <xpath expr="//field[@name='is_online_payment']" position="attributes">
+                <attribute name="invisible">is_pos_physical_terminal</attribute>
+            </xpath>
+            <xpath expr="//field[@name='journal_id']" position="attributes">
+                <attribute name="invisible">is_pos_physical_terminal or is_online_payment</attribute>
+            </xpath>
+            <xpath expr="//field[@name='receivable_account_id']" position="attributes">
+                <attribute name="invisible">is_pos_physical_terminal or is_online_payment</attribute>
+            </xpath>
+            <xpath expr="//field[@name='split_transactions']" position="attributes">
+                <attribute name="invisible">is_pos_physical_terminal or is_online_payment</attribute>
+            </xpath>
+            <xpath expr="//group" position="after">
+                <notebook>
+                    <page name="tranzila_physical_terminals" string="Tranzila Physical Terminals"
+                          invisible="not is_pos_physical_terminal">
+                        <field name="tranzila_terminal_ids" widget="section_and_note_one2many"/>
+                    </page>
+                </notebook>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+
+

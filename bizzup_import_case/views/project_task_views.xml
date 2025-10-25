@@ -1,0 +1,311 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--    Form view of Project Task-->
+    <record id="view_task_form_import_case" model="ir.ui.view">
+        <field name="name">project.task.form.import.case</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_form2"/>
+        <field name="arch" type="xml">
+
+            <!--Invisible Date Deadline field-->
+            <xpath expr="//field[@name='date_deadline']" position="attributes">
+                <attribute name="invisible">1</attribute>
+            </xpath>
+
+            <xpath expr="//field[@name='partner_id']" position="before">
+                <field name="import_case_seq" readonly="1" string="Import Case ID"/>
+                <field name="import_case_compute" readonly="1" invisible="1"/>
+                <field name="picking_ids" widget="many2many_tags" invisible="1"/>
+                <field name="store_manual_container_ids" invisible="1"/>
+                <field name="import_case_type" readonly="import_case_compute == True" string="Import Case"/>
+            </xpath>
+
+            <xpath expr="//sheet/notebook/page[@name='description_page']" position="before">
+                <!-- Import Case Info -->
+                <page string="Import Case Information" invisible="import_case_type != 'import_case'">
+                    <group>
+                        <field name="booking" string="Booking"/>
+                        <field name="send_date" string="Send Date"/>
+                        <field name="expected_date" string="Expected Date"/>
+                        <field name="release_date" string="Release Date"/>
+                        <field name="port_of_departure_ids" mode="list,form" string="Port of Departure">
+                            <list>
+                                <field name="partner_id"/>
+                                <field name="complete_name"/>
+                                <field name="phone"/>
+                                <field name="email"/>
+                                <field name="mobile"/>
+                                <field name="activity_ids" widget="kanban_activity"/>
+                                <field name="vat"/>
+                                <field name="company_id"/>
+                                <field name="country_id"/>
+                                <field name="city"/>
+                                <field name="pricelist_id"/>
+                                <field name="user_id"/>
+                                <field name="withholding_tax_rate"/>
+                            </list>
+                            <form>
+                                <sheet>
+                                    <group>
+                                        <field name="partner_id"/>
+                                        <field name="complete_name" invisible="1"/>
+                                        <field name="phone" invisible="1"/>
+                                        <field name="email" invisible="1"/>
+                                        <field name="mobile" invisible="1"/>
+                                        <field name="activity_ids" widget="kanban_activity" invisible="1"/>
+                                        <field name="vat" invisible="1"/>
+                                         <field name="company_id" invisible="1"/>
+                                        <field name="country_id" invisible="1"/>
+                                        <field name="city" invisible="1"/>
+                                        <field name="pricelist_id" invisible="1"/>
+                                        <field name="user_id" invisible="1"/>
+                                        <field name="withholding_tax_rate" invisible="1"/>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                        <field name="port_of_arrival_ids" mode="list,form" string="Port of Arrival">
+                                <list>
+                                <field name="partner_id"/>
+                                <field name="complete_name"/>
+                                <field name="phone"/>
+                                <field name="email"/>
+                                <field name="mobile"/>
+                                <field name="activity_ids" widget="kanban_activity"/>
+                                <field name="vat"/>
+                                <field name="company_id"/>
+                                <field name="country_id"/>
+                                <field name="city"/>
+                                <field name="pricelist_id"/>
+                                <field name="user_id"/>
+                                <field name="withholding_tax_rate"/>
+                            </list>
+                            <form>
+                                <sheet>
+                                    <group>
+                                        <field name="partner_id"/>
+                                        <field name="complete_name" invisible="1"/>
+                                        <field name="phone" invisible="1"/>
+                                        <field name="email" invisible="1"/>
+                                        <field name="mobile" invisible="1"/>
+                                        <field name="activity_ids" widget="kanban_activity" invisible="1"/>
+                                        <field name="vat" invisible="1"/>
+                                         <field name="company_id" invisible="1"/>
+                                        <field name="country_id" invisible="1"/>
+                                        <field name="city" invisible="1"/>
+                                        <field name="pricelist_id" invisible="1"/>
+                                        <field name="user_id" invisible="1"/>
+                                        <field name="withholding_tax_rate" invisible="1"/>
+                                    </group>
+                                </sheet>
+                            </form>
+                        </field>
+                        <field name="number_of_containers" readonly="1" string="Number of Containers"/>
+                        <field name="general_notes" string="General Notes"/>
+                        <field name="total_amount" readonly="1" string="Total Amount"/>
+                    </group>
+                </page>
+
+                <!-- Related Transfers -->
+                 <page string="Related Transfers" invisible="import_case_type != 'import_case'">
+                    <field name="related_transfer_ids" mode="list,form" invisible="1">
+                        <list>
+                            <field name="name"/>
+                            <field name="scheduled_date" string="Scheduled Date"/>
+                            <field name="date_done" string="Date Dome"/>
+                            <field name="state" string="State"/>
+                        </list>
+                        <form>
+                            <sheet>
+                                <group>
+                                    <field name="name"/>
+                                    <field name="scheduled_date" string="Scheduled Date"/>
+                                    <field name="date_done" string="Date Dome"/>
+                                    <field name="state" string="State"/>
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+
+                     <field name="related_picking_ids" mode="list,form" invisible="import_case_type != 'import_case'" readonly="1">
+                        <list>
+                            <field name="picking_id" domain="[('import_case_id', '=', False)]" string="Picking"/>
+                            <field name="date_done" string="Date Dome"/>
+                            <field name="scheduled_date" string="Scheduled Date"/>
+                            <field name="state" string="State"/>
+                        </list>
+                    </field>
+                </page>
+
+                <!-- Transfers -->
+                <page string="Transfers" invisible="import_case_type != 'import_case'">
+                    <!-- Display computed readonly list -->
+                    <field name="all_transfer_ids" readonly="1" string="Transfers">
+                        <list>
+                            <field name="name"/>
+                            <field name="company_id"/>
+                            <field name="picking_id" string="Picking"/>
+                            <field name="quantity"/>
+                            <field name="date_expected" string="Expected Date"/>
+                            <field name="date" string="Date"/>
+                            <field name="state" string="State"/>
+                        </list>
+                    </field>
+
+                    <!-- Allow manually adding unrelated moves -->
+                    <field name="manual_move_ids" invisible="import_case_type != 'import_case'" string="Transfers">
+                        <list editable="bottom">
+                            <field name="picking_id" domain="[('import_case_id', '=', False), ('picking_type_code', '=', 'incoming'), ('state', 'not in', ('cancel', 'done'))]" string="Picking"/>
+                            <field name="date_done" string="Date Dome"/>
+                            <field name="scheduled_date" string="Scheduled Date"/>
+                            <field name="state" string="State"/>
+                        </list>
+                    </field>
+                </page>
+
+                <!-- Related Containers -->
+                <page string="Related Containers" invisible="import_case_type != 'import_case'">
+                    <field name="related_container_ids" mode="list,form" invisible="1" string="Related Containers">
+                        <list editable="bottom">
+                            <field name="name"/>
+                            <field name="scheduled_date" string="Scheduled Date"/>
+                            <field name="seger_number" string="Seger Number"/>
+                            <field name="size" string="Size"/>
+                            <field name="picking_ids" widget="many2many_tags" string="All Picking"/>
+                        </list>
+                        <form>
+                            <sheet>
+                                <group>
+                                    <field name="name"/>
+                                    <field name="scheduled_date" string="Scheduled Date"/>
+                                    <field name="seger_number" string="Seger Number"/>
+                                    <field name="size" string="Size"/>
+                                    <field name="picking_ids" string="All Picking"/>
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+                    <field name="manual_container_ids" invisible="import_case_type != 'import_case'" string="Related Containers">
+                        <list editable="bottom">
+                            <field name="batch_id" domain="[('task_id', '=', False)]" string="Batch"/>
+                            <field name="ref" string="Ref"/>
+                            <field name="scheduled_date" string="Scheduled Date"/>
+                            <field name="seger_number" string="Seger Number"/>
+                            <field name="size" string="Size"/>
+                            <field name="picking_ids" widget="many2many_tags" string="All Picking"/>
+                        </list>
+                    </field>
+                </page>
+
+                <!-- Related Purchase Orders -->
+                <page string="Related Purchase Orders" invisible="import_case_type != 'import_case'">
+                    <field name="related_purchase_order_ids" readonly="1" string="Related Purchase Orders"/>
+                </page>
+
+                <!-- Related Bills -->
+                <page string="Related Bills" invisible="import_case_type != 'import_case'">
+                    <field name="related_bill_ids" invisible="1" string="Related Bills">
+                         <list>
+                            <field name="name"/>
+                            <field name="invoice_date" string="Invoice Date"/>
+                            <field name="amount_total_signed" stirng="Signed Amount"/>
+                            <field name="state" string="State"/>
+                        </list>
+                        <form>
+                            <sheet>
+                                <group>
+                                    <field name="name"/>
+                                    <field name="invoice_date" string="Invoice Date"/>
+                                    <field name="amount_total_signed" widget="monetary" options="{'currency_field': 'company_currency_id'}" stirng="Signed Amount"/>
+                                    <field name="state" string="State"/>
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+
+                    <!-- Allow manually adding unrelated moves -->
+                    <field name="bill_ids" invisible="import_case_type != 'import_case'" readonly="1" string="Related Bills">
+                         <list>
+                            <field name="bill_id"/>
+                            <field name="company_currency_id" optional="hide"/>
+                            <field name="currency_id" optional="hide"/>
+                            <field name="company_id" optional="hide"/>
+                            <field name="invoice_date" string="Invoice Date"/>
+                            <field name="amount_total_signed" widget="monetary" options="{'currency_field': 'company_currency_id'}" stirng="Signed Amount"/>
+                            <field name="state" string="State"/>
+                        </list>
+                        <form>
+                            <sheet>
+                                <group>
+                                     <field name="bill_id"/>
+                                    <field name="company_currency_id" invisible="1"/>
+                                    <field name="currency_id" invisible="1"/>
+                                    <field name="company_id" invisible="1"/>
+                                    <field name="invoice_date" string="Invoice Date"/>
+                                    <field name="amount_total_signed" widget="monetary" options="{'currency_field': 'company_currency_id'}" stirng="Signed Amount"/>
+                                    <field name="state" string="State"/>
+                                </group>
+                            </sheet>
+                        </form>
+                    </field>
+                </page>
+            </xpath>
+        </field>
+    </record>
+
+    <!--    Search view of project task-->
+    <record id="view_project_task_search_view_inherit" model="ir.ui.view">
+        <field name="name">project.task.search.view.import.case</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.view_task_search_form_base"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="filter_domain">
+                        ['|','|','|','|','|','|','|','|','|',
+                        ('name', 'ilike', self),
+                        ('id', 'ilike', self),
+                        ('bill_ids.bill_id.name','ilike',self),
+                        ('related_total_amount', 'ilike', self),
+                        ('manual_container_ids.batch_id.name','ilike',self),
+                        ('related_number_of_containers','ilike',self),
+                        ('store_picking_ids.name','ilike',self),
+                        ('booking', 'ilike', self),
+                        ('send_date', 'ilike', self),
+                        ('expected_date', 'ilike', self),]
+                </attribute>
+            </xpath>
+            <xpath expr="//group/filter[@name='stage']" position="after">
+                <filter name="new_related_purchase_order_ids" context="{'group_by': 'new_related_purchase_order_ids'}"/>
+                <filter name="store_picking_ids" context="{'group_by': 'store_picking_ids'}"/>
+                <filter name="container_ids" context="{'group_by': 'container_ids'}"/>
+                <filter name="related_number_of_containers" context="{'group_by': 'related_number_of_containers'}"/>
+                <filter name="booking" context="{'group_by': 'booking'}"/>
+                <filter name="related_total_amount" context="{'group_by': 'related_total_amount'}"/>
+                <filter name="send_date" context="{'group_by': 'send_date'}"/>
+                <filter name="expected_date" context="{'group_by': 'expected_date'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--    List view of All Task-->
+    <record id="project_task_view_tree_main_base_import" model="ir.ui.view">
+        <field name="name">project.task.main.list.inherit.import</field>
+        <field name="model">project.task</field>
+        <field name="inherit_id" ref="project.project_task_view_tree_main_base"/>
+        <field name="arch" type="xml">
+            <field name="name" position="after">
+                <field name="store_picking_ids" widget="many2many_tags" optional="hide" string="Transfer"/>
+                <field name="related_purchase_order_ids" widget="many2many_tags" optional="hide" string="Related Purchase Orders"/>
+                <field name="booking" optional="hide" string="Booking"/>
+                <field name="port_of_departure_ids" widget="many2many_tags" optional="hide" string="Port of Departure"/>
+                <field name="port_of_arrival_ids" widget="many2many_tags" optional="hide" string="Port of Arrival"/>
+                <field name="send_date" optional="hide" string="Send Date"/>
+                <field name="expected_date" optional="hide" string="Expected Date"/>
+                <field name="release_date" optional="hide" string="Release Date"/>
+                <field name="number_of_containers" optional="hide" string="Number of Containers"/>
+                <field name="general_notes" optional="hide" string="General Notes"/>
+                <field name="total_amount" optional="hide" string="Total Amount"/>
+            </field>
+        </field>
+    </record>
+</odoo>
