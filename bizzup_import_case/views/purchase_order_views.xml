@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--Form View-->
+    <record id="view_purchase_order_import_case" model="ir.ui.view">
+        <field name="name">purchase.order.import.case</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='picking_type_id']" position="after">
+                <group>
+                    <field name="import_case_ids" widget="many2many_tags" readonly="1" string="Import Cases"/>
+                    <field name="import_case_seq" readonly="1" string="Import Case Sequence"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!--Search View-->
+    <record id="view_purchase_order_search_view_inherit" model="ir.ui.view">
+        <field name="name">purchase.order.search.view.import.case</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.view_purchase_order_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="filter_domain">
+                        ['|','|','|',
+                        ('name', 'ilike', self),
+                        ('partner_ref', 'ilike', self),
+                        ('partner_id', 'child_of', self),
+                        ('store_case_ids.name','ilike',self), ]
+                </attribute>
+            </xpath>
+            <xpath expr="//group/filter[@name='vendor']" position="after">
+                <filter name="store_case_ids" context="{'group_by': 'store_case_ids'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--List View-->
+    <record id="purchase_order_kpis_tree_inherit_import" model="ir.ui.view">
+        <field name="name">purchase.order.kpis.list.inherit.import</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_kpis_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="store_case_ids" widget="many2many_tags" string="Import Cases"/>
+                <field name="import_case_seq" readonly="1" string="Import Case Sequence"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="action_import_case_tree" model="ir.actions.act_window">
+        <field name="name">Import Cases</field>
+        <field name="res_model">project.task</field>
+        <field name="view_mode">list,form</field>  <!-- Use 'tree' instead of 'list' -->
+        <field name="domain">[("new_related_purchase_order_ids", "!=", False)]</field>
+    </record>
+
+    <!-- Top-level menu item under Purchase -->
+    <menuitem
+        id="purchase_report_import_case"
+        name="Import Case"
+        parent="purchase.menu_purchase_root"
+        action="action_import_case_tree"
+        sequence="2"/>
+
+    <record id="action_import_case_purchase_receipt" model="ir.actions.act_window">
+        <field name="name">Receipts</field>
+        <field name="res_model">stock.picking</field>
+        <field name="view_mode">list,form</field>  <!-- Use 'tree' instead of 'list' -->
+        <field name="domain">[("purchase_id", "!=", False)]</field>
+    </record>
+
+    <!-- Top-level menu item under Purchase -->
+    <menuitem
+        id="purchase_receipt_import_case"
+        name="Receipts"
+        parent="purchase.menu_purchase_root"
+        action="action_import_case_purchase_receipt"
+        sequence="3"/>
+
+</odoo>

@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_package_barcode_stock_picking">
+        <t t-call="web.basic_layout">
+            <t t-foreach="docs" t-as="o">
+                <t>
+                    <div class="page">
+                        <div class="oe_structure"/>
+                        <t t-if="o.valid_sscc">
+                            <div class="row">
+                                <t t-set="barcode" t-value="'00' + o.name"/>
+                                <t t-if="o.pack_date" t-set="barcode"
+                                   t-value="barcode + '13' + o.pack_date.strftime('%y%m%d')"/>
+                                <div class="col-5 text-end" name="datamatrix_barcode"
+                                     style="margin: 0px 20px 40px 60px">
+                                    <span t-out="barcode"
+                                          t-options="{'widget': 'barcode', 'symbology': 'ECC200DataMatrix', 'width': 200, 'height': 200}">
+                                        Barcode Demo
+                                    </span>
+                                </div>
+                                <div class="col-7 text-start" style="font-size:20px;">
+                                    <div class="row">SSCC:
+                                        <span t-field="o.name">SSCC Demo</span>
+                                    </div>
+                                    <div t-if="o.pack_date" class="row">Pack Date:
+                                        <span t-field="o.pack_date">Pack Date Demo</span>
+                                    </div>
+                                    <div t-if="o.package_type_id" class="row" name="datamatrix_pack_type">Package Type:
+                                        <span t-field="o.package_type_id.name">Package Type Demo</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-else="">
+                            <div class="row">
+                                <div class="text-center col-12">
+                                    <span t-field="o.name"
+                                          t-options="{'widget': 'barcode', 'width': 600, 'height': 100, 'img_style': 'width:600px;height:100px;'}">
+                                        Name Demo
+                                    </span>
+                                    <span t-field="o.name" style="font-size:20px; margin:100px;">Name Demo</span>
+                                </div>
+                            </div>
+                            <div t-if="o.pack_date" class="col-12 text-center"
+                                 style="font-size:24px; font-weight:bold;">Pack Date:
+                                <span t-field="o.pack_date">2023-01-01</span>
+                            </div>
+                            <div class="row o_packaging_type" t-if="o.package_type_id">
+                                <div class="col-12 text-center" style="font-size:24px; font-weight:bold;">
+                                    <span>Package Type:</span>
+                                    <span t-field="o.package_type_id.name">Package Type Demo</span>
+                                </div>
+                            </div>
+                        </t>
+                        <t t-set="move_line"
+                           t-value="o.env['stock.move.line'].search([('result_package_id', '=', o.id)], limit=1)"/>
+                        <t t-set="transfer" t-value="move_line.picking_id if move_line else False"/>
+                        <t t-if="transfer">
+                            <!-- Get the full picking chain (original + backorders) -->
+                            <t t-set="all_pickings"
+                               t-value="transfer.origin and o.env['stock.picking'].search([('origin', '=', transfer.origin)]) or transfer"/>
+
+                            <!-- Collect all packages across all pickings -->
+                            <t t-set="all_packages"
+                               t-value="[line.result_package_id for picking in all_pickings for line in picking.move_line_ids if line.result_package_id]"/>
+
+                            <!-- Remove duplicates and sort -->
+                            <t t-set="unique_sorted_packages" t-value="sorted(set(all_packages), key=lambda p: p.id)"/>
+
+                            <!-- Get package index and total -->
+                            <t t-set="package_index"
+                               t-value="list(unique_sorted_packages).index(o) + 1 if o in unique_sorted_packages else 1"/>
+                            <t t-set="total_packages" t-value="len(unique_sorted_packages)"/>
+
+                            <t t-if="transfer.picking_type_id.code == 'incoming'">
+                                <div class="col-12 text-center" style="font-size:20px; font-weight:bold;">
+                                    Vendor:
+                                    <span t-field="transfer.partner_id.name"/>
+                                </div>
+                            </t>
+                            <t t-else="">
+                                <div class="col-12 text-center" style="font-size:20px; font-weight:bold;">
+                                    Customer:
+                                    <span t-field="transfer.partner_id.name"/>
+                                </div>
+                                <div class="col-12 text-center" style="font-size:20px; font-weight:bold;">
+                                    Delivery Address:
+                                    <span t-field="transfer.partner_id.contact_address"/>
+                                </div>
+                            </t>
+                            <!-- Package count -->
+                            <div class="col-12 text-center" style="font-size:20px; font-weight:bold;">
+                                Package
+                                <t t-esc="package_index"/>
+                                of
+                                <t t-esc="total_packages"/>
+                            </div>
+                            <div style="height: 50px;"></div>
+                        </t>
+                        <div class="oe_structure"/>
+                    </div>
+                </t>
+            </t>
+        </t>
+    </template>
+
+    <template id="report_picking_package_picking">
+        <t t-set="docs" t-value="sorted(set(docs.move_line_ids.mapped('result_package_id')), key=lambda p: p.id)"/>
+        <t t-call="bizzup_stock_package_label_extend.report_package_barcode_stock_picking"/>
+    </template>
+
+    <record id="action_report_picking_barcode_smallq" model="ir.actions.report">
+        <field name="name">Picking Barcode</field>
+        <field name="model">stock.picking</field>
+        <field name="report_type">qweb-pdf</field>
+        <field name="report_name">bizzup_stock_package_label_extend.report_picking_package_picking</field>
+        <field name="report_file">bizzup_stock_package_label_extend.report_picking_package_picking</field>
+        <field name="binding_model_id" ref="stock.model_stock_picking"/>
+        <field name="binding_type">report</field>
+    </record>
+</odoo>

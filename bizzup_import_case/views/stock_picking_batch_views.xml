@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--Form View-->
+    <record id="view_picking_batch_form_inherit_import_case" model="ir.ui.view">
+        <field name="name">stock.picking.batch.import.case</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="inherit_id" ref="stock_picking_batch.stock_picking_batch_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group[@id='batch_delivery_data']/field[@name='company_id']" position="after">
+                <field name="seger_number" string="Seger Number"/>
+                <field name="size" string="Size"/>
+                <field name="ref" string="Ref"/>
+                <field name="task_id" readonly="1" string="Import Case"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--Search View-->
+    <record id="view_stock_picking_batch_search_view_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.batch.view.import.case</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="inherit_id" ref="stock_picking_batch.stock_picking_batch_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="filter_domain">
+                        ['|',
+                        ('name', 'ilike', self),
+                        ('import_case_id.name', 'ilike', self),]
+                </attribute>
+            </xpath>
+            <xpath expr="//group/filter[@name='user']" position="after">
+                <filter name="import_case_id" context="{'group_by': 'import_case_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--List View-->
+    <record id="stock_picking_batch_list_view_import" model="ir.ui.view">
+        <field name="name">stock.picking.batch.list.view.import</field>
+        <field name="model">stock.picking.batch</field>
+        <field name="inherit_id" ref="stock_picking_batch.stock_picking_batch_tree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="after">
+                <field name="import_case_id" string="Related Task"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>
+

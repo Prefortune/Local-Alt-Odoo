@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--  # HT01743  -->
+    <record id="view_payment_form_inherit_masav" model="ir.ui.view">
+        <field name="name">account.payment.form.inherit.masav</field>
+        <field name="model">account.payment</field>
+        <field name="inherit_id" ref="account.view_account_payment_form"/>
+        <field name="arch" type="xml">
+            <!-- Add masav_entry field after the Printed field -->
+            <xpath expr="//field[@name='is_printed']" position="after">
+                <field name="masav_entry" readonly="masav_entry == False"
+                       force_save="1" groups="base.group_system"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

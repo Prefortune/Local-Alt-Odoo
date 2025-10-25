@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <template id="report_package_barcode_small_inherit" inherit_id="stock.report_package_barcode_small">
+        <xpath expr="//div[hasclass('page')]" position="inside">
+            <!-- Get the related move line and picking -->
+            <t t-set="move_line"
+               t-value="o.env['stock.move.line'].search([('result_package_id', '=', o.id)], limit=1)"/>
+            <t t-set="transfer" t-value="move_line.picking_id if move_line else False"/>
+            <t t-if="transfer">
+                <!-- Get the full picking chain (original + backorders) -->
+                <t t-set="all_pickings"
+                   t-value="transfer.origin and o.env['stock.picking'].search([('origin', '=', transfer.origin)]) or transfer"/>
+
+                <!-- Collect all packages across all pickings -->
+                <t t-set="all_packages"
+                   t-value="[line.result_package_id for picking in all_pickings for line in picking.move_line_ids if line.result_package_id]"/>
+
+                <!-- Remove duplicates and sort -->
+                <t t-set="unique_sorted_packages" t-value="sorted(set(all_packages), key=lambda p: p.id)"/>
+
+                <!-- Get package index and total -->
+                <t t-set="package_index"
+                   t-value="list(unique_sorted_packages).index(o) + 1 if o in unique_sorted_packages else 1"/>
+                <t t-set="total_packages" t-value="len(unique_sorted_packages)"/>
+
+                <!-- Conditional: Vendor for Receipts, Customer otherwise -->
+                <t t-if="transfer.picking_type_id.code == 'incoming'">
+                    <div class="col-12 text-center" style="font-size:20px; font-weight:bold;">
+                        Vendor:
+                        <span t-field="transfer.partner_id.name"/>
+                    </div>
+                </t>
+                <t t-else="">
+                    <div class="col-12 text-center" style="font-size:20px; font-weight:bold;">
+                        Customer:
+                        <span t-field="transfer.partner_id.name"/>
+                    </div>
+                    <div class="col-12 text-center" style="font-size:20px; font-weight:bold;">
+                        Delivery Address:
+                        <span t-field="transfer.partner_id.contact_address"/>
+                    </div>
+                </t>
+                <div class="col-12 text-center" style="font-size:20px; font-weight:bold;">
+                    Package
+                    <t t-esc="package_index"/>
+                    of
+                    <t t-esc="total_packages"/>
+                </div>
+
+                <!-- Add spacing after each label -->
+                <div style="height: 50px;"></div>
+            </t>
+        </xpath>
+
+    </template>
+</odoo>

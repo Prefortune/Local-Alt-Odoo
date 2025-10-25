@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="stock_move_history_search_inherit" model="ir.ui.view">
+        <field name="name">stock.move.history.search.inherit</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.stock_move_line_view_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='filter_last_12_months']" position="after">
+                <filter name="no_recent_delivery"
+                        string="No Recent Delivery (Last 7 Days)"
+                        domain="[('no_recent_delivery', '=', True), ('picking_id.picking_type_id.code', '=', 'outgoing')]"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

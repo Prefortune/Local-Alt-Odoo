@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="utf-8"?>
+<templates id="template" xml:space="preserve">
+    <t t-name="cr_stock_tracking_status.ControlPanel" t-inherit="web.ControlPanel" t-inherit-mode="extension">
+    <xpath expr="//div[@t-if='env.isSmall']//t[@t-slot='control-panel-create-button']" position="after">
+            <t t-if="this.isProductKanban">
+                <br/>
+                <button type="button"
+                        class="btn btn-primary"
+                        t-on-click="() => onClickChangeStatus()">
+                     Status Change
+                </button>
+            </t>
+    </xpath>
+    <xpath expr="//div[@t-else]//t[@t-slot='control-panel-create-button']" position="after">
+            <t t-if="this.isProductKanban">
+                <button type="button"
+                        class="btn btn-primary"
+                        t-on-click="() => onClickChangeStatus()">
+                     Status Change
+                </button>
+            </t>
+    </xpath>
+    </t>
+    <t t-name="cr_stock_tracking_status.MainComponent" t-inherit="stock_barcode.MainComponent" t-inherit-mode="extension">
+        <xpath expr="//footer[@class='o_barcode_control o_action_buttons d-flex mt-auto']" position="inside">
+            <button t-on-click="callServerAction" class="o_reprint_receipt btn btn-primary">
+                <t t-esc="state.next_tracking_status"/>
+            </button>
+        </xpath>
+    </t>
+</templates>

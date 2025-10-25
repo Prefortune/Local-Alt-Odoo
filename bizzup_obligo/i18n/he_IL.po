@@ -1,0 +1,263 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* bizzup_obligo
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-05-14 12:09+0000\n"
+"PO-Revision-Date: 2025-05-14 12:09+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: bizzup_obligo
+#. odoo-python
+#: code:addons/bizzup_obligo/models/account_move.py:0
+msgid "%(partner_name)s has reached their obligo limit of: %(obligo)s"
+msgstr ""
+
+#. module: bizzup_obligo
+#. odoo-python
+#: code:addons/bizzup_obligo/models/account_move.py:0
+msgid "%(partner_name)s הגיע/ה למגבלת האובליגו שלו/שלה: %(obligo)s"
+msgstr ""
+
+#. module: bizzup_obligo
+#: model:ir.actions.report,print_report_name:bizzup_obligo.action_report_partner_credit_limit
+msgid "(object.name or 'Partner') + ' Credit Limit Report'"
+msgstr ""
+
+#. module: bizzup_obligo
+#: model_terms:ir.ui.view,arch_db:bizzup_obligo.res_config_settings_view_form
+msgid "Additional amount allowed over the credit limit."
+msgstr ""
+
+#. module: bizzup_obligo
+#. odoo-python
+#: code:addons/bizzup_obligo/models/purchase_order.py:0
+msgid "Automatically generated from %(origin)s of company %(company)s."
+msgstr ""
+
+#. module: bizzup_obligo
+#: model_terms:ir.ui.view,arch_db:bizzup_obligo.report_partner_credit_template
+msgid "Client Id"
+msgstr ""
+
+#. module: bizzup_obligo
+#: model:ir.model,name:bizzup_obligo.model_res_company
+msgid "Companies"
+msgstr "חברות"
+
+#. module: bizzup_obligo
+#: model:ir.model,name:bizzup_obligo.model_res_config_settings
+msgid "Configuration settings for Website Webkul Addons"
+msgstr "הגדר הגדרות"
+
+#. module: bizzup_obligo
+#: model:ir.model,name:bizzup_obligo.model_res_partner
+msgid "Contact"
+msgstr "איש קשר"
+
+#. module: bizzup_obligo
+#: model_terms:ir.ui.view,arch_db:bizzup_obligo.res_config_settings_view_form
+msgid "Credit Limit Configuration"
+msgstr ""
+
+#. module: bizzup_obligo
+#: model:ir.actions.server,name:bizzup_obligo.action_download_credit_excel
+msgid "Credit Limit Report Excel"
+msgstr ""
+
+#. module: bizzup_obligo
+#: model:ir.actions.report,name:bizzup_obligo.action_report_partner_credit_limit
+msgid "Credit Limit Report Pdf"
+msgstr ""
+
+#. module: bizzup_obligo
+#: model_terms:ir.ui.view,arch_db:bizzup_obligo.res_config_settings_view_form
+msgid "Credit Settings"
+msgstr ""
+
+#. module: bizzup_obligo
+#: model:ir.model.fields,field_description:bizzup_obligo.field_res_partner__currency_id
+#: model:ir.model.fields,field_description:bizzup_obligo.field_res_users__currency_id
+msgid "Currency"
+msgstr "מטבע"
+
+#. module: bizzup_obligo
+#: model:ir.actions.act_window,name:bizzup_obligo.res_partner_action_customerse
+msgid "Customers"
+msgstr ""
+
+#. module: bizzup_obligo
+#: model_terms:ir.ui.view,arch_db:bizzup_obligo.view_res_partner_tree_obligo
+msgid "Customers Obligations"
+msgstr ""
+
+#. module: bizzup_obligo
+#: model_terms:ir.ui.view,arch_db:bizzup_obligo.report_partner_credit_template
+msgid "Obligo"
+msgstr "אובליגו"
+
+#. module: bizzup_obligo
+#. odoo-python
+#: code:addons/bizzup_obligo/models/purchase_order.py:0
+msgid ""
+"Inter company user of company %(name)s doesn't have enough access rights"
+msgstr ""
+
+#. module: bizzup_obligo
+#: model:ir.model,name:bizzup_obligo.model_account_move
+msgid "Journal Entry"
+msgstr "פקודת יומן"
+
+#. module: bizzup_obligo
+#: model:ir.model.fields,field_description:bizzup_obligo.field_res_partner__obligo
+#: model:ir.model.fields,field_description:bizzup_obligo.field_res_users__obligo
+#: model:ir.ui.menu,name:bizzup_obligo.menu_account_customerss
+msgid "Obligo"
+msgstr "אובליגו"
+
+#. module: bizzup_obligo
+#. odoo-python
+#: code:addons/bizzup_obligo/models/account_move.py:0
+msgid ""
+"Obligo limit exceeded: Only an Accounting Manager or the designated approver"
+" can approve this Invoice."
+msgstr ""
+
+#. module: bizzup_obligo
+#. odoo-python
+#: code:addons/bizzup_obligo/models/sale_order.py:0
+msgid ""
+"Obligo limit exceeded: Only an Accounting Manager or the designated approver"
+" can approve this order."
+msgstr ""
+
+#. module: bizzup_obligo
+#: model:ir.model.fields,field_description:bizzup_obligo.field_res_partner__postponed_check_total
+#: model:ir.model.fields,field_description:bizzup_obligo.field_res_users__postponed_check_total
+msgid "Postponed Checks"
+msgstr "צ'קים דחויים"
+
+#. module: bizzup_obligo
+#. odoo-python
+#: code:addons/bizzup_obligo/models/purchase_order.py:0
+msgid "Provide at least one user for inter company relation for %(name)s"
+msgstr ""
+
+#. module: bizzup_obligo
+#: model:ir.model,name:bizzup_obligo.model_purchase_order
+msgid "Purchase Order"
+msgstr "הזמנת רכש"
+
+#. module: bizzup_obligo
+#: model:ir.model,name:bizzup_obligo.model_sale_order
+msgid "Sales Order"
+msgstr "הזמנת לקוח"
+
+#. module: bizzup_obligo
+#: model:ir.model.fields,field_description:bizzup_obligo.field_res_partner__show_credit_limit
+#: model:ir.model.fields,field_description:bizzup_obligo.field_res_users__show_credit_limit
+msgid "Show Credit Limit"
+msgstr "הצגת תקרת אשראי"
+
+#. module: bizzup_obligo
+#: model_terms:ir.ui.view,arch_db:bizzup_obligo.res_config_settings_view_form
+msgid "Tolerance Amount"
+msgstr ""
+
+#. module: bizzup_obligo
+#: model:ir.model.fields,field_description:bizzup_obligo.field_res_config_settings__credit_tolerance
+msgid "Tolerance for Credit Limit (in days)"
+msgstr "ימים לפרעון צ'קים"
+
+#. module: bizzup_obligo
+#. odoo-python
+#: code:addons/bizzup_obligo/models/account_move.py:0
+msgid ""
+"Total amount due (including sales orders and this document): "
+"%(total_credit)s"
+msgstr ""
+
+#. module: bizzup_obligo
+#. odoo-python
+#: code:addons/bizzup_obligo/models/account_move.py:0
+msgid "Total amount due (including sales orders): %(total_credit)s"
+msgstr ""
+
+#. module: bizzup_obligo
+#. odoo-python
+#: code:addons/bizzup_obligo/models/account_move.py:0
+msgid "Total amount due (including this document): %(total_credit)s"
+msgstr ""
+
+#. module: bizzup_obligo
+#. odoo-python
+#: code:addons/bizzup_obligo/models/account_move.py:0
+msgid "Total amount due: %(total_credit)s"
+msgstr ""
+
+#. module: bizzup_obligo
+#: model:ir.model.fields,field_description:bizzup_obligo.field_res_company__user_id
+msgid "User"
+msgstr "משתשמש"
+
+#. module: bizzup_obligo
+#. odoo-python
+#: code:addons/bizzup_obligo/models/purchase_order.py:0
+msgid ""
+"You cannot create SO from PO because sale price list currency is different than purchase price list currency.\n"
+"The currency of the SO is obtained from the pricelist of the company partner.\n"
+"\n"
+"(SO currency: %(so_currency)s, Pricelist: %(pricelist)s, Partner: %(partner)s (ID: %(id)s))"
+msgstr ""
+
+#. module: bizzup_obligo
+#: model_terms:ir.ui.view,arch_db:bizzup_obligo.report_partner_credit_template
+msgid "Partner Credit Report"
+msgstr "דוח אובליגו ללקוחות"
+
+#. module: bizzup_obligo
+#. odoo-python
+#: code:addons/bizzup_obligo/models/sale_order.py:0
+msgid ""
+"הגבלת אובליגו: רק מנהל חשבונות או משתמש נבחר יכול לאשר את הזמנת הלקוח הנ\"ל"
+msgstr ""
+
+#. module: bizzup_obligo
+#: model_terms:ir.ui.view,arch_db:bizzup_obligo.report_partner_credit_template
+msgid "Credit"
+msgstr "יתרת לקוח"
+
+#. module: bizzup_obligo
+#. odoo-python
+#: code:addons/bizzup_obligo/models/account_move.py:0
+msgid "סכום היתרה: %(total_credit)s"
+msgstr ""
+
+#. module: bizzup_obligo
+#. odoo-python
+#: code:addons/bizzup_obligo/models/account_move.py:0
+msgid "סכום יתרת האובליגו (כולל המסמך הזה) יגיע ל: %(total_credit)s"
+msgstr ""
+
+#. module: bizzup_obligo
+#: model_terms:ir.ui.view,arch_db:bizzup_obligo.report_partner_credit_template
+msgid "Postponed Checks"
+msgstr "צ'קים דחויים"
+
+#. module: bizzup_obligo
+#: model_terms:ir.ui.view,arch_db:bizzup_obligo.report_partner_credit_template
+msgid "Client Name"
+msgstr "שם לקוח"
+
+#. module: bizzup_obligo
+#: model_terms:ir.ui.view,arch_db:bizzup_obligo.report_partner_credit_template
+msgid "Credit Limit"
+msgstr "תקרת אובליגו"

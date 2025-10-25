@@ -1,0 +1,138 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* sh_import_img_zip_shop
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 14.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2020-10-28 06:33+0000\n"
+"PO-Revision-Date: 2020-10-28 06:33+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: sh_import_img_zip_shop
+#: model_terms:ir.ui.view,arch_db:sh_import_img_zip_shop.sh_import_img_zip_shop_wizard_form
+msgid "<i class=\"fa fa-download\"/> Zip file"
+msgstr "<i class=\"fa fa-download\"/> Fichier zip"
+
+#. module: sh_import_img_zip_shop
+#: model_terms:ir.ui.view,arch_db:sh_import_img_zip_shop.sh_import_img_zip_shop_wizard_form
+msgid "<strong>Download Sample:</strong>"
+msgstr "<strong>Télécharger Sample:</strong>"
+
+#. module: sh_import_img_zip_shop
+#: model:ir.model.fields.selection,name:sh_import_img_zip_shop.selection__sh_import_img_zip_shop_wizard__product_by__barcode
+msgid "Barcode"
+msgstr "code à barre"
+
+#. module: sh_import_img_zip_shop
+#: model_terms:ir.ui.view,arch_db:sh_import_img_zip_shop.sh_import_img_zip_shop_wizard_form
+msgid "Cancel"
+msgstr "Annuler"
+
+#. module: sh_import_img_zip_shop
+#: model:ir.model.fields,field_description:sh_import_img_zip_shop.field_sh_import_img_zip_shop_wizard__create_uid
+msgid "Created by"
+msgstr "Créé par"
+
+#. module: sh_import_img_zip_shop
+#: model:ir.model.fields,field_description:sh_import_img_zip_shop.field_sh_import_img_zip_shop_wizard__create_date
+msgid "Created on"
+msgstr "Créé sur"
+
+#. module: sh_import_img_zip_shop
+#: model:ir.model.fields,field_description:sh_import_img_zip_shop.field_sh_import_img_zip_shop_wizard__display_name
+msgid "Display Name"
+msgstr "Afficher un nom"
+
+#. module: sh_import_img_zip_shop
+#: model:ir.model.fields,field_description:sh_import_img_zip_shop.field_sh_import_img_zip_shop_wizard__id
+#: model:ir.model.fields.selection,name:sh_import_img_zip_shop.selection__sh_import_img_zip_shop_wizard__product_by__id
+msgid "ID"
+msgstr "identifiant"
+
+#. module: sh_import_img_zip_shop
+#: model_terms:ir.ui.view,arch_db:sh_import_img_zip_shop.sh_import_img_zip_shop_wizard_form
+msgid "Import"
+msgstr "Importer"
+
+#. module: sh_import_img_zip_shop
+#: model:ir.model.fields,field_description:sh_import_img_zip_shop.field_sh_import_img_zip_shop_wizard__is_import_extra_product_media
+msgid "Import Extra Product Media?"
+msgstr "Importer des supports de produits supplémentaires?"
+
+#. module: sh_import_img_zip_shop
+#: model_terms:ir.ui.view,arch_db:sh_import_img_zip_shop.sh_import_img_zip_shop_wizard_form
+msgid "Import Image Form Zip File eCommerce"
+msgstr "Importer image image Zip Fichier ECOMMERCE"
+
+#. module: sh_import_img_zip_shop
+#: model:ir.actions.act_window,name:sh_import_img_zip_shop.sh_import_img_zip_shop_action
+#: model:res.groups,name:sh_import_img_zip_shop.sh_import_img_zip_shop_group
+msgid "Import Images From Zip File eCommerce"
+msgstr "Importer des images à partir de Fichier Zip Ecommerce"
+
+#. module: sh_import_img_zip_shop
+#: model:ir.ui.menu,name:sh_import_img_zip_shop.sh_import_img_zip_shop_menuitem
+msgid "Import Images from Zip File eCommerce"
+msgstr "Importer des images à partir de Fichier Zip Ecommerce"
+
+#. module: sh_import_img_zip_shop
+#: model:ir.model,name:sh_import_img_zip_shop.model_sh_import_img_zip_shop_wizard
+msgid "Import Images from zip file eCommerce"
+msgstr "Importer des images à partir de Fichier Zip Ecommerce"
+
+#. module: sh_import_img_zip_shop
+#: model:ir.model.fields.selection,name:sh_import_img_zip_shop.selection__sh_import_img_zip_shop_wizard__product_by__default_code
+msgid "Internal Reference"
+msgstr "Référence interne"
+
+#. module: sh_import_img_zip_shop
+#: model:ir.model.fields,field_description:sh_import_img_zip_shop.field_sh_import_img_zip_shop_wizard____last_update
+msgid "Last Modified on"
+msgstr "Dernière modification sur"
+
+#. module: sh_import_img_zip_shop
+#: model:ir.model.fields,field_description:sh_import_img_zip_shop.field_sh_import_img_zip_shop_wizard__write_uid
+msgid "Last Updated by"
+msgstr "Dernière mise à jour par"
+
+#. module: sh_import_img_zip_shop
+#: model:ir.model.fields,field_description:sh_import_img_zip_shop.field_sh_import_img_zip_shop_wizard__write_date
+msgid "Last Updated on"
+msgstr "Dernière mise à jour le"
+
+#. module: sh_import_img_zip_shop
+#: model:ir.model.fields.selection,name:sh_import_img_zip_shop.selection__sh_import_img_zip_shop_wizard__product_by__name
+msgid "Name"
+msgstr "Nom"
+
+#. module: sh_import_img_zip_shop
+#: model:ir.model.fields,field_description:sh_import_img_zip_shop.field_sh_import_img_zip_shop_wizard__product_by
+msgid "Product By"
+msgstr "Produit"
+
+#. module: sh_import_img_zip_shop
+#: model:ir.model.fields,field_description:sh_import_img_zip_shop.field_sh_import_img_zip_shop_wizard__product_model
+msgid "Product Model"
+msgstr "modèle du produit"
+
+#. module: sh_import_img_zip_shop
+#: model:ir.model.fields.selection,name:sh_import_img_zip_shop.selection__sh_import_img_zip_shop_wizard__product_model__pro_tmpl
+msgid "Product Template"
+msgstr "Modèle de produit"
+
+#. module: sh_import_img_zip_shop
+#: model:ir.model.fields.selection,name:sh_import_img_zip_shop.selection__sh_import_img_zip_shop_wizard__product_model__pro_var
+msgid "Product Variants"
+msgstr "Variantes de produits"
+
+#. module: sh_import_img_zip_shop
+#: model:ir.model.fields,field_description:sh_import_img_zip_shop.field_sh_import_img_zip_shop_wizard__zip_file
+msgid "Zip File"
+msgstr "Fichier zip"

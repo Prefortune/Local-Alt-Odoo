@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!--Backend report-->
+    <!--Ticket HT01649-->
+    <template id="report_report_invoice_document_inherit_obligo" inherit_id="account.report_invoice_document">
+         <xpath expr="//div[@id='payment_term']/div[@class='mb-3'][span[@id='payment_terms_note_id']]" position="after">
+            <div class="mb-3" name="partner_obligo_due">
+                <p>
+                    <strong>Obligo Balance:</strong>
+                    <span t-field="o.partner_obligo_balance"/>
+                </p>
+                <p>
+                    <strong>Amount Due:</strong>
+                    <span t-field="o.partner_amount_due"/>
+                </p>
+            </div>
+        </xpath>
+    </template>
+</odoo>

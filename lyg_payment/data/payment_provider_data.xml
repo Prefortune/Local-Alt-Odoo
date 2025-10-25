@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="payment_provider_tranzila" model="payment.provider">
+        <field name="name">Tranzila</field>
+        <field name="image_128" type="base64" file="payment_tranzila/static/description/icon.png"/>
+        <field name="module_id" ref="base.module_payment_tranzila"/>
+    </record>
+</odoo>

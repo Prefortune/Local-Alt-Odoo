@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_partner_search_view_inherit" model="ir.ui.view">
+        <field name="name">res.partner.search.view.inherit</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_res_partner_filter"/>
+        <field name="arch" type="xml">
+            <xpath expr="//search/field[@name='name']" position="attributes">
+                <attribute name="filter_domain">
+                    ['|', '|', '|', '|', '|', '|', '|',
+                    ('complete_name', 'ilike', self),
+                    ('ref', 'ilike', self),
+                    ('email', 'ilike', self),
+                    ('vat', 'ilike', self),
+                    ('company_registry', 'ilike', self),
+                    ('name', 'ilike', self),
+                    ('phone_mobile_search', 'ilike', self),
+                    '|', '&amp;', ('active', '=', False),
+                    '|', ('name', '=', self),
+                    '|', '|', '|', '|',
+                    ('complete_name', 'ilike', self),
+                    ('ref', 'ilike', self),
+                    ('email', 'ilike', self),
+                    ('vat', 'ilike', self),
+                    ('company_registry', 'ilike', self),
+                    ('phone_mobile_search', '=', self),]
+                </attribute>
+            </xpath>
+        </field>
+    </record>
+
+
+    <record id="res_partner_view_form" model="ir.ui.view">
+        <field name="name">res.partner.view.form.inherit.contact</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='mobile']" position="attributes">
+                <attribute name="required">company_type == 'person'
+                </attribute>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="cust_mobile_partner" invisible="1"/>
+                <field name="cust_phone_partner" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='vat']" position="attributes">
+                <attribute name="required">company_type == 'company'
+                </attribute>
+            </xpath>
+            <xpath expr="//form/div[@name='warning_tax']" position="after">
+                <div class="alert alert-warning oe_edit_only" role="alert"
+                     name="warning_tax"
+                     invisible="not same_mobile_partner_id">
+                    A partner with the same <span class="o_vat_label">Mobile
+                    Number
+                </span> already exists (
+                    <field name="same_mobile_partner_id"
+                           context="{'show_address': False, 'show_vat': False}"/>
+                    ), are you sure to create a new one?
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

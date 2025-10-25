@@ -1,0 +1,1 @@
+from . import alt_searchbar_config 

@@ -1,0 +1,132 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* bizzup_stock_package_label_extend
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 18.0+e\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2025-04-21 11:27+0000\n"
+"PO-Revision-Date: 2025-04-21 11:27+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: bizzup_stock_package_label_extend
+#: model_terms:ir.ui.view,arch_db:bizzup_stock_package_label_extend.report_package_barcode_stock_picking
+msgid "2023-01-01"
+msgstr ""
+
+#. module: bizzup_stock_package_label_extend
+#: model_terms:ir.ui.view,arch_db:bizzup_stock_package_label_extend.report_package_barcode_stock_picking
+msgid "<span>Package Type:</span>"
+msgstr ""
+
+#. module: bizzup_stock_package_label_extend
+#: model_terms:ir.ui.view,arch_db:bizzup_stock_package_label_extend.report_package_barcode_stock_picking
+msgid "Barcode Demo"
+msgstr ""
+
+#. module: bizzup_stock_package_label_extend
+#: model_terms:ir.ui.view,arch_db:bizzup_stock_package_label_extend.report_package_barcode_small_inherit
+#: model_terms:ir.ui.view,arch_db:bizzup_stock_package_label_extend.report_package_barcode_stock_picking
+msgid "Customer:"
+msgstr "לָקוּחַ"
+
+#. module: bizzup_stock_package_label_extend
+#: model_terms:ir.ui.view,arch_db:bizzup_stock_package_label_extend.report_package_barcode_small_inherit
+#: model_terms:ir.ui.view,arch_db:bizzup_stock_package_label_extend.report_package_barcode_stock_picking
+msgid "Delivery Address:"
+msgstr "כתובת למשלוח"
+
+#. module: bizzup_stock_package_label_extend
+#: model_terms:ir.ui.view,arch_db:bizzup_stock_package_label_extend.report_package_barcode_stock_picking
+msgid "Name Demo"
+msgstr ""
+
+#. module: bizzup_stock_package_label_extend
+#: model_terms:ir.ui.view,arch_db:bizzup_stock_package_label_extend.report_package_barcode_stock_picking
+msgid "Pack Date Demo"
+msgstr ""
+
+#. module: bizzup_stock_package_label_extend
+#: model_terms:ir.ui.view,arch_db:bizzup_stock_package_label_extend.report_package_barcode_stock_picking
+msgid "Pack Date:"
+msgstr "תאריך האריזה"
+
+#. module: bizzup_stock_package_label_extend
+#: model_terms:ir.ui.view,arch_db:bizzup_stock_package_label_extend.report_package_barcode_small_inherit
+#: model_terms:ir.ui.view,arch_db:bizzup_stock_package_label_extend.report_package_barcode_stock_picking
+msgid "Package"
+msgstr "חֲבִילָה"
+
+#. module: bizzup_stock_package_label_extend
+#: model_terms:ir.ui.view,arch_db:bizzup_stock_package_label_extend.report_package_barcode_stock_picking
+msgid "Package Type Demo"
+msgstr ""
+
+#. module: bizzup_stock_package_label_extend
+#: model_terms:ir.ui.view,arch_db:bizzup_stock_package_label_extend.report_package_barcode_stock_picking
+msgid "Package Type:"
+msgstr ""
+
+#. module: bizzup_stock_package_label_extend
+#. odoo-javascript
+#: code:addons/bizzup_stock_package_label_extend/static/src/js/barcode_picking.js:0
+#: model:ir.actions.report,name:bizzup_stock_package_label_extend.action_report_picking_barcode_smallq
+msgid "Picking Barcode"
+msgstr ""
+
+#. module: bizzup_stock_package_label_extend
+#. odoo-javascript
+#: code:addons/bizzup_stock_package_label_extend/static/src/js/barcode_picking.js:0
+msgid "Print Barcodes"
+msgstr ""
+
+#. module: bizzup_stock_package_label_extend
+#. odoo-javascript
+#: code:addons/bizzup_stock_package_label_extend/static/src/js/barcode_picking.js:0
+msgid "Print Delivery Slip"
+msgstr ""
+
+#. module: bizzup_stock_package_label_extend
+#. odoo-javascript
+#: code:addons/bizzup_stock_package_label_extend/static/src/js/barcode_picking.js:0
+msgid "Print Packages"
+msgstr ""
+
+#. module: bizzup_stock_package_label_extend
+#. odoo-javascript
+#: code:addons/bizzup_stock_package_label_extend/static/src/js/barcode_picking.js:0
+msgid "Print Picking Operations"
+msgstr ""
+
+#. module: bizzup_stock_package_label_extend
+#: model_terms:ir.ui.view,arch_db:bizzup_stock_package_label_extend.report_package_barcode_stock_picking
+msgid "SSCC Demo"
+msgstr ""
+
+#. module: bizzup_stock_package_label_extend
+#: model_terms:ir.ui.view,arch_db:bizzup_stock_package_label_extend.report_package_barcode_stock_picking
+msgid "SSCC:"
+msgstr ""
+
+#. module: bizzup_stock_package_label_extend
+#: model:ir.model,name:bizzup_stock_package_label_extend.model_stock_picking
+msgid "Transfer"
+msgstr "העברה"
+
+#. module: bizzup_stock_package_label_extend
+#: model_terms:ir.ui.view,arch_db:bizzup_stock_package_label_extend.report_package_barcode_small_inherit
+#: model_terms:ir.ui.view,arch_db:bizzup_stock_package_label_extend.report_package_barcode_stock_picking
+msgid "Vendor:"
+msgstr "מוֹכֵר"
+
+#. module: bizzup_stock_package_label_extend
+#: model_terms:ir.ui.view,arch_db:bizzup_stock_package_label_extend.report_package_barcode_small_inherit
+#: model_terms:ir.ui.view,arch_db:bizzup_stock_package_label_extend.report_package_barcode_stock_picking
+msgid "of"
+msgstr "שֶׁל"

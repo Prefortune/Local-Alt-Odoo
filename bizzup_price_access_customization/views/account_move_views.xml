@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherited account move for add new boolean and for readonly the field-->
+    <record id="account_move_form_pdac" model="ir.ui.view">
+        <field name="name">account.move.form.inherit.pdac</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='invoice_line_ids']/list/field[@name='price_unit']"
+                   position="after">
+                <field name="is_group" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='invoice_line_ids']/list/field[@name='price_unit']"
+                   position="attributes">
+                <attribute name="readonly">is_group</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

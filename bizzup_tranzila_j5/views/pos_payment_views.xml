@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_payment_method_form_view_inherit_j5" model="ir.ui.view">
+        <field name="name">pos.payment.method.form.view.inherit.j5</field>
+        <field name="model">pos.payment.method</field>
+        <field name="inherit_id" ref="point_of_sale.pos_payment_method_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='is_online_payment']" position="after">
+                <field name="transaction_mode"  invisible="not test_is_j5_enabled"/>
+                <field name="test_is_j5_enabled" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

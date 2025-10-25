@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <!-- Inherited product template for add new boolean and for readonly the field-->
+    <record id="product_template_view_form_bpac" model="ir.ui.view">
+        <field name="name">product.template.form.view.bpac</field>
+        <field name="model">product.template</field>
+        <field name="inherit_id"
+               ref="product.product_template_only_form_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='list_price']" position="after">
+                <field name="is_group" invisible="1"/>
+                <field name="non_main_company_user" invisible="1"/>
+                <field name="not_main_company" invisible="1"/>
+            </xpath>
+            <xpath expr="//field[@name='list_price']" position="attributes">
+                <attribute name="readonly">is_group</attribute>
+            </xpath>
+            <xpath expr="//field[@name='company_id']" position="attributes">
+                <attribute name="readonly">not_main_company</attribute>
+            </xpath>
+            <xpath expr="//field[@name='company_ids']" position="attributes">
+                <attribute name="invisible">non_main_company_user</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

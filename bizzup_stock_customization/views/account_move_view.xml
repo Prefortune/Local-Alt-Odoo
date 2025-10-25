@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record model="ir.ui.view" id="account_invoice_form_inherited">
+        <field name="name">Account Invoice</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_shipping_id']" position="after">
+                <field name="is_external_customer_invoice"
+                       invisible="check_company"/>
+            </xpath>
+            <xpath expr="//field[@name='invoice_line_ids']/list/field[@name='name']"
+                   position="after">
+                <field name="lot_id" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

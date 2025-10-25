@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="account_journal_dashboard_kanban_view" model="ir.ui.view">
+        <field name="name">account.journal.dashboard.kanban</field>
+        <field name="model">account.journal</field>
+        <field name="inherit_id" ref="account.account_journal_dashboard_kanban_view"/>
+        <field name="arch" type="xml">
+            <xpath expr="//t[@t-name='JournalBodyBankCash']//div[@id='dashboard_bank_cash_left']//div[@name='bank_cash_buttons']//button[@name='action_open_reconcile']"
+                   position="after">
+                <button type="object" name="action_open_bank_transactions"
+                        class="btn btn-secondary d-block text-nowrap">
+                    Transactions
+                </button>
+            </xpath>
+
+        </field>
+    </record>
+</odoo>

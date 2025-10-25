@@ -1,0 +1,14 @@
+<?xml version='1.0' encoding='utf-8'?>
+<odoo>
+    <!-- HT01267 -->
+    <record id="view_res_partnter_add_field" model="ir.ui.view">
+        <field name="name">new.res.partner.form.add_field</field>
+        <field name="model">res.partner</field>
+        <field name="inherit_id" ref="base.view_partner_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='vat']" position="after">
+                <field name="total_due"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

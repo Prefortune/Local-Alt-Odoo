@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <!--Form View-->
+    <record id="view_picking_form_inherit_import_case" model="ir.ui.view">
+        <field name="name">stock.picking.import.case</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//form/sheet/group" position="after">
+                <group>
+                    <field name="import_case_id"  string="Import Case" readonly="state == 'done'" invisible="picking_type_code != 'incoming'"/>
+                    <field name="import_case_seq" string="Import Case Sequence" invisible="picking_type_code != 'incoming'"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+
+    <!--Search View-->
+    <record id="view_stock_picking_search_view_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.search.view.import.case</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='name']" position="attributes">
+                <attribute name="filter_domain">
+                        ['|','|',
+                        ('name', 'ilike', self),
+                        ('origin', 'ilike', self),
+                        ('import_case_id.name', 'ilike', self),]
+                </attribute>
+            </xpath>
+            <xpath expr="//group/filter[@name='status']" position="after">
+                <filter name="import_case_id" context="{'group_by': 'import_case_id'}"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--List View-->
+    <record id="stock_picking_view_tree_import" model="ir.ui.view">
+        <field name="name">stock.picking.tree.import</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="import_case_id" string="Import Case"/>
+                <field name="import_case_seq" string="Import Case Sequence"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

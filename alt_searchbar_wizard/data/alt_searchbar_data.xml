@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Default configuration for main website -->
+        <record id="alt_searchbar_config_default" model="alt.searchbar.config">
+            <field name="name">Default Searchbar Configuration</field>
+            <field name="website_id" ref="website.default_website"/>
+            <field name="show_price_filter" eval="True"/>
+            <field name="show_on_all_pages" eval="True"/>
+            <field name="is_active" eval="True"/>
+            <!-- Add some sample categories -->
+            <field name="category_ids" eval="[(6, 0, [])]"/>
+            <!-- Add some sample attributes -->
+            <field name="attribute_ids" eval="[(6, 0, [])]"/>
+        </record>
+    </data>
+</odoo> 

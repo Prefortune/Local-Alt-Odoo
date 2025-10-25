@@ -1,0 +1,87 @@
+<odoo>
+    <record id="view_picking_tree_inherit_tracking" model="ir.ui.view">
+        <field name="name">stock.picking.tree.tracking</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree"/>
+        <field name="arch" type="xml">
+            <field name="state" position="after">
+                <field name="tracking_status" />
+            </field>
+        </field>
+    </record>
+    <record id="view_picking_form_inherit_tracking" model="ir.ui.view">
+        <field name="name">stock.picking.tree.tracking</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <field name="origin" position="after">
+                <field name="tracking_status" invisible="1"/>
+            </field>
+
+                <xpath expr="//widget[@name='signature' and @highlight='1']" position="attributes">
+                    <attribute name="invisible">
+                        not id or picking_type_code != 'outgoing' or state != 'done' or not tracking_status in ('downloaded','done') or is_signed
+                    </attribute>
+                </xpath>
+
+                <xpath expr="//widget[@name='signature' and not(@highlight)]" position="attributes">
+                    <attribute name="invisible">
+                        not id or picking_type_code != 'outgoing' or state == 'done' or not tracking_status in ('downloaded','done') or is_signed
+                    </attribute>
+                </xpath>
+
+            </field>
+        </record>
+
+    <record id="view_picking_search_inherit_tracking" model="ir.ui.view">
+        <field name="name">stock.picking.search.tracking</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+        <field name="arch" type="xml">
+        <xpath expr="//search" position="inside">
+                <field name="tracking_status" />
+                <filter name="group_by_tracking" string="Tracking Status" context="{'group_by': 'tracking_status'}"/>
+
+            </xpath>
+        </field>
+    </record>
+    <record id="view_package_tree_inherit_load_status" model="ir.ui.view">
+        <field name="name">stock.quant.package.tree.load_status</field>
+        <field name="model">stock.quant.package</field>
+        <field name="inherit_id" ref="stock.view_quant_package_tree"/>
+        <field name="arch" type="xml">
+            <field name="display_name" position="after">
+                <field name="load_status"/>
+            </field>
+        </field>
+    </record>
+    <record id="view_package_form_inherit_load_status" model="ir.ui.view">
+    <field name="name">stock.quant.package.form.load_status</field>
+    <field name="model">stock.quant.package</field>
+    <field name="inherit_id" ref="stock.view_quant_package_form"/>
+    <field name="arch" type="xml">
+        <field name="name" position="before">
+            <widget name="web_ribbon" title="Loaded" bg_color="text-bg-success" invisible="load_status == 'downloaded' or load_status == 'none'" />
+            <widget name="web_ribbon" title="Downloaded" bg_color="text-bg-success"   invisible="load_status == 'loaded' or load_status == 'none'"  />
+        </field>
+        <field name="location_id" position="after">
+            <field name="load_status"  invisible="1"/>
+        </field>
+     </field>
+</record>
+
+
+    <record id="view_package_search_inherit_load_status" model="ir.ui.view">
+        <field name="name">stock.quant.package.search.load_status</field>
+        <field name="model">stock.quant.package</field>
+        <field name="inherit_id" ref="stock.quant_package_search_view"/>
+        <field name="arch" type="xml">
+        <xpath expr="//search" position="inside">
+            <field name="load_status" />
+            <filter name="group_by_load_status" string="Load Status" context="{'group_by': 'load_status'}"/>
+
+        </xpath>
+        </field>
+    </record>
+
+</odoo>

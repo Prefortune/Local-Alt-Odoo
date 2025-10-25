@@ -1,0 +1,3 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+bizzup_margin_limit.access_margin_parameter_wizard,access_margin_parameter_wizard,bizzup_margin_limit.model_margin_parameter_wizard,base.group_user,1,1,1,1
+bizzup_margin_limit.access_profit_approve_wizard,access_profit_approve_wizard,bizzup_margin_limit.model_profit_approve_wizard,base.group_user,1,1,1,1

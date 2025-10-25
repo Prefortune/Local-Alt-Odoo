@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_move_form_inherit_payment_tranzila" model="ir.ui.view">
+        <field name="name">account.move.form.inheritpayment.tranzila</field>
+        <field name="model">account.move</field>
+        <field name="inherit_id" ref="account.view_move_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='journal_id']/parent::div" position="after">
+                <field name="is_tranzila_payment" invisible="is_hmk == True"/>
+                <field name="payment_limit" invisible="is_tranzila_payment == False or is_hmk == True"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

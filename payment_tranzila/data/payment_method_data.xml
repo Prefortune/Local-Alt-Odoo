@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="payment_methods_tranziila" model="payment.method">
+        <field name="name">Tranzila</field>
+        <field name="code">tranzila</field>
+        <field name="sequence">1000</field>
+        <field name="active">True</field>
+        <field name="image" type="base64" file="payment_tranzila/static/description/icon.png"/>
+        <field name="support_tokenization">True</field>
+        <field name="support_express_checkout">False</field>
+        <field name="support_refund">none</field>
+    </record>
+</odoo>

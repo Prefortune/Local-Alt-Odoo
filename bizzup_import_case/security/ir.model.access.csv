@@ -1,0 +1,7 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+bizzup_import_case.access_related_transfer,access_related_transfer,bizzup_import_case.model_related_transfer,base.group_user,1,1,1,1
+bizzup_import_case.access_related_picking,access_related_picking,bizzup_import_case.model_related_picking,base.group_user,1,1,1,1
+bizzup_import_case.access_port_of_departure,access_port_of_departure,bizzup_import_case.model_port_of_departure,base.group_user,1,1,1,1
+bizzup_import_case.access_port_of_arrival,access_port_of_arrival,bizzup_import_case.model_port_of_arrival,base.group_user,1,1,1,1
+bizzup_import_case.access_related_move,access_related_move,bizzup_import_case.model_related_move,base.group_user,1,1,1,1
+bizzup_import_case.access_related_stock_picking_batch,access_related_stock_picking_batch,bizzup_import_case.model_related_stock_picking_batch,base.group_user,1,1,1,1

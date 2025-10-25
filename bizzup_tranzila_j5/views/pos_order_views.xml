@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="pos_order_form_view_inherit_j5" model="ir.ui.view">
+        <field name="name">pos.order.form.view.inherit.j5</field>
+        <field name="model">pos.order</field>
+        <field name="inherit_id" ref="point_of_sale.view_pos_pos_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//button[@name='860']" position="after">
+                <button name="create_j5_payment" string="Create J5 Payment" type="object"
+                    invisible="state in ['paid','done','invoiced'] or j5_with_token == False"
+                    class="btn-primary"/>
+            </xpath>
+            <xpath expr="//button[@name='860']" position="attributes">
+                <attribute name="invisible">j5_with_token or state in ['paid','done','invoiced']</attribute>
+            </xpath>
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="is_j5_transaction" readonly="1"/>
+                <field name="transaction_mode" readonly="1"/>
+                <field name="j5_with_token" readonly="1"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

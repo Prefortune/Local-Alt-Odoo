@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <record id="res_config_settings_view_form_add_j5_field" model="ir.ui.view">
+        <field name="name">res.config.view.add.j5.boolean</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="point_of_sale.res_config_settings_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//block[@id='pos_payment_section']/setting[@id='iface_tipproduct']" position="after">
+                <setting string="Enable J5 Option">
+                    <field name="enable_j5_tranzila"/>
+                </setting>
+            </xpath>
+        </field>
+    </record>
+</odoo>

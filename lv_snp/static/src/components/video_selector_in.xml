@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<templates id="v-template" xml:space="preserve">
+    <t t-inherit="web_editor.VideoSelector" t-inherit-mode="extension">
+        <xpath expr="//div/div[@class='col mt-4 o_video_dialog_form']" position="before">
+            <div style="margin-bottom:30px"></div>
+            <input type="file"
+                   class="d-none o_file_input"
+                   t-ref="v-file-input"
+                   t-on-change="onChangeFileInput"
+                   multiple="false"/>
+            <div style="position:relative;width:100%">
+                <button type="button" class="btn btn-primary o_upload_media_button" t-on-click="onClickUpload">
+                    Upload Video
+                </button>
+            </div>
+        </xpath>
+    </t>
+</templates>

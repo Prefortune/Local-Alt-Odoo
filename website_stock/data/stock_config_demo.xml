@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2015-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<odoo>
+    <data noupdate="0">
+
+       <record id="stock_config_setting_1" model="website.stock.config.settings">
+            <field name="name">Default Stock Configuration Website 1</field>
+            <field name="is_active">True</field>
+        </record>
+
+       <!-- <record id="stock_config_setting_2" model="website.stock.config.settings">
+            <field name="name">Default Stock Configuration Website 2</field>
+            <field name="is_active">True</field>
+        </record> -->
+        
+    </data>
+</odoo>
+
+

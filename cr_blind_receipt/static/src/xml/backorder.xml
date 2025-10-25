@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<templates xml:space="preserve">
+    <t t-name="cr_blind_receipt.BackorderDialog">
+        <Dialog title.translate="Incomplete Transfer" size="'md'" fullscreen="false" contentClass="'o_barcode_backorder_dialog'">
+            <div class="container">
+                <div class="text-muted mb-4">
+                    If you validate now, the remaining products will be added to a backorder.
+                </div>
+
+            </div>
+            <t t-set-slot="footer">
+                <button class="btn btn-primary" t-on-click.prevent="_onApply">Validate</button>
+                <button class="btn btn-secondary" t-on-click="props.close">Stay on transfer</button>
+            </t>
+        </Dialog>
+    </t>
+</templates>

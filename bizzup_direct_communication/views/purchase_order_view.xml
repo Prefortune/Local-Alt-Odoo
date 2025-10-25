@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_purchase_order_form_inherit" model="ir.ui.view">
+        <field name="name">purchase.order.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="purchase.purchase_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="direct_communication"/>
+                <field name="vendor_communication_id" readonly="1"/>
+                <field name="main_company_id" required="direct_communication" readonly="state != 'draft'"/>
+                <field name="dropshipping_po" invisible="1"/>
+            </xpath>
+        </field>
+    </record>
+
+    <record id="view_order_form_inherit_direct_communication" model="ir.ui.view">
+        <field name="name">purchase.order.form.inherit</field>
+        <field name="model">purchase.order</field>
+        <field name="inherit_id" ref="bizzup_stock_customization.view_order_form_inherit"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='is_po_consig']" position="attributes">
+                <attribute name="invisible">direct_communication</attribute>
+            </xpath>
+        </field>
+    </record>
+</odoo>

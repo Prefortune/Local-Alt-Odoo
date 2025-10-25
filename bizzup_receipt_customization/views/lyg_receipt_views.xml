@@ -1,0 +1,13 @@
+<odoo>
+    <record id="lyg_receipt_line_form_inherit" model="ir.ui.view">
+        <field name="name">lyg.receipt.line.form.inherit</field>
+        <field name="model">lyg.account.receipt.line</field>
+        <field name="inherit_id" ref="lyg_receipt.view_account_receipt_line_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//group//field[@name='means_of_payment']" position="after">
+                <field name="copy_receipt_line"/>
+                <field name="qty_copy"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

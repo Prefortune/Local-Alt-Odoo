@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+    <record id="view_stock_move_line_search_inherit" model="ir.ui.view">
+        <field name="name">stock.move.line.search.inherit.filters</field>
+        <field name="model">stock.move.line</field>
+        <field name="inherit_id" ref="stock.stock_move_line_view_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='incoming']" position="after">
+
+                <!-- Filter 1: Delivered in Last 7 Days -->
+                <filter name="delivered_in_last_7_days"
+                        string="Delivered in Last 7 Days"
+                        domain="[
+                            ('delivered_in_last_7_days', '=', True),
+                            ('picking_type_id.code', '=', 'outgoing'),
+                            ('state','=','done'),
+                        ]"
+                        help="Deliveries made between today and the past 7 days"/>
+
+                <!-- Filter 2: Delivered Before Last 7 Days -->
+                <filter name="delivered_before_last_7_days"
+                        string="Delivered Before Last 7 Days"
+                        domain="[
+                            ('delivered_before_last_7_days', '=', True),
+                            ('picking_type_id.code', '=', 'outgoing'),
+                            ('state','=','done'),
+                        ]"
+                        help="Deliveries made more than 7 days ago"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

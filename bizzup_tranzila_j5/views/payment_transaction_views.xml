@@ -1,0 +1,13 @@
+<?xml version="1.0"?>
+<odoo>
+    <record id="transaction_form_inherit_j5" model="ir.ui.view">
+        <field name="name">payment.transaction.form.inherit.j5</field>
+        <field name="model">payment.transaction</field>
+        <field name="inherit_id" ref="payment.payment_transaction_form"/>
+        <field name="arch" type="xml">
+            <field name="reference" position="after">
+                <field name="is_j5_trnsaction"/>
+            </field>
+        </field>
+    </record>
+</odoo>

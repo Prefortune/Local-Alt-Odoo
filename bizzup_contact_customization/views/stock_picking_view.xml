@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+    <!--add new field delivery_route_id picking form view-->
+    <record id="view_picking_form_inherit" model="ir.ui.view">
+        <field name="name">view.picking.form.inherit</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='location_dest_id']"
+                   position="after">
+                <field name="delivery_route_id"/>
+            </xpath>
+        </field>
+    </record>
+    <!--add new field delivery_route_id picking list view-->
+    <record id="view_stock_picking_tree_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.tree.delivery.route</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.vpicktree"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='partner_id']" position="after">
+                <field name="delivery_route_id" optional="show"/>
+            </xpath>
+        </field>
+    </record>
+
+    <!--add new filter and group by in stock.picking search view-->
+    <record id="view_stock_picking_search_inherit" model="ir.ui.view">
+        <field name="name">stock.picking.search.delivery.route</field>
+        <field name="model">stock.picking</field>
+        <field name="inherit_id" ref="stock.view_picking_internal_search"/>
+        <field name="arch" type="xml">
+            <xpath expr="//filter[@name='my_transfers']" position="after">
+                <filter string="Delivery Route" name="delivery_route_id"
+                        domain="[('delivery_route_id', '!=', False)]"/>
+            </xpath>
+            <xpath expr="//filter[@name='picking_type']" position="after">
+                <filter name="group_by_delivery_route" string="Delivery Route"
+                        context="{'group_by': 'delivery_route_id'}"/>
+            </xpath>
+        </field>
+    </record>
+</odoo>

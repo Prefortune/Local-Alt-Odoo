@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <record id="lyg_payment.payment_provider_tranzila" model="payment.provider">
+        <field name="code">tranzila</field>
+        <field name="name">Tranzila</field>
+        <field name="image_128" type="base64" file="payment_tranzila/static/description/icon.png"/>
+        <field name="redirect_form_view_id" ref="payment_tranzila.redirect_form"/>
+        <field name="allow_tokenization">True</field>
+        <field name="payment_method_ids"
+               eval="[Command.set([
+                         ref('payment.payment_method_card'),
+                     ])]"
+        />    </record>
+
+    <record id="payment_method_tranzila" model="account.payment.method">
+        <field name="name">Tranzila</field>
+        <field name="code">tranzila</field>
+        <field name="payment_type">inbound</field>
+    </record>
+</odoo>
+
+
