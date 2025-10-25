@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <menuitem id="facebook_lead_main_menu"
+              groups="rcs_facebook_leads_generate.group_use_facebook_lead"
+              web_icon="rcs_facebook_leads_generate,static/description/icon.png"
+              name="Facebook Leads"/>
+
+    <menuitem id="facebook_app_credential_menu"
+              name="Facebook App Credential"
+              parent="rcs_facebook_leads_generate.facebook_lead_main_menu"/>
+
+    <menuitem id="facebook_app_credential_sub_menu"
+              name="Facebook App Credential"
+              action="rcs_facebook_leads_generate.action_facebook_app_credential"
+              groups="rcs_facebook_leads_generate.group_use_facebook_lead"
+              parent="rcs_facebook_leads_generate.facebook_app_credential_menu"/>
+
+    <menuitem id="facebook_leads_config"
+              name="Configurations"
+              parent="rcs_facebook_leads_generate.facebook_lead_main_menu"/>
+
+    <menuitem id="facebook_page_menu"
+              name="Facebook Pages"
+              action="rcs_facebook_leads_generate.action_facebook_page"
+              groups="rcs_facebook_leads_generate.group_use_facebook_lead"
+              parent="rcs_facebook_leads_generate.facebook_leads_config"/>
+
+    <menuitem id="facebook_form_menu"
+              name="Facebook Forms"
+              parent="rcs_facebook_leads_generate.facebook_leads_config"
+              groups="rcs_facebook_leads_generate.group_use_facebook_lead"
+              action="rcs_facebook_leads_generate.action_facebook_form"/>
+
+    <menuitem id="facebook_form_mapping_menu"
+              name="Default Mappings"
+              parent="rcs_facebook_leads_generate.facebook_leads_config"
+              groups="rcs_facebook_leads_generate.group_use_facebook_lead"
+              action="rcs_facebook_leads_generate.action_facebook_form_mapping"/>
+
+    <menuitem id="facebook_page_category_menu"
+              name="Facebook Page Category"
+              parent="rcs_facebook_leads_generate.facebook_leads_config"
+              groups="rcs_facebook_leads_generate.group_use_facebook_lead"
+              action="rcs_facebook_leads_generate.action_facebook_page_category"/>
+
+</odoo>

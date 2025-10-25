@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="lionwheel_delivery_method_delivery_inherit_form_view" model="ir.ui.view">
+        <field name="name">lionwheel.delivery.method.delivery.inherit.form</field>
+        <field name="model">delivery.carrier</field>
+        <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='fixed_price']" position="after">
+                <!-- LionWheel API Configuration -->
+                <group string="LionWheel API Configuration" name="lionwheel_api_config">
+                    <field name="lionwheel_api_key" password="True"/>
+                    <field name="lionwheel_org_key" password="True"/>
+                    <field name="lionwheel_company_id"/>
+                    <field name="lionwheel_api_url"/>
+                </group>
+                
+                <!-- LionWheel Source Address Configuration -->
+                <group string="LionWheel Source Address" name="lionwheel_source_address">
+                    <field name="lionwheel_source_city"/>
+                    <field name="lionwheel_source_street"/>
+                    <field name="lionwheel_source_number"/>
+                    <field name="lionwheel_source_zip_code"/>
+                    <field name="lionwheel_source_recipient_name"/>
+                    <field name="lionwheel_source_phone"/>
+                    <field name="lionwheel_source_email"/>
+                </group>
+                
+                <!-- LionWheel Delivery Settings -->
+                <group string="LionWheel Delivery Settings" name="lionwheel_delivery_settings">
+                    <field name="lionwheel_default_packages_quantity"/>
+                    <field name="lionwheel_default_urgency"/>
+                    <field name="lionwheel_is_roundtrip"/>
+                    <field name="lionwheel_is_self_pickup"/>
+                </group>
+                
+                <!-- LionWheel Time Settings -->
+                <group string="LionWheel Time Settings" name="lionwheel_time_settings">
+                    <field name="lionwheel_default_earliest"/>
+                    <field name="lionwheel_default_latest"/>
+                </group>
+            </xpath>
+        </field>
+    </record>
+</odoo>

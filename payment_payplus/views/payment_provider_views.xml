@@ -1,0 +1,29 @@
+<odoo>
+  <record id="view_payment_provider_payplus_form" model="ir.ui.view">
+    <field name="name">payment.provider.form.payplus</field>
+    <field name="model">payment.provider</field>
+    <field name="inherit_id" ref="payment.payment_provider_form"/>
+    <field name="arch" type="xml">
+      <group name="provider_credentials" position="inside">
+        <group invisible="code != 'payplus'">
+          <group invisible="state != 'test'">
+            <field name="test_page_uid" />
+            <field name="test_api_key" />
+            <field name="test_secret_key" />
+            <field name="payplus_charge_method" />
+            <field name="send_email_approval" />
+            <field name="send_email_failure" />
+          </group>
+          <group invisible="state != 'enabled'">
+            <field name="production_page_uid" />
+            <field name="production_api_key" />
+            <field name="production_secret_key" />
+            <field name="payplus_charge_method" />
+            <field name="send_email_approval" />
+            <field name="send_email_failure" />
+          </group>
+        </group>
+      </group>
+    </field>
+  </record>
+</odoo>

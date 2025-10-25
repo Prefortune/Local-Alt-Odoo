@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<odoo>
+
+    <record id="group_use_facebook_lead" model="res.groups">
+        <field name="name">Facebook Leads</field>
+        <field name="category_id" ref="base.module_category_hidden"/>
+        <field name="implied_ids" eval="[(4, ref('base.group_user'))]"/>
+    </record>
+
+    <record id="facebook_app_comp_rule" model="ir.rule">
+        <field name="name">Facebook App Company Rule</field>
+        <field name="model_id" ref="model_facebook_app_credential_info"/>
+        <field name="domain_force">[('company_id','=', company_id)]</field>
+    </record>
+
+    <record id="facebook_page_comp_rule" model="ir.rule">
+        <field name="name">Facebook Page Company Rule</field>
+        <field name="model_id" ref="model_facebook_page"/>
+        <field name="domain_force">[('company_id','=', company_id)]</field>
+    </record>
+
+    <record id="facebook_page_category_comp_rule" model="ir.rule">
+        <field name="name">Facebook Page Category Company Rule</field>
+        <field name="model_id" ref="model_facebook_page_category_info"/>
+        <field name="domain_force">[('company_id','=', company_id)]</field>
+    </record>
+
+    <record id="facebook_form_comp_rule" model="ir.rule">
+        <field name="name">Facebook Form Company Rule</field>
+        <field name="model_id" ref="model_facebook_form_info"/>
+        <field name="domain_force">[('company_id','=', company_id)]</field>
+    </record>
+
+    <record id="facebook_form_field_comp_rule" model="ir.rule">
+        <field name="name">Facebook Form Field Company Rule</field>
+        <field name="model_id" ref="model_facebook_form_field_info"/>
+        <field name="domain_force">[('company_id','=', company_id)]</field>
+    </record>
+
+    <record id="facebook_form_mapping_comp_rule" model="ir.rule">
+        <field name="name">Facebook Form Mapping Company Rule</field>
+        <field name="model_id" ref="model_facebook_form_mapping"/>
+        <field name="domain_force">[('company_id','=', company_id)]</field>
+    </record>
+
+    <record id="utm_adset_comp_rule" model="ir.rule">
+        <field name="name">Utm AdsetCompany Rule</field>
+        <field name="model_id" ref="model_utm_adset_info"/>
+        <field name="domain_force">[('company_id','=', company_id)]</field>
+    </record>
+
+</odoo>

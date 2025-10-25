@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="res_config_settings_view_form_checkout_limit" model="ir.ui.view">
+        <field name="name">res.config.settings.view.form.checkout.limit</field>
+        <field name="model">res.config.settings</field>
+        <field name="inherit_id" ref="website.view_website_config"/>
+        <field name="arch" type="xml">
+            <xpath expr="//div[hasclass('settings')]" position="inside">
+                <div class="app_settings_block" data-string="Checkout Restriction" string="Checkout Restriction">
+                    <h2>Checkout Condition</h2>
+                    <div class="row mt16 o_setting_box">
+                        <div class="col-12 col-lg-6">
+                            <div class="text-muted">Restrict checkout unless the cart contains at least 30 items.</div>
+                        </div>
+                    </div>
+                    <div class="row mt16 o_setting_box">
+                        <div class="col-12 col-lg-6">
+                            <field name="info_message"/>
+                            <div class="text-muted">Message shown to users when the cart does not meet the condition.</div>
+                        </div>
+                    </div>
+                </div>
+            </xpath>
+        </field>
+    </record>
+</odoo>

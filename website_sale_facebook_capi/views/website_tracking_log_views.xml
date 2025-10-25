@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="website_tracking_log_view_form" model="ir.ui.view">
+        <field name="name">website.tracking.log.view.form.inherit.website_sale_facebook_capi</field>
+        <field name="model">website.tracking.log</field>
+        <field name="inherit_id" ref="website_sale_tracking_base.website_tracking_log_view_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='url']" position="after">
+                <field name="fbp" invisible="channel != 'fb_capi'"/>
+                <field name="fbc" invisible="channel != 'fb_capi'"/>
+            </xpath>
+        </field>
+    </record>
+
+</odoo>

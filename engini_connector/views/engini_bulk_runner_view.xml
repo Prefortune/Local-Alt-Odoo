@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_engini_webhook_bulk_runner_form" model="ir.ui.view">
+        <field name="name">engini.webhook.bulk.runner.form</field>
+        <field name="model">engini.webhook.bulk.runner</field>
+        <field name="arch" type="xml">
+            <form string="Bulk Webhook Sender">
+                <sheet>
+                    <group>
+                        <field name="order_names_raw" placeholder="Enter order names separated by commas or new lines..."/>
+                        <field name="delay_seconds" placeholder="Delay between webhook calls (in seconds)" help="Minimum delay between webhook calls is 4 seconds"/>
+                        <field name="use_custom_date"/>
+                        <field name="custom_date" modifiers="{'invisible': [['use_custom_date', '=', False]]}"/>
+                    </group>
+                    <footer>
+                        <button name="run_button" type="object" string="Send Orders" class="btn-primary"/>
+                        <button string="Close" class="btn-secondary" special="cancel"/>
+                    </footer>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_engini_webhook_bulk_runner" model="ir.actions.act_window">
+        <field name="name">Bulk Order Sender</field>
+        <field name="res_model">engini.webhook.bulk.runner</field>
+        <field name="view_mode">form</field>
+        <field name="target">new</field>
+    </record>
+
+    <menuitem id="menu_engini_bulk_runner"
+              name="Bulk Send"
+              parent="menu_engini_root"
+              action="action_engini_webhook_bulk_runner"
+              sequence="20"
+              groups="base.group_system"/>
+</odoo> 

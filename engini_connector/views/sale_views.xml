@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="view_engini_settings_form" model="ir.ui.view">
+        <field name="name">engini.settings.form</field>
+        <field name="model">engini.settings</field>
+        <field name="arch" type="xml">
+            <form string="Engini Settings">
+                <sheet>
+                    <group>
+                        <field name="webhook_url"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_engini_settings" model="ir.actions.act_window">
+        <field name="name">Engini Settings</field>
+        <field name="res_model">engini.settings</field>
+        <field name="view_mode">form</field>
+        <field name="target">inline</field>
+    </record>
+
+    <!-- Main menu item -->
+    <menuitem id="menu_engini_root"
+        name="Engini"
+        parent="sale.sale_menu_root"
+        sequence="100"/>
+
+    <!-- Settings menu item (admin only) -->
+    <menuitem id="menu_engini_settings"
+        name="Settings"
+        parent="menu_engini_root"
+        action="action_engini_settings"
+        sequence="10"
+        groups="base.group_system"/>
+</odoo> 

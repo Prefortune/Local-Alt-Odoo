@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="cart_min_qty_warning" name="Cart Minimum Quantity Warning">
+        <t t-call="website.layout">
+            <div class="container mt32 mb32">
+                <div class="alert alert-danger" role="alert">
+                    <h4>Minimum Quantity Not Met</h4>
+
+                    <p>You must purchase at least <strong><t t-esc="min_qty"/></strong> items in total to proceed to checkout. Your current cart total is <strong><t t-esc="total_qty"/></strong>.</p>
+                    <a href="/shop/cart" class="btn btn-primary mt16">Return to Cart</a>
+                </div>
+            </div>
+        </t>
+    </template>
+</odoo>

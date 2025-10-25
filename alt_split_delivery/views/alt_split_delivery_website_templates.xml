@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="alt_split_delivery_form" inherit_id="website_sale.delivery_form">
+        <xpath expr="//form[@id='o_delivery_form']" position="after">
+            <div id="alt_split_delivery_container" class="my-4 mt-4 alt_split_delivery_block">
+                <h4 class="fs-6 small text-uppercase fw-bolder mb-2">Set Delivery Quantity</h4>
+                <ul class="list-group">
+                    <li class="list-group-item o_outline">
+                        <label class="o_delivery_carrier_label mb-2" style="display: block;">
+                            Add to cart the number of deliveries you wish to purchase
+                        </label>
+                        <div class="text-muted mt-1 mb-2">
+                            The cart total will update according to the number of deliveries you select
+                        </div>
+                        <div name="alt_split_delivery_quantity" class="css_quantity input-group flex-nowrap mb-2" style="max-width: 180px; margin-right: auto; margin-left: auto;">
+                            <a href="#" class="btn btn-link d-inline-block border-end-0 o_alt_split_delivery_minus flex-shrink-0 px-2" aria-label="Remove one" title="Remove one">
+                                <i class="position-relative z-1 fa fa-minus"></i>
+                            </a>
+                            <input id="o_alt_split_delivery_qty" type="text" class="js_quantity quantity form-control border-start-0 border-end-0 o_alt_split_delivery_qty text-center flex-shrink-0 px-1" value="1" style="width: 60px; min-width: 40px; max-width: 70px;"/>
+                            <a href="#" class="btn btn-link d-inline-block float_left border-start-0 o_alt_split_delivery_plus flex-shrink-0 px-2" aria-label="Add one" title="Add one">
+                                <i class="fa fa-plus position-relative z-1"></i>
+                            </a>
+                        </div>
+                    </li>
+                </ul>
+            </div>
+            <div id="warning_block" class="alert alert-warning mt-3" style="display: none;">
+                    <h5 class="mb-0">
+                    ⚠️ We will collect the delivery address after the payment
+                    </h5>
+            </div>
+            <div id="pf_customer_delivery_date_field" class="my-4 mt-4">
+                <h4 class="fs-6 small text-uppercase fw-bolder mb-2">Set Delivery</h4>
+                <div class="list-group list-group-item form-group">
+                    <div class="form-check mb-2">
+                        <input type="checkbox" class="form-check-input" id="toggle_delivery_date"/>
+                        <label class="form-check-label" for="toggle_delivery_date">
+                            Want to schedule a delivery date that works for you?
+                        </label>
+                    </div>
+                    <input type="date" id="delivery_date" name="delivery_date" class="form-control set_delivery_date" style="display:none;" />
+                    <div id="delivery_date_error" class="text-danger mt-1" style="display:none;"></div>
+                    <div class="text-muted mt-1 mb-2">
+                            You can choose a future delivery date starting from 10 business days after order confirmation, and we will do our best to deliver your packages exactly on time for you.
+                    </div>
+                </div>
+            </div>
+            <div id="split_greeting_card" class="my-4 mt-4">
+                <h4 class="fs-6 small text-uppercase fw-bolder mb-2">Greeting Card</h4>
+                <div class="form-group list-group list-group-item">
+                    <div class="form-check mb-2">
+                        <input type="checkbox" class="form-check-input" id="split_greeting_card_checkbox"/>
+                        <label class="form-check-label" for="split_greeting_card_checkbox">
+                            Would you like to add a greeting card ?
+                        </label>
+                    </div>
+                    <textarea id="split_greeting_card_input" name="split_greeting_card_input" class="form-control split_greeting_card_input mb-1" style="display:none;" />
+                </div>
+            </div>
+            <div id="split_delivery_note" class="my-4 mt-4">
+                <h4 class="fs-6 small text-uppercase fw-bolder mb-2">Delivery Notes</h4>
+                <div class="form-group list-group list-group-item">
+                    <div class="form-check mb-2">
+                        <input type="checkbox" class="form-check-input" id="split_delivery_note_checkbox"/>
+                        <label class="form-check-label" for="split_delivery_note_checkbox">
+                            Would you like to add delivery notes ?
+                        </label>
+                    </div>
+                    <textarea id="split_delivery_note_input" name="split_delivery_note_input" class="form-control split_delivery_note_input mb-1" style="display:none;" />
+                </div>
+            </div>
+        </xpath>
+    </template>
+</odoo>

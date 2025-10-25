@@ -1,0 +1,22 @@
+<odoo>
+    <!-- תפריט תחת Website > Configuration -->
+    <menuitem id="menu_sticky_button_root"
+              name="Sticky Button"
+              sequence="100"/>
+
+    <!-- אקשן שמוביל למסך ההגדרות -->
+    <record id="action_sticky_button_config" model="ir.actions.act_window">
+        <field name="name">Sticky Button Settings</field>
+        <field name="res_model">sticky.button.config</field>
+        <field name="view_mode">form</field>
+        <field name="view_id" ref="view_sticky_button_config_form"/>
+        <field name="target">current</field>
+    </record>
+
+    <!-- תפריט שמפעיל את האקשן -->
+    <menuitem id="menu_sticky_button_settings"
+              name="Settings"
+              parent="menu_sticky_button_root"
+              action="action_sticky_button_config"
+              sequence="10"/>
+</odoo> 

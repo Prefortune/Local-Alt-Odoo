@@ -1,0 +1,17 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+
+all_import_wix_categories,import.wix.categories.all,model_import_wix_categories,base.group_user,1,0,0,0
+user_import_wix_categories,import.wix.categories.user,model_import_wix_categories,odoo_multi_channel_sale.group_multi_channel_user,1,1,1,0
+manager_import_wix_categories,import.wix.categories.manager,model_import_wix_categories,odoo_multi_channel_sale.group_multi_channel_admin,1,1,1,1
+
+all_import_wix_products,import.wix.products.all,model_import_wix_products,base.group_user,1,0,0,0
+user_import_wix_products,import.wix.products.user,model_import_wix_products,odoo_multi_channel_sale.group_multi_channel_user,1,1,1,0
+manager_import_wix_products,import.wix.products.manager,model_import_wix_products,odoo_multi_channel_sale.group_multi_channel_admin,1,1,1,1
+
+all_import_wix_partners,import.wix.partners.all,model_import_wix_partners,base.group_user,1,0,0,0
+user_import_wix_partners,import.wix.partners.user,model_import_wix_partners,odoo_multi_channel_sale.group_multi_channel_user,1,1,1,0
+manager_import_wix_partners,import.wix.partners.manager,model_import_wix_partners,odoo_multi_channel_sale.group_multi_channel_admin,1,1,1,1
+
+all_import_wix_orders,import.wix.orders.all,model_import_wix_orders,base.group_user,1,0,0,0
+user_import_wix_orders,import.wix.orders.user,model_import_wix_orders,odoo_multi_channel_sale.group_multi_channel_user,1,1,1,0
+manager_import_wix_orders,import.wix.orders.manager,model_import_wix_orders,odoo_multi_channel_sale.group_multi_channel_admin,1,1,1,1

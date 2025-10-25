@@ -1,0 +1,29 @@
+<odoo>
+    <data>
+
+        <record id="facebook_lead_cron" model="ir.cron">
+            <field name="name">Fetch Facebook Leads</field>
+            <field name="active" eval="True"/>
+            <field name="state" eval="'code'"/>
+            <field name="priority" eval="5"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="nextcall" eval="(DateTime.now().replace(hour=3, minute=0) + timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="model_id" ref="crm.model_crm_lead"/>
+            <field name="code" eval="'model.get_facebook_leads()'"/>
+        </record>
+
+        <record id="facebook_app_credential_cron" model="ir.cron">
+            <field name="name">Facebook App Credential</field>
+            <field name="active" eval="True"/>
+            <field name="state" eval="'code'"/>
+            <field name="priority" eval="5"/>
+            <field name="interval_number">1</field>
+            <field name="interval_type">hours</field>
+            <field name="nextcall" eval="(DateTime.now().replace(hour=3, minute=0) + timedelta(days=1)).strftime('%Y-%m-%d %H:%M:%S')"/>
+            <field name="model_id" ref="rcs_facebook_leads_generate.model_facebook_app_credential_info"/>
+            <field name="code" eval="'model.get_access_token()'"/>
+        </record>
+
+    </data>
+</odoo>

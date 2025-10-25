@@ -1,0 +1,79 @@
+<odoo>
+    <record id="cargo_delivery_shipment_view_form" model="ir.ui.view">
+        <field name="name">cargo.delivery.shipment.form</field>
+        <field name="model">cargo.delivery</field>
+        <field name="arch" type="xml">
+            <form string="Shipment">
+                <header>
+                    <button name="action_create_shipment" type="object" string="Create Shipment" class="oe_highlight" />
+                </header>
+            </form>
+        </field>
+    </record>
+
+    <record id="cargo_picking_points_view_search" model="ir.ui.view">
+        <field name="name">cargo.pick.up.point.search</field>
+        <field name="model">cargo.pick.up.point</field>
+        <field name="arch" type="xml">
+            <search>
+                    <filter name="cityname" string="City" context="{'group_by': 'cityname'}" />
+            </search>
+        </field>
+    </record>
+
+
+    <record id="cargo_picking_points_view_tree" model="ir.ui.view">
+        <field name="name">cargo.pick.up.point.tree</field>
+        <field name="model">cargo.pick.up.point</field>
+        <field name="arch" type="xml">
+            <tree string="Shipment">
+                <field name="distribution_point_id" />
+                <field name="distribution_point_pame" />
+                <field name="cityname" />
+                <field name="streetname" />
+                <field name="streetnum" />
+            </tree>
+        </field>
+    </record>
+
+    <record id="cargo_picking_points_view_form" model="ir.ui.view">
+        <field name="name">cargo.pick.up.point.form</field>
+        <field name="model">cargo.pick.up.point</field>
+        <field name="arch" type="xml">
+            <form string="Shipment">
+                <header>
+                    <button name="get_cargo_pick_up_point" type="object" string="Get Pick Up Point" class="oe_highlight" />
+                </header>
+            </form>
+        </field>
+    </record>
+
+    <record id="action_shipment" model="ir.actions.act_window">
+        <field name="name">Shipments</field>
+        <field name="res_model">cargo.delivery</field>
+        <field name="view_mode">tree</field>
+    </record>
+
+    <record id="action_pickup_points" model="ir.actions.act_window">
+        <field name="name">Pickup Points</field>
+        <field name="res_model">cargo.pick.up.point</field>
+        <field name="view_mode">tree</field>
+        <!-- <field name="context">
+                    {
+                        'group_by' : 'cityname'
+                    }
+        </field> -->
+        <field name="context">
+                    {
+                        'search_default_cityname' : '1'
+                    }
+        </field>
+        
+    </record>
+
+    <menuitem id="menu_shipment_root" name="Cargo Delivery"/>
+
+   <menuitem id="menu_shipment" name="Cargo Delivery Method" parent="menu_shipment_root" action="action_shipment"/>
+
+   <menuitem id="menu_picking_points" name="Cargo Picking Points" parent="menu_shipment_root" action="action_pickup_points"/>
+</odoo>

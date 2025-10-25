@@ -1,0 +1,76 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* engini_connector
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 16.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2024-03-19 12:00+0000\n"
+"PO-Revision-Date: 2024-03-19 12:00+0000\n"
+"Last-Translator: \n"
+"Language-Team: Hebrew\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: engini_connector
+#: model:ir.model.fields,field_description:engini_connector.field_engini_webhook_bulk_runner__delay_seconds
+msgid "Delay (seconds)"
+msgstr "זמן המתנה (שניות)"
+
+#. module: engini_connector
+#: model:ir.model.fields,field_description:engini_connector.field_engini_webhook_bulk_runner__order_names_raw
+msgid "Order Names"
+msgstr "שמות ההזמנות"
+
+#. module: engini_connector
+#: model:ir.model.fields,field_description:engini_connector.field_engini_webhook_bulk_runner__use_custom_date
+msgid "Use Custom Date"
+msgstr "השתמש בתאריך מותאם"
+
+#. module: engini_connector
+#: model:ir.model.fields,field_description:engini_connector.field_engini_webhook_bulk_runner__custom_date
+msgid "Custom Order Date"
+msgstr "תאריך הזמנה מותאם"
+
+#. module: engini_connector
+#: model:ir.actions.act_window,name:engini_connector.action_engini_webhook_bulk_runner
+msgid "Bulk Order Sender"
+msgstr "שליחת הזמנות מרובות"
+
+#. module: engini_connector
+#: model_terms:ir.ui.view,arch_db:engini_connector.view_engini_webhook_bulk_runner_form
+msgid "Bulk Webhook Sender"
+msgstr "שליחת הזמנות מרובות"
+
+#. module: engini_connector
+#: model:ir.ui.menu,name:engini_connector.menu_engini_bulk_runner
+msgid "Bulk Send"
+msgstr "שליחה מרוכזת"
+
+#. module: engini_connector
+#: model_terms:ir.ui.view,arch_db:engini_connector.view_engini_webhook_bulk_runner_form
+msgid "Send Orders"
+msgstr "שלח הזמנות"
+
+#. module: engini_connector
+#: model_terms:ir.ui.view,arch_db:engini_connector.view_engini_webhook_bulk_runner_form
+msgid "Close"
+msgstr "סגור"
+
+#. module: engini_connector
+#: model_terms:ir.ui.view,arch_db:engini_connector.view_engini_webhook_bulk_runner_form
+msgid "Enter order names separated by commas or new lines..."
+msgstr "הכנס שמות הזמנות מופרדים בפסיקים או ירידות שורה..."
+
+#. module: engini_connector
+#: model_terms:ir.ui.view,arch_db:engini_connector.view_engini_webhook_bulk_runner_form
+msgid "Delay between webhook calls (in seconds)"
+msgstr "זמן המתנה בין שליחה לשליחה (בשניות)"
+
+#. module: engini_connector
+#: model_terms:ir.ui.view,arch_db:engini_connector.view_engini_webhook_bulk_runner_form
+msgid "Minimum delay between webhook calls is 4 seconds"
+msgstr "זמן ההמתנה המינימלי בין שליחה לשליחה הוא 4 שניות" 

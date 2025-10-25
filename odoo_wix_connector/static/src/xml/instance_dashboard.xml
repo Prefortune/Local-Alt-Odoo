@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2015-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!--"License URL :<https://store.webkul.com/license.html/>" -->
+<templates xml:space="preserve">
+	<t t-inherit="instance_dashboard_template" t-inherit-mode="extension">
+        <xpath expr="//div[@id='dashboard_image_container']" position="inside">
+            <img src="/odoo_wix_connector/static/description/banner.png" alt="Not Found!" class="img-fluid" t-if="data.channel === 'wix'"/>
+        </xpath>
+    </t>
+</templates>

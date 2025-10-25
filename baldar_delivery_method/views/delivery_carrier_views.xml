@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <record id="cargo_delivery_method_delivery_inherit_form_view" model="ir.ui.view">
+            <field name="name">cargo.delivery.method.delivery.inherit.form</field>
+            <field name="model">delivery.carrier</field>
+            <field name="inherit_id" ref="delivery.view_delivery_carrier_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//field[@name='fixed_price']" position="after">
+                    <field name="customer_code"/>
+                    <field name="cargo_delivery_type"/>
+                </xpath>
+            </field>
+        </record>
+
+
+</odoo>

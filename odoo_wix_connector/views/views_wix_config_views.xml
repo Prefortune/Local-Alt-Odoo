@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Copyright (c) 2015-Present Webkul Software Pvt. Ltd. (<https://webkul.com/>) -->
+<!-- See LICENSE file for full copyright and licensing details. -->
+<!-- "License URL : <https://store.webkul.com/license.html/>" -->
+<odoo>
+	<data>
+		<record id="odoo_wix_connector.inherited_multi_channel_sale_wix" model="ir.ui.view">
+			<field name="name">multi.channel.sale.form</field>
+			<field name="model">multi.channel.sale</field>
+			<field name="inherit_id" ref="odoo_multi_channel_sale.multi_channel_view_form" />
+			<field name="arch" type="xml">
+				<!-- Hiding default fields -->
+				<xpath expr = "header//button[@name = 'test_connection']" position="before">
+					<button 
+						id = "Get_wix_Authorization" 
+						name="create_wix_connection" 
+						class ="btn-primary" 
+						icon  ="fa-spinner" 
+						string = "Wix Connection" 
+						type = "object" 
+						invisible = "channel != 'wix' or state == 'validate'" 
+						groups="odoo_multi_channel_sale.group_multi_channel_admin" 
+						help="Create connection with Wix"
+						/>
+				</xpath>
+
+
+				<xpath expr="//page[@name = 'credentials']" position ="inside">
+					<group invisible = "channel != 'wix'">
+						<group>
+							<label string= "APP ID" for="wix_app_id" invisible = "channel != 'wix'" />
+							<field name="wix_app_id" password="True" nolabel='1' placeholder="d7a7f0ca-c0fd-4e4f-97a6-de6c42ab966a" invisible = "channel != 'wix'" required = "channel == 'wix'" readonly = "state == 'validate'" />
+
+							<label string= "Secret Key" for="wix_app_secret_key" invisible = "channel != 'wix'"/>
+							<field name="wix_app_secret_key" password="True" nolabel='1' placeholder="eg. ck_ccac94fc4362ba12a2045086ea9db285e8f02ac9" invisible = "channel != 'wix'" required = "channel == 'wix'" readonly = "state == 'validate'" />
+
+							<label string="Base URL" for="wix_base_redirectUrl"/>
+							<field name="wix_base_redirectUrl" nolabel='1' placeholder = "eg: https://www.odoo-dev.com" invisible = "channel != 'wix'" required = "channel == 'wix'" readonly = "state == 'validate'"/>
+						</group>
+					</group>
+					<div class="row mt16 o_settings_container" invisible = "channel != 'wix' or 'id' == False">
+						<div class="col-xs-12 col-md-8 o_setting_box" invisible = "channel != 'wix'">
+							<div class="o_setting_left_pane"/>
+							<div class="o_setting_right_pane">
+								<label string="Redirect Url" for="wix_redirect_url"/>
+								<div class="text-muted">
+									Paste this Url to the Redirect Url in 'OAuth' section of your wix application
+								</div>
+								<div class="text-primary">
+									<b>
+										<field name="wix_redirect_url" widget="CopyClipboardChar"/>
+									</b>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-md-8 o_setting_box">	
+							<div class="o_setting_left_pane"/>
+							<div class="o_setting_right_pane" >
+								<label string="App url" for="wix_app_url"/>
+								<div class="text-muted">
+									Paste this URL to the App Url in 'OAuth' section of your wix application
+								</div>
+								<div class="text-primary">
+									<b>
+										<field name="wix_app_url" readonly="1" widget="CopyClipboardChar"/>
+									</b>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row mt16 o_settings_container" invisible="1"> <!-- invisible = "channel != 'wix' or state != 'validate'" -->
+						<div class="col-xs-12 col-md-6 o_setting_box">
+						<div class="o_setting_left_pane"/>
+							<div class="o_setting_right_pane" >	
+								<h3>Wix Real-Time Hooks <field name = "wix_show_webhook"/></h3>	
+								<div class="text-muted" invisible = "'wix_show_webhook' == False">
+									Webhook Public Key is required to use these real-time hooks.
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row mt16 o_settings_container" invisible = "channel != 'wix' or wix_show_webhook == False or state != 'validate'">
+						<div class="col-xs-12 col-md-6 o_setting_box">
+							<div class="o_setting_left_pane"/>
+							<div class="o_setting_right_pane">
+								<label string= "Webhook Public Key" for="wix_webhook_public_key" invisible = "channel != 'wix'" />
+								<div class="text-primary">
+									<b>
+										<field name="wix_webhook_public_key" invisible = "channel != 'wix'" required = "wix_show_webhook == True" placeholder = "eg. -----BEGIN PUBLIC KEY-----MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0yUhsHsjENJ4vRvlmMMN-----END PUBLIC KEY-----" />
+									</b>
+								</div>
+							</div>
+						</div>
+					</div>
+					<div class="row mt16 o_settings_container" invisible = "channel != 'wix' or wix_show_webhook == False or state != 'validate'">
+						<div class="col-xs-12 col-md-6 o_setting_box">	
+							<div class="o_setting_left_pane"/>
+							<div class="o_setting_right_pane" >
+								<label string="New Order Webhook" for="wix_order_webhook_url"/>
+								<br/><b>Enable </b>
+								<field name = "wix_order_webhook_enable" widget="boolean_toggle"/>
+								<div class="text-muted">
+									Real Time Sync Order From Wix 
+								</div>
+								<div class="text-primary">
+									<b>
+									<field name="wix_order_webhook_url" readonly = "True" decoration-success = "wix_order_webhook_enable == True"/></b>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-md-6 o_setting_box">	
+							<div class="o_setting_left_pane"/>
+							<div class="o_setting_right_pane" >
+								<label string="Order Cancelled Webhook" for="wix_order_cancel_webhook_url"/>
+								<br/><b>Enable </b>
+								<field name = "wix_order_cancel_webhook_enable" widget="boolean_toggle"/>
+								<div class="text-muted">
+									Real Time Cancel Order Status From Wix 
+								</div>
+								<div class="text-primary">
+									<b>
+									<field name="wix_order_cancel_webhook_url" readonly = "True" decoration-success = "wix_order_cancel_webhook_enable == True"/></b>
+								</div>
+							</div>
+						</div>
+						<div class="col-xs-12 col-md-6 o_setting_box">	
+							<div class="o_setting_left_pane"/>
+							<div class="o_setting_right_pane" >
+								<label string="Product Created Webhook" for="wix_product_create_webhook_url"/>
+								<br/><b>Enable </b>
+								<field name = "wix_product_create_webhook_enable" widget="boolean_toggle"/>
+								<div class="text-muted">
+									Real Time Sync New Created Product From Wix
+								</div>
+								<div class="text-primary">
+									<b>
+									<field name="wix_product_create_webhook_url" readonly= "True" decoration-success = "wix_product_create_webhook_enable == True"/></b>
+								</div>
+							</div>
+						</div>
+					</div><br/>
+					<span class='text-primary' invisible = "channel != 'wix'"> 
+						Click to manage wix applications <b><a href="https://dev.wix.com/apps" target='_blank'>click here</a></b>
+					</span>
+				</xpath>
+
+
+				<!--Inherit order state mapping page view  -->
+				<xpath expr="//page[@name='order_state_config']/group[@name='state_configuration']" position="after">
+					<span class='text-muted' invisible = "channel != 'wix'">
+						<br/>
+						<b>NOTE:</b> The Channel Order State is the comma seperated combination of Wix orders payment status and delivery status(eg: <strong>PAYMENT_STATE,DELIVERY_STATE</strong>).
+						<br/> Aailable PAYMENT_STATE: (PAID, NOT_PAID, PENDING, PARTIALLY_PAID, PARTIALLY_REFUNDED, FULLY_REFUNDED, UNSPECIFIED_PAYMENT_STATUS)
+						<br/> Available DELIVERY_STATE: (NOT_FULFILLED, FULFILLED, CANCELED, PARTIALLY_FULFILLED)
+						<br/> Examples: <strong>PAID,FULFILLED or NOT_PAID,NOT_FULFILLED or NOT_PAID,CANCELED or ...etc</strong>
+						<br/>(NOTE: Do not use space anywhere in this combination)
+					</span>
+				</xpath>
+
+			</field>
+		</record>
+	</data>
+</odoo>

@@ -1,0 +1,18 @@
+<odoo>
+    <record id="view_import_image_wizard_form" model="ir.ui.view">
+        <field name="name">import.image.wizard.form</field>
+        <field name="model">import.image.wizard</field>
+        <field name="arch" type="xml">
+            <form string="Import Product Images">
+                <group>
+                    <field name="zip_file"/>
+                    <field name="zip_filename"/>
+                </group>
+                <footer>
+                    <button name="action_import_images" type="object" string="Confirm" class="btn-primary"/>
+                    <button string="Cancel" class="btn-secondary" special="cancel"/>
+                </footer>
+            </form>
+        </field>
+    </record>
+</odoo>

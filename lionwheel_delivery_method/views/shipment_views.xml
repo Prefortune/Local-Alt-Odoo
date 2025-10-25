@@ -1,0 +1,39 @@
+<odoo>
+    <record id="lionwheel_delivery_shipment_view_form" model="ir.ui.view">
+        <field name="name">lionwheel.delivery.shipment.form</field>
+        <field name="model">lionwheel.delivery</field>
+        <field name="arch" type="xml">
+            <form string="LionWheel Shipment">
+                <header>
+                    <button name="action_create_shipment" type="object" string="Create Shipment" class="oe_highlight" />
+                </header>
+                <sheet>
+                    <group>
+                        <field name="id" readonly="1"/>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="lionwheel_delivery_shipment_view_tree" model="ir.ui.view">
+        <field name="name">lionwheel.delivery.shipment.tree</field>
+        <field name="model">lionwheel.delivery</field>
+        <field name="type">list</field>
+        <field name="arch" type="xml">
+            <tree string="LionWheel Shipments">
+                <field name="id"/>
+            </tree>
+        </field>
+    </record>
+
+    <record id="action_lionwheel_shipment" model="ir.actions.act_window">
+        <field name="name">LionWheel Shipments</field>
+        <field name="res_model">lionwheel.delivery</field>
+        <field name="view_mode">tree,form</field>
+    </record>
+
+    <menuitem id="menu_lionwheel_delivery_root" name="LionWheel Delivery"/>
+
+    <menuitem id="menu_lionwheel_shipment" name="LionWheel Shipments" parent="menu_lionwheel_delivery_root" action="action_lionwheel_shipment"/>
+</odoo>

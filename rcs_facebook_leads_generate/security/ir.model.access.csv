@@ -1,0 +1,10 @@
+id,name,model_id:id,group_id:id,perm_read,perm_write,perm_create,perm_unlink
+access_facebook_app_credential_info,facebook.app.credential.info,model_facebook_app_credential_info,sales_team.group_sale_salesman,1,1,1,1
+access_facebook_page,facebook.page,model_facebook_page,sales_team.group_sale_salesman,1,1,1,1
+access_facebook_page_category,facebook.page.category,model_facebook_page_category_info,sales_team.group_sale_salesman,1,1,1,1
+access_facebook_form,facebook.form,model_facebook_form_info,sales_team.group_sale_salesman,1,1,1,1
+access_facebook_form_field,facebook.form.field,model_facebook_form_field_info,sales_team.group_sale_salesman,1,1,1,1
+access_facebook_form_mapping,facebook.form.mapping,model_facebook_form_mapping,sales_team.group_sale_salesman,1,1,1,1
+access_utm_adset,utm.adset,model_utm_adset_info,sales_team.group_sale_salesman,1,1,1,1
+utm.access_utm_campaign,access_utm_campaign,model_utm_campaign,base.group_system,1,1,1,1
+utm.access_utm_medium,access_utm_medium,model_utm_medium,base.group_system,1,1,1,1

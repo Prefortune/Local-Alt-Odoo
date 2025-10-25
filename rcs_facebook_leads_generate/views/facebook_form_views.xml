@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+
+    <record id="facebook_form_form" model="ir.ui.view">
+        <field name="name">facebook.form.form</field>
+        <field name="model">facebook.form.info</field>
+        <field name="arch" type="xml">
+            <form string="Facebook form">
+                <header>
+                    <button name="get_facebook_lead_fields" type="object" string="Fetch Fields" class="btn-primary"/>
+                    <button name="action_guess_mapping" type="object" string="Suggested Mapping" class="btn-primary"/>
+                    <button name="action_fetch_leads_from_facebook" type="object" string="Fetch Leads" class="btn-primary"/>
+                </header>
+                <sheet>
+                    <div class="oe_button_box" name="button_box">
+                        <button name="action_view_fb_leads"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-list"
+                                invisible="lead_count == 0">
+                            <field name="lead_count" widget="statinfo" string="Leads"/>
+                        </button>
+                        <button name="action_view_won_leads"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-pencil-square-o"
+                                invisible="won_lead == 0">
+                            <field name="won_lead" widget="statinfo" string="Won Leads"/>
+                        </button>
+                        <button name="action_view_lost_leads"
+                                type="object"
+                                class="oe_stat_button"
+                                icon="fa-pencil-square-o"
+                                invisible="lost_lead == 0">
+                            <field name="lost_lead" widget="statinfo" string="Lost Leads"/>
+                        </button>
+                    </div>
+                    <group>
+                        <h1>
+                            <field name="name"/>
+                        </h1>
+                        <group/>
+                        <group string="Facebook">
+<!--                            <field name="team_id" options="{'no_create': True}"/>-->
+                            <field name="facebook_page_id" readonly='1'/>
+                            <field name="facebook_form_id" readonly='1'/>
+                            <field name="facebook_page_access_token" invisible="1"/>
+                        </group>
+                        <group string="Tracking Info">
+                            <field name="campaign_id" options="{'no_create': True}"/>
+                            <field name="medium_id" options="{'no_create': True}"/>
+                            <field name="source_id" options="{'no_create': True}"/>
+                        </group>
+                        <group string="Other Info">
+                            <field name="team_id" options="{'no_create': True}"/>
+                        </group>
+                    </group>
+                    <group colspan="2" string="Mappings">
+                        <field name="mappings" nolabel="1" colspan="2">
+                            <list editable="bottom" create="0">
+                                <field name="name"/>
+                                <field name="facebook_field"/>
+                                <field name="odoo_field"
+                                       domain="[('model', '=', 'crm.lead'), ('store', '=', True), ('readonly', '=', False),
+                                                ('ttype', 'in', ('char', 'date', 'datetime', 'float', 'html', 'integer', 'monetary', 'many2one', 'selection',
+                                                'phone', 'text'))]"
+                                       options="{'no_create': True}"/>
+                                <button name="action_guess_mapping" type="object"
+                                        icon="fa-question-circle text-info"
+                                        string="Suggested Mapping"
+                                        invisible="odoo_field != False"/>
+                            </list>
+                        </field>
+                    </group>
+                </sheet>
+            </form>
+        </field>
+    </record>
+
+    <record id="facebook_form_list" model="ir.ui.view">
+        <field name="name">facebook.form.list</field>
+        <field name="model">facebook.form.info</field>
+        <field name="arch" type="xml">
+            <list string="Facebook Forms" create="false">
+                <field name="name"/>
+                <field name="facebook_form_id" readonly='1'/>
+                <field name="facebook_page_id" readonly='1' optional="hide"/>
+                <field name="team_id" optional="hide"/>
+            </list>
+        </field>
+    </record>
+
+    <record id="action_facebook_form" model="ir.actions.act_window">
+        <field name="name">Facebook Forms</field>
+        <field name="res_model">facebook.form.info</field>
+        <field name="view_mode">list,form</field>
+        <field name="view_id" ref="facebook_form_list"/>
+        <field name="help" type="html">
+            <p/>
+        </field>
+    </record>
+
+</odoo>

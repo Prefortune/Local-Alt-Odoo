@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<odoo>
+
+    <record id="view_order_image_form_inherit" model="ir.ui.view">
+        <field name="name">sale.order.form.sale.image</field>
+        <field name="model">sale.order</field>
+        <field name="inherit_id" ref="sale.view_order_form"/>
+        <field name="arch" type="xml">
+            <xpath expr="//field[@name='order_line']/kanban/templates/t[@t-name='card']/t[@t-if='!record.display_type.raw_value']/aside" position="inside">
+                <field name="alt_image_small" widget="image" options="{'preview_image': 'image_128', 'img_class': 'object-fit-contain w-100'}"/>
+            </xpath>
+            <field name="payment_term_id" position="before">
+                <field name="alt_print_image"/>
+                <field name="alt_image_sizes" required="alt_print_image != False"/>
+                <field name="alt_hide_summary_in_quote"/>
+            </field>
+        </field>
+    </record>
+
+</odoo>

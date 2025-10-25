@@ -1,0 +1,368 @@
+# Translation of Odoo Server.
+# This file contains the translation of the following modules:
+# 	* website_sale_address
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: Odoo Server 15.0\n"
+"Report-Msgid-Bugs-To: \n"
+"POT-Creation-Date: 2022-04-02 15:58+0000\n"
+"PO-Revision-Date: 2022-04-02 15:58+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: website_sale_address
+#: model_terms:ir.ui.view,arch_db:website_sale_address.view_website_form
+msgid ""
+"<span attrs=\"{'invisible':['|', '&amp;', ('default_billing_country_id', "
+"'=', True), ('use_billing_address_country', '=', False), "
+"('default_billing_country_id', '=', False)]}\">Disable to change</span>"
+msgstr ""
+"<span attrs=\"{'invisible':['|', '&amp;', ('default_billing_country_id', "
+"'=', True), ('use_billing_address_country', '=', False), "
+"('default_billing_country_id', '=', False)]}\">Заблокувати можливість "
+"зміни</span>"
+
+#. module: website_sale_address
+#: model_terms:ir.ui.view,arch_db:website_sale_address.view_website_form
+msgid ""
+"<span attrs=\"{'invisible':['|', '&amp;', ('default_shipping_country_id', "
+"'=', True), ('use_shipping_address_country', '=', False), "
+"('default_shipping_country_id', '=', False)]}\">Disable to change</span>"
+msgstr ""
+"<span attrs=\"{'invisible':['|', '&amp;', ('default_shipping_country_id', "
+"'=', True), ('use_shipping_address_country', '=', False), "
+"('default_shipping_country_id', '=', False)]}\">Заблокувати можливість "
+"зміни</span>"
+
+#. module: website_sale_address
+#: model_terms:ir.ui.view,arch_db:website_sale_address.view_website_form
+msgid ""
+"<span attrs=\"{'invisible':[('use_billing_address_city', '=', "
+"False)]}\"><span class=\"text-muted\">｜</span> required</span>"
+msgstr ""
+"<span attrs=\"{'invisible':[('use_billing_address_city', '=', "
+"False)]}\"><span class=\"text-muted\">｜</span> обов'язковий</span>"
+
+#. module: website_sale_address
+#: model_terms:ir.ui.view,arch_db:website_sale_address.view_website_form
+msgid ""
+"<span attrs=\"{'invisible':[('use_billing_address_phone', '=', "
+"False)]}\"><span class=\"text-muted\">｜</span> required</span>"
+msgstr ""
+"<span attrs=\"{'invisible':[('use_billing_address_phone', '=', "
+"False)]}\"><span class=\"text-muted\">｜</span> обов'язковий</span>"
+
+#. module: website_sale_address
+#: model_terms:ir.ui.view,arch_db:website_sale_address.view_website_form
+msgid ""
+"<span attrs=\"{'invisible':[('use_billing_address_street', '=', "
+"False)]}\"><span class=\"text-muted\">｜</span> required</span>"
+msgstr ""
+"<span attrs=\"{'invisible':[('use_billing_address_street', '=', "
+"False)]}\"><span class=\"text-muted\">｜</span> обов'язковий</span>"
+
+#. module: website_sale_address
+#: model_terms:ir.ui.view,arch_db:website_sale_address.view_website_form
+msgid ""
+"<span attrs=\"{'invisible':[('use_billing_address_street2', '=', "
+"False)]}\"><span class=\"text-muted\">｜</span> required</span>"
+msgstr ""
+"<span attrs=\"{'invisible':[('use_billing_address_street2', '=', "
+"False)]}\"><span class=\"text-muted\">｜</span> обов'язковий</span>"
+
+#. module: website_sale_address
+#: model_terms:ir.ui.view,arch_db:website_sale_address.view_website_form
+msgid ""
+"<span attrs=\"{'invisible':[('use_shipping_address_city', '=', "
+"False)]}\"><span class=\"text-muted\">｜</span> required</span>"
+msgstr ""
+"<span attrs=\"{'invisible':[('use_shipping_address_city', '=', "
+"False)]}\"><span class=\"text-muted\">｜</span> обов'язковий</span>"
+
+#. module: website_sale_address
+#: model_terms:ir.ui.view,arch_db:website_sale_address.view_website_form
+msgid ""
+"<span attrs=\"{'invisible':[('use_shipping_address_phone', '=', "
+"False)]}\"><span class=\"text-muted\">｜</span> required</span>"
+msgstr ""
+"<span attrs=\"{'invisible':[('use_shipping_address_phone', '=', "
+"False)]}\"><span class=\"text-muted\">｜</span> обов'язковий</span>"
+
+#. module: website_sale_address
+#: model_terms:ir.ui.view,arch_db:website_sale_address.view_website_form
+msgid ""
+"<span attrs=\"{'invisible':[('use_shipping_address_street', '=', "
+"False)]}\"><span class=\"text-muted\">｜</span> required</span>"
+msgstr ""
+"<span attrs=\"{'invisible':[('use_shipping_address_street', '=', "
+"False)]}\"><span class=\"text-muted\">｜</span> обов'язковий</span>"
+
+#. module: website_sale_address
+#: model_terms:ir.ui.view,arch_db:website_sale_address.view_website_form
+msgid ""
+"<span attrs=\"{'invisible':[('use_shipping_address_street2', '=', "
+"False)]}\"><span class=\"text-muted\">｜</span> required</span>"
+msgstr ""
+"<span attrs=\"{'invisible':[('use_shipping_address_street2', '=', "
+"False)]}\"><span class=\"text-muted\">｜</span> обов'язковий</span>"
+
+#. module: website_sale_address
+#: model_terms:ir.ui.view,arch_db:website_sale_address.view_website_form
+msgid "<span><span class=\"text-muted\">｜</span> required</span>"
+msgstr "<span><span class=\"text-muted\">｜</span> обов'язковий</span>"
+
+#. module: website_sale_address
+#: model_terms:ir.ui.view,arch_db:website_sale_address.view_website_form
+msgid "Billing Address Fields"
+msgstr "Поля адреси покупця"
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__use_billing_address_city
+msgid "City"
+msgstr "Місто"
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__billing_address_city_required
+msgid "City is required"
+msgstr "Поле 'місто' обов'язкове"
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__use_billing_address_country
+msgid "Country"
+msgstr "Країна"
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__default_billing_country_only
+msgid "Country is not changeable"
+msgstr "Поле 'Країна' не змінне"
+
+#. module: website_sale_address
+#: model_terms:ir.ui.view,arch_db:website_sale_address.view_website_form
+msgid "Country-related fields:"
+msgstr "Поля, пов’язані з країною:"
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__default_billing_country_id
+#: model_terms:ir.ui.view,arch_db:website_sale_address.view_website_form
+msgid "Default Country"
+msgstr "Країна за замовчуванням"
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__default_shipping_country_id
+msgid "Default Shipping Country"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,help:website_sale_address.field_website__default_billing_country_only
+#: model:ir.model.fields,help:website_sale_address.field_website__default_shipping_country_only
+msgid "Disable to change the Country"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__billing_address_email_required
+msgid "E-Mail is required"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__use_billing_address_phone
+msgid "Phone"
+msgstr "Телефон"
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__billing_address_phone_required
+msgid "Phone is required"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,help:website_sale_address.field_website__billing_address_city_required
+msgid "Set the City as a required field"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,help:website_sale_address.field_website__billing_address_email_required
+msgid "Set the E-Mail as a required field"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,help:website_sale_address.field_website__billing_address_phone_required
+#: model:ir.model.fields,help:website_sale_address.field_website__shipping_address_phone_required
+msgid "Set the Phone as a required field"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,help:website_sale_address.field_website__shipping_address_city_required
+msgid "Set the Shipping City as a required field"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,help:website_sale_address.field_website__shipping_address_state_required
+msgid "Set the Shipping State as a required field"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,help:website_sale_address.field_website__shipping_address_street2_required
+msgid "Set the Shipping Street 2 as a required field"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,help:website_sale_address.field_website__shipping_address_zip_required
+msgid "Set the Shipping Zip Code as a required field"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,help:website_sale_address.field_website__billing_address_state_required
+msgid "Set the State as a required field"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,help:website_sale_address.field_website__billing_address_street2_required
+msgid "Set the Street 2 as a required field"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,help:website_sale_address.field_website__billing_address_street_required
+#: model:ir.model.fields,help:website_sale_address.field_website__shipping_address_street_required
+msgid "Set the Street as a required field"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,help:website_sale_address.field_website__billing_address_zip_required
+msgid "Set the Zip Code as a required field"
+msgstr ""
+
+#. module: website_sale_address
+#: model_terms:ir.ui.view,arch_db:website_sale_address.view_website_form
+msgid "Shipping Address Fields"
+msgstr "Поля адреси доставки"
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__use_shipping_address_city
+msgid "Shipping City"
+msgstr "Місто"
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__use_shipping_address_country
+msgid "Shipping Country"
+msgstr "Країна"
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__default_shipping_country_only
+msgid "Shipping Country is not changeable"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__use_shipping_address_phone
+msgid "Shipping Phone"
+msgstr "Телефон"
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__use_shipping_address_state
+msgid "Shipping State"
+msgstr "Область"
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__shipping_address_state_required
+msgid "Shipping State is required"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__use_shipping_address_street
+msgid "Shipping Street"
+msgstr "Вулиця"
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__use_shipping_address_street2
+msgid "Shipping Street 2"
+msgstr "Додаткові дані про адресу (Вулиця 2)"
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__shipping_address_street2_required
+msgid "Shipping Street 2 is required"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__shipping_address_street_required
+msgid "Shipping Street is required"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__use_shipping_address_zip
+msgid "Shipping Zip Code"
+msgstr "Індекс"
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__shipping_address_zip_required
+msgid "Shipping Zip Code is required"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__shipping_address_phone_required
+msgid "Shipping phone is required"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__shipping_address_city_required
+msgid "ShippingCity is required"
+msgstr ""
+
+#. module: website_sale_address
+#: model_terms:ir.ui.view,arch_db:website_sale_address.view_website_form
+msgid ""
+"Specify the default country to operate with country-related fields: ZIP, "
+"State."
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__use_billing_address_state
+msgid "State"
+msgstr "Область"
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__billing_address_state_required
+msgid "State is required"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__use_billing_address_street
+msgid "Street"
+msgstr "Вулиця"
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__use_billing_address_street2
+msgid "Street 2"
+msgstr "Додаткові дані про адресу (Вулиця 2)"
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__billing_address_street2_required
+msgid "Street 2 is required"
+msgstr ""
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__billing_address_street_required
+msgid "Street is required"
+msgstr "Поле 'Вулиця' обов'язкове"
+
+#. module: website_sale_address
+#: model:ir.model,name:website_sale_address.model_website
+msgid "Website"
+msgstr "Веб-сайт"
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__use_billing_address_zip
+msgid "Zip Code"
+msgstr "Індекс"
+
+#. module: website_sale_address
+#: model:ir.model.fields,field_description:website_sale_address.field_website__billing_address_zip_required
+msgid "Zip Code is required"
+msgstr "Поле 'Індекс' обов'язкове"
+
+#. module: website_sale_address
+#: model_terms:ir.ui.view,arch_db:website_sale_address.view_website_form
+msgid "eCommerce"
+msgstr ""
