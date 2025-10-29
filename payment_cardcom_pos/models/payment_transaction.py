@@ -105,11 +105,13 @@ class PaymentTransaction(models.Model):
             # old_trans = self.sudo().search([('reference','=',name)])
             # _logger.info("old_trans ------------- %s",old_trans)
             # if old_trans.exists():
-            #     name = '-'.join(name.split('-')[:-1])
-            # _logger.info("--- name ---- %s",name)
+            pos_ref_name = '-'.join(name.split('-')[:-1])
+            _logger.info("--- name ---- %s",pos_ref_name)
             
             order = self.env['pos.order'].sudo().search([('pos_reference','=',name)])
-            _logger.info("--- order ---- %s",order)
+            if not order:
+                order = self.env['pos.order'].sudo().search([('pos_reference','=',pos_ref_name)])
+            _logger.info("--- POS order ---- %s",order)
 
             operation = 'ChargeOnly'
             lines = order.lines
@@ -139,6 +141,12 @@ class PaymentTransaction(models.Model):
             "Email": order.partner_id.email or "testing@mail.com",
             "Products": products
           },
+          "AdvancedDefinition": {
+                "VirtualTerminal": {
+                "IsEnable": True
+                }
+          },
+          
         }
 
         _logger.info("--- payment_data ---- %s",payment_data)
