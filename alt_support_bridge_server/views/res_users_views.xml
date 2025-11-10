@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Add support channel access field to user form -->
+        <record id="view_users_form_inherit_alt_support" model="ir.ui.view">
+            <field name="name">res.users.form.inherit.alt.support</field>
+            <field name="model">res.users</field>
+            <field name="inherit_id" ref="base.view_users_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//notebook" position="inside">
+                    <page string="Support Access" groups="base.group_system">
+                        <group>
+                            <field name="support_channel_access"/>
+                        </group>
+                    </page>
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo> 

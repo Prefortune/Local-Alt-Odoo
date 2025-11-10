@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data noupdate="1">
+        <!-- Template for support channels on server side -->
+        <record id="mail_channel_alt_support_template" model="discuss.channel">
+            <field name="name">alt support - {company_name}</field>
+            <field name="channel_type">channel</field>
+            <field name="description">Support channel for {company_name}</field>
+        </record>
+
+        <!-- Template for personal support channels on server side -->
+        <record id="mail_channel_alt_support_personal_template" model="discuss.channel">
+            <field name="name">alt support - {company_name} - {user_name}</field>
+            <field name="channel_type">channel</field>
+            <field name="description">Personal support channel for {user_name} at {company_name}</field>
+        </record>
+    </data>
+</odoo> 

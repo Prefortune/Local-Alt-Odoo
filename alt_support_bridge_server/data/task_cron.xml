@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<odoo>
+   <data>
+       <record id="alt_check_subscription_task" model="ir.cron">
+           <field name="name">Check Subscription Task</field>
+           <field name="model_id" ref="alt_support_bridge_server.model_subscription_package"/>
+           <field name="state">code</field>
+           <field name="code">model.check_tasks()</field>
+           <field name='interval_number'>1</field>
+           <field name='interval_type'>days</field>
+       </record>
+   </data>
+</odoo>

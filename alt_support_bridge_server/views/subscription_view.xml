@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <data>
+        <!-- Add support channel access field to user form -->
+        <record id="subscription_package_view_form_inherit_alt" model="ir.ui.view">
+            <field name="name">subscription.package.view.form.alt</field>
+            <field name="model">subscription.package</field>
+            <field name="inherit_id" ref="subscription_package.subscription_package_view_form"/>
+            <field name="arch" type="xml">
+                <xpath expr="//page[@name='other_info']" position="after">
+                    <page string="Task List" name="tasks_list">
+                        <group>
+                            <field name="task_ids" nolabel="1"/>
+                        </group>
+                    </page>
+                </xpath>
+
+                <xpath expr="//field[@name='company_id']" position="after">
+                    <field name="discuss_channel_id"></field>
+                    <!-- <field name="discuss_channel_id" readonly="stage_id.category == 'progress' "></field> -->
+                </xpath>
+            </field>
+        </record>
+    </data>
+</odoo> 

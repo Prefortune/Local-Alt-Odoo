@@ -1,0 +1,407 @@
+<?xml version="1.0" encoding="utf-8"?>
+<odoo>
+    <template id="alt_support_bridge_server_portal_my_task" name="My Task" inherit_id="project.portal_my_task">
+        <xpath expr="//div[@id='card_header']" position="replace">
+            <div id="card_header" data-anchor="true">
+                <div class="row justify-content-between mb-3">
+                    <div class="col-12 col-md-9">
+                        <div class="d-flex gap-2">
+                            <h3 class="my-0">
+                                <t t-call="project.portal_my_tasks_priority_widget_template"/>
+                                <span t-field="task.name"/>
+                                <small class="text-muted d-none d-md-inline">(#                                    <span t-field="task.id"/>
+)</small>
+                            </h3>
+                        </div>
+                    </div>
+                    <!-- <div class="col-auto">
+                        <small class="text-end">Stage:</small>
+                        <span t-field="task.stage_id.name" class=" badge rounded-pill text-bg-info" title="Current stage of this task"/>
+                    </div> -->
+                </div>
+            </div>
+        </xpath>
+        <xpath expr="//div[@t-if='task.user_ids']" position="replace">
+            <div t-if="task.user_ids">
+                <!-- <h6 class="flex-basis-100">
+                    <small class="text-muted">Assignees</small>
+                </h6>
+                <t t-foreach="task.user_ids" t-as="user">
+                    <t t-call="portal.portal_my_contact">
+                        <t t-set="_spacingClass" t-value="'mb-3' if len(task.user_ids) > 1 else ''"/>
+                        <t t-set="_contactAvatar" t-value="image_data_uri(user.avatar_128)"/>
+                        <t t-set="_contactName" t-value="user.name"/>
+                        <div t-out="user" t-options='{"widget": "contact", "fields": ["email", "phone"]}'/>
+                    </t>
+                </t> -->
+            </div>
+        </xpath>
+        <xpath expr="//div[@id='task_content']/div[@id='card']" position="after">
+            <t t-set="alt_change_request_ids" t-value="task.change_request_ids"/>
+            <t t-if="alt_change_request_ids">
+                <h5 id="task_change_request" class="mt-2 mb-2" data-anchor="true">Task Change Request</h5>
+                <table class="o_portal_my_doc_table table table-sm table-striped">
+                    <thead>
+                        <tr>
+                            <th>Created By</th>
+                            <th>Note</th>
+                            <th>Status</th>
+                            <th class="text-end" name="t_label">Allocated Time (Hours)</th>
+                            <th class="text-end" name="t_label">Action</th>
+                        </tr>
+                    </thead>
+                    <tr t-foreach="alt_change_request_ids" t-as="changes" valign="middle">
+
+                        <td>
+                            <t t-esc="changes.partner_id.name"/>
+                        </td>
+                        <td>
+                            <t t-esc="changes.note"/>
+                        </td>
+                        <td>
+                            <t t-esc="changes.state"/>
+                        </td>
+                        <td class="text-end">
+                            <t t-esc="changes.time" t-options='{"widget": "float_time"}'/>
+                        </td>
+                        <td class="text-end">
+                            <t t-if="changes.state == 'Pending'">
+                                <a t-attf-href="/task/change/request/{{changes.id}}/confirm" type="button" class="btn btn-success">
+                                    <span>
+                                                            Confirm
+                                    </span>
+                                </a>
+                                <a t-attf-href="/task/change/request/{{changes.id}}/reject" type="button" class="btn btn-danger">
+                                    <span>
+                                                            Reject
+                                    </span>
+                                </a>
+                            </t>
+                        </td>
+                    </tr>
+                </table>
+            </t>
+        </xpath>
+    </template>
+
+    <template id="alt_support_portal_my_home" name="Projects / Tasks" inherit_id="project.portal_my_home">
+        <xpath expr="//div[@id='portal_service_category']" position="replace">
+            <div id="portal_service_category" position="inside">
+                <!-- <t t-call="portal.portal_docs_entry">
+                    <t t-set="icon" t-value="'/web/static/img/folder.svg'"/>
+                    <t t-set="title">Projects</t>
+                    <t t-set="url" t-value="'/my/projects'"/>
+                    <t t-set="text">Follow the evolution of your projects</t>
+                    <t t-set="placeholder_count" t-value="'project_count'"/>
+                </t> -->
+                <t t-call="portal.portal_docs_entry">
+                    <t t-set="icon" t-value="'/project/static/src/img/tasks.svg'"/>
+                    <t t-set="title">Tasks</t>
+                    <t t-set="url" t-value="'/my/tasks'"/>
+                    <t t-set="text">Follow and comments tasks of your projects</t>
+                    <t t-set="placeholder_count" t-value="'task_count'"/>
+                </t>
+            </div>
+        </xpath>
+    </template>
+
+    <template id="alt_support_portal_my_tasks_state_widget_template" name="Status Widget Template" inherit_id="project.portal_my_tasks_state_widget_template">
+        <xpath expr="." position="replace">
+            <span t-att-title="dict(task.fields_get(allfields=['state'])['state']['selection'])[task.state]">
+                <i t-attf-class="
+            fa 
+            #{ 
+                'fa-check-circle text-success' if task.state == '00_new_state' else
+                'fa-spinner fa-spin text-primary' if task.state == '01_in_progress' else
+                'fa-exclamation-triangle text-warning' if task.state == '02_changes_requested' else
+                'fa-thumbs-up text-success' if task.state == '03_approved' else
+                'fa-check-circle text-success' if task.state == '1_done' else
+                'fa-times-circle text-danger' if task.state == '1_canceled' else
+                'fa-hourglass-o text-info' if task.state == '04_waiting_normal' else
+                'fa-flag-checkered text-success' if task.state == '05_finished' else
+                ''
+            }
+        "/>
+                <span class="ml-1" t-esc="dict(task.fields_get(allfields=['state'])['state']['selection'])[task.state]"/>
+            </span>
+        </xpath>
+    </template>
+
+    <template id="alt_support_bridge_server_portal_tasks_list" name="Tasks List" inherit_id="project.portal_tasks_list">
+        <xpath expr="." position="replace">
+
+            <t t-if="grouped_tasks">
+
+                <t t-set="subscription_package_hours" t-value="sum(subscription_package.product_line_ids.mapped('product_qty'))"/>
+                <t t-set="allocated_hours" t-value="sum(subscription_package.task_ids.mapped('allocated_hours'))"/>
+                <t t-set="effective_hours" t-value="sum(subscription_package.task_ids.mapped('effective_hours'))"/>
+                <t t-set="left_hours" t-value="subscription_package_hours - allocated_hours"/>
+
+                <t t-call="portal.portal_table">
+                    <thead>
+                        <th>Subscription Name</th>
+                        <th>Subscription Time (Hours) / Subscription (Hours) Left</th>
+                        <th>Allocated Time (Hours)</th>
+                        <th>Time Spend (Hours)</th>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <t t-out="subscription_package.name" />
+                            </td>
+                            <td>
+                                <!-- <t t-out="sum(subscription_package.product_line_ids.mapped('product_qty'))" t-options="{'widget' : 'float_time'}"/> -->
+                                <t t-esc="subscription_package_hours" t-options="{'widget' : 'float_time'}"/>
+ /                                <t t-esc="left_hours" t-options="{'widget' : 'float_time'}"/>
+                            </td>
+                            <td>
+                                <!-- <t t-out="sum(subscription_package.task_ids.mapped('allocated_hours'))" t-options="{'widget' : 'float_time'}"/> -->
+                                <t t-esc="allocated_hours" t-options="{'widget' : 'float_time'}"/>
+                            </td>
+                            <td>
+                                <!-- <t t-out="sum(subscription_package.task_ids.mapped('effective_hours'))" t-options="{'widget' : 'float_time'}"/> -->
+                                <t t-esc="effective_hours" t-options="{'widget' : 'float_time'}"/>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+
+                    <!-- <h4>
+                        <t t-out="subscription_package.name" />
+                    </h4> -->
+
+                    <thead>
+                        <tr>
+                            <!-- Allows overrides in modules -->
+                            <t t-set="group_by_in_header_list" t-value="['priority', 'state', 'project_id', 'milestone_id' , 'date_deadline', 'action']"></t>
+                            <!-- <t t-set="group_by_in_header_list" t-value="['priority', 'state', 'project_id', 'stage_id', 'milestone_id' 'action']"></t> -->
+                            <t t-set="number_of_header" t-value="9"></t>
+                            <!-- Computes the right colspan once and use it everywhere -->
+                            <t t-set="grouped_tasks_colspan" t-value="number_of_header - 1 if groupby in group_by_in_header_list else number_of_header"></t>
+                            <t t-set="grouped_tasks_colspan" t-value="grouped_tasks_colspan if allow_milestone else grouped_tasks_colspan - 1"></t>
+                            <!-- <th t-attf-colspan="{{2 if groupby != 'priority' else 1}}"/> -->
+                            <th>Name</th>
+                            <!-- <th>Assignees</th> -->
+                            <!-- <th t-if="groupby != 'project_id' and multiple_projects">Project</th> -->
+                            <th class="text-end lh-1">Time Estimation / Time Spent (Hours)</th>
+                            <th class="text-center">Action</th>
+                            <th t-if="groupby != 'milestone_id' and allow_milestone" name="project_portal_milestones">Milestone</th>
+                            <!-- <th t-if="groupby != 'state'"/> -->
+                            <th t-if="groupby != 'state'" class="text-end">State</th>
+                            <th class="text-end">Deadline</th>
+                            <!-- <th class="text-end">Action</th> -->
+                        </tr>
+                    </thead>
+                    <t t-foreach="grouped_tasks" t-as="tasks">
+                        <tbody t-if="tasks">
+                            <tr t-if="not groupby == 'none'" class="table-light">
+                                <th t-if="groupby == 'project_id' and multiple_projects" t-attf-colspan="{{grouped_tasks_colspan}}">
+                                    <!-- This div is necessary for documents_project_sale -->
+                                    <div name="project_name" class="d-flex w-100 align-items-center">
+                                        <!-- <span t-if="tasks[0].sudo().project_id" t-field="tasks[0].sudo().project_id.name"/> -->
+                                        <span t-if="tasks[0].sudo().project_id" t-field="tasks[0].sudo().project_id.name"/>
+                                        <span t-else="">No Project</span>
+                                    </div>
+                                </th>
+                                <th t-if="groupby == 'milestone_id'" t-attf-colspan="{{grouped_tasks_colspan}}">
+                                    <span t-if="tasks[0].sudo().milestone_id and tasks[0].sudo().allow_milestones" class="text-truncate" t-field="tasks[0].sudo().milestone_id.name"/>
+                                    <span t-else="">No Milestone</span>
+                                </th>
+                                <th t-if="groupby == 'stage_id'" t-attf-colspan="{{grouped_tasks_colspan}}">
+                                    <!-- This div is necessary for documents_project_sale -->
+                                    <div name="stage_name" class="d-flex w-100 align-items-center">
+                                        <span class="text-truncate" t-field="tasks[0].sudo().stage_id.name"/>
+                                    </div>
+                                </th>
+                                <th t-if="groupby == 'priority'" t-attf-colspan="{{grouped_tasks_colspan}}">
+                                    <span class="text-truncate" t-field="tasks[0].sudo().priority"/>
+                                </th>
+                                <th t-if="groupby == 'state'" t-attf-colspan="{{grouped_tasks_colspan}}">
+                                    <span class="text-truncate" t-field="tasks[0].sudo().state"/>
+                                </th>
+                                <th t-if="groupby == 'partner_id'" t-attf-colspan="{{grouped_tasks_colspan}}">
+                                    <span t-if="tasks[0].sudo().partner_id" class="text-truncate" t-field="tasks[0].sudo().partner_id.name"/>
+                                    <span t-else="">No Customer</span>
+                                </th>
+                                <th t-if="groupby == 'alt_subscription_id'" t-attf-colspan="{{grouped_tasks_colspan}}">
+                                    <span t-if="tasks[0].sudo().alt_subscription_id" class="text-truncate" t-field="tasks[0].sudo().alt_subscription_id.name"/>
+                                    <span t-else="">No Subscription</span>
+                                </th>
+                            </tr>
+                        </tbody>
+                        <tbody t-if="tasks">
+                            <t t-foreach="tasks" t-as="task">
+                                <tr>
+                                    <!-- <td class="text-start">
+                                    #   <span t-esc="task.id"/>
+                                    </td> -->
+                                    <!-- <td t-if="groupby != 'priority'" class="text-end">
+                                        <t t-call="project.portal_my_tasks_priority_widget_template"/>
+                                    </td> -->
+                                    <td>
+                                        <a t-attf-href="/my/#{task_url}/#{task.id}?{{ keep_query() }}">
+                                            <span t-att-title="task.name" t-field="task.name"/>
+                                        </a>
+                                    </td>
+                                    <!-- <td>
+                                        <t t-set="assignees" t-value="task.sudo().user_ids"/>
+                                        <div t-if="assignees" class="flex-nowrap ps-3">
+                                            <img class="rounded o_portal_contact_img me-2" t-attf-src="#{image_data_uri(assignees[:1].avatar_128)}" alt="User" style="width: 20px; height: 20px;"/>
+                                            <span t-att-title="'\n'.join(assignees.mapped('name'))">
+                                                <span t-field="assignees[:1].name"/>
+                                                <span t-if="len(assignees) &gt; 1" class="badge ms-1 rounded-pill bg-light"> +                                                    <span t-out="len(assignees) - 1"/>
+                                                </span>
+                                            </span>
+                                        </div>
+                                    </td> -->
+                                    <!-- <td t-if="groupby != 'project_id' and multiple_projects">
+                                        <span title="Current project of the task" t-out="task.project_id.name" />
+                                    </td> -->
+                                    <td class="text-end lh-1">
+                                        <span>
+                                            <t t-out="task.allocated_hours" t-options="{'widget' : 'float_time'}"/>
+                                        </span>
+                                         / 
+                                        <span>
+                                            <t t-out="task.effective_hours" t-options="{'widget' : 'float_time'}"/>
+                                        </span>
+                                        &#160;
+                                                                              
+                                        <!-- <div class="modal fade" t-att-id="'infoModal-' + str(task.id)" tabindex="-1" t-att-aria-labelledby="'infoModalLabel-' + str(task.id)" aria-hidden="true">
+                                            <div class="modal-dialog modal-dialog-centered">
+                                                <div class="modal-content">
+
+                                                    <div class="modal-header">
+                                                        <h5 class="modal-title" t-att-id="'infoModalLabel-' + str(task.id)">
+                                                            <strong t-esc="task.name"/>
+                                                        </h5>
+                                                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                                    </div>
+
+                                                    <div class="modal-body">
+                                                        <div></div>
+                                                        <table class="table table-borderless mb-0">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <th scope="row">State:</th>
+                                                                    <td>
+                                                                        <i t-att-class="
+                                                                                'fa ' +
+                                                                                ({
+                                                                                    '00_new_state': 'fa-check-circle text-success',
+                                                                                    '01_in_progress': 'fa-spinner fa-spin text-primary',
+                                                                                    '02_changes_requested': 'fa-exclamation-triangle text-warning',
+                                                                                    '03_approved': 'fa-thumbs-up text-success',
+                                                                                    '1_done': 'fa-check-circle text-success',
+                                                                                    '1_canceled': 'fa-times-circle text-danger',
+                                                                                    '04_waiting_normal': 'fa-hourglass-o text-info',
+                                                                                    '05_finished': 'fa-flag-checkered text-success'
+
+                                                                                }).get(task.state, '')
+                                                                            "/>
+                                                                        &#160;                                                               
+                                                                        <span t-esc="dict(task.fields_get(allfields=['state'])['state']['selection'])[task.state]"/>
+                                                                    </td>
+
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">Allocated Hours:</th>
+                                                                    <td t-esc="task.allocated_hours" t-options="{'widget' : 'float_time'}"/>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">Time Spent:</th>
+                                                                    <td t-esc="task.effective_hours" t-options="{'widget' : 'float_time'}"/>
+                                                                </tr>
+                                                                <tr>
+                                                                    <th scope="row">Deadline:</th>
+                                                                    <td t-esc="task.date_deadline" t-options="{'widget' : 'date'}"/>
+                                                                </tr>
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                    <t t-if="task.state == '00_new_state' and task.alt_subscription_id and task.allocated_hours > 0">
+                                                        <div class="modal-footer">
+                                                            <a t-attf-href="/task/#{task.id}/confirm" type="button" class="btn btn-success">
+                                                                Confirm
+                                                            </a>
+                                                            <a t-attf-href="/task/#{task.id}/reject" type="button" class="btn btn-danger">
+                                                                Reject
+                                                            </a>
+                                                        </div>
+                                                    </t>
+                                                </div>
+                                            </div>
+                                        </div> -->
+                                        <!-- <i class="fa fa-bars text-success" title="View Details" style="cursor:pointer;" aria-hidden="true" t-att-id="'info-icon-' + str(task.id)" data-bs-toggle="modal" t-att-data-bs-target="'#infoModal-' + str(task.id)" /> -->
+                                        <!-- <button class="fa fa-cogs text-info" title="View Details" style="cursor:pointer;height: 30px !important;width: 30px !important;" aria-hidden="true" t-att-id="'info-icon-' + str(task.id)" data-bs-toggle="modal" t-att-data-bs-target="'#infoModal-' + str(task.id)" /> -->
+
+                                    </td>
+                                    <td class="text-center lh-1">
+                                        <t t-if="task.state == '00_new_state' and task.alt_subscription_id and task.allocated_hours > 0">
+                                            <a t-attf-href="/task/#{task.id}/confirm" type="button" class="btn btn-success" style="padding: 2px 7px !important;font-size: 14px !important;">
+                                                <span>
+                                                        Confirm
+                                                </span>
+                                            </a>
+                                            <a t-attf-href="/task/#{task.id}/reject" type="button" class="btn btn-danger" style="padding: 2px 7px !important;font-size: 14px !important;">
+                                                <span>
+                                                        Reject
+                                                </span>
+                                            </a>
+                                        </t>
+                                        <t t-else="">
+                                            <span>
+                                                -
+                                            </span>
+                                        </t>
+                                    </td>
+                                    <td t-if="groupby != 'milestone_id' and allow_milestone" name="project_portal_milestones">
+                                        <t t-if="task.milestone_id and task.allow_milestones">
+                                            <span t-esc="task.milestone_id.name" />
+                                        </t>
+                                    </td>
+                                    <td t-if="groupby != 'state'" align="right" class="align-middle">
+                                        <t t-call="project.portal_my_tasks_state_widget_template">
+                                            <t t-set="path" t-value="'tasks'"/>
+                                        </t>
+                                    </td>
+                                    <!-- <td t-if="groupby != 'stage_id'" class="text-end lh-1">
+                                        <span class="fw-normal o_text_overflow" t-attf-title="#{task.stage_id.name}" t-out="task.stage_id.name"/>
+                                    </td> -->
+                                    <td class="text-end lh-1">
+                                        <span class="fw-normal o_text_overflow" t-out="task.date_deadline" t-options="{'widget' : 'date'}"/>
+                                    </td>
+                                    <!-- <td class="text-end lh-1">
+                                        <t t-if="task.state == '00_new_state' and task.alt_subscription_id and task.allocated_hours > 0">
+                                            <a t-attf-href="/task/#{task.id}/confirm" type="button" class="btn btn-success">
+                                                <span>
+                                                        Confirm
+                                                </span>
+                                            </a>
+                                            <a t-attf-href="/task/#{task.id}/reject" type="button" class="btn btn-danger">
+                                                <span>
+                                                        Reject
+                                                </span>
+                                            </a>
+                                        </t>
+                                        <t t-else="">
+                                            <span>
+                                                    -
+                                            </span>
+                                        </t>
+                                    </td> -->
+                                </tr>
+                            </t>
+                        </tbody>
+                    </t>
+                </t>
+            </t>
+        </xpath>
+    </template>
+
+</odoo>
